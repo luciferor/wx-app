@@ -1,0 +1,17 @@
+<view>
+  <view class='tabmenus'>
+    <navigator url="/pages/task/task" open-type="switchTab" hover-class="other-navigator-hover">自我管理</navigator>
+    <navigator url="/pages/mutual/mutual" open-type="switchTab" hover-class="other-navigator-hover">相互管理</navigator>
+    <view class='underline'></view>
+  </view>
+  <view class='content-list'>
+    <view class='list-box'>
+      <view class='listcontent'>
+        <i-radio value="不二家棒棒糖" checked="{{false}}" bindchange="handleAnimalChange"></i-radio>
+        <i-radio value="清风湿纸巾" checked="{{false}}" bindchange="handleAnimalChange"></i-radio>
+        <i-radio value="床上四件套" checked="{{false}}" bindchange="handleAnimalChange"></i-radio>
+        <i-radio value="苹果 iPad9.7英寸" checked="{{false}}" bindchange="handleAnimalChange"></i-radio>
+      </view>
+    </view>
+  </view>
+</view>
