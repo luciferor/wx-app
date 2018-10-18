@@ -1,3 +1,52 @@
-<view>
-我的
+<!--mine.wxml-->
+<view class="view-container">
+     <view class="top">
+        <view class='info-container'>
+            <view class='left-container'>
+                <image src='../../images/tabs/icon_tab_mine_default.png' class='pic'></image>
+                <text class='uname'>艾晓晓</text>
+            </view>
+            <view class='right-container'>
+                <image src='../../images/mine/icon_wode_tongzhi.png' class='message'></image>
+                <image src='../../images/mine/icon_wode_shezhi.png' class='setting'></image>
+            </view>
+        </view>
+        <view class='score-org-container'>
+            <view class='score-container'>
+             <text class='total-text'>总邦分</text>
+             <text class='total-score'>1253.5</text>
+             <view>
+                <text class='remind-text'>剩30邦分加分权利，20邦分减分权利</text>
+             </view>
+            </view>
+            <text class='org'>我的组织 》</text>
+        </view>
+     </view>
+
+     <view class='add-target-container'>
+        <view class='add-text-container'>
+            <view class='add-icon'></view>
+            <text class='add-text'>我的目标</text>
+        </view>
+        <image src='../../images/mine/icon_wode_tianjia.png' class='add'></image>
+     </view>
+     <view class='horizontal-line'></view>
+
+    <view>
+        <view class='target-container'>
+            <view class='target-left'>
+                <image src='../../images/mine/icon_wode_rijiang.png' class='target-pic'></image>
+                <view class='target-info'>
+                    <text class='target-name'>不二家棒棒糖全家桶</text>
+                    <text class='target-condition'>当前第5名/日排名第一</text>
+                    <progress class='target-status' percent="20" activeColor='#5398ff' backgroundColor='#f7f7f7' ></progress>
+                </view>
+            </view>
+            <view class='target-right'>
+                <button class='target-button'>领取</button>
+                <text class='target-price'>30~50元</text>
+            </view>
+        </view>
+    </view>
+  
 </view>

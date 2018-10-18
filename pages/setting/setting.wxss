@@ -1,0 +1,102 @@
+/* setting.wxss */
+page{
+  width: 100%;
+  height: 100%;
+   background: #f7f7f7;
+}
+
+.layout-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.wx-info{
+  background: white;
+  margin-left: 24rpx;
+  margin-right: 24rpx;
+  margin-top: 20rpx;
+  border-radius: 4rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1rpx solid #eeeeee;
+}
+
+.info-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 44rpx 30rpx 44rpx 24rpx;
+  align-items: center;
+}
+.icon-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20rpx 30rpx 20rpx 24rpx;
+  align-items: center;
+}
+
+
+.pic-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center
+}
+
+.upic{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+}
+
+.arrow{
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 27rpx;
+}
+
+.explain-text{
+  color: #333333;
+  font-size: 32rpx;
+}
+
+.value-text{
+  color: #666666;
+  font-size: 32rpx;
+}
+
+.wx-name{
+  color: #cccccc;
+  font-size: 32rpx;
+}
+
+.horizontal-line{
+  background: #eeeeee;
+  width: 100%;
+  height: 1rpx;
+}
+
+.bottom-container{
+  background: white;
+  padding: 20rpx 0rpx;
+  width: 100%;
+}
+
+.button{
+  background: #5398ff;
+  margin-left: 24rpx;
+  margin-right: 24rpx;
+  border-radius: 4rpx;
+  color: white;
+}
+
+.name-input{
+  text-align: right;
+  color: #666666;
+  font-size: 32rpx;
+
+}

@@ -3,4 +3,6 @@
     "i-radio-group": "../../dist/radio-group/index",
     "i-radio": "../../dist/radio/index"
   }
+  ,
+  "navigationBarBackgroundColor": "#5398ff"
 }
