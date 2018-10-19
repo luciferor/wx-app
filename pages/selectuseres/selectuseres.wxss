@@ -1,0 +1,34 @@
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.topbox{
+    padding:24px;
+    background:white;
+}
+.searchbox{
+    height:80rpx;
+	background-color: #ededed;
+    border-radius: 4px;
+    overflow: hidden;
+    padding:10rpx;
+}
+.inputimg{
+    width:50rpx;
+    line-height: 80rpx;
+    padding-left:20rpx;
+}
+.inputimg image{
+    width:26rpx;
+    height: 26rpx;
+}
+.inputtxt{
+    width:calc(100% - 40px);
+}
+
+.inputtxt input{
+    height: 80rpx !important;
+    line-height: 100% !important;
+}

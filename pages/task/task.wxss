@@ -1,46 +1,79 @@
-.tabmenus{
-  height: 100px;
-  line-height: 100px;
-  text-align: center;
-  width:70%;
-  padding:0 15%;
-  position: relative;
+.fl{
+  float: left;
 }
 
-.tabmenus navigator{
-  float:left;
-  width:50%;
+.fr{
+  float:right;
 }
 
-.tabmenus .underline{
-  position: absolute;
-  width:50px;
-  height: 6px;
+.container {
+  height:100% !important;
+  min-height:100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding:0 !important;
+}
+
+.title {
+  width: 70%;
+  height: 100rpx;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.titleSel {
+  color: #333333;
+  font-size: 32rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titleUnsel {
+  color: #858fab;
+  font-size: #858fab;
+}
+
+.headerLineSel {
+  width: 68rpx;
+	height: 6rpx;
 	background-color: #6680ff;
-	border-radius: 3px;
-  left:26%;
-  right:0;
-  top:70px;
-  bottom: 0;
-  margin:0;
+	border-radius: 3rpx;
+  margin-top: 10rpx;
 }
 
-.content-list{
-  height: calc(100% - 100px);
+.headerLineUnsel {
+  background: #fff;
+  width: 68rpx;
+	height: 6rpx;
+	border-radius: 3rpx;
+  position: relative;
+  margin-top: 10rpx;
+}
+
+.swiper {
   width:100%;
-  padding:24px;
+  flex:1;
+  overflow:scroll;
+  padding:48rpx;
   background:#f7f7f7;
-  overflow: hidden;
+  height:calc(100% -100rpx) !important;
 }
 
-.content-list .list-box{
-  width:calc(100% - 48px);
-  border-radius: 4px 4px 0px 0px;
-	border: solid 1px #eeeeee;
-}
-
-.content-list .list-box .listcontent{
-  width:calc(100% - 30px);
-  padding:15px;
+.list-box{
   background:white;
+  overflow: hidden;
+  margin:0rpx 48rpx;
+  border:1px solid #eeeeee;
 }
+
+.listcontent{
+  height:100rpx;
+  border-bottom: 1px solid #eeeeee;
+  line-height: 100rpx;
+  padding:20rpx;
+}
+

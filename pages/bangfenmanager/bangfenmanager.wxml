@@ -1,0 +1,62 @@
+<view>
+    <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+        <view class="tab-item {{currentTab==0?'active':''}}"  data-current="0" bindtap="swichNav">自我管理</view>
+        <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">相互管理</view>
+    </scroll-view>
+    <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
+    style="height:{{winHeight}}rpx">
+        <swiper-item wx:for="{{[0,1]}}">
+            <scroll-view scroll-y="true" class="scoll-h" >
+                <block wx:for="{{[1,2,3,4,5,6,7,8]}}" wx:key="*this">
+                    <view class="item-ans">
+                        <span>
+                            <radio color="#5398ff" class="radio" value="不二家棒棒糖" checked="{{false}}">不二家棒棒糖</radio>
+                        </span>
+                        <span class="bf">1000邦分</span>
+                    </view>
+                </block>
+            </scroll-view>
+        </swiper-item>
+    </swiper>
+    <view class="fabs" hover-class="none" bindtap="showownerwin">
+        <image class="fabimg" src="../../images/fabs/icon_xuanfu.png" />
+    </view>
+
+    <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+    <view class="modalDlg" wx:if="{{showModal}}">
+        <view class="top-title">
+            自我加减分
+        </view>
+        <view class="select-type">
+            <span class="fl selectinput">
+                <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                <view class="picker">
+                    请选择加减分：{{array[index]}}
+                </view>
+            </picker>
+            </span>
+            <span class="fr selectright">
+                <image src="../../images/icon_caozuo_xia.png" />
+            </span>
+        </view>
+        <view class="input-buff">
+            <span class="fl input-left"><input placeholder="请输入邦分" auto-focus/></span>
+            <span class="fr input-li">邦分</span>
+        </view>
+        <view class="input-area">
+            <textarea auto-focus="true" style="height: 3em" placeholder="请填写理由，不超过15个字" />
+        </view>
+        <view class="input-des">
+            注：请根据实际情况进行加减分，如发现谎报将受到多倍的惩罚！
+        </view>
+        <view class="btnbox">
+            <span class="fl" style="width:50%;">
+                <button style="width:95%; float:left; background:#dedede;" type="default" size="{{defaultSize}}" plain="{{plain}}"bindtap="go" hover-class="other-button-hover">取消 </button>
+            </span>
+            <span class="fr" style="width:50%;">
+                <button style="width:95%; float:right; background:#5398ff;" type="primary" size="{{defaultSize}}" plain="{{plain}}"bindtap="go" hover-class="other-button-hover">申请 </button>
+            </span>
+        </view>
+    </view>
+
+</view>
