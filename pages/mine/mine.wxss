@@ -1,1 +1,191 @@
 /*mine*/
+page{
+  height: 100%;/*生效*/
+  width: 100%;
+}
+.view-container{
+  display: flex;
+  flex-direction: column;
+}
+.top{
+    background: url('https://devqypyp.xiaohuibang.com/pic/img_wode_beijing.png') no-repeat;
+    width: 100%;
+    display: flex;
+    top: 0px;
+    background-size: 100%  auto; 
+    flex-direction: column;
+    padding-top:20rpx;
+    padding-bottom: 42rpx;
+}
+.title{
+  color: white;
+}
+
+.info-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.pic{
+  width: 64rpx;
+  height: 64rpx;
+}
+.uname{
+  margin-left: 17rpx;
+  color: white;
+  font-size: 26rpx;
+}
+
+.left-container{
+  margin-left: 30rpx;
+  align-items: center;
+  display: flex;
+}
+.right-container{
+  margin-right: 30rpx;
+  align-items: center;
+   display: flex;
+}
+.message{
+ width: 45rpx;
+ height: 45rpx;
+}
+.setting{
+ width: 44rpx;
+  height: 44rpx;
+  margin-left: 34rpx;
+}
+
+.score-org-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 44rpx;
+}
+.score-container{
+   display: flex;
+    flex-direction: column;
+    margin-left: 30rpx;
+}
+
+.total-text{
+  color: white;
+  font-size: 30rpx;
+}
+.total-score{
+  color: white;
+  font-weight: bold;
+  margin-top:20rpx;
+  font-size:72rpx;
+}
+.remind-text{
+  color: #b7d4ff;
+  font-size: 24rpx;
+}
+.org{
+   color: white;
+   height: 60rpx;
+   line-height: 60rpx;
+   text-align: center;
+   font-size: 26rpx;
+   padding-left: 40rpx;
+   padding-right: 24rpx;
+   background: linear-gradient(to right, #ffbf7a , #ff986b);
+   border-top-left-radius: 30rpx;
+   border-bottom-left-radius: 30rpx;
+}
+
+.add-target-container{
+  display: flex;
+  width: 100%;
+  height: 100rpx;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.add-text-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 24rpx;
+}
+.add-icon{
+  width: 6rpx;
+  height: 26rpx;
+  background-color: #5398ff;
+  border-radius: 10rpx;
+}
+.add-text{
+  color: #666666;
+  font-size: 28rpx;
+  margin-left: 20rpx;
+}
+.add{
+  width: 58rpx;
+  height: 58rpx;
+  margin-right: 24rpx;
+}
+.horizontal-line{
+  background: #eeeeee;
+  width: 100%;
+  height: 1rpx;
+}
+
+.target-container{
+  display: flex;
+  flex-direction: row;
+  padding: 35rpx 20rpx 35rpx 24rpx;
+  justify-content: space-between;
+}
+.target-left{
+  display: flex;
+  flex-direction: row;
+}
+.target-pic{
+  width: 120rpx;
+  height: 120rpx;
+}
+.target-info{
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+}
+.target-name{
+  color: #333333;
+  font-size: 30rpx;
+}
+.target-condition{
+  color: #666666;
+  font-size: 24rpx;
+  margin-top: 20rpx;
+}
+.target-status{
+  width: 340rpx;
+  height: 10rpx;
+  border-radius: 10rpx;
+   margin-top: 20rpx;
+}
+
+.target-right{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.target-button{
+    color: white;
+    background-color: #5398ff;
+    border-radius: 30rpx;
+    width: 150rpx;
+    height: 60rpx;
+    text-align: center;
+    line-height: 60rpx;
+    font-size: 24rpx;
+}
+.target-price{
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 20rpx;
+}

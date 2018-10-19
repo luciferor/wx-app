@@ -1,0 +1,55 @@
+<!-- notice.wxml -->
+<view class='layout-container'>
+    <view class='tab-container'>
+        <i-tabs current="{{ current }}"  color="#5398ff" bindchange="handleChange">
+        <i-tab key="all" title="全部"></i-tab>
+        <i-tab key="apply" title="待通过"></i-tab>
+        <i-tab key="pass" title="已通过"></i-tab>
+        <i-tab key="fail" title="未通过"></i-tab>
+    </i-tabs>
+    </view>
+
+    <view class='layout-container'>
+        <!-- all -->
+        <view class='all-container' hidden="{{ allHidden }}">
+           <view >
+                <view class='time-container'>
+                    <text class='time-text'>2018-09-25 12:00</text>
+                </view>
+                <view class='notice-container'>
+                    <view>
+                        <i-badge dot i-class='badge' >
+                        <image src='../../images/tabs/icon_tab_wode_selected.png' class='upic'></image>                     
+                        </i-badge>
+                    </view>
+                    <view class='content-container'>
+                        <view class='name-container'>
+                            <text class='uname'>艾晓晓</text>
+                            <text class='status'>已通过</text>
+                        </view>
+                        <view class='info-container'>
+                            <text class='title'>加分申请</text>
+                            <text class='content'>打扫卫生申请加2邦分</text>
+                        </view>
+                    </view>
+                </view>
+           </view>
+        </view>
+
+        <!-- apply -->
+        <view class='apply-container' hidden="{{ applyHidden }}">
+         <text>待通过</text>
+        </view>
+
+        <!-- pass -->
+        <view class='pass-container' hidden="{{ passHidden }}">
+         <text>已通过</text>
+        </view>
+
+        <!-- fail -->
+        <view class='fail-container' hidden="{{ failHidden }}">
+         <text>未通过</text>
+        </view>
+    </view>
+    
+</view>

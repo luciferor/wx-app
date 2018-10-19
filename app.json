@@ -1,16 +1,23 @@
 {
   "pages":[
+    "pages/setting/setting",
+    "pages/mine/mine",
+    "pages/notice/notice",
     "pages/index/index",
     "pages/logs/logs",
     "pages/task/task",
     "pages/dynamic/dynamic",
+<<<<<<< HEAD
     "pages/mine/mine",
     "pages/bangfenmanager/bangfenmanager",
     "pages/selectuseres/selectuseres"
+=======
+    "pages/mutual/mutual"
+>>>>>>> 871c10f118795e62ce6cbfa47dcb0acf1b5dada9
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "light",
     "navigationBarTitleText": "企汇邦",
     "navigationBarTextStyle":"black"
   },
@@ -19,7 +26,7 @@
     "selectedColor": "#5398ff",
     "list": [
       {
-        "pagePath":"pages/index/index",
+        "pagePath":"pages/setting/setting",
         "text":"我的",
         "iconPath":"./images/tabs/icon_tab_mine_default.png",
         "selectedIconPath":"./images/tabs/icon_tab_wode_selected.png"
