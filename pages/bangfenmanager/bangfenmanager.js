@@ -4,9 +4,43 @@ Page({
         winHeight:"",//窗口高度
         currentTab:0, //预设当前项的值
         scrollLeft:0, //tab标题的滚动条位置
+        typename:'',//加减分类型
         showModal: false,
-        array: ['自我加分', '自我减分'],
+        showtype:false,
+        typelist: [
+          {
+            name: '自我加分',
+          },
+          {
+            name: '自我减分'
+          }
+        ],
     },
+    //===========================================================================================================选择加减分类型
+    applyevent(){
+      wx.navigateTo({
+        url: '../../pages/selectuseres/selectuseres',
+      })
+    },
+    closetype(){
+      this.setData({
+        showtype: false
+      });
+    },
+    exittype({ detail }){
+      const index = detail.index;
+      this.setData({
+        typename: this.data.typelist[index].name,
+        showtype:false
+      })
+      
+    },
+    selecttype(){
+      this.setData({
+        showtype: true
+      });
+    },
+    //===========================================================================================================选择加减分类型结束
     //============================================================================================================  选项卡js
     // 滚动切换标签样式
     switchTab:function(e){

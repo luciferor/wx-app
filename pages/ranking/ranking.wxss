@@ -1,0 +1,20 @@
+/* pages/ranking/ranking.wxss */
+.bigbox{
+  width:100%;
+  background-image: linear-gradient(0deg,#2e4de5 0%,#31b4f5 100%);
+  height: 100vh !important;
+  position: fixed;
+}
+
+.columnbox{
+  width:100%;
+  height: 100vh;
+  position: fixed;
+}
+
+.columnbox image{
+  width:100%;
+  height: 100vh;
+}
+
+
