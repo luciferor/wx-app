@@ -92,6 +92,8 @@ page{
   margin-right: 24rpx;
   border-radius: 4rpx;
   color: white;
+   height: 110rpx;
+  line-height: 110rpx;
 }
 
 .name-input{

@@ -1,0 +1,37 @@
+<view class='layout-container'>
+    <view class='content-container'>
+
+        <view class='title'>
+           <text>一起学喵叫</text>
+        </view>
+     
+         <view class='horizontal-line'></view>
+         
+
+        <view class='cell'>
+             <text>自我管理行为</text>
+             <image src='../../images/icon_caozuo_right.png' class='arrow'></image>
+        </view>
+
+        <view class='horizontal-line'></view>
+
+
+          <view class='cell'>
+             <text>相互管理行为</text>
+             <image src='../../images/icon_caozuo_right.png' class='arrow'></image>
+        </view>
+
+        <view class='horizontal-line'></view>
+
+         <view class='cell'>
+             <text>分配邦分</text>
+             <image src='../../images/icon_caozuo_right.png' class='arrow'></image>
+        </view>
+      
+    </view>
+
+     <view class='bottom-container'>
+        <button class='button'>保存</button>
+   </view>
+
+</view>

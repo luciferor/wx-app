@@ -1,0 +1,49 @@
+<view class='layout-container'>
+
+  <view>
+    <view class='title-container'>
+      <view class='blue-icon'></view>
+      <text class='title-text'>可分配邦分100000邦分</text>
+   </view>
+
+   <view class='score-container'>
+      <view class='operate-container'>
+          <text class='operate-text'>加分权利</text>
+          <input class='operate-input' placeholder-class="phcolor" type="number" placeholder='请输入邦分数量'></input>
+          <text class='operate-right-text'>邦分/人</text>
+      </view>
+
+      <view class='horizontal-line'></view>
+
+      <view class='operate-container'>
+          <text class='operate-text'>减分权利</text>
+          <input class='operate-input' placeholder-class="phcolor" type="number" placeholder='请输入邦分数量'></input>
+          <text class='operate-right-text'>邦分/人</text>
+      </view>
+   </view>
+
+   <view class='max-container'>
+      <text class='operate-text'>每次加减分最大值</text>
+      <input class='operate-input-max' placeholder-class="phcolor" type="number" placeholder='请输入邦分数量'></input>
+      <text class='operate-right-text'>邦分/人</text>
+   </view>
+
+   <view class='max-container'>
+      <text class='operate-text'>分配时间</text>
+      <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+        <view class='date-container'>
+            <input  class='operate-input-date' placeholder-class="phcolor" disabled='true' placeholder='请选择时间' value='{{ date }}'></input>
+            <image src='../../images/mine/icon_zuji_date.png' class='date-icon'></image>
+        </view>
+      </picker>
+     
+   </view>
+  </view>
+
+   
+    <view class='bottom-container'>
+        <button class='button'>确定</button>
+   </view>
+
+  
+</view>
