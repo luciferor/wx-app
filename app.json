@@ -12,7 +12,8 @@
     "pages/mutual/mutual",
     "pages/userdynamic/userdynamic",
     "pages/awarddynamic/awarddynamic",
-    "pages/ranking/ranking"
+    "pages/ranking/ranking",
+    "components/receiveTip/receiveTip"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -15,6 +15,8 @@ Page({
             name: '自我减分'
           }
         ],
+        menushow:false,
+        menubtnshow:true
     },
     //===========================================================================================================选择加减分类型
     applyevent(){
@@ -92,8 +94,20 @@ Page({
     //点击按钮痰喘指定的hiddenmodalput弹出框========================================================================  开始
     showownerwin:function(){
         this.setData({
-            showModal: true
+            menushow: true,
+            menubtnshow: false
         })
+    },
+    closemenuwin(){
+        this.setData({
+          menushow: false,
+          menubtnshow:true
+        })
+    },
+    ownnerplusandrem(){
+      this.setData({
+        showModal: true
+      });
     },
     preventTouchMove: function(){
  

@@ -5,9 +5,41 @@
     </scroll-view>
     <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
     style="height:{{winHeight}}rpx">
-        <swiper-item wx:for="{{[0,1]}}">
+        <swiper-item>
             <scroll-view scroll-y="true" class="scoll-h" >
-                <block wx:for="{{[1,2,3,4,5,6,7,8]}}" wx:key="*this">
+                <block wx:key="*this">
+                    <view class="item-ans">
+                        <span>
+                            <radio color="#5398ff" class="radio" value="不二家棒棒糖" checked="{{false}}">不二家棒棒糖</radio>
+                        </span>
+                        <span class="bf">1000邦分</span>
+                    </view>
+                </block>
+                <block wx:key="*this">
+                    <view class="item-ans">
+                        <span>
+                            <radio color="#5398ff" class="radio" value="清风湿纸巾" checked="{{false}}">清风湿纸巾</radio>
+                        </span>
+                        <span class="bf">1000邦分</span>
+                    </view>
+                </block>
+                <block wx:key="*this">
+                    <view class="item-ans">
+                        <span>
+                            <radio color="#5398ff" class="radio" value="床上四件套" checked="{{false}}">床上四件套</radio>
+                        </span>
+                        <span class="bf">1000邦分</span>
+                    </view>
+                </block>
+                <block wx:key="*this">
+                    <view class="item-ans">
+                        <span>
+                            <radio color="#5398ff" class="radio" value="很多好东西" checked="{{false}}">很多好东西</radio>
+                        </span>
+                        <span class="bf">1000邦分</span>
+                    </view>
+                </block>
+                <block wx:key="*this">
                     <view class="item-ans">
                         <span>
                             <radio color="#5398ff" class="radio" value="不二家棒棒糖" checked="{{false}}">不二家棒棒糖</radio>
@@ -17,9 +49,52 @@
                 </block>
             </scroll-view>
         </swiper-item>
+        <swiper-item>
+            <scroll-view scroll-y="true" class="scoll-h" >
+                <block wx:key="*this">
+                    <view class="item-ans">
+                        <span>
+                            <radio color="#5398ff" class="radio" value="不二家棒棒糖" checked="{{false}}">帮助他人</radio>
+                        </span>
+                        <span class="bf">1000邦分</span>
+                    </view>
+                </block>
+                <block wx:key="*this">
+                    <view class="item-ans">
+                        <span>
+                            <radio color="#5398ff" class="radio" value="清风湿纸巾" checked="{{false}}">保持桌面清洁</radio>
+                        </span>
+                        <span class="bf">1000邦分</span>
+                    </view>
+                </block>
+                <block wx:key="*this">
+                    <view class="item-ans">
+                        <span>
+                            <radio color="#5398ff" class="radio" value="床上四件套" checked="{{false}}">有责任心</radio>
+                        </span>
+                        <span class="bf">1000邦分</span>
+                    </view>
+                </block>
+                <block wx:key="*this">
+                    <view class="item-ans">
+                        <span>
+                            <radio color="#5398ff" class="radio" value="很多好东西" checked="{{false}}">乱丢垃圾</radio>
+                        </span>
+                        <span class="bf">1000邦分</span>
+                    </view>
+                </block>
+            </scroll-view>
+        </swiper-item>
     </swiper>
-    <view class="fabs" hover-class="none" bindtap="showownerwin">
-        <image class="fabimg" src="../../images/fabs/icon_xuanfu.png" />
+    <view class='fagsbox'>
+      <view wx:if="{{menushow}}"><image bindtap='ownnerplusandrem' class="fabplusred" src="../../images/fabs/icon_xuanfu_ziwo.png" /></view>
+      <view wx:if="{{menushow}}"><image class="fabotherplus" src="../../images/fabs/icon_xuanfu_taren.png" /></view>
+      <view wx:if="{{menubtnshow}}" class="fabs" hover-class="none" bindtap="showownerwin">
+          <image class="fabimg" src="../../images/fabs/icon_xuanfu.png" />
+      </view>
+      <view wx:if="{{menushow}}" class="fabs" hover-class="none" bindtap="closemenuwin">
+          <image class="fabimg" src="../../images/fabs/icon_xuanfu.png" />
+      </view>
     </view>
 
     <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>

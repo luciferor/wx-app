@@ -71,20 +71,40 @@
     font-size: 32rpx;
     color:#999999;
 }
+.fagsbox{
+    width:150rpx;
+    cursor: pointer;
+    position:fixed;
+    z-index: 9999;
+    bottom:40rpx;
+    right:40rpx;
+    text-align: center;
+}
 .fabs{
     width:150rpx;
     height:150rpx;
     cursor: pointer;
-    position: fixed;
-    z-index: 9999;
-    bottom:40rpx;
-    right:40rpx;
+    position:relative;
     border-radius: 20rpx;
 }
 
 .fabimg{
     width:150rpx;
     height: 150rpx;
+}
+
+.fabplusred{
+    width:110rpx;
+    height:110rpx;
+    border-radius: 20rpx;
+    padding:10rpx;
+}
+
+.fabotherplus{
+    width:110rpx;
+    height:110rpx;
+    border-radius: 20rpx;
+    padding:10rpx;
 }
 
 

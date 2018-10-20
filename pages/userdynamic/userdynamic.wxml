@@ -1,14 +1,254 @@
 <view>
     <view class="user-list-content">
-    <view class="under-list-img-box fl">
-        <image src="../../images/userexample.jpg"></image>
+      <view class="under-list-img-box fl">
+          <image src="../../images/userexample.jpg"></image>
+      </view>
+      <view class="user-li-title-box fl">
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
+          <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+      </view>
+      <view class="user-li-right-bf fr">
+          +4邦分
+      </view>
     </view>
-    <view class="user-li-title-box fl">
-        <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
-        <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+    <view class="user-list-content">
+      <view class="under-list-img-box fl">
+          <image src="../../images/userexample.jpg"></image>
+      </view>
+      <view class="user-li-title-box fl">
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
+          <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+      </view>
+      <view class="user-li-right-bf fr">
+          +4邦分
+      </view>
     </view>
-    <view class="user-li-right-bf fr">
-        +4邦分
+    <view class="user-list-content">
+      <view class="under-list-img-box fl">
+          <image src="../../images/userexample.jpg"></image>
+      </view>
+      <view class="user-li-title-box fl">
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
+          <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+      </view>
+      <view class="user-li-right-bf fr">
+          +4邦分
+      </view>
     </view>
+    <view class="user-list-content">
+      <view class="under-list-img-box fl">
+          <image src="../../images/userexample.jpg"></image>
+      </view>
+      <view class="user-li-title-box fl">
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
+          <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+      </view>
+      <view class="user-li-right-bf fr">
+          +4邦分
+      </view>
+    </view>
+    <view class="user-list-content">
+      <view class="under-list-img-box fl">
+          <image src="../../images/userexample.jpg"></image>
+      </view>
+      <view class="user-li-title-box fl">
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
+          <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+      </view>
+      <view class="user-li-right-bf fr">
+          +4邦分
+      </view>
+    </view>
+    <view class="user-list-content">
+      <view class="under-list-img-box fl">
+          <image src="../../images/userexample.jpg"></image>
+      </view>
+      <view class="user-li-title-box fl">
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
+          <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+      </view>
+      <view class="user-li-right-bf fr">
+          +4邦分
+      </view>
+    </view>
+    <view class="user-list-content">
+      <view class="under-list-img-box fl">
+          <image src="../../images/userexample.jpg"></image>
+      </view>
+      <view class="user-li-title-box fl">
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
+          <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+      </view>
+      <view class="user-li-right-bf fr">
+          +4邦分
+      </view>
+    </view>
+    <view class="user-list-content">
+      <view class="under-list-img-box fl">
+          <image src="../../images/userexample.jpg"></image>
+      </view>
+      <view class="user-li-title-box fl">
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
+          <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+      </view>
+      <view class="user-li-right-bf fr">
+          +4邦分
+      </view>
+    </view>
+    <view class="user-list-content">
+      <view class="under-list-img-box fl">
+          <image src="../../images/userexample.jpg"></image>
+      </view>
+      <view class="user-li-title-box fl">
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
+          <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+      </view>
+      <view class="user-li-right-bf fr">
+          +4邦分
+      </view>
+    </view>
+    <view class="user-list-content">
+      <view class="under-list-img-box fl">
+          <image src="../../images/userexample.jpg"></image>
+      </view>
+      <view class="user-li-title-box fl">
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
+          <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+      </view>
+      <view class="user-li-right-bf fr">
+          +4邦分
+      </view>
+    </view>
+    <view class="user-list-content">
+      <view class="under-list-img-box fl">
+          <image src="../../images/userexample.jpg"></image>
+      </view>
+      <view class="user-li-title-box fl">
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
+          <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+      </view>
+      <view class="user-li-right-bf fr">
+          +4邦分
+      </view>
+    </view>
+    <view class="user-list-content">
+      <view class="under-list-img-box fl">
+          <image src="../../images/userexample.jpg"></image>
+      </view>
+      <view class="user-li-title-box fl">
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
+          <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+      </view>
+      <view class="user-li-right-bf fr">
+          +4邦分
+      </view>
+    </view>
+    <view class="user-list-content">
+      <view class="under-list-img-box fl">
+          <image src="../../images/userexample.jpg"></image>
+      </view>
+      <view class="user-li-title-box fl">
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
+          <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+      </view>
+      <view class="user-li-right-bf fr">
+          +4邦分
+      </view>
+    </view>
+    <view class="user-list-content">
+      <view class="under-list-img-box fl">
+          <image src="../../images/userexample.jpg"></image>
+      </view>
+      <view class="user-li-title-box fl">
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
+          <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+      </view>
+      <view class="user-li-right-bf fr">
+          +4邦分
+      </view>
+    </view>
+    <view class="user-list-content">
+      <view class="under-list-img-box fl">
+          <image src="../../images/userexample.jpg"></image>
+      </view>
+      <view class="user-li-title-box fl">
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
+          <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+      </view>
+      <view class="user-li-right-bf fr">
+          +4邦分
+      </view>
+    </view>
+    <view class="user-list-content">
+      <view class="under-list-img-box fl">
+          <image src="../../images/userexample.jpg"></image>
+      </view>
+      <view class="user-li-title-box fl">
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
+          <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+      </view>
+      <view class="user-li-right-bf fr">
+          +4邦分
+      </view>
+    </view>
+    <view class="user-list-content">
+      <view class="under-list-img-box fl">
+          <image src="../../images/userexample.jpg"></image>
+      </view>
+      <view class="user-li-title-box fl">
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
+          <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+      </view>
+      <view class="user-li-right-bf fr">
+          +4邦分
+      </view>
+    </view>
+    <view class="user-list-content">
+      <view class="under-list-img-box fl">
+          <image src="../../images/userexample.jpg"></image>
+      </view>
+      <view class="user-li-title-box fl">
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
+          <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+      </view>
+      <view class="user-li-right-bf fr">
+          +4邦分
+      </view>
+    </view>
+    <view class="user-list-content">
+      <view class="under-list-img-box fl">
+          <image src="../../images/userexample.jpg"></image>
+      </view>
+      <view class="user-li-title-box fl">
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
+          <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+      </view>
+      <view class="user-li-right-bf fr">
+          +4邦分
+      </view>
+    </view>
+    <view class="user-list-content">
+      <view class="under-list-img-box fl">
+          <image src="../../images/userexample.jpg"></image>
+      </view>
+      <view class="user-li-title-box fl">
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
+          <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+      </view>
+      <view class="user-li-right-bf fr">
+          +4邦分
+      </view>
+    </view>
+    <view class="user-list-content">
+      <view class="under-list-img-box fl">
+          <image src="../../images/userexample.jpg"></image>
+      </view>
+      <view class="user-li-title-box fl">
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
+          <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+      </view>
+      <view class="user-li-right-bf fr">
+          +4邦分
+      </view>
     </view>
 </view>
