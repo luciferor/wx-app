@@ -23,7 +23,7 @@
 
         <view class='horizontal-line'></view>
 
-         <view class='cell'>
+         <view class='cell' bindtap='navigateToAllocationScore'>
              <text>分配邦分</text>
              <image src='../../images/icon_caozuo_right.png' class='arrow'></image>
         </view>

@@ -40,3 +40,10 @@
 </view>
 
    <i-action-sheet visible="{{ showSex }}" actions="{{ sex }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem" />
+
+    <i-modal title="提示" visible="{{ showRemindBox }}" bind:ok="handleRemindClose" 
+   ok-text="保存">
+    <view class='modal-text'>
+     您修改的内容尚未保存，是否保存？
+    </view>
+</i-modal>

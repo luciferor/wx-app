@@ -1,0 +1,6 @@
+<!--pages/ranking/ranking.wxml-->
+<view class='bigbox'>
+</view>
+<view class='columnbox'>
+  <image src='../../images/dynamic/img_paiming_taizi.png'></image>
+</view>

@@ -19,4 +19,17 @@ Page({
       },
     ]
   },
+  //跳转到添加邦分分配计划
+  navigateToAddPlan() {
+    wx.navigateTo({
+      url: '../addplan/addplan'
+    })
+  },
+  //跳转到分配计划详情
+  navigateToPlanDetail() {
+    wx.navigateTo({
+      url: '../plandetail/plandetail'
+    })
+  },
+  
 })

@@ -14,6 +14,7 @@ Page({
           name: '女'
         },
       ],
+    showRemindBox : false
   },
   showSexBox() {
     this.setData({
@@ -35,6 +36,19 @@ Page({
     });
   },
 
+  //提示框
+  handleRemindOpen() {
+    this.setData({
+      showRemindBox: true,
+    });
+  },
+  handleRemindClose() {
+    this.setData({
+      showRemindBox: false
+    });
+  },
+
+
   chooseimage: function () {
     var _this = this;
     wx.chooseImage({
@@ -49,6 +63,6 @@ Page({
         //上传头像
       }
     })
-  }  
+  } 
 
 })

@@ -100,5 +100,9 @@ page{
   text-align: right;
   color: #666666;
   font-size: 32rpx;
+}
 
+.modal-text{
+  font-size: 28rpx;
+  color: #333333;
 }

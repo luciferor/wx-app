@@ -1,7 +1,7 @@
 <view class='layout-container'>
 
     <view class='container'>
-        <view class='add-container'>
+        <view class='add-container' bindtap='navigateToAddPlan'>
             <image class='add-icon' src='../../images/mine/icon_fenpei_add.png'></image>
             <text class='add-text'>添加分配计划</text>
         </view>
@@ -9,7 +9,7 @@
         <view class='bottom-container'>
             <view class='content-container' wx:for="{{yearList}}" wx:for-item="item">
                 <text class='year-text'>2018</text>
-                <view class='plan-container' wx:for="{{item.monthList}}">
+                <view class='plan-container' wx:for="{{item.monthList}}" bindtap='navigateToPlanDetail'>
                     <view class='detail-container'>
                         <view class='left-container'>
                           <view class='month-container'>
@@ -25,8 +25,6 @@
                 </view>
             </view>
         </view>
-
-
     </view>
 
 </view>

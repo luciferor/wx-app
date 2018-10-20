@@ -12,6 +12,34 @@ page{
   float:right;
 }
 
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
+}
+
+.title-container{
+  background: white;
+  width: 100%;
+  padding-top: 40rpx;
+  height: 120rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.back-icon{
+  height: 32rpx;
+  width: 32rpx;
+  margin-left: 30rpx;
+}
+.title-text{
+  color: #333;
+  font-size: 34rpx;
+  margin-left: 30rpx;
+}
+
 .container {
   height:100% !important;
   min-height:100%;
@@ -32,7 +60,7 @@ page{
 }
 
 .titleSel {
-  color: #666666;
+  color: #5398ff;
   font-size: 32rpx;
   display: flex;
   flex-direction: column;
@@ -40,8 +68,11 @@ page{
 }
 
 .titleUnsel {
-  color: #5398ff;
+  color: #666666;
   font-size: 32rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .headerLineSel {
@@ -68,7 +99,14 @@ page{
   overflow:scroll;
   padding:24rpx;
   background:#f7f7f7;
-  height:calc(100% -100rpx) !important;
+  height: 100%;
+}
+
+.swiper-item{
+  height: 100%;
+}
+.scroll-view{
+  height: 100%;
 }
 
 .list-box{
@@ -100,7 +138,7 @@ page{
 
 .add-container{
   background: white;
-  margin: 20rpx 24rpx 0rpx 24rpx;
+  margin: 0rpx 24rpx;
   border: 1rpx solid #eeeeee;
   display: flex;
   flex-direction: row;
@@ -177,7 +215,6 @@ page{
   align-items: center;
   height: 120rpx;
   justify-content: space-between;
-  padding-right: 30rpx;
 }
 
 .gray-text{
@@ -190,6 +227,7 @@ page{
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding-right: 30rpx;
 }
 .rank-text{
   color: #333333;
@@ -205,3 +243,77 @@ page{
   font-size: 26rpx;
   margin-left: 28rpx;
 }
+
+.bottom-container{
+  background: white;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 120rpx;
+}
+
+.num-text{
+  font-size: 34rpx;
+  margin-left: 34rpx;
+}
+
+.button-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.reset{
+  height: 100%;
+  background: white;
+  border: none;
+  color: #666666;
+  font-size: 34rpx;
+}
+
+.confirm{
+  height: 100%;
+  width: 180rpx;
+  background: #5398ff;
+  border: none;
+  color: white;
+  font-size: 34rpx;
+  margin-left: 40rpx;
+  margin-right: 18rpx;
+  border-radius: 4rpx;
+}
+
+.custom-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.delicon{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.custom-target-title{
+  font-size: 36rpx;
+  margin-left: 20rpx;
+  color: #333;
+}
+
+.listcontent-custom{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+   height:80rpx;
+  border-bottom: 1px solid #eeeeee;
+  line-height: 80rpx;
+  padding:30rpx;
+}
+
+.modal-text{
+  font-size: 32rpx;
+  color: #333;
+}
+

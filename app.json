@@ -1,54 +1,57 @@
 {
-  "pages":[
+"pages": [
+   "pages/mine/mine",
+   "pages/setting/setting",
     "pages/target/target",
+    "pages/manageorg/manageorg",
     "pages/plandetail/plandetail",
     "pages/addplan/addplan",
     "pages/allocationscore/allocationscore",
-    "pages/manageorg/manageorg",
     "pages/organization/organization",
-    "pages/setting/setting",
-    "pages/mine/mine",
     "pages/notice/notice",
     "pages/index/index",
     "pages/logs/logs",
     "pages/task/task",
     "pages/dynamic/dynamic",
     "pages/bangfenmanager/bangfenmanager",
-    "pages/selectuseres/selectuseres"
+    "pages/selectuseres/selectuseres",
+    "pages/userdynamic/userdynamic",
+    "pages/awarddynamic/awarddynamic",
+    "pages/ranking/ranking"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "light",
     "navigationBarTitleText": "企汇邦",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#666666",
     "selectedColor": "#5398ff",
     "list": [
       {
-        "pagePath":"pages/manageorg/manageorg",
+        "pagePath":"pages/mine/mine",
         "text":"我的",
         "iconPath":"./images/tabs/icon_tab_mine_default.png",
         "selectedIconPath":"./images/tabs/icon_tab_wode_selected.png"
       },
       {
-        "pagePath":"pages/bangfenmanager/bangfenmanager",
-        "text":"邦分",
-        "iconPath":"./images/tabs/icon_tab_bangfen_default.png",
-        "selectedIconPath":"./images/tabs/icon_tab_bangfen_selected.png"
+        "pagePath": "pages/bangfenmanager/bangfenmanager",
+        "text": "邦分",
+        "iconPath": "./images/tabs/icon_tab_bangfen_default.png",
+        "selectedIconPath": "./images/tabs/icon_tab_bangfen_selected.png"
       },
       {
-        "pagePath":"pages/selectuseres/selectuseres",
-        "text":"动态",
-        "iconPath":"./images/tabs/icon_tab_dongtai_default.png",
-        "selectedIconPath":"./images/tabs/icon_tab_dongtai_selected.png"
+        "pagePath": "pages/dynamic/dynamic",
+        "text": "动态",
+        "iconPath": "./images/tabs/icon_tab_dongtai_default.png",
+        "selectedIconPath": "./images/tabs/icon_tab_dongtai_selected.png"
       }
     ]
   },
   "networkTimeout": {
     "request": 10000,
-    "downloadFile":10000
+    "downloadFile": 10000
   },
   "debug": true
 }

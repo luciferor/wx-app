@@ -1,25 +1,32 @@
 <!--mine.wxml-->
 <view class="view-container">
+     <image src='../../images/mine/img_wode_beijing.png' class='bgimg'></image>
      <view class="top">
+        <text class='title'>邦分管理</text>
         <view class='info-container'>
-            <view class='left-container'>
+            <view class='left-container'  bindtap='navigateToSetting'>
                 <image src='../../images/tabs/icon_tab_mine_default.png' class='pic'></image>
                 <text class='uname'>艾晓晓</text>
             </view>
-            <view class='right-container'>
+            <view class='right-container' bindtap='navigateToNotice'>
+                <i-badge dot i-class='badge'>
                 <image src='../../images/mine/icon_wode_tongzhi.png' class='message'></image>
-                <image src='../../images/mine/icon_wode_shezhi.png' class='setting'></image>
+                </i-badge>
             </view>
         </view>
         <view class='score-org-container'>
             <view class='score-container'>
              <text class='total-text'>总邦分</text>
              <text class='total-score'>1253.5</text>
-             <view>
+             <view class='remind-container' bindtap='handleRemindOpen'>
                 <text class='remind-text'>剩30邦分加分权利，20邦分减分权利</text>
+                <image class='remind-icon' src='../../images/mine/icon_wode_shuoming.png'></image>
              </view>
             </view>
-            <text class='org'>我的组织 》</text>
+            <view class='org'  bindtap='navigateToOrg'>
+                 <text >我的组织</text>
+                 <image class='org-icon' src='../../images/mine/icon_wode_you.png'></image>
+            </view>
         </view>
      </view>
 
@@ -28,7 +35,7 @@
             <view class='add-icon'></view>
             <text class='add-text'>我的目标</text>
         </view>
-        <image src='../../images/mine/icon_wode_tianjia.png' class='add'></image>
+        <image src='../../images/mine/icon_wode_tianjia.png' class='add' bindtap='navigateToTarget'></image>
      </view>
      <view class='horizontal-line'></view>
 
@@ -49,4 +56,12 @@
         </view>
     </view>
   
+   <i-modal title="说明" visible="{{ showRemindBox }}" bind:ok="handleRemindClose" 
+   ok-text="我知道了" show-cancel="{{show-cancel}}">
+    <view class='modal-container'>
+      <text class='modal-text'> 1、加减分权利是提供给用户根据行为相互管理他人的权利；</text>
+      <text class='modal-text'>2、相互管理剩余邦分由管理员分配。</text>
+    </view>
+</i-modal>
+
 </view>

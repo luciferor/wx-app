@@ -1,18 +1,22 @@
 <view class='container'>
+    <view class='title-container'>
+      <image src='../../images/icon_fanhui.png' class='back-icon'></image>
+      <text class='title-text'>添加目标</text>
+    </view>
     <!--Tab布局-->
     <view class='title'>
-      <view class='titleSel' bindtap='titleClick' data-idx='0'>
-        <text>{{rankTargetTitle}}</text>
+      <view class="{{0 == currentIndex ? 'titleSel' : 'titleUnsel'}}" bindtap='titleClick' data-idx='0'>
+        <text>排名目标({{rankTargetNum}})</text>
         <hr class="{{0 == currentIndex ? 'headerLineSel' : 'headerLineUnsel'}}" />
       </view>
       
-      <view class='titleSel' bindtap='titleClick' data-idx='1'>
-        <text>{{scoreTargetTitle}}</text>
+      <view class="{{1 == currentIndex ? 'titleSel' : 'titleUnsel'}}" bindtap='titleClick' data-idx='1'>
+        <text>邦分目标({{scoreTargetNum}})</text>
         <hr class="{{1 == currentIndex ? 'headerLineSel' : 'headerLineUnsel'}} " />
       </view>
 
-      <view class='titleSel' bindtap='titleClick' data-idx='2'>
-        <text>{{customTargetTitle}}</text>
+      <view class="{{2 == currentIndex ? 'titleSel' : 'titleUnsel'}}" bindtap='titleClick' data-idx='2'>
+        <text>自定义({{customTargetNum}})</text>
         <hr class="{{2 == currentIndex ? 'headerLineSel' : 'headerLineUnsel'}} " />
       </view>
     </view>
@@ -20,59 +24,91 @@
     <!--内容布局-->
     <swiper class='swiper' bindchange='pagechange' current='{{currentIndex}}'>
       <!-- 排名目标 -->
-      <swiper-item>
-        <view class='list-box'>
+      <swiper-item class='swiper-item'>
+        <scroll-view class='scroll-view' scroll-y>
+         <view class='list-box'>
           <view class='listcontent' wx:for="{{firstList}}">
               <span class="fl colorradio" ><radio color="#5398ff" value="不二家棒棒糖" checked="{{false}}">{{item}}</radio></span>
               <span class="fr colorpar">1000邦分</span>
           </view>
         </view>
+     </scroll-view>
+        
       </swiper-item>
       <!-- 邦分目标 -->
-      <swiper-item>
-        <view class='list-box'>
+      <swiper-item class='swiper-item'>
+         <scroll-view class='scroll-view' scroll-y>
+             <view class='list-box'>
           <view class='listcontent' wx:for="{{secondList}}">
               <span class="fl colorradio"><radio color="#5398ff" value="不二家棒棒糖" checked="{{false}}">{{item}}</radio></span>
               <span class="fr colorpar">1000邦分</span>
           </view>
         </view>
+         </scroll-view>
+     
       </swiper-item>
        <!-- 自定义 -->
-       <swiper-item >
+       <swiper-item  class='swiper-item'>
         <view class='add-container'>
              <view class='icon-container'>
-                <image src='../../images/icon_tianjia.png' class='add-icon'></image>              
+                <image src='../../images/icon_tianjia.png' class='add-icon' bindtap="handleApplyOpen"></image>              
               </view>
               <view class='target-container'>
                   <view class='top-container'>
                   <input class='target-input' placeholder='请输入目标名称' placeholder-class='placeholder'></input>
                   <view class='target-type'>
                       <view class='gray-icon'></view>
-                      <text class='type-text'>目标类型</text>
+                      <text class='type-text' bindtap='handleTypeOpen'>{{newTargetType}}</text>
                   </view>
                 </view>
                 <view class='horizental-line'></view>
                 <view class='bottom-container'>
                   <text class='gray-text'>目标规则</text>
-                  <view class='rank-type'>
-                    <text class='rank-text'>日排名</text>
+                  <view class='rank-type' bindtap='handleRankOpen'>
+                    <text class='rank-text'>{{newTargetRank}}</text>
                     <image class='rank-arrow' src='../../images/icon_caozuo_xia_little.png'></image>
                   </view>
                   <view class='gray-icon'></view>
-                  <view class='rank-type'>
-                    <text class='rank-text'>第一名</text>
+                  <view class='rank-type' bindtap='handleNumOpen'>
+                    <text class='rank-text'>{{newTargetNum}}</text>
                     <image class='rank-arrow' src='../../images/icon_caozuo_xia_little.png'></image>
                   </view>
                 </view>
               </view>
         </view>
         <text class='custom-title'>自定义目标</text>
+        <scroll-view class='scroll-view' scroll-y>
         <view class='list-box'>
-          <view class='listcontent' wx:for="{{secondList}}">
-              <span class="fl colorradio"><radio color="#5398ff" value="不二家棒棒糖" checked="{{false}}">{{item}}</radio></span>
+          <view class='listcontent-custom' wx:for="{{secondList}}">
+              <view class='custom-container'>
+                <image class='delicon' src='../../images/mine/icon_delete_default.png'></image>
+                <text class='custom-target-title'>{{item}}</text>
+              </view>
               <span class="fr colorpar">1000邦分</span>
           </view>
         </view>
+       </scroll-view>
       </swiper-item>
     </swiper>
+
+    <view class='bottom-container'>
+       <text class='num-text'>已添加目标({{totalTargetNum}}个)</text>
+       <view class='button-container'>
+          <text class='reset'>重置</text>
+          <button class='confirm'>确定</button>
+       </view>
+    </view>
   </view>
+
+  <i-modal title="提交申请" visible="{{ showApplyBox }}" bind:ok="handleClose" bind:cancel="handleClose"
+  ok-text="提交">
+    <view class='modal-text'>提交申请后，需经过管理员审核，可前
+     往通知中心查看审批状态</view>
+</i-modal>
+
+<i-action-sheet visible="{{ showTypeBox }}" actions="{{ typeAction }}" show-cancel bind:cancel="handleTypeCancel" bind:click="handleClickItem" />
+
+<i-action-sheet visible="{{ showRankBox }}" actions="{{ rankAction }}" show-cancel bind:cancel="handleRankCancel" bind:click="handleRankClickItem" />
+
+
+<i-action-sheet visible="{{ showNumBox }}" actions="{{ numAction }}" show-cancel bind:cancel="handleNumCancel" bind:click="handleNumClickItem" />

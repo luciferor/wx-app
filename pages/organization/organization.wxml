@@ -5,7 +5,7 @@
             <view class='blue-icon'></view>
             <text class='title-text'>所有成员(8人)</text>
       </view>
-      <text class='org-text'>组织管理</text>
+      <text class='org-text' bindtap='navigateToManageOrg'>组织管理</text>
   </view>
   
   <view class='content-container'>
