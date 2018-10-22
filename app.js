@@ -9,7 +9,32 @@ App({
     // 登录
     wx.login({
       success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        //发送 res.code 到后台换取 openId, sessionKey, unionId
+        //登录，从后台获取到session_key
+        //发起网络请求
+        wx.request({
+          url: 'https://devqypyp.xiaohuibang.com/login/miniprogram/Applet', //小程序登录
+          data: {
+            code: res.code,
+            company_id:'1'
+          },
+          method: "POST",
+          header: {
+            'content-type': 'application/json' //默认值
+          },
+          success(response) {
+            console.log('登录成功，设置session_key等')
+            console.log(response.data.message.session_key)
+            wx.setStorage({
+              key: "qhb",
+              data: {
+                code: res.code,//登录需要的code
+                api: 'https://devqypyp.xiaohuibang.com',//接口根地址
+                session_key: response.data.message.session_key,//response.message.session_key
+              }
+            })
+          },
+        })
       }
     })
     // 获取用户信息

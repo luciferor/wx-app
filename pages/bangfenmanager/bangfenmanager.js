@@ -1,3 +1,4 @@
+var api = require('../../utils/api.js');
 var app = getApp();
 Page({
     data:{
@@ -5,8 +6,12 @@ Page({
         currentTab:0, //预设当前项的值
         scrollLeft:0, //tab标题的滚动条位置
         typename:'',//加减分类型
-        showModal: false,
+        showModal: false,//自我加减分窗口
+        showselectbuff:false,//选择加减分窗口
+        showother:false,//他人加减分窗口
         showtype:false,
+        ownerlist:[],//自我管理
+        session_key:'',//session_key
         typelist: [
           {
             name: '自我加分',
@@ -17,6 +22,31 @@ Page({
         ],
         menushow:false,
         menubtnshow:true
+    },
+    ownnerplusevent(){
+      console.log("自我加减分申请");
+    },
+    selectplusevent(){
+      console.log("申请选择加减分");
+    },
+    closeotherwin(){
+      this.setData({
+        showother:false
+      })
+    },
+    otherplusandrem(){//他人加减分窗口
+      this.setData({
+        showother:true,
+        showModal:false,
+        showselectbuff:false
+      })
+    },
+    selectplusandrembuff(){//选择加减分窗口
+      this.setData({
+        showselectbuff:true,
+        showModal:false,
+        showother:false
+      })
     },
     //===========================================================================================================选择加减分类型
     applyevent(){
@@ -106,7 +136,9 @@ Page({
     },
     ownnerplusandrem(){
       this.setData({
-        showModal: true
+        showModal: true,
+        showselectbuff:false,
+        showother:false
       });
     },
     preventTouchMove: function(){
@@ -124,6 +156,24 @@ Page({
         this.setData({
         index: e.detail.value
         })
-    }
+    },
     //============================================================================================================  加减分类型选择结束
+    onReady:function(){
+      let _this = this;
+      wx.getStorage({
+        key: 'qhb',
+        success: function (res){
+          api.$http(_this.dosuccess,'/WeChat/Applet/getManagedList',{
+            type: 1,
+            session_key:res.data.session_key
+          },'POST');
+        },
+      })
+    },
+    dosuccess(data){
+      //console.log(data);
+      this.setData({
+        ownerlist:data.data.message
+      })
+    }
 })

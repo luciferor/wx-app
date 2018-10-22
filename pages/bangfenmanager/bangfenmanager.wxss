@@ -153,6 +153,9 @@
 .selectinput{
     width:calc(100% - 50rpx);
 }
+.selectinput input{
+  font-size: 28rpx;
+}
 .selectright{
     width:50rpx;
 }
@@ -172,7 +175,7 @@
 
 .input-left{
     width:calc(100% - 80rpx);
-    font-size: 35rpx;
+    font-size: 28rpx;
 }
 .input-li{
     width:80rpx;
@@ -186,6 +189,7 @@
     width: calc(100% - 100rpx);
     padding:30rpx;
     margin-top:30rpx;
+    font-size: 28rpx;
 }
 
 .input-area textarea{
