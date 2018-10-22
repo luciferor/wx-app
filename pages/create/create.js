@@ -4,18 +4,14 @@ const app = getApp()
 
 Page({
     data: {
-        motto: 'Hello World',
-        userInfo: {},
-        hasUserInfo: false,
-        canIUse: wx.canIUse('button.open-type.getUserInfo')
+        checked: false,
+        showTip: true,
+        showRule: false,
+        visibleRule: false,
+        visibleFenpei: false,
+        agreementStatus: false,
     },
     //事件处理函数
-    bindViewTap: function() {
-        console.log(1)
-        wx.redirectTo({
-            url: '../mutual/mutual'
-        })
-    },
     onLoad: function() {
         if (app.globalData.userInfo) {
             this.setData({
@@ -26,7 +22,6 @@ Page({
             // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
             // 所以此处加入 callback 以防止这种情况
             app.userInfoReadyCallback = res => {
-                console.log(res)
                 this.setData({
                     userInfo: res.userInfo,
                     hasUserInfo: true
@@ -35,7 +30,6 @@ Page({
         } else {
             // 在没有 open-type=getUserInfo 版本的兼容处理
             wx.getUserInfo({
-
                 success: res => {
                     app.globalData.userInfo = res.userInfo
                     this.setData({
@@ -53,5 +47,40 @@ Page({
             userInfo: e.detail.userInfo,
             hasUserInfo: true
         })
-    }
+    },
+    handleAgreementChange({ detail = {} }) {
+        this.setData({
+            checked: detail.current
+        });
+    },
+    toggleRule: function(e) {
+
+        var showRule = this.data.showRule
+        var visibleRule = this.data.visibleRule
+        this.setData({
+            showRule: !showRule,
+            visibleRule: !visibleRule
+        })
+    },
+    openAgreement() {
+        this.setData({
+            agreementStatus: true
+        });
+    },
+    closeAgreement() {
+        this.setData({
+            agreementStatus: false
+        });
+    },
+    openFenpei() {
+        this.setData({
+            visibleFenpei: true
+        });
+    },
+
+    closeFenpei() {
+        this.setData({
+            visibleFenpei: false
+        });
+    },
 })

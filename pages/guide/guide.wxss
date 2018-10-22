@@ -1,0 +1,40 @@
+/**guide.wxss**/
+
+.guide-container {
+    /* display: flex;
+    align-items: center;
+    flex-direction: column; */
+}
+
+swiper {
+    height: 900rpx;
+    width: 100%;
+    margin-top: 40rpx;
+}
+
+swiper image {
+    height: 90%;
+    width: 100%;
+}
+
+.add-logo {
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 7rpx;
+    margin-top: 5rpx;
+}
+
+.create-organization-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 404rpx;
+    height: 88rpx;
+    background-color: #ffffff;
+    border-radius: 44rpx;
+    border: solid 2rpx #5398ff;
+    color: #5398ff;
+    font-size: 32rpx;
+    text-align: center;
+    margin: 100rpx auto 0
+}

@@ -1,20 +1,19 @@
-//index.js
+//guide.js
 //获取应用实例
 const app = getApp()
 
 Page({
     data: {
-        motto: 'Hello World',
         userInfo: {},
         hasUserInfo: false,
-        canIUse: wx.canIUse('button.open-type.getUserInfo')
-    },
-    //事件处理函数
-    bindViewTap: function() {
-        console.log(1)
-        wx.redirectTo({
-            url: '../mutual/mutual'
-        })
+        canIUse: wx.canIUse('button.open-type.getUserInfo'),
+        imgUrls: [
+            '../../images/guide/img_yindaoye_1.png',
+            '../../images/guide/img_yindaoye_2.png',
+            '../../images/guide/img_yindaoye_3.png',
+            '../../images/guide/img_yindaoye_4.png',
+        ],
+        showBtn: true,
     },
     onLoad: function() {
         if (app.globalData.userInfo) {
@@ -35,7 +34,6 @@ Page({
         } else {
             // 在没有 open-type=getUserInfo 版本的兼容处理
             wx.getUserInfo({
-
                 success: res => {
                     app.globalData.userInfo = res.userInfo
                     this.setData({
@@ -53,5 +51,22 @@ Page({
             userInfo: e.detail.userInfo,
             hasUserInfo: true
         })
+    },
+    swiperfinish: function(e) {
+        console.log(e.detail)
+        console.log(e.detail.current)
+            //判断是不是尾页，尾页才显示按钮
+        var nowpage = e.detail.current
+        var showBtn = this.data.showBtn
+        if (nowpage == 3) {
+            this.setData({
+                showBtn: true
+            })
+        } else {
+            this.setData({
+                showBtn: false
+            })
+        }
+
     }
 })
