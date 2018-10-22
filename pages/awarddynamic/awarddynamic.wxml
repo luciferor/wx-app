@@ -11,4 +11,376 @@
             09-25 12:00
         </view>
     </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
+    <view class="user-list-content">
+        <view class="under-list-img-box fl">
+            <image src="../../images/userexample.jpg"></image>
+        </view>
+        <view class="user-li-title-box fl">
+            <view class="user-li-title-box-listdes">带薪休假一星期</view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">林冬冬</span><span class="user-li-title-box-listtitle-time">月排名第一</span></view>
+        </view>
+        <view class="user-li-right-bf fr">
+            09-25 12:00
+        </view>
+    </view>
 </view>

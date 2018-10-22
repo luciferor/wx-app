@@ -1,5 +1,7 @@
 <view class='layout-container'>
-    <view class='content-container'>
+    <view class='top-container'>
+      <header isIndex="true" title_text="组织管理" isShow="true"></header>
+         <view class='content-container'>
 
         <view class='title'>
            <text>一起学喵叫</text>
@@ -29,6 +31,8 @@
         </view>
       
     </view>
+    </view>
+   
 
      <view class='bottom-container'>
         <button class='button'>保存</button>

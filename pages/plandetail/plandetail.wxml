@@ -1,6 +1,7 @@
 <view class='layout-container'>
 
   <view>
+  <header isIndex="true" title_text="详情" isShow="true"></header>
     <view class='title-container'>
       <view class='blue-icon'></view>
       <text class='title-text'>可分配邦分100000邦分</text>

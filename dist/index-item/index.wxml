@@ -1,3 +1,4 @@
+<view style='height:20rpx; background:#eee;'></view>
 <view class="i-index-item i-class">
     <view class="i-index-item-header">{{name}}</view>
     <view class="i-index-item-content">

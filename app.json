@@ -17,13 +17,15 @@
     "pages/selectuseres/selectuseres",
     "pages/userdynamic/userdynamic",
     "pages/awarddynamic/awarddynamic",
-    "pages/ranking/ranking"
+    "pages/ranking/ranking",
+    "components/receiveTip/receiveTip"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "light",
     "navigationBarTitleText": "企汇邦",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+     "navigationStyle": "custom"
   },
   "tabBar": {
     "color": "#666666",

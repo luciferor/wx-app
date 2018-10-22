@@ -1,5 +1,5 @@
 <view class='layout-container'>
-
+    <header isIndex="true" title_text="分配邦分" isShow="true"></header>
     <view class='container'>
         <view class='add-container' bindtap='navigateToAddPlan'>
             <image class='add-icon' src='../../images/mine/icon_fenpei_add.png'></image>

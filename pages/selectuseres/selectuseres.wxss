@@ -97,10 +97,6 @@
   height:32rpx;
 }
 
-.i-index-item-header{
-  height:60rpx !important;
-  background:white !important;
-}
 
 .i-index-demo{
   margin-bottom: 125rpx;
@@ -128,4 +124,10 @@
 
 .under-rightbtn{
   padding:18rpx 27rpx;
+}
+
+.i-index-item-header{
+  height:60rpx !important;
+  background:white !important;
+  padding-left:20rpx !important;
 }

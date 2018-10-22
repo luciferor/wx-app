@@ -25,6 +25,7 @@ Page({
   },
   //跳转到设置界面
   navigateToSetting() {
+    console.log('is_iphone_x===' + app.globalData.isIpx)
     wx.navigateTo({
       url: '../setting/setting'
     })
@@ -40,5 +41,5 @@ Page({
     wx.navigateTo({
       url: '../target/target'
     })
-  }
+  },
 })

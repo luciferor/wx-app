@@ -4,6 +4,7 @@
 .fr{
     float: right;
 }
+
 .tab-h{
     height: 100rpx;
     width: 100%;
@@ -13,7 +14,8 @@
     background:white;
     font-size: 33rpx;
     white-space: nowrap;
-    position: fixed;top: 0;
+    position: fixed;
+    top: 0;
     left: 0;
     z-index: 99;
     text-align: center;
@@ -71,20 +73,40 @@
     font-size: 32rpx;
     color:#999999;
 }
+.fagsbox{
+    width:150rpx;
+    cursor: pointer;
+    position:fixed;
+    z-index: 9999;
+    bottom:40rpx;
+    right:40rpx;
+    text-align: center;
+}
 .fabs{
     width:150rpx;
     height:150rpx;
     cursor: pointer;
-    position: fixed;
-    z-index: 9999;
-    bottom:40rpx;
-    right:40rpx;
+    position:relative;
     border-radius: 20rpx;
 }
 
 .fabimg{
     width:150rpx;
     height: 150rpx;
+}
+
+.fabplusred{
+    width:110rpx;
+    height:110rpx;
+    border-radius: 20rpx;
+    padding:10rpx;
+}
+
+.fabotherplus{
+    width:110rpx;
+    height:110rpx;
+    border-radius: 20rpx;
+    padding:10rpx;
 }
 
 

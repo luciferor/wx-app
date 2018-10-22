@@ -1,6 +1,9 @@
 <!-- notice.wxml -->
 <view class='layout-container'>
-    <view class='tab-container'>
+    
+    <view class='top-fiexd'>
+        <header isIndex="true" title_text="通知" isShow="true"></header>
+        <view class='tab-container'>
         <i-tabs current="{{ current }}"  color="#5398ff" bindchange="handleChange">
         <i-tab key="all" title="全部"></i-tab>
         <i-tab key="apply" title="待审核"></i-tab>
@@ -8,6 +11,8 @@
         <i-tab key="fail" title="未通过"></i-tab>
     </i-tabs>
     </view>
+   </view>
+    
 
     <view class='layout-container'>
         <!-- all -->
