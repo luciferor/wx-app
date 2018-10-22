@@ -1,0 +1,42 @@
+<!-- setting.wxml -->
+<view class='layout-container'>
+
+    <view>
+    <!-- 头像 微信号 -->
+      <view class='wx-info'>
+          <view class='icon-container' bindtap="chooseimage">
+              <text class='explain-text'>头像</text>
+              <view class='pic-container'>
+                  <image src='../../images/tabs/icon_tab_wode_selected.png' class='upic'></image>
+                  <image src='../../images/icon_caozuo_right.png' class='arrow'></image>
+              </view>
+          </view>
+          <view class='horizontal-line'></view>
+          <view class='info-container'>
+              <text class='explain-text'>微信号</text>
+              <text class='wx-name'>爱吃萝卜丁</text>
+          </view>
+      </view>
+
+        <!-- 姓名 性别 -->
+        <view class='wx-info'>
+          <view class='info-container'>
+              <text class='explain-text'>姓名</text>
+              <input color='#666666' placeholder='{{ name }}' class='name-input' maxlength='6'></input>
+          </view>
+          <view class='horizontal-line'></view>
+          <view class='info-container' bindtap="showSexBox"> 
+              <text class='explain-text'>性别</text>
+              <text class='value-text'>女</text>
+          </view>
+      </view>
+    </view>
+
+  
+   <view class='bottom-container'>
+        <button class='button'>确定</button>
+   </view>
+
+</view>
+
+   <i-action-sheet visible="{{ showSex }}" actions="{{ sex }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem" />

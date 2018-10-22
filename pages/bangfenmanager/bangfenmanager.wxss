@@ -1,0 +1,215 @@
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.tab-h{
+    height: 100rpx;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    line-height: 100rpx;
+    background:white;
+    font-size: 33rpx;
+    white-space: nowrap;
+    position: fixed;top: 0;
+    left: 0;
+    z-index: 99;
+    text-align: center;
+}
+
+.tab-item{
+    margin:0 36rpx;
+    color:#999999;
+    display: inline-block;
+    font-size: 32rpx;
+}
+.tab-item.active{
+    font-size: 35rpx;
+    color:#333333;
+    position: relative;
+}
+.tab-item.active:after{
+    content: "";
+    display: block;
+    height: 8rpx;
+    width: 62rpx;
+    background: #4675F9;
+    position: absolute;
+    bottom:18rpx;
+    left:32rpx;
+    border-radius: 16rpx;
+}
+.item-ans{ 
+    width: 100%;
+    display: flex;
+    flex-grow: row no-wrap;
+    justify-content: space-between;
+    padding:30rpx;
+    box-sizing: border-box;
+    height: 120rpx;
+    align-items: center;
+    border-bottom: 1px solid #F2F2F2;
+    background:white;
+}
+.tab-content{
+    margin-top:100rpx;
+    padding:24rpx;
+    background:#f7f7f7;
+}
+.scoll-h{
+    height:100%;
+}
+
+.radio{
+    font-size: 35rpx;
+    color:#333333;
+}
+
+.bf{
+    font-size: 32rpx;
+    color:#999999;
+}
+.fagsbox{
+    width:150rpx;
+    cursor: pointer;
+    position:fixed;
+    z-index: 9999;
+    bottom:40rpx;
+    right:40rpx;
+    text-align: center;
+}
+.fabs{
+    width:150rpx;
+    height:150rpx;
+    cursor: pointer;
+    position:relative;
+    border-radius: 20rpx;
+}
+
+.fabimg{
+    width:150rpx;
+    height: 150rpx;
+}
+
+.fabplusred{
+    width:110rpx;
+    height:110rpx;
+    border-radius: 20rpx;
+    padding:10rpx;
+}
+
+.fabotherplus{
+    width:110rpx;
+    height:110rpx;
+    border-radius: 20rpx;
+    padding:10rpx;
+}
+
+
+
+
+.mask{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    z-index: 0;
+    opacity: 0.7;
+}
+ 
+.modalDlg{
+    width: 580rpx;
+    height: 770rpx;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+    margin: -370rpx 45rpx;
+    background-color: #fff;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40rpx;
+}
+
+.top-title{
+    font-size: 35rpx;
+    height: 80rpx;
+    line-height:100%;
+}
+
+.select-type{
+    height: 40rpx;
+    border:1px solid #ededed;
+    line-height: 100%;
+    width: calc(100% - 100rpx);
+    padding:30rpx;
+}
+.selectinput{
+    width:calc(100% - 50rpx);
+}
+.selectright{
+    width:50rpx;
+}
+.selectright image{
+    width:36rpx;
+    height:36rpx;
+
+}
+.input-buff{
+    height: 55rpx;
+    border:1px solid #ededed;
+    line-height: 100%;
+    width: calc(100% - 100rpx);
+    padding:20rpx 30rpx;
+    margin-top:30rpx;
+}
+
+.input-left{
+    width:calc(100% - 80rpx);
+    font-size: 35rpx;
+}
+.input-li{
+    width:80rpx;
+    font-size: 35rpx;
+}
+
+.input-area{
+    height: 140rpx;
+    border:1px solid #ededed;
+    line-height: 100%;
+    width: calc(100% - 100rpx);
+    padding:30rpx;
+    margin-top:30rpx;
+}
+
+.input-area textarea{
+    width:100%;
+}
+
+.input-des{
+    margin-top:30rpx;
+    font-size: 24rpx;
+	line-height: 32rpx;
+	color: #ff6666;
+    padding:0rpx 20rpx;
+}
+
+
+.picker{
+    height: 60rpx;
+    line-height: 100% !important;
+    font-size: 35rpx;
+	color: #cccccc;
+}
+
+.btnbox{
+    padding:30rpx 0rpx;
+    margin-top:30rpx;
+    width:92%;
+}

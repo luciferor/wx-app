@@ -1,0 +1,133 @@
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.topbox{
+    padding:24px;
+    background:white;
+}
+.searchbox{
+    height:80rpx;
+	background-color: #ededed;
+    border-radius: 4px;
+    overflow: hidden;
+    padding:10rpx;
+}
+.inputimg{
+    width:50rpx;
+    line-height: 80rpx;
+    padding-left:20rpx;
+}
+.inputimg image{
+    width:26rpx;
+    height: 26rpx;
+}
+.inputtxt{
+    width:calc(100% - 40px);
+}
+
+.inputtxt input{
+    height: 80rpx !important;
+    line-height: 100% !important;
+}
+
+/* 用户列表样式 */
+.i-index-demo-item{
+  height: 100rpx;
+  line-height:100%;
+}
+
+.listboxbig{
+  height: 100rpx;
+  line-height: 100%;
+  border-bottom: 1px solid #eeeeee;
+  padding:0rpx 24rpx;
+}
+
+.unlistboxbig{
+  height: 100rpx;
+  line-height: 100%;
+  border-bottom: 1px solid #eeeeee;
+  padding:0rpx 24rpx;
+  background-color: #f4f6ff;
+}
+
+.imgbox{
+  height: 80rpx;
+  width:80rpx;
+  padding:10rpx;
+  text-align: center;
+  line-height: 100%;
+}
+
+.imgbox image{
+  width:78rpx;
+  height: 78rpx;
+  border-radius: 39px;
+  border: 1px solid #eeeeee;
+}
+
+.namebox{
+  height: 100rpx;
+  line-height: 100rpx;
+	font-family: PingFang-SC-Medium;
+	font-size: 30rpx;
+	color: #333333;
+  padding-left:20rpx;
+}
+
+.postbox{
+  height: 100rpx;
+  line-height: 100rpx;
+	font-family: PingFang-SC-Medium;
+	font-size: 24rpx;
+	color: #999999;
+  padding-left:20rpx;
+}
+
+.selectbox{
+  height:32rpx;
+  padding:34rpx;
+}
+
+.selectbox image{
+  width:32rpx;
+  height:32rpx;
+}
+
+
+.i-index-demo{
+  margin-bottom: 125rpx;
+}
+.under-btn{
+  width: 100%;
+	height: 120rpx;
+	background-color: #ffffff;
+	box-shadow: 0px -4px 10px 0px 
+		rgba(204, 204, 204, 0.2);
+  position: fixed;
+  bottom:0;
+}
+
+.under-leftinfo{
+  padding:34rpx;
+  font-size: 30rpx;
+  line-height:52rpx;
+	color: #333333;
+}
+
+.under-othercolor{
+  color: #5398ff;
+}
+
+.under-rightbtn{
+  padding:18rpx 27rpx;
+}
+
+.i-index-item-header{
+  height:60rpx !important;
+  background:white !important;
+  padding-left:20rpx !important;
+}

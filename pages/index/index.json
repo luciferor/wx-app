@@ -1,5 +1,5 @@
 {
-  "usingComponents": {
-    "tabmenu": "/components/tabmenu"
-  }
+    "usingComponents": {
+      "topbar": "/components/topbar/topbar"
+    }
 }
