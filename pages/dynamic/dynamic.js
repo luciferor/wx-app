@@ -1,13 +1,13 @@
-//index.js
-//获取应用实例
-const app = getApp()
-
+var api = require('../../utils/api.js');
+var app = getApp();
 Page({
   data: {
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    newawardlist:[],//最新获奖
+    newdynamic:[],//最新动态
 
   },
   gotouserdynamicdes(){
@@ -68,7 +68,38 @@ Page({
   },
   bindGetUserInfo: function (e) {
     console.log(e.detail.userInfo)
-  }
+  },
   //获取用户信息-----------------------------------------------------------------------------|||
-
+  //000000000000000000000=======0========000000000000000000000000000000
+  onReady:function () {
+    //获取最新获奖
+    api.$http(this.adosuccess, this.adofail, '/WeChat/Applet/getNewestAward', {
+      session_key: app.apiData.session_key
+    },'POST');
+    //获取最新动态
+    api.$http(this.ddosuccess, this.ddofail, '/WeChat/Applet/getNoticeEveryOne', {
+      pageSize: 10,
+      page:1,
+      session_key:app.apiData.session_key
+    },'POST');
+  },
+  adosuccess(data) {
+    console.log(data)
+    this.setData({
+      newawardlist: data.data.message
+     })
+  },
+  adofail(err) {
+    console.log(err);
+  },
+  ddosuccess(data) {
+    console.log(data)
+    this.setData({
+      newdynamic: data.data.message
+    })
+  },
+  ddofail(err) {
+    console.log(err);
+  }
+  //000000000000000000000=======0========000000000000000000000000000000
 })

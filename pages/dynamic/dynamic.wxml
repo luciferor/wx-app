@@ -10,13 +10,13 @@
             <block>
                 <swiper-item>
                     <view class="top-swiperes-list1">
-                        <view class="topimg-box fl"><image src="../../images/userexample.jpg"></image></view>
+                        <view class="topimg-box fl"><image src="{{this.app.apiData.api+newawardlist[0].user_img}}"></image></view>
                         <view class="toptext-box fl">
                             <view class="toptext-title">
-                                带薪休假一星期...
+                                {{newawardlist[0].name}}
                             </view>
                             <view class="toptext-content-time">
-                                <span style="opacity:0.8;">爱吃萝卜的小...</span><span style="opacity:0.5;">09/25</span>
+                                <span style="opacity:0.8;">{{newawardlist[0].user_name}}</span><span style="opacity:0.5;">{{newawardlist[0].created_at}}</span>
                             </view>
                         </view>
                     </view>
@@ -25,13 +25,13 @@
             <block>
                 <swiper-item>
                     <view class="top-swiperes-list2">
-                        <view class="topimg-box fl"><image src="../../images/userexample1.jpg"></image></view>
+                        <view class="topimg-box fl"><image src="{{this.app.apiData.api+newawardlist[1].user_img}}"></image></view>
                         <view class="toptext-box fl">
                             <view class="toptext-title">
-                                带薪休假一星期...
+                                {{newawardlist[1].name}}
                             </view>
                             <view class="toptext-content-time">
-                                <span style="opacity:0.8;">爱吃萝卜的小...</span><span style="opacity:0.5;">09/25</span>
+                                <span style="opacity:0.8;">{{newawardlist[1].user_name}}</span><span style="opacity:0.5;">{{newawardlist[1].created_at}}</span>
                             </view>
                         </view>
                     </view>
@@ -40,13 +40,13 @@
             <block>
                 <swiper-item>
                     <view class="top-swiperes-list3">
-                        <view class="topimg-box fl"><image src="../../images/userexample2.jpg"></image></view>
+                        <view class="     fl"><image src="{{app.apiData.api+newawardlist[2].user_img}}"></image></view>
                         <view class="toptext-box fl">
                             <view class="toptext-title">
-                                带薪休假一星期...
+                                {{newawardlist[2].name}}
                             </view>
                             <view class="toptext-content-time">
-                                <span style="opacity:0.8;">爱吃萝卜的小...</span><span style="opacity:0.5;">09/25</span>
+                                <span style="opacity:0.8;">{{newawardlist[2].user_name}}</span><span style="opacity:0.5;">{{newawardlist[2].created_at}}</span>
                             </view>
                         </view>
                     </view>
@@ -63,64 +63,18 @@
           <span class="fr" style="margin:10rpx 26rpx;"><image style="width:42rpx; height:42rpx; z-index:999;" src="../../images/dynamic/icon_dongtai_paiming.png" bindtap="rankingevents" /></span>
       </view>
       <view class="under-list-box">
-          <view class="user-list-content" bindtap="gotouserdynamicdes">
+
+          <view class="user-list-content" bindtap="gotouserdynamicdes" wx:for="{{newdynamic}}" wx:for-index="did" wx:for-item="dit">
             <view class="under-list-img-box fl">
-                <image src="../../images/userexample1.jpg"></image>
+                <image src="{{app.apiData.api+dit.user_img}}"></image>
             </view>
             <view class="user-li-title-box fl">
-                <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
-                <view class="user-li-title-box-listdes">主动为公司拉业务</view>
+                <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">{{dit.name.substring(0,5)}}</span><span class="user-li-title-box-listtitle-time">{{dit.created_at
+}}</span></view>
+                <view class="user-li-title-box-listdes">{{dit.content.substring(0,5)}}</view>
             </view>
             <view class="user-li-right-bf fr">
-                +4邦分
-            </view>
-          </view>
-          <view class="user-list-content" bindtap="gotodwardymicdes">
-            <view class="under-list-img-box fl">
-                <image src="../../images/userexample.jpg"></image>
-            </view>
-            <view class="user-li-title-box fl">
-                <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
-                <view class="user-li-title-box-listdes">主动为公司拉业务</view>
-            </view>
-            <view class="user-li-right-bf fr">
-                +4邦分
-            </view>
-          </view>
-          <view class="user-list-content" bindtap="rankingevents">
-            <view class="under-list-img-box fl">
-                <image src="../../images/userexample1.jpg"></image>
-            </view>
-            <view class="user-li-title-box fl">
-                <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
-                <view class="user-li-title-box-listdes">主动为公司拉业务</view>
-            </view>
-            <view class="user-li-right-bf fr">
-                +4邦分
-            </view>
-          </view>
-          <view class="user-list-content">
-            <view class="under-list-img-box fl">
-                <image src="../../images/userexample2.jpg"></image>
-            </view>
-            <view class="user-li-title-box fl">
-                <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
-                <view class="user-li-title-box-listdes">主动为公司拉业务</view>
-            </view>
-            <view class="user-li-right-bf fr">
-                +4邦分
-            </view>
-          </view>
-          <view class="user-list-content">
-            <view class="under-list-img-box fl">
-                <image src="../../images/userexample.jpg"></image>
-            </view>
-            <view class="user-li-title-box fl">
-                <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">艾晓晓</span><span class="user-li-title-box-listtitle-time">09-25 19:58</span></view>
-                <view class="user-li-title-box-listdes">主动为公司拉业务</view>
-            </view>
-            <view class="user-li-right-bf fr">
-                +4邦分
+                {{dit.status=='add'?'+'+dit.bangfen:'-'+dit.bangfen}}邦分
             </view>
           </view>
       </view>

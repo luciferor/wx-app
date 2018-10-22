@@ -11,6 +11,7 @@ Page({
         showother:false,//他人加减分窗口
         showtype:false,
         ownerlist:[],//自我管理
+        mutullist:[],//相互管理
         session_key:'',//session_key
         typelist: [
           {
@@ -21,10 +22,30 @@ Page({
           }
         ],
         menushow:false,
-        menubtnshow:true
+        menubtnshow:true,
+        ownerdatalist:{//自我加减分表单数据
+          buff:'',//加减邦分数
+          reasonr:''//加减分的理由
+        }
     },
     ownnerplusevent(){
+      console.log(this.data.ownerdatalist.buff);
+      let _this = this;
       console.log("自我加减分申请");
+      api.$http(this.ownerdosuccess, this.dofail,"/WeChat/Applet/changeGradeApply",{
+        session_key:app.apiData.session_key,
+        type:this.data.typename=='自我加分'?1:0,
+        bangfen:this.data.ownerdatalist.buff,
+        reason:this.data.ownerdatalist.reasonr,
+      },"POST");
+    },
+    buffevent(e){
+      console.log(e.detail.value);
+      this.data.ownerdatalist.buff=e.detail.value;
+    },
+    reasonevent(e){
+      console.log(e);
+      this.data.ownerdatalist.reasonr=e.detail.value;
     },
     selectplusevent(){
       console.log("申请选择加减分");
@@ -68,9 +89,11 @@ Page({
       
     },
     selecttype(){
+      console.log('运行了');
       this.setData({
-        showtype: true
+        showtype:true
       });
+      console.log(this.data.showtype)
     },
     //===========================================================================================================选择加减分类型结束
     //============================================================================================================  选项卡js
@@ -158,25 +181,47 @@ Page({
         })
     },
     //============================================================================================================  加减分类型选择结束
-    onReady:function(){
-      //自我管理
-      api.$http(this.dosuccess,this.dofail,'/WeChat/Applet/getManagedList',{
-        type: 1,
-        session_key: app.apiData.session_key
-      },'POST');
-      //相互管理
-      api.$http(this.dosuccess,this.dofail,'/WeChat/Applet/getManagedList', {
-        type: 1,
-        session_key: app.apiData.session_key
-      }, 'POST');
-    },
-    dosuccess(data){
-      //console.log(data);
-      this.setData({
-        ownerlist:data.data.message
-      })
-    },
-    dofail(data){
-      console.log('请求失败');
-    }
+    //000000000000000000000000000000000000000000000==============================
+    onReady: function () {
+    //自我管理
+      api.$http(this.odosuccess, this.odofail, '/WeChat/Applet/getSelfManagedList', {
+      type: 1,
+      session_key: app.apiData.session_key
+    }, 'POST');
+    //相互管理
+      api.$http(this.mdosuccess, this.mdofail, '/WeChat/Applet/getMutualManagedList', {
+      type: 1,
+      session_key: app.apiData.session_key
+    }, 'POST');
+  },
+  odosuccess(data) {
+    console.log(data);
+    this.setData({
+      ownerlist: data.data.message
+    })
+  },
+  odofail(err) {
+    console.log(err);
+  },
+  mdosuccess(data) {
+    console.log(data);
+    this.setData({
+      mutullist:data.data.message
+    })
+  },
+  mdofail(err) {
+    console.log(err);
+  },
+  //000000000000000000000000000000000000000000000=================================
+  
+  //自我加减邦分回调方法开始************************************************
+  //成功回调
+  ownerdosuccess(data){
+    console.log(data);
+  },
+  //失败回调
+  dofail(err){
+    console.log(err);
+  }
+  //自我加减邦分回调方法结束*************************************************
 })

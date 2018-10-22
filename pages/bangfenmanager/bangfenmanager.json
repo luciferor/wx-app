@@ -4,8 +4,5 @@
         "i-modal": "../../dist/modal/index",
         "i-action-sheet": "../../dist/action-sheet/index",
         "header": "/components/header/header"
-    },
-    "usingComponents": {
-      "header": "../../components/header/header"
     }
 }

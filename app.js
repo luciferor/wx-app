@@ -29,16 +29,6 @@ App({
             'content-type': 'application/json' //默认值
           },
           success(response) {
-            console.log('登录成功，设置session_key等')
-            console.log(response.data.message.session_key)
-            // wx.setStorage({
-            //   key: "qhb",
-            //   data: {
-            //     code: res.code,//登录需要的code
-            //     api: 'https://devqypyp.xiaohuibang.com',//接口根地址
-            //     session_key: response.data.message.session_key,//response.message.session_key
-            //   }
-            // })
             _this.apiData.code = res.code;//登录需要的code
             _this.apiData.session_key = response.data.message.session_key;//response.message.session_key
           },
