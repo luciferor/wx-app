@@ -1,49 +1,53 @@
 {
-  "pages":[
-    "pages/index/index",
-    "pages/logs/logs",
-    "pages/task/task",
-    "pages/dynamic/dynamic",
-    "pages/mine/mine",
-    "pages/mutual/mutual"
-  ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "企汇邦",
-    "navigationBarTextStyle":"black"
-  },
-  "tabBar": {
-    "color": "#666666",
-    "selectedColor": "#5398ff",
-    "list": [
-      {
-        "pagePath":"pages/index/index",
-        "text":"我的",
-        "iconPath":"./images/tabs/icon_tab_mine_default.png",
-        "selectedIconPath":"./images/tabs/icon_tab_wode_selected.png"
-      },
-      {
-        "pagePath":"pages/task/task",
-        "text":"任务",
-        "color":"#666666",
-        "selectedColor":"#5398ff",
-        "iconPath":"./images/tabs/icon_tab_bangfen_default.png",
-        "selectedIconPath":"./images/tabs/icon_tab_bangfen_selected.png"
-      },
-      {
-        "pagePath":"pages/mutual/mutual",
-        "text":"动态",
-        "color":"#666666",
-        "selectedColor":"#5398ff",
-        "iconPath":"./images/tabs/icon_tab_dongtai_default.png",
-        "selectedIconPath":"./images/tabs/icon_tab_dongtai_selected.png"
-      }
-    ]
-  },
-  "networkTimeout": {
-    "request": 10000,
-    "downloadFile": 10000
-  },
-  "debug": true
+    "pages": [
+        "pages/create/create",
+        "pages/guide/guide",
+        "pages/index/index",
+        "pages/logs/logs",
+        "pages/task/task",
+        "pages/dynamic/dynamic",
+        "pages/mine/mine",
+        "pages/mutual/mutual",
+        "pages/create_mutual/create_mutual",
+        "pages/create_self/create_self"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "企汇邦",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#666666",
+        "selectedColor": "#5398ff",
+        "list": [{
+                "pagePath": "pages/index/index",
+                "text": "我的",
+                "iconPath": "./images/tabs/icon_tab_mine_default.png",
+                "selectedIconPath": "./images/tabs/icon_tab_wode_selected.png"
+            },
+            {
+                "pagePath": "pages/task/task",
+                "text": "任务",
+                "color": "#666666",
+                "selectedColor": "#5398ff",
+                "iconPath": "./images/tabs/icon_tab_bangfen_default.png",
+                "selectedIconPath": "./images/tabs/icon_tab_bangfen_selected.png"
+            },
+            {
+                "pagePath": "pages/mutual/mutual",
+                "text": "动态",
+                "color": "#666666",
+                "selectedColor": "#5398ff",
+                "iconPath": "./images/tabs/icon_tab_dongtai_default.png",
+                "selectedIconPath": "./images/tabs/icon_tab_dongtai_selected.png"
+            }
+
+        ]
+    },
+    "networkTimeout": {
+        "request": 10000,
+        "downloadFile": 10000
+    },
+    "debug": true
 }

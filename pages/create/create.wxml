@@ -1,0 +1,59 @@
+<!-- index.wxml -->
+<view class="create-container">
+  <view class="setting-area">
+    <view class="setting-items">
+      <input class="setting-item organize-name" placeholder="请设置组织名称" />
+      <navigator class="setting-item" target="" url="../create_self/create_self" hover-class="navigator-hover" open-type="navigate">
+        <view class="left-txt">
+          自我管理行为
+          <text class="txt-tips" wx:if="{{showTip}}">(根据行业匹配邦分任务)</text>
+        </view>
+        <image class="right-arrow" src="../../images/icon_caozuo_right.png" />
+      </navigator>
+      <navigator class="setting-item" target="" url="../create_mutual/create_mutual" hover-class="navigator-hover" open-type="navigate">
+        <view class="left-txt">
+          相互管理行为
+          <text class="txt-tips" wx:if="{{showTip}}">(根据行业匹配邦分任务)</text>
+        </view>
+        <image class="right-arrow" src="../../images/icon_caozuo_right.png" />
+      </navigator>
+      <view class="setting-item" target="" url="/" hover-class="navigator-hover" open-type="navigate" bindtap="openFenpei">
+        <view class="left-txt">
+          分配邦分
+          <text class="txt-tips" wx:if="{{showTip}}">(分配邦分给成员)</text>
+        </view>
+        <image class="right-arrow" src="../../images/icon_caozuo_right.png" />
+      </view>
+    </view>
+    <view class="rules-state-wrap {{showRule==true?'expend':''}}">
+      <view class="rules-state">
+        <text class="left-tips">规则说明</text>
+        <icon class="toggle-btn {{showRule==true?'showing':''}}" bindtap="toggleRule" />
+      </view>
+      <text class="rules-content" wx:if="{{visibleRule}}">1. 每个在微信内的组织不能超过500人；\n 2. 邦分是记录参与排名的用户的自我管理行为的计分工具；\n 3. 自我加减分功能请根据诚信操作，每个人的行为都将以个人信任值来记录；\n 4. 创建排名后如需删除排名需要先删除成员；\n5. 每个人进入组织的人默认加一分；\n6. 1邦分=1元；\n7. 成员每按时完成1个计划从你的账户扣对应的计划邦分，如果您的账户剩余邦分不足，则组织成员将不能奖励邦分。
+      </text>
+    </view>
+  </view>
+  <view class="bottom-operation">
+    <view class="agreement-reading">
+      <i-radio checked="{{checked}}" bindchange="handleAgreementChange" style=""></i-radio>
+      <text style="margin-left:-20rpx;z-index:10;">我已阅读并同意</text>
+      <text class="to-read" bindtap="openAgreement">《企汇邦用户协议》</text>
+    </view>
+    <button class="create-and-invite">
+      <i-icon type="share" size="28" />
+      创建并邀请成员
+    </button>
+  </view>
+  <i-modal title="提示" visible="{{ visibleFenpei }}" bind:ok="closeFenpei" show-cancel="{{false}}" ok-text="好的">
+    <view>请创建并邀请成员后，进入组织管理进行设置。</view>
+  </i-modal>
+  <i-modal title="《企汇邦用户协议》" visible="{{ agreementStatus }}" bind:ok="closeAgreement" show-cancel="{{false}}" ok-text="已阅读">
+    <view>《企汇邦用户协议》</view>
+    <view>《企汇邦用户协议》</view>
+    <view>《企汇邦用户协议》</view>
+    <view>《企汇邦用户协议》</view>
+    <view>《企汇邦用户协议》</view>
+    <view>《企汇邦用户协议》</view>
+  </i-modal>
+</view>

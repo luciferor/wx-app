@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "tabmenu": "/components/tabmenu",
+        "i-icon": "../../dist/icon/index",
+        "i-radio-group": "../../dist/radio-group/index",
+        "i-radio": "../../dist/radio/index",
+        "i-modal": "../../dist/modal/index"
+    }
+}

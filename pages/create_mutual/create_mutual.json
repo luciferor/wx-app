@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "tabmenu": "/components/tabmenu"
+  }
+}
