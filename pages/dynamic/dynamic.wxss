@@ -7,7 +7,6 @@
 .top-box{
     height: 260rpx;
     padding:30rpx;
-    margin-top: 180rpx;
 }
 .title-container{
   width: 100%;

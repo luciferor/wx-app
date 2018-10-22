@@ -1,5 +1,3 @@
-var app = getApp();
-
 /**
  * POST请求，
  * URL：接口
@@ -8,7 +6,7 @@ var app = getApp();
  * doFail：失败的回调函数
  * 参数：接口地址：url,接口参数：params
  */
-function $http(_dosuccess,_url,_params,_method){
+function $http(_dosuccess,_dofail,_url,_params,_method){//参数说明，成功回调函数dosuccess(res)，接口地址"/xxxx"，参数({,,,})，请求类型（post/get）
   wx.request({
     url: "https://devqypyp.xiaohuibang.com" + _url, //仅为示例，并非真实的接口地址
     method: _method,
@@ -18,17 +16,12 @@ function $http(_dosuccess,_url,_params,_method){
     },
     success: function (ress) {
       _dosuccess(ress);
+    },
+    fail:function(err){
+      _dofail(err);
     }
   })
 }
-
-
-/**
- * module.exports用来导出代码
- * js文件中通过var call = require("../util/api.js")  加载
- * 在引入引入文件的时候"  "里面的内容通过../../../这种类型，小程序的编译器会自动提示，因为你可能
- * 项目目录不止一级，不同的js文件对应的工具类的位置不一样
- */
 //将模块接口暴露出来
 module.exports = {
   $http: $http,

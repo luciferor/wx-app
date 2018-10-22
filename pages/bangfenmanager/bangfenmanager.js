@@ -159,21 +159,24 @@ Page({
     },
     //============================================================================================================  加减分类型选择结束
     onReady:function(){
-      let _this = this;
-      wx.getStorage({
-        key: 'qhb',
-        success: function (res){
-          api.$http(_this.dosuccess,'/WeChat/Applet/getManagedList',{
-            type: 1,
-            session_key:res.data.session_key
-          },'POST');
-        },
-      })
+      //自我管理
+      api.$http(this.dosuccess,this.dofail,'/WeChat/Applet/getManagedList',{
+        type: 1,
+        session_key: app.apiData.session_key
+      },'POST');
+      //相互管理
+      api.$http(this.dosuccess,this.dofail,'/WeChat/Applet/getManagedList', {
+        type: 1,
+        session_key: app.apiData.session_key
+      }, 'POST');
     },
     dosuccess(data){
       //console.log(data);
       this.setData({
         ownerlist:data.data.message
       })
+    },
+    dofail(data){
+      console.log('请求失败');
     }
 })
