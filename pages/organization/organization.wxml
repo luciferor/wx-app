@@ -1,5 +1,4 @@
 <view class='layout-container'>
-  <header isIndex="true" title_text="我的组织" isShow="true"></header>
   <view class='title-container'>
       <view class='title-left-container'>
             <view class='blue-icon'></view>

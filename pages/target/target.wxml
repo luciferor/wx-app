@@ -1,7 +1,6 @@
 <view class='container'>
    
    <view class='top-fiexd'>
-     <header isIndex="true" title_text="添加目标" isShow="true"></header>
    <!--Tab布局-->
     <view class='title'>
       <view class="{{0 == currentIndex ? 'titleSel' : 'titleUnsel'}}" bindtap='titleClick' data-idx='0'>

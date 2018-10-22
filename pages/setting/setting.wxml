@@ -1,9 +1,6 @@
 <!-- setting.wxml -->
 <view class='layout-container'>
-
-  
     <view>
-     <header isIndex="true" title_text="设置" isShow="true"></header>
     <!-- 头像 微信号 -->
       <view class='wx-info'>
           <view class='icon-container' bindtap="chooseimage">

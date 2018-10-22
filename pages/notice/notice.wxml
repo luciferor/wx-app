@@ -2,7 +2,6 @@
 <view class='layout-container'>
     
     <view class='top-fiexd'>
-        <header isIndex="true" title_text="通知" isShow="true"></header>
         <view class='tab-container'>
         <i-tabs current="{{ current }}"  color="#5398ff" bindchange="handleChange">
         <i-tab key="all" title="全部"></i-tab>

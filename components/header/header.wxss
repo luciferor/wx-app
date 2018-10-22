@@ -5,7 +5,7 @@
   box-sizing: border-box;  
   transform: translateZ(0);  
   z-index: 999990;
-  display: fixed;
+  display: flex;
   top: 0rpx;
   flex-direction: row;
   justify-content: flex-start;

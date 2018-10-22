@@ -1,7 +1,10 @@
 {
+  "navigationBarBackgroundColor": "#71b9fd",
+  "backgroundTextStyle": "light",
+  "navigationBarTitleText": "邦分管理",
+  "navigationBarTextStyle": "light",
   "usingComponents": {
     "i-modal": "../../dist/modal/index",
     "i-badge": "../../dist/badge/index"
-   
   }
 }
