@@ -1,8 +1,8 @@
 {
     "pages": [
+        "pages/setting/setting",
         "pages/create/create",
         "pages/guide/guide",
-        "pages/setting/setting",
         "pages/mine/mine",
         "pages/notice/notice",
         "pages/index/index",
@@ -23,8 +23,7 @@
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "light",
         "navigationBarTitleText": "企汇邦",
-        "navigationBarTextStyle": "black",
-        "navigationStyle": "custom"
+        "navigationBarTextStyle": "black"
     },
     "tabBar": {
         "color": "#666666",

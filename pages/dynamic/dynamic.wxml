@@ -1,7 +1,4 @@
 <view>
-  <view class='title-container'>
-      <header isIndex="true" title_text="最新动态" isShow=""></header>
-  </view>
   <view class="top-box">
       <view class="top-title">
           <span class="titlespan fl"></span>

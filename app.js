@@ -1,5 +1,10 @@
 //app.js
 App({
+  apiData:{
+    code:'',//登录需要的code
+    api: 'https://devqypyp.xiaohuibang.com',//接口根地址
+    session_key:'',//response.message.session_key
+  },
   onLaunch: function () {
     var _this = this
     // 展示本地存储能力
@@ -26,14 +31,16 @@ App({
           success(response) {
             console.log('登录成功，设置session_key等')
             console.log(response.data.message.session_key)
-            wx.setStorage({
-              key: "qhb",
-              data: {
-                code: res.code,//登录需要的code
-                api: 'https://devqypyp.xiaohuibang.com',//接口根地址
-                session_key: response.data.message.session_key,//response.message.session_key
-              }
-            })
+            // wx.setStorage({
+            //   key: "qhb",
+            //   data: {
+            //     code: res.code,//登录需要的code
+            //     api: 'https://devqypyp.xiaohuibang.com',//接口根地址
+            //     session_key: response.data.message.session_key,//response.message.session_key
+            //   }
+            // })
+            _this.apiData.code = res.code;//登录需要的code
+            _this.apiData.session_key = response.data.message.session_key;//response.message.session_key
           },
         })
       }
