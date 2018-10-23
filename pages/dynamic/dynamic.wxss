@@ -86,7 +86,7 @@
     height: 116rpx;
     background-color: #e7e7e7;
     border: solid 2px #ffffff;
-    border-radius: 58rpx;
+    border-radius: 68rpx;
 }
 
 .toptext-box{
