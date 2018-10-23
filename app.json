@@ -1,6 +1,8 @@
 {
     "pages": [
         "pages/create/create",
+        "pages/create_mutual/create_mutual",
+        "pages/create_self/create_self",
         "pages/guide/guide",
         "pages/setting/setting",
         "pages/mine/mine",
@@ -15,9 +17,8 @@
         "pages/userdynamic/userdynamic",
         "pages/awarddynamic/awarddynamic",
         "pages/ranking/ranking",
-        "components/receiveTip/receiveTip",
-        "pages/create_mutual/create_mutual",
-        "pages/create_self/create_self"
+        "components/receiveTip/receiveTip"
+
     ],
     "window": {
         "backgroundTextStyle": "light",

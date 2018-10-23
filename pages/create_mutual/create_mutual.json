@@ -1,5 +1,6 @@
 {
-  "usingComponents": {
-    "tabmenu": "/components/tabmenu"
-  }
+    "usingComponents": {
+        "i-tabs": "../../dist/tabs/index",
+        "i-tab": "../../dist/tab/index"
+    }
 }
