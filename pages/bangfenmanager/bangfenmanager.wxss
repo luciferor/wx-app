@@ -4,6 +4,7 @@
 .fr{
     float: right;
 }
+
 .tab-h{
     height: 100rpx;
     width: 100%;
@@ -13,7 +14,8 @@
     background:white;
     font-size: 33rpx;
     white-space: nowrap;
-    position: fixed;top: 0;
+    position: fixed;
+    top: 0;
     left: 0;
     z-index: 99;
     text-align: center;
@@ -153,6 +155,9 @@
 .selectinput{
     width:calc(100% - 50rpx);
 }
+.selectinput input{
+  font-size: 28rpx;
+}
 .selectright{
     width:50rpx;
 }
@@ -172,7 +177,7 @@
 
 .input-left{
     width:calc(100% - 80rpx);
-    font-size: 35rpx;
+    font-size: 28rpx;
 }
 .input-li{
     width:80rpx;
@@ -186,6 +191,7 @@
     width: calc(100% - 100rpx);
     padding:30rpx;
     margin-top:30rpx;
+    font-size: 28rpx;
 }
 
 .input-area textarea{

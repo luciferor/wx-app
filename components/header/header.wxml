@@ -1,0 +1,9 @@
+<!--components/header/header.wxml-->
+<view>
+<view class='title' style="height:{{title_height}}px;padding-top:{{statusbarHeight}}px;background-color:'#fff',width:100%}}">
+      <image src='../../images/icon_fanhui.png' class='back-icon' bindtap="_goBack" wx:if="{{isShow}}"></image>
+      <text class='title-text'>{{title_text}}</text>
+</view>
+<view class='horizontal-line'></view>
+</view>
+

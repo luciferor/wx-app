@@ -6,19 +6,27 @@ page{
 .view-container{
   display: flex;
   flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.bgimg{
+  width: 100%;
+  z-index: -100;
+  position: absolute;
+  height: 430rpx;
 }
 .top{
-    background: url('https://devqypyp.xiaohuibang.com/pic/img_wode_beijing.png') no-repeat;
-    width: 100%;
     display: flex;
     top: 0px;
-    background-size: 100%  auto; 
+    height: auto;
     flex-direction: column;
-    padding-top:20rpx;
-    padding-bottom: 42rpx;
+    padding-bottom: 20rpx;
 }
 .title{
   color: white;
+  font-size: 34rpx;
+  margin-top: 60rpx;
+  margin-left: 30rpx;
 }
 
 .info-container{
@@ -26,6 +34,7 @@ page{
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-top:35rpx;
 }
 .pic{
   width: 64rpx;
@@ -34,7 +43,7 @@ page{
 .uname{
   margin-left: 17rpx;
   color: white;
-  font-size: 26rpx;
+  font-size: 28rpx;
 }
 
 .left-container{
@@ -51,6 +60,12 @@ page{
  width: 45rpx;
  height: 45rpx;
 }
+
+.badge{
+  top: 0rpx !important;
+  right: 0rpx !important;
+}
+
 .setting{
  width: 44rpx;
   height: 44rpx;
@@ -62,12 +77,12 @@ page{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-top: 44rpx;
+    margin-top: 25rpx;
 }
 .score-container{
    display: flex;
-    flex-direction: column;
-    margin-left: 30rpx;
+   flex-direction: column;
+   margin-left: 30rpx;
 }
 
 .total-text{
@@ -77,8 +92,14 @@ page{
 .total-score{
   color: white;
   font-weight: bold;
-  margin-top:20rpx;
+  margin-top:10rpx;
   font-size:72rpx;
+}
+
+.remind-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .remind-text{
   color: #b7d4ff;
@@ -95,6 +116,9 @@ page{
    background: linear-gradient(to right, #ffbf7a , #ff986b);
    border-top-left-radius: 30rpx;
    border-bottom-left-radius: 30rpx;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
 }
 
 .add-target-container{
@@ -188,4 +212,31 @@ page{
   font-size: 24rpx;
   color: #999999;
   margin-top: 20rpx;
+}
+
+
+
+.remind-icon{
+  width: 24rpx;
+  height: 24rpx;
+  margin-left: 5rpx;
+}
+
+.org-icon{
+   width: 24rpx;
+  height: 20rpx;
+  margin-left: 10rpx;
+}
+
+.modal-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+
+.modal-text{
+  font-size: 28rpx;
+  color: #333333;
 }

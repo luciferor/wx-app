@@ -1,0 +1,30 @@
+<view class='layout-container'>
+    <header isIndex="true" title_text="分配邦分" isShow="true"></header>
+    <view class='container'>
+        <view class='add-container' bindtap='navigateToAddPlan'>
+            <image class='add-icon' src='../../images/mine/icon_fenpei_add.png'></image>
+            <text class='add-text'>添加分配计划</text>
+        </view>
+
+        <view class='bottom-container'>
+            <view class='content-container' wx:for="{{yearList}}" wx:for-item="item">
+                <text class='year-text'>2018</text>
+                <view class='plan-container' wx:for="{{item.monthList}}" bindtap='navigateToPlanDetail'>
+                    <view class='detail-container'>
+                        <view class='left-container'>
+                          <view class='month-container'>
+                            <text class='month-text'>十一月</text>
+                          </view> 
+                          <view class='info-container'>
+                              <text class='score-text'>已分配邦分：80邦分</text>
+                              <text class='number-text'>分配人数：3人</text>
+                          </view>
+                        </view>
+                        <image src='../../images/icon_caozuo_right.png' class='arrow'></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+</view>

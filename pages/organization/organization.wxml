@@ -1,0 +1,29 @@
+<view class='layout-container'>
+  <header isIndex="true" title_text="我的组织" isShow="true"></header>
+  <view class='title-container'>
+      <view class='title-left-container'>
+            <view class='blue-icon'></view>
+            <text class='title-text'>所有成员(8人)</text>
+      </view>
+      <text class='org-text' bindtap='navigateToManageOrg'>组织管理</text>
+  </view>
+  
+  <view class='content-container'>
+      <view class='user-container'>
+          <view class='user-left-container'>
+            <image src='../../images/tabs/icon_tab_wode_selected.png' class='upic'></image>
+            <text class='uname'>艾晓晓</text>
+          </view>
+          <text class='user-right'>创建者</text>
+      </view>
+      <view class='horizontal-line'></view>
+  </view>
+
+   <view class='bottom-container'>
+      <view class='button'>
+        <image src='../../images/icon_fenxiang.png' class='share-icon'></image>
+        <text class='invite-text'>邀请成员</text>
+      </view>
+   </view>
+
+</view>

@@ -1,10 +1,10 @@
 {
     "pages": [
+        "pages/setting/setting",
         "pages/create/create",
         "pages/create_mutual/create_mutual",
         "pages/create_self/create_self",
         "pages/guide/guide",
-        "pages/setting/setting",
         "pages/mine/mine",
         "pages/notice/notice",
         "pages/index/index",

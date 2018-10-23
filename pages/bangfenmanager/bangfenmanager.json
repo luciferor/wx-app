@@ -2,6 +2,7 @@
     "navigationBarTitleText": "邦分管理",
     "usingComponents": {
         "i-modal": "../../dist/modal/index",
-        "i-action-sheet": "../../dist/action-sheet/index"
+        "i-action-sheet": "../../dist/action-sheet/index",
+        "header": "/components/header/header"
     }
 }

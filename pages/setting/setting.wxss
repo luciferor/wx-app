@@ -92,11 +92,17 @@ page{
   margin-right: 24rpx;
   border-radius: 4rpx;
   color: white;
+   height: 110rpx;
+  line-height: 110rpx;
 }
 
 .name-input{
   text-align: right;
   color: #666666;
   font-size: 32rpx;
+}
 
+.modal-text{
+  font-size: 28rpx;
+  color: #333333;
 }

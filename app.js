@@ -1,6 +1,12 @@
 //app.js
 App({
+  apiData:{
+    code:'',//登录需要的code
+    api: 'https://devqypyp.xiaohuibang.com',//接口根地址
+    session_key:'',//response.message.session_key
+  },
   onLaunch: function () {
+    var _this = this
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -9,7 +15,24 @@ App({
     // 登录
     wx.login({
       success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        //发送 res.code 到后台换取 openId, sessionKey, unionId
+        //登录，从后台获取到session_key
+        //发起网络请求
+        wx.request({
+          url: 'https://devqypyp.xiaohuibang.com/login/miniprogram/Applet', //小程序登录
+          data: {
+            code: res.code,
+            company_id:'1'
+          },
+          method: "POST",
+          header: {
+            'content-type': 'application/json' //默认值
+          },
+          success(response) {
+            _this.apiData.code = res.code;//登录需要的code
+            _this.apiData.session_key = response.data.message.session_key;//response.message.session_key
+          },
+        })
       }
     })
     // 获取用户信息
@@ -20,20 +43,39 @@ App({
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
+              _this.globalData.userInfo = res.userInfo
 
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
+              if (_this.userInfoReadyCallback) {
+                _this.userInfoReadyCallback(res)
               }
             }
           })
         }
       }
+    }),
+    wx.getSystemInfo({
+      success: function(res) {
+        if (res.model == 'iPhone X') {
+          _this.globalData.isIpx = true;
+        }
+      },
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    isIpx: false,
+  },
+  config:{
+    title_height: "64",
+    statusbarHeight: "24",
+    titleIcon_height: "32",
+    titleIcon_width: "87",
+    title_top: "24",
+    title_text: "xxx", // iphone X + 24        
+    prefix: 24,
+    x_statusbarHeight:'48',
+    x_title_height : '88'
   }
 })
