@@ -22,7 +22,7 @@ App({
           url: 'https://devqypyp.xiaohuibang.com/login/miniprogram/Applet', //小程序登录
           data: {
             code: res.code,
-            company_id:'1'
+            company_id:''
           },
           method: "POST",
           header: {

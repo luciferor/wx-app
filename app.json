@@ -22,7 +22,8 @@
         "pages/allocationscore/allocationscore",
         "pages/manageorg/manageorg",
         "pages/organization/organization",
-        "pages/plandetail/plandetail"
+        "pages/plandetail/plandetail",
+        "pages/target/target"
     ],
     "window": {
         "backgroundTextStyle": "light",

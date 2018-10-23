@@ -234,3 +234,36 @@ page{
   font-size: 28rpx;
   color: #333333;
 }
+
+.empty-img-arrow{
+  width: 124rpx;
+  height: 135rpx;
+  position: absolute;
+  right: 48rpx;
+  margin-top: 20rpx;
+}
+
+.empty-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+.empty-img{
+  margin-top: 120rpx;
+  width: 420rpx;
+  height: 360rpx;
+}
+
+.empty-text{
+  color: #b5c9e6;
+  font-size: 30rpx;
+  margin-top: 20rpx;
+}
+.empty-text-bottom{
+  color: #b5c9e6;
+  font-size: 30rpx;
+  margin-top: 5rpx;
+}

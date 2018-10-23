@@ -14,33 +14,46 @@ Page({
       reduce:"",
       score:"0",
       total_score:"0",
-      user_img:""
+      user_img:"",
+      targetList:[]
     }
   },
    onReady:function(){
-      this.getUserInfo();
+      this.getUserInfo()
     },
 
     //获取用户信息
     getUserInfo(){
       let _this = this;
       setTimeout(function () {
-        //获取用户信息
-        api.$http(_this.dosuccess, _this.dofail, '/appreciate/personalcenter', {
+        api.$https('/appreciate/personalcenter', {
           session_key: app.apiData.session_key
-        }, 'POST');
-
-      }, 5000)
+        }, 'POST', function (data) {
+          _this.setData({
+            userInfo: data.data.message
+          });
+        }, function (data) {
+          console.log('请求失败');
+        });
+      }, 5000);
     },
 
-    dosuccess(data){
-      this.setData({
-        userInfo:data.data.message
+  //获取我的目标
+  getTargetList() {
+    let _this = this;
+    setTimeout(function () {
+      api.$https('/targetmy/target', {
+        session_key: app.apiData.session_key
+      }, 'POST', function (data) {
+        _this.setData({
+          targetList: data.data.message
+        });
+      }, function (data) {
+        console.log('请求失败');
       });
-    },
-    dofail(data){
-      console.log('请求失败');
-    },
+    }, 6000);
+  },
+
   //提示框
   handleRemindOpen() {
     this.setData({

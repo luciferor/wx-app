@@ -6,8 +6,10 @@ page{
 
 .layout-container{
   width: 100%;
+  height: 100%;
   margin-top: 100rpx;
 }
+
 
 .top-fiexd{
   width: 100%;
@@ -71,4 +73,24 @@ page{
   color: #666666;
   font-size: 26rpx;
   margin-top: 10rpx;
+}
+
+
+.empty-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+.empty-img{
+  margin-top: 200rpx;
+  width: 420rpx;
+  height: 360rpx;
+}
+.empty-text{
+  color: #b5c9e6;
+  font-size: 30rpx;
+  margin-top: 20rpx;
 }

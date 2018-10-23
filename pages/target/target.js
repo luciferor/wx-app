@@ -1,4 +1,5 @@
 //index.js
+var api = require('../../utils/api.js');
 //获取应用实例
 const app = getApp()
 
@@ -6,8 +7,9 @@ Page({
   data: {
     current: 'tab1',
     currentIndex: 0,
-    "firstList": ["不二家棒棒糖", "清风湿至今", "床上四件套", "其他噢", "我要加一百分", "野心勃勃", "不二家棒棒糖", "清风湿至今", "床上四件套", "其他噢", "我要加一百分", "野心勃勃"],
-    "secondList": ["帮助他人", "保持桌面清洁", "有责任心", "乱丢垃圾", "随地吐痰", "不讲卫生", "帮助他人", "保持桌面清洁", "有责任心", "乱丢垃圾", "随地吐痰", "不讲卫生","帮助他人", "保持桌面清洁", "有责任心", "乱丢垃圾", "随地吐痰", "不讲卫生"],
+    rankTargetList: [],
+    scoreTargetList: [],
+    customTargetList:[],
     rankTargetNum : 0,
     scoreTargetNum: 2,
     customTargetNum : 3,
@@ -19,6 +21,11 @@ Page({
     newTargetType: '目标类型',
     newTargetRank: '日排名',
     newTargetNum : '第一名',
+    targetType:1,//申请类型
+    giftType:1,//礼品类型
+    rank:1,//排名
+    targetTitle:'',//目标名称
+    gift_score: 0,//兑换所需邦分
     typeAction: [
       {
         name: '排名目标',
@@ -50,9 +57,71 @@ Page({
       }
     ],
   },
-  handleAnimalChange(_value) {
-    console.log(_value);
+  //获取目标列表(1:排名2:邦分3:自定义)
+  getNoticeList(types, pages) {
+    let _this = this;
+    api.$https('/targetlist/target', {
+      session_key: app.apiData.session_key,
+      type: types,
+    }, 'POST', function (data) {
+      if (data.data.success) {
+        _this.dosuccess(types, data.data.message)
+      }
+    }, function () {
+      console.log(请求失败);
+    });
   },
+  //获取目标列表结果处理
+  dosuccess(types,data){
+      console.log(data)
+      if(type == 1){
+        this.setData({
+          rankTargetList:data
+        });
+      }else if(type ==2){
+        this.setData({
+          scoreTargetList: data
+        });
+      }else if(type == 3){
+        this.setData({
+          customTargetList: data
+        });
+      }
+  },
+  //用户输入数据的改变
+  inputValue(e){
+    this.setData({
+      targetTitle: e.detail.value
+    });
+  },
+
+  inputScoreValue(e){
+    this.setData({
+      gift_score: e.detail.value
+    });
+  },
+
+  //申请自定义目标
+  applyNotice() {
+    let _this = this;
+    console.log("====title" + _this.data.targetTitle)
+    api.$https('/application/target', {
+      session_key: app.apiData.session_key,
+      type: _this.data.targetType,
+      title: _this.data.targetTitle,
+      gift_type:_this.data.giftType,
+      rank:_this.data.rank,
+      gift_score:''
+    }, 'POST', function (data) {
+      console.log(data.data.message);
+      if (data.data.success) {
+        
+      }
+    }, function () {
+      console.log(请求失败);
+    });
+  },
+
   //swiper切换时会调用
   pagechange: function (e) {
     if ("touch" === e.detail.source) {
@@ -99,6 +168,7 @@ Page({
     let index = detail.index;
     this.setData({
       //拿到当前索引并动态改变
+      targetType:index+1,
       newTargetType: this.data.typeAction[index].name,
       showTypeBox: false
     })
@@ -120,6 +190,7 @@ Page({
     let index = detail.index;
     this.setData({
       //拿到当前索引并动态改变
+      giftType:index+1,
       newTargetRank: this.data.rankAction[index].name,
       showRankBox: false
     })
@@ -136,11 +207,12 @@ Page({
       showNumBox: true
     });
   },
-  //选择目标类型点击处理
+  //选择名次类型点击处理
   handleNumClickItem({ detail }) {
     let index = detail.index;
     this.setData({
       //拿到当前索引并动态改变
+      rank:index+1,
       newTargetNum: this.data.numAction[index].name,
       showNumBox: false
     })
