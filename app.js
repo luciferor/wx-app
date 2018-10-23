@@ -1,5 +1,8 @@
 //app.js
 App({
+  data:{
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
+  },
   apiData:{
     code:'',//登录需要的code
     api: 'https://devqypyp.xiaohuibang.com',//接口根地址
@@ -31,7 +34,33 @@ App({
           success(response) {
             _this.apiData.code = res.code;//登录需要的code
             _this.apiData.session_key = response.data.message.session_key;//response.message.session_key
+            //获取用户信息，并发送给后台
+            wx.getUserInfo({
+              success:function(res){
+                //console.log(res.userInfo);
+                wx:wx.request({
+                  url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
+                  data:{
+                    session_key: response.data.message.session_key,
+                    nickname: res.userInfo.nickName,
+                    avatarurl: res.userInfo.avatarUrl,
+                    gender: res.userInfo.gender,
+                    province: res.userInfo.province,
+                    city: res.userInfo.city,
+                    country: res.userInfo.country,
+                  },
+                  header: {
+                    'content-type': 'application/json' //默认值
+                  },
+                  method: 'POST',
+                  success: function(res) {},
+                  fail: function(res) {},
+                  complete: function(res) {},
+                })
+              }
+            })
           },
+          fail: function (res) {alert('登录失败')},
         })
       }
     })

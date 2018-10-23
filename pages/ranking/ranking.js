@@ -1,3 +1,4 @@
+var api = require('../../utils/api.js');
 var app = getApp();
 Page({
   data: {
@@ -15,6 +16,11 @@ Page({
         name: '自我减分'
       }
     ],
+    dayranklist:[],//日排名
+    weekranklist:[],//周排名
+    monthranklist:[],//月排名
+    topranklist:[],//顶部排名
+    thenid:0,
   },
   //===========================================================================================================选择加减分类型
   applyevent() {
@@ -48,6 +54,31 @@ Page({
       currentTab: e.detail.current
     });
     console.log(this.data.currentTab);
+    //重新给排名团赋值
+    switch (this.data.currentTab) {
+      case 0:
+        this.setData({
+          thenid:0,
+          topranklist:this.data.dayranklist
+        });
+        console.log(this.data.topranklist)
+        break;
+      case 1:
+        this.setData({
+          thenid:1,
+          topranklist: this.data.weekranklist
+        });
+        console.log(this.data.topranklist)
+        break;
+      case 2:
+        this.setData({
+          thenid:2,
+          topranklist: this.data.monthranklist
+        });
+        break;
+      default:
+        break;
+    }
     this.checkCor();
   },
   // 点击标题切换当前页时改变样式
@@ -133,4 +164,65 @@ Page({
   //   this.dialog.hideDialog();
   // },
   //组件实例使用结束=====================================================================
+  onReady:function(){
+    let _this = this;
+    setTimeout(function(){
+      api.$http(_this.dayrankdosuccess, _this.dofail, '/WeChat/Applet/getAllUserRank', {
+        session_key: app.apiData.session_key,
+        type: 'day'
+      }, 'POST')
+    },2000);
+    setTimeout(function () {
+      api.$http(_this.weekrankdosuccess, _this.dofail, '/WeChat/Applet/getAllUserRank', {
+        session_key: app.apiData.session_key,
+        type: 'week'
+      }, 'POST')
+    }, 4000);
+    setTimeout(function () {
+      api.$http(_this.monthrankdosuccess, _this.dofail, '/WeChat/Applet/getAllUserRank', {
+        session_key: app.apiData.session_key,
+        type: 'month'
+      }, 'POST')
+    }, 6000);
+  },
+  dayrankdosuccess(data){//日排名
+    console.log(data);
+    this.setData({
+      dayranklist:data.data.message
+    })
+    if(this.data.thenid==0){
+      this.setData({
+        topranklist:data.data.message
+      })
+    }
+  },
+  weekrankdosuccess(data){//周排名
+    this.setData({
+      weekranklist:data.data.message
+    })
+    if (this.data.thenid == 1) {
+      this.setData({
+        topranklist: data.data.message
+      })
+    }
+  },
+  monthrankdosuccess(data){//月排名
+    this.setData({
+      monthranklist:data.data.message
+    })
+    if (this.data.thenid == 2) {
+      this.setData({
+        topranklist: data.data.message
+      })
+    }
+  },
+  dofail(err){
+    console.log(err);
+  },
+  gotodynamic(e){
+    console.log(e.currentTarget.id)
+    wx.navigateTo({
+      url: '../../pages/userdynamic/userdynamic?uid=' + e.currentTarget.id,
+    })
+  }
 })
