@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText" : "我的组织",
   "usingComponents": {
-    "header": "../../components/header/header"
+    "header": "../../components/header/header",
+     "i-toast": "../../dist/toast/index"
   }
 }

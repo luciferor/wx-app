@@ -20,7 +20,9 @@
         "pages/create_self/create_self",
         "pages/addplan/addplan",
         "pages/allocationscore/allocationscore",
-        "pages/manageorg/manageorg"
+        "pages/manageorg/manageorg",
+        "pages/organization/organization",
+        "pages/plandetail/plandetail"
     ],
     "window": {
         "backgroundTextStyle": "light",
