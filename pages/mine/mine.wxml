@@ -2,11 +2,10 @@
 <view class="view-container">
      <image src='../../images/mine/img_wode_beijing.png' class='bgimg'></image>
      <view class="top">
-        <text class='title'>邦分管理</text>
         <view class='info-container'>
             <view class='left-container'  bindtap='navigateToSetting'>
                 <image src='../../images/tabs/icon_tab_mine_default.png' class='pic'></image>
-                <text class='uname'>艾晓晓</text>
+                <text class='uname'>{{userInfo.name}}</text>
             </view>
             <view class='right-container' bindtap='navigateToNotice'>
                 <i-badge dot i-class='badge'>
@@ -17,9 +16,9 @@
         <view class='score-org-container'>
             <view class='score-container'>
              <text class='total-text'>总邦分</text>
-             <text class='total-score'>1253.5</text>
+             <text class='total-score'>{{userInfo.total_score}}</text>
              <view class='remind-container' bindtap='handleRemindOpen'>
-                <text class='remind-text'>剩30邦分加分权利，20邦分减分权利</text>
+                <text class='remind-text'>剩{{userInfo.disposable}}邦分加分权利，{{userInfo.reduce}}邦分减分权利</text>
                 <image class='remind-icon' src='../../images/mine/icon_wode_shuoming.png'></image>
              </view>
             </view>

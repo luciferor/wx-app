@@ -1,4 +1,52 @@
-<!--index.wxml-->
-<view class="container">
-    编辑自我管理行为
+<!-- index.wxml -->
+<view class="self-container">
+    <i-tabs class="top-tab-wrap" current="{{ current }}" color="#5398ff" bindchange="handleChange">
+        <i-tab key="tab1" title="行业({{hangyeNum}})"></i-tab>
+        <i-tab key="tab2" title="自定义({{zidingyiNum}})"></i-tab>
+    </i-tabs>
+    <view wx:if="{{showContent=='tab1'}}" class="tab1-content">
+        <view class="hangye-list">
+            <view wx:for="{{hangyeArr}}" wx:for-index="idx" data-num="{{idx}}" class="list-item  {{currHangye==idx?'selected':''}}" bindtap="selectHangye">
+                <text class="item-txt">{{item.text}}</text>
+            </view>
+        </view>
+        <view class="xingwei-list">
+            <view wx:for="{{xingweiArr}}" wx:for-index="idx1" data-num="{{idx1}}" class="list-item  {{currXingwei==idx1?'picked':''}}" bindtap="pickXingwei">
+                <label>
+                    <text class="item-txt">{{item.text}}</text>
+                    <text class="item-score">({{item.score}}邦分)</text>
+                    <checkbox class="xingwei-picked"></checkbox>
+                </label>
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{showContent=='tab2'}}">
+        <view class="zidingyi-area">
+            <icon class="add-item-btn" bindtap="addXingwei" />
+            <input class="xingwei-name" placeholder="请输入行为名称" />
+            <text class="set-scores" bindtap="scoreToggle">{{scoreStatus}}</text>
+            <view class="select-score-modal" wx:if="{{isShowScore}}" bindtap="scoreToggle">
+                <view class="modal-score-wrap">
+                    <view class="modal-score-item" wx:for="{{scoresArr}}" data-score="{{item.score}}" bindtap="changeScore">+{{item.score}}邦分</view>
+                </view>
+            </view>
+        </view>
+        <view class="lists-wrap">
+            <text class="top-tips">自定义任务</text>
+            <view class="zidingyi-list">
+                <view wx:for="{{zidingyiArr}}" wx:for-index="idx" data-num="{{idx}}" class="list-item">
+                    <icon class="remove-item-btn" bindtap="removeXingwei" />
+                    <text class="item-txt">{{item.text}}</text>
+                    <text class="item-score">{{item.score}}邦分</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="bottom-btns-area">
+        <view class="num-counts">
+            已添加行为(<text class="the-num">{{alreadyNum}}</text>个)
+        </view>
+        <text class="reset-btn" bindtap="handleReset">重置</text>
+        <button class="sure-btn" bindtap="handleSure">确定</button>
+    </view>
 </view>

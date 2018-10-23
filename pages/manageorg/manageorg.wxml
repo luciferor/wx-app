@@ -1,6 +1,5 @@
 <view class='layout-container'>
     <view class='top-container'>
-      <header isIndex="true" title_text="组织管理" isShow="true"></header>
          <view class='content-container'>
 
         <view class='title'>
