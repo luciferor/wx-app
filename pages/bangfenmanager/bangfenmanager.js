@@ -26,18 +26,64 @@ Page({
         ownerdatalist:{//自我加减分表单数据
           buff:'',//加减邦分数
           reasonr:''//加减分的理由
-        }
+        },
+        othertypename:'',//他人加减分类型
+        showothertype:false,
+        othertype:[
+          {name:'加分'},{name:'减分'}
+        ],
+        otherbuff:0,
+        otherreasonr:'',
+    },
+    closeothertype() {
+      this.setData({
+        showothertype: false
+      });
+    },
+    exitothertype({ detail }) {
+      const index = detail.index;
+      this.setData({
+        othertypename: this.data.othertype[index].name,
+        showothertype: false
+      })
+    },
+    selecotherttype(){
+      console.log('他人加减分');
+      this.setData({
+        showothertype:true
+      })
     },
     ownnerplusevent(){
       console.log(this.data.ownerdatalist.buff);
       let _this = this;
       console.log("自我加减分申请");
-      api.$http(this.ownerdosuccess, this.dofail,"/WeChat/Applet/changeGradeApply",{
+      api.$http(function(res){
+        console.log(res);
+        if (res.data.success){
+          //alert('添加成功！')
+          _this.setData({
+            showModal:false
+          })
+        }
+      },function(err){
+        console.log(err)
+      },"/WeChat/Applet/changeGradeApplyBySelf",{
         session_key:app.apiData.session_key,
-        type:this.data.typename=='自我加分'?1:0,
+        type:this.data.typename=='自我加分'?'add':'reduce',
         bangfen:this.data.ownerdatalist.buff,
         reason:this.data.ownerdatalist.reasonr,
       },"POST");
+    },
+    otherbuffevent(e){
+      console.log(e.detail.value);
+      this.setData({
+        otherbuff: e.detail.value
+      })
+    },
+    otherreasonrevent(e){
+      this.setData({
+        otherreasonr:e.detail.value
+      })
     },
     buffevent(e){
       console.log(e.detail.value);
@@ -72,7 +118,7 @@ Page({
     //===========================================================================================================选择加减分类型
     applyevent(){
       wx.navigateTo({
-        url: '../../pages/selectuseres/selectuseres',
+        url: '../../pages/selectuseres/selectuseres?type=' + this.data.othertypename + "&buff=" + this.data.otherbuff + "&reasonr=" + this.data.otherreasonr,
       })
     },
     closetype(){
@@ -213,15 +259,4 @@ Page({
     console.log(err);
   },
   //000000000000000000000000000000000000000000000=================================
-  
-  //自我加减邦分回调方法开始************************************************
-  //成功回调
-  ownerdosuccess(data){
-    console.log(data);
-  },
-  //失败回调
-  dofail(err){
-    console.log(err);
-  }
-  //自我加减邦分回调方法结束*************************************************
 })
