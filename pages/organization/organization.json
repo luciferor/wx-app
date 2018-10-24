@@ -1,7 +1,8 @@
 {
-  "navigationBarBackgroundColor": "#FFFFFF",
-  "navigationBarTitleText" : "我的组织",
-  "usingComponents": {
-     "i-toast": "../../dist/toast/index"
-  }
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "我的组织",
+    "usingComponents": {
+        "i-toast": "../../dist/toast/index",
+        "i-icon": "../../dist/icon/index"
+    }
 }

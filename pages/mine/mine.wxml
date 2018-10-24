@@ -1,6 +1,6 @@
 <!--mine.wxml-->
 <view class="view-container">
-     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" hidden='true'> 获取头像昵称 </button>
      <image src='../../images/mine/img_wode_beijing.png' class='bgimg'></image>
      <view class="top">
         <view class='info-container'>
@@ -19,7 +19,7 @@
              <text class='total-text'>总邦分</text>
              <text class='total-score'>{{userInfo.total_score}}</text>
              <view class='remind-container' bindtap='handleRemindOpen'>
-                <text class='remind-text'>剩{{userInfo.disposable}}邦分加分权利，{{userInfo.reduce}}邦分减分权利</text>
+                <text class='remind-text'>剩{{userInfo.disposable ==null ?0:userInfo.disposable}}邦分加分权利，{{userInfo.reduce ==null ? 0:userInfo.reduce}}邦分减分权利</text>
                 <image class='remind-icon' src='../../images/mine/icon_wode_shuoming.png'></image>
              </view>
             </view>
@@ -41,12 +41,12 @@
 
     <view>
         <view wx:if="{{targetList.length >= 1}}">
-              <view class='target-container' wx:for="{{targetList}}">
+              <view class='target-container' wx:key="*this" wx:for="{{targetList}}" wx:for-index="idx" wx:for-item="target">
               <view class='target-left'>
                   <image src='../../images/mine/icon_wode_rijiang.png' class='target-pic'></image>
                   <view class='target-info'>
-                      <text class='target-name'>不二家棒棒糖全家桶</text>
-                      <text class='target-condition'>当前第5名/日排名第一</text>
+                      <text class='target-name'>{{target.scoretitle}}</text>
+                      <text class='target-condition'>当前第{{target.rank}}名/日排名第一</text>
                       <progress class='target-status' percent="20" activeColor='#5398ff' backgroundColor='#f7f7f7' ></progress>
                   </view>
               </view>

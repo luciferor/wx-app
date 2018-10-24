@@ -18,10 +18,26 @@ var subs = {
       default:
         break;
     }
+  },
+  status:function(_str){
+    switch (_str) {
+      case 0:
+        return '已通过';
+        break;
+      case 1:
+        return '待审核';
+        break;
+      case 2:
+        return '未通过';
+        break;
+      default:
+        break;
+    }
   }
 }
 
 module.exports={
   sub:subs.sub,
-  rank:subs.rank
+  rank:subs.rank,
+  status:subs.status
 }

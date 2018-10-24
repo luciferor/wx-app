@@ -5,54 +5,92 @@ const { $Toast } = require('../../dist/base/index');
 const app = getApp()
 
 Page({
-  data: {
-     memberList:[
-     ]
-  },
+    data: {
+        memberList: [],
+        creatCompany: 187,
+        isAdmin: 0
+    },
 
-  //跳转到组织管理
-  navigateToManageOrg() {
-    wx.navigateTo({
-      url: '../manageorg/manageorg'
-    })
-  },
+    //事件处理函数
+    onShareAppMessage: function() {
+        return {
+            title: '用邦分干了这杯事业，快来加入我们的团队吧……',
+            desc: '邦分管理',
+            path: '/pages/mine/mine?company_id=' + this.data.creatCompany, // 路径，传递参数到指定页面。
+            imageUrl: '../../images/minproShare.jpg',
+            success: function(res) {
+                console.log(res)
+                wx.switchTab({
+                    url: '../mine/mine',
+                });
+            },
+            fail: function(err) {
+                console.log('失败')
+                console.log(err)
+            }
+        }
+    },
+    onLoad: function(options) {
+        wx.updateShareMenu({
+                withShareTicket: true,
+                success() {}
+            }),
+            this.setData({
+                isAdmin: options.isAdmin,
+            });
+        console.log("-----" + this.data.isAdmin)
+    },
 
-  onReady: function () {
-    this.getMemberList();
-  },
+    //跳转到组织管理
+    navigateToManageOrg() {
+        wx.navigateTo({
+            url: '../manageorg/manageorg'
+        })
+    },
 
-  //获取成员列表
-  getMemberList() {
-    let _this = this;
-    api.$https('/WeChat/appreciate/memberlist', {
-      session_key: app.apiData.session_key
-    }, 'POST',function(data){
-      console.log(data.success)
-      if (data.data.success) {
-        _this.setData({
-          memberList: data.data.message
+    onReady: function() {
+        this.getMemberList();
+    },
+
+    //获取成员列表
+    getMemberList() {
+        let _this = this;
+        api.$https('/WeChat/appreciate/memberlist', {
+            session_key: app.apiData.session_key
+        }, 'POST', function(data) {
+            console.log(data.success)
+            if (data.data.success) {
+                _this.setData({
+                    memberList: data.data.message
+                });
+            }
+        }, function(data) {
+            console.log('请求失败');
         });
-      }
-    },function(data){
-      console.log('请求失败');
-    });
-  },
- 
-  //删除成员列表
-  deleteMember(uid) {
-    let _this = this;
-    api.$https('/WeChat/appreciate/memberlist', {
-      session_key: app.apiData.session_key,
-      uid : uid
-    }, 'POST',function(){
-      $Toast({
-        content: '删除成功'
-      });
-    },function(){
-        //todo
-    });
-  },
+    },
+
+    //删除成员列表
+    deleteMember(e) {
+        let index = e.currentTarget.id;
+        let member = this.data.memberList[index];
+        if (this.data.isAdmin == 0) {
+            $Toast({
+                content: '你还没有权限'
+            });
+        } else {
+            if (member.isadmin == 0) {
+                api.$https('/WeChat/appreciate/memberlist', {
+                    session_key: app.apiData.session_key,
+                    uid: member.id
+                }, 'POST', function() {
+                    $Toast({
+                        content: '删除成功'
+                    });
+                }, function() {});
+            }
+        }
+    },
 
 
-  
+
 })

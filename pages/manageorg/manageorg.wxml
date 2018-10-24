@@ -3,7 +3,7 @@
          <view class='content-container'>
 
         <view class='title'>
-           <text>一起学喵叫</text>
+           <text>{{name}}</text>
         </view>
      
          <view class='horizontal-line'></view>
@@ -33,7 +33,7 @@
     </view>
    
 
-     <view class='bottom-container'>
+     <view class='bottom-container' hidden='true'>
         <button class='button'>保存</button>
    </view>
 

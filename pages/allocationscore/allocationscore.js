@@ -45,7 +45,7 @@ Page({
     }, 'POST',function(data){
       console.log(data.data.message);
       if (data.data.success) {
-        this.setData({
+        _this.setData({
           memberList: data.data.message
         });
       }

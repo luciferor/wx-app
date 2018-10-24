@@ -13,7 +13,7 @@ Page({
             '../../images/guide/img_yindaoye_3.png',
             '../../images/guide/img_yindaoye_4.png',
         ],
-        showBtn: true,
+        showBtn: false,
     },
     onLoad: function() {
         if (app.globalData.userInfo) {

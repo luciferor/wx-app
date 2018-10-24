@@ -13,6 +13,7 @@ page{
   align-content: center;
   border-bottom: 1rpx solid #eeeeee;
   background: white;
+  height: 100rpx;
 }
 
 .title-left-container{
@@ -118,4 +119,14 @@ page{
   background: #eeeeee;
   width: 100%;
   height: 1rpx;
+}
+
+.create-and-invite {
+    background-color: #5398ff;
+    width: 700rpx;
+    height: 110rpx;
+    line-height: 110rpx;
+    color: #fff;
+    margin: 15rpx auto 0;
+    font-size: 36rpx;
 }
