@@ -20,11 +20,11 @@ Page({
     }
   },
    onReady:function(){
-      this.getUserInfo();
+      this.getUserInfos();
     },
 
     //获取用户信息
-    getUserInfo(){
+    getUserInfos(){
       let _this = this;
       setTimeout(function () {
         //获取用户信息
@@ -108,7 +108,7 @@ Page({
       })
     }
   },
-  getUserInfo: function (e) {
+  getUserInfo:function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -116,5 +116,4 @@ Page({
       hasUserInfo: true
     })
   }
-
 })

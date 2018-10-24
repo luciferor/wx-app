@@ -37,35 +37,33 @@ App({
                         'content-type': 'application/json' //默认值
                     },
                     success(response) {
-                        _this.apiData.code = res.code; //登录需要的code
-                        _this.apiData.session_key = response.data.message.session_key; //response.message.session_key
-                        //获取用户信息，并发送给后台
-                        wx.getSetting({
-                                success: res => {
-                                    if (res.authSetting['scope.userInfo']) {
-                                        // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-                                        wx.getUserInfo({
-                                            success: res => {
-                                                // 可以将 res 发送给后台解码出 unionId
-                                                _this.globalData.userInfo = res.userInfo
-
-                                                // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-                                                // 所以此处加入 callback 以防止这种情况
-                                                if (_this.userInfoReadyCallback) {
-                                                    _this.userInfoReadyCallback(res)
-                                                }
-                                            }
-                                        })
-                                    }
-                                }
-                            }),
-                            wx.getSystemInfo({
-                                success: function(res) {
-                                    if (res.model == 'iPhone X') {
-                                        _this.globalData.isIpx = true;
-                                    }
-                                },
-                            })
+                      _this.apiData.code = res.code; //登录需要的code
+                      _this.apiData.session_key = response.data.message.session_key; //response.message.session_key
+                      //获取用户信息，并发送给后台
+                      wx.getUserInfo({
+                        success: function (res) {
+                          console.log(res.userInfo);
+                          wx: wx.request({
+                            url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
+                            data: {
+                              session_key: response.data.message.session_key,
+                              nickname: res.userInfo.nickName,
+                              avatarurl: res.userInfo.avatarUrl,
+                              gender: res.userInfo.gender,
+                              province: res.userInfo.province,
+                              city: res.userInfo.city,
+                              country: res.userInfo.country,
+                            },
+                            header: {
+                              'content-type': 'application/json' //默认值
+                            },
+                            method: 'POST',
+                            success: function (res) { },
+                            fail: function (res) { },
+                            complete: function (res) { },
+                          })
+                        }
+                      })
                     }
                 })
 

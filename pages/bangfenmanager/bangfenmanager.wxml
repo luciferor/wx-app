@@ -15,16 +15,6 @@
                           <span class="bf">{{owner.bangfen}}邦分</span>
                       </view>
                   </block>
-
-                  <block wx:key="*this" wx:for="{{ownerlist}}" wx:for-index="idx" wx:for-item="owner" wx:if="{{owner.name!=''}}">
-                      <view class="item-ans">
-                          <span>
-                              <radio color="#5398ff" class="radio" value="{{owner.id}}" checked="{{false}}">{{owner.name}}</radio>
-                          </span>
-                          <span class="bf">{{owner.bangfen}}邦分</span>
-                      </view>
-                  </block>
-
               </scroll-view>
           </swiper-item>
           <swiper-item>
