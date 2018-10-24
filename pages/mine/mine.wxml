@@ -1,10 +1,11 @@
 <!--mine.wxml-->
 <view class="view-container">
+     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
      <image src='../../images/mine/img_wode_beijing.png' class='bgimg'></image>
      <view class="top">
         <view class='info-container'>
             <view class='left-container'  bindtap='navigateToSetting'>
-                <image src="{{userInfo.avatarurl==null||userInfo.avatarurl==''?'../../images/mine/head_default_icon.png':'https://devqypyp.xiaohuibang.com'+ userInfo.avatarurl}}" class='pic'></image>
+                <image src="{{userInfo.avatarurl==null||userInfo.avatarurl==''?'../../images/mine/head_default_icon.png': userInfo.avatarurl}}" class='pic'></image>
                 <text class='uname'>{{userInfo.name}}</text>
             </view>
             <view class='right-container' bindtap='navigateToNotice'>

@@ -24,6 +24,46 @@ Page({
   onReady: function () {
     this.getNoticeList(0,1);
   },
+
+  //不通过
+  handleReject(e){
+    let notice = this.data.applyNotice[index];
+    api.$https('/toexamine/target', {
+      session_key: app.apiData.session_key,
+      type: notice.type,
+      id: notice.id,
+      status:'0'
+    }, 'POST', function (data) {
+      if (data.data.success) {
+      }
+    }, function () {
+      console.log(请求失败);
+    });
+  },
+  //通过
+  handlePass(e){
+    let index = e.currentTarget.id;
+    this.data.applyNotice[index].check_hidden = !this.data.applyNotice[index].check_hidden;
+    this.setData({
+      applyNotice: this.data.applyNotice
+    });
+    let notice = this.data.applyNotice[index];
+    api.$https('/toexamine/target', {
+      session_key: app.apiData.session_key,
+      type: notice.type,
+      id: notice.id,
+      status: '1'
+    }, 'POST', function (data) {
+      if (data.data.success) {
+        console.log("=========" + data.data.message);
+      }
+    }, function () {
+      console.log(请求失败);
+    });
+  },
+
+
+
   //获取通知列表
   getNoticeList(types,pages){
     let _this = this;
@@ -94,6 +134,7 @@ Page({
   },
   //审核弹窗
   showCheckBox(e){
+    console.log(e.currentTarget.id)
     let index = e.currentTarget.id;
     this.data.applyNotice[index].check_hidden = !this.data.applyNotice[index].check_hidden;
     this.setData({
