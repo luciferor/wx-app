@@ -35,6 +35,7 @@ Page({
     this.setData({
       userInfo: data.data.message
     });
+    console.log(this.data.userInfo)
   },
   dofail(data) {
     console.log('请求失败');

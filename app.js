@@ -7,6 +7,7 @@ App({
         code: '', //登录需要的code
         api: 'https://devqypyp.xiaohuibang.com', //接口根地址
         session_key: '', //response.message.session_key
+        userstatus:true
     },
     onload: function(opiton) {
         this.setData({
@@ -43,6 +44,7 @@ App({
                       wx.getUserInfo({
                         success: function (res) {
                           console.log(res.userInfo);
+                          _this.apiData.userstatus = false;
                           wx: wx.request({
                             url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
                             data: {

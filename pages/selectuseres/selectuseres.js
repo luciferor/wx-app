@@ -1,4 +1,5 @@
-var api = require('../../utils/api.js');
+var api = require('../../utils/api.js')
+const { $Toast } = require('../../dist/base/index');
 var app = getApp();
 Page({
   data: {
@@ -40,13 +41,14 @@ Page({
     searchuserlist:[],//搜索用户
   },
   selectedevent(e){
+    let arr = e.currentTarget.dataset.replyType.split('|');
     this.setData({
-      selectid: e.currentTarget.dataset.replyType,
+      selectid:arr[0],
     })
     //console.log(e.currentTarget.dataset.replyType);
     //临时变量
     this.data.selecteduser.push({
-      id: e.currentTarget.dataset.replyType,
+      id:arr[0],
     });
     this.setData({
       count:this.data.selecteduser.length
@@ -68,7 +70,8 @@ Page({
             name: item[i].name,
             pinyin: item[i].letter,
             post: '暂无岗位',
-            img: item[i].user_img
+            img: item[i].user_img,
+            ischecked:false
           })
         }
       }
@@ -140,6 +143,10 @@ Page({
     console.log(_this.data.selecteduser);
     api.$http(function (res) {
       console.log(res);
+      if(res.data.success){
+        _this.alertsuccess('他人'+_this.data.othertype+'成功');
+        wx.navigateBack();
+      }
     }, function (err) {
       console.log(err);
     },'/WeChat/Applet/changeGradeApplyByOther',{
@@ -149,5 +156,11 @@ Page({
         type: _this.data.othertype == '加分' ? 'add' :'reduce',
         user_ids:selused.substr(1)
     },"POST")
+  },
+  alertsuccess(_str){
+    $Toast({
+      content: _str,
+      type: 'success'
+    });
   }
 });

@@ -14,8 +14,8 @@
           class="i-index-demo-item" 
           wx:for="{{searchuserlist}}" 
           wx:for-index="index"  
-          wx:for-item="item" data-reply-Type="{{item.id}}" bindtap='selectedevent'>
-          <view class="{{item.id==selectid?'unlistboxbig':'listboxbig'}}">
+          wx:for-item="item" data-reply-Type="{{item.id+'|'+index}}" bindtap='selectedevent'>
+          <view class="{{item.ischecked?'unlistboxbig':'listboxbig'}}">
             <view class='imgbox fl'><image src='../../images/tabs/icon_tab_wode_selected.png'></image></view>
             <view class='namebox fl'>{{item.name}}</view>
             <view class='postbox fl'>岗位为空</view>
@@ -35,8 +35,8 @@
                     wx:for="{{item.list}}" 
                     wx:for-index="in" 
                     wx:key="{{in}}" 
-                    wx:for-item="it" data-reply-Type="{{it.id}}" bindtap='selectedevent'>
-                    <view class="{{it.id==selectid?'unlistboxbig':'listboxbig'}}">
+                    wx:for-item="it" data-reply-Type="{{it.id+'|'+in}}" bindtap='selectedevent'>
+                    <view class="{{it.ischecked?'unlistboxbig':'listboxbig'}}">
                       <view class='imgbox fl'><image src='../../images/tabs/icon_tab_wode_selected.png'></image></view>
                       <view class='namebox fl'>{{it.name}}</view>
                       <view class='postbox fl'>{{it.post}}</view>
@@ -52,4 +52,5 @@
         <button bindtap='otherevents' style="width:160rpx; background:#5398ff;" type="primary" size="{{defaultSize}}" plain="{{plain}}" hover-class="other-button-hover">确定</button>
         </view>
     </view>
+    <i-toast id="toast" />
 </view>

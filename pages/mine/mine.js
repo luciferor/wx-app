@@ -5,7 +5,7 @@ const app = getApp()
 
 Page({
   data: {
-    hasUserInfo: false,
+    hasUserInfo: app.apiData.userstatus,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     showRemindBox : false,
     userInfo : {

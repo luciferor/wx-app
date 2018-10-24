@@ -92,7 +92,7 @@
     </swiper>
 
     <view class='bottom-container'>
-       <text class='num-text'>已添加目标({{totalTargetNum}}个)</text>
+       <text class='num-text'>已添加目标({{rankTargetNum+scoreTargetNum+customTargetNum}}个)</text>
        <view class='button-container'>
           <text class='reset'>重置</text>
           <button class='confirm'>确定</button>

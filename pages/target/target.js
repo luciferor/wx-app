@@ -8,10 +8,9 @@ Page({
     currentIndex: 0,
     "firstList": ["不二家棒棒糖", "清风湿至今", "床上四件套", "其他噢", "我要加一百分", "野心勃勃", "不二家棒棒糖", "清风湿至今", "床上四件套", "其他噢", "我要加一百分", "野心勃勃"],
     "secondList": ["帮助他人", "保持桌面清洁", "有责任心", "乱丢垃圾", "随地吐痰", "不讲卫生", "帮助他人", "保持桌面清洁", "有责任心", "乱丢垃圾", "随地吐痰", "不讲卫生","帮助他人", "保持桌面清洁", "有责任心", "乱丢垃圾", "随地吐痰", "不讲卫生"],
-    rankTargetNum : 0,
-    scoreTargetNum: 2,
-    customTargetNum : 3,
-    totalTargetNum : 5,
+    rankTargetNum: 0,//排名目标
+    scoreTargetNum: 0,//邦分目标
+    customTargetNum: 0,//自定义目标
     showApplyBox : false,
     showTypeBox : false,
     showRankBox: false,
@@ -49,6 +48,7 @@ Page({
         name: '第三名'
       }
     ],
+
   },
   handleAnimalChange(_value) {
     console.log(_value);
