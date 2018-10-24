@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "设置",
+  "navigationBarBackgroundColor": "#ffffff",
   "usingComponents": {
     "i-action-sheet": "../../dist/action-sheet/index",
     "i-modal": "../../dist/modal/index",

@@ -6,7 +6,7 @@
           <view class='icon-container' bindtap="chooseimage">
               <text class='explain-text'>头像</text>
               <view class='pic-container'>
-                  <image src='../../images/tabs/icon_tab_wode_selected.png' class='upic'></image>
+                  <image src="{{userInfo.avatarurl==null||userInfo.avatarurl==''?'../../images/mine/head_default_icon.png':'https://devqypyp.xiaohuibang.com'+ userInfo.avatarurl}}" class='upic'></image>
                   <image src='../../images/icon_caozuo_right.png' class='arrow'></image>
               </view>
           </view>

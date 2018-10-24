@@ -19,22 +19,25 @@
           <view  wx:if="{{allNotice.length >= 1}}">
                 <block wx:key="*this" wx:for="{{allNotice}}" wx:for-index="allIndex" wx:for-item="allItem">
                   <view class='time-container'>
-                      <text class='time-text'>allItem.created_at</text>
+                      <text class='time-text'>{{allItem.created_at}}</text>
                   </view>
                   <view class='notice-container'>
                       <view>
                           <i-badge dot i-class='badge' >
-                          <image src='../../images/tabs/icon_tab_wode_selected.png' class='upic'></image>                     
+                          <image src="{{allItem.user_img==null||allItem.user_img==''?'../../images/mine/head_default_icon.png':'https://devqypyp.xiaohuibang.com'+ allItem.user_img}}" class='upic'></image>                     
                           </i-badge>
                       </view>
                       <view class='content-container'>
                           <view class='name-container'>
-                          <text class='uname'>allItem.name</text>
+                          <text class='uname'>{{allItem.name}}</text>
                           <text class='status'>已通过</text>
                       </view>
                       <view class='info-container'>
-                            <text class='title'>allItem.title</text>
+                            <text class='title'>{{allItem.title}}</text>
                             <text class='content'></text>
+                      </view>
+                       <view class='dot-container'>
+                          <image src='../../images/mine/icon_wode_shenhe.png' class='dot-image'></image>
                       </view>
                       </view>
                   </view>
@@ -52,22 +55,29 @@
           <view wx:if="{{applyNotice.length >= 1}}">
                  <block wx:key="*this" wx:for="{{applyNotice}}" wx:for-index="applyIndex" wx:for-item="applyItem">
                   <view class='time-container'>
-                      <text class='time-text'>applyItem.created_at</text>
+                      <text class='time-text'>{{applyItem.created_at}}</text>
                   </view>
                   <view class='notice-container'>
                       <view>
                           <i-badge dot i-class='badge' >
-                          <image src='../../images/tabs/icon_tab_wode_selected.png' class='upic'></image>                     
+                          <image src="{{applyItem.user_img==null||applyItem.user_img==''?'../../images/mine/head_default_icon.png':'https://devqypyp.xiaohuibang.com'+ applyItem.user_img}}" class='upic'></image>                     
                           </i-badge>
                       </view>
                       <view class='content-container'>
                           <view class='name-container'>
-                          <text class='uname'>applyItem.name</text>
-                          <text class='status'>已通过</text>
+                          <text class='uname'>{{applyItem.name}}</text>
+                          <text class='status apply-text'>待审核</text>
                       </view>
                       <view class='info-container'>
-                            <text class='title'>applyItem.title</text>
+                            <text class='title'>{{applyItem.title}}</text>
                             <text class='content'></text>
+                      </view>
+                      <view class='dot-container' id="{{applyIndex}}" bindtap="showCheckBox">
+                         <view class='check-container' hidden='{{applyItem.check_hidden}}'>
+                              <text class="reject-btn">不通过</text>
+                              <text class="pass-btn">通过</text>
+                         </view>
+                          <image src='../../images/mine/icon_wode_shenhe.png' class='dot-image'></image>
                       </view>
                       </view>
                   </view>
@@ -90,16 +100,16 @@
                   <view class='notice-container'>
                       <view>
                           <i-badge dot i-class='badge' >
-                          <image src='../../images/tabs/icon_tab_wode_selected.png' class='upic'></image>                     
+                          <image src="{{passItem.user_img==null||passItem.user_img==''?'../../images/mine/head_default_icon.png':'https://devqypyp.xiaohuibang.com'+ passItem.user_img}}" class='upic'></image>                     
                           </i-badge>
                       </view>
                       <view class='content-container'>
                           <view class='name-container'>
-                          <text class='uname'>passItem.name</text>
-                          <text class='status'>已通过</text>
+                          <text class='uname'>{{passItem.name}}</text>
+                          <text class='status pass-text'>已通过</text>
                       </view>
                       <view class='info-container'>
-                            <text class='title'>passItem.title</text>
+                            <text class='title'>{{passItem.title}}</text>
                             <text class='content'></text>
                       </view>
                       </view>
@@ -118,21 +128,21 @@
            <view wx:if="{{rejectNotice.length >= 1}}">
                  <block wx:key="*this" wx:for="{{rejectNotice}}" wx:for-index="rejectIndex" wx:for-item="rejectItem">
                   <view class='time-container'>
-                      <text class='time-text'>rejectItem.created_at</text>
+                      <text class='time-text'>{{rejectItem.created_at}}</text>
                   </view>
                   <view class='notice-container'>
                       <view>
                           <i-badge dot i-class='badge' >
-                          <image src='../../images/tabs/icon_tab_wode_selected.png' class='upic'></image>                     
+                          <image src="{{rejectItem.user_img==null||rejectItem.user_img==''?'../../images/mine/head_default_icon.png':'https://devqypyp.xiaohuibang.com'+ rejectItem.user_img}}" class='upic'></image>                     
                           </i-badge>
                       </view>
                       <view class='content-container'>
                           <view class='name-container'>
-                          <text class='uname'>rejectItem.name</text>
-                          <text class='status'>已通过</text>
+                          <text class='uname'>{{rejectItem.name}}</text>
+                          <text class='status reject-text'>未通过</text>
                       </view>
                       <view class='info-container'>
-                            <text class='title'>rejectItem.title</text>
+                            <text class='title'>{{rejectItem.title}}</text>
                             <text class='content'></text>
                       </view>
                       </view>

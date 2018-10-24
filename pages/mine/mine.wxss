@@ -33,6 +33,8 @@ page{
 .pic{
   width: 64rpx;
   height: 64rpx;
+  border-radius: 40rpx;
+  border: 3rpx solid #ffffff;
 }
 .uname{
   margin-left: 17rpx;

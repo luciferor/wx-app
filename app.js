@@ -1,12 +1,12 @@
 //app.js
 App({
-  data:{
+  data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  apiData:{
-    code:'',//登录需要的code
+  apiData: {
+    code: '',//登录需要的code
     api: 'https://devqypyp.xiaohuibang.com',//接口根地址
-    session_key:'',//response.message.session_key
+    session_key: '',//response.message.session_key
   },
   onLaunch: function () {
     var _this = this
@@ -25,7 +25,7 @@ App({
           url: 'https://devqypyp.xiaohuibang.com/login/miniprogram/Applet', //小程序登录
           data: {
             code: res.code,
-            company_id:''
+            company_id: ''
           },
           method: "POST",
           header: {
@@ -36,31 +36,13 @@ App({
             _this.apiData.session_key = response.data.message.session_key;//response.message.session_key
             //获取用户信息，并发送给后台
             wx.getUserInfo({
-              success:function(res){
-                //console.log(res.userInfo);
-                wx:wx.request({
-                  url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
-                  data:{
-                    session_key: response.data.message.session_key,
-                    nickname: res.userInfo.nickName,
-                    avatarurl: res.userInfo.avatarUrl,
-                    gender: res.userInfo.gender,
-                    province: res.userInfo.province,
-                    city: res.userInfo.city,
-                    country: res.userInfo.country,
-                  },
-                  header: {
-                    'content-type': 'application/json' //默认值
-                  },
-                  method: 'POST',
-                  success: function(res) {},
-                  fail: function(res) {},
-                  complete: function(res) {},
-                })
+              success(res){
+                console.log("========s")
+                console.log(res)
               }
             })
           },
-          fail: function (res) {alert('登录失败')},
+          fail: function (res) { alert('登录失败') },
         })
       }
     })
@@ -84,19 +66,19 @@ App({
         }
       }
     }),
-    wx.getSystemInfo({
-      success: function(res) {
-        if (res.model == 'iPhone X') {
-          _this.globalData.isIpx = true;
-        }
-      },
-    })
+      wx.getSystemInfo({
+        success: function (res) {
+          if (res.model == 'iPhone X') {
+            _this.globalData.isIpx = true;
+          }
+        },
+      })
   },
   globalData: {
     userInfo: null,
     isIpx: false,
   },
-  config:{
+  config: {
     title_height: "64",
     statusbarHeight: "24",
     titleIcon_height: "32",
@@ -104,7 +86,7 @@ App({
     title_top: "24",
     title_text: "xxx", // iphone X + 24        
     prefix: 24,
-    x_statusbarHeight:'48',
-    x_title_height : '88'
+    x_statusbarHeight: '48',
+    x_title_height: '88'
   }
 })

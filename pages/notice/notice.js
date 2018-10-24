@@ -18,13 +18,13 @@ Page({
     allPage : 1,
     applyPage : 1,
     passPage : 1,
-    rejectPage : 1
+    rejectPage : 1,
   },
 
   onReady: function () {
     this.getNoticeList(0,1);
   },
-
+  //获取通知列表
   getNoticeList(types,pages){
     let _this = this;
     api.$https('/noticelist/target', {
@@ -56,10 +56,22 @@ Page({
           applyNotice: []
         });
       }
+      let list = [];
+      for (var index in data) {//x = index
+        list.push({ 
+            id: data[index].id,
+            name: data[index].name,
+            state: data[index].state,
+            created_at: data[index].created_at,
+            title : data[index].title,
+            type:data[index].type,
+            user_img: data[index].user_img,
+            check_hidden : true
+          });
+      }
       this.setData({
-        applyNotice: this.data.applyNotice.concat(data)
+        applyNotice: this.data.applyNotice.concat(list)
       })
-
     }else if(types == 2){
       if (page == 1) {
         this.setData({
@@ -79,6 +91,14 @@ Page({
         rejectNotice: this.data.rejectNotice.concat(data)
       })
     }
+  },
+  //审核弹窗
+  showCheckBox(e){
+    let index = e.currentTarget.id;
+    this.data.applyNotice[index].check_hidden = !this.data.applyNotice[index].check_hidden;
+    this.setData({
+      applyNotice: this.data.applyNotice
+    })
   },
   
   //切换tab

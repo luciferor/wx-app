@@ -4,7 +4,7 @@
      <view class="top">
         <view class='info-container'>
             <view class='left-container'  bindtap='navigateToSetting'>
-                <image src='../../images/tabs/icon_tab_mine_default.png' class='pic'></image>
+                <image src="{{userInfo.avatarurl==null||userInfo.avatarurl==''?'../../images/mine/head_default_icon.png':'https://devqypyp.xiaohuibang.com'+ userInfo.avatarurl}}" class='pic'></image>
                 <text class='uname'>{{userInfo.name}}</text>
             </view>
             <view class='right-container' bindtap='navigateToNotice'>

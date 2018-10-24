@@ -94,3 +94,71 @@ page{
   font-size: 30rpx;
   margin-top: 20rpx;
 }
+
+.dot-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.dot-image{
+  width: 40rpx;
+  height: 8rpx;
+  margin-top: 20rpx;
+}
+
+.apply-text{
+  color: #ffb400;
+}
+
+.pass-text{
+  color: #5398ff;
+}
+
+.reject-text{
+  color: #ff4b48;
+}
+
+.check-container{
+  display: flex;
+  flex-direction: row;
+  border: 1rpx solid #5398ff;
+  float: right;
+  z-index: 100rpx;
+  position: absolute;
+  right: 80rpx;
+  margin-top: 10rpx;
+  border-radius: 4rpx;
+}
+.check-container:after{
+  content: '';
+  position: absolute;
+  top:5rpx;
+  right:-10rpx;
+  width:0;
+  height:0;
+  border-top:10rpx solid transparent;
+  border-bottom:10rpx solid transparent;
+  border-left:10rpx solid #5398ff;
+ }
+
+.reject-btn{
+  background: white;
+  color: #5398ff;
+  font-size: 32rpx;
+  width: 180rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center
+}
+
+.pass-btn{
+  background: #5398ff;
+  color: white;
+  font-size: 32rpx;
+  width: 180rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: none;
+  text-align: center
+}

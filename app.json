@@ -1,7 +1,7 @@
 {
     "pages": [
-      "pages/mine/mine",
-      "pages/setting/setting",
+       "pages/mine/mine",
+       "pages/setting/setting",
         "pages/create/create",
         "pages/create_mutual/create_mutual",
         "pages/create_self/create_self",
