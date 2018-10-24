@@ -8,7 +8,7 @@
    <view class='score-container'>
       <view class='operate-container'>
           <text class='operate-text'>加分权利</text>
-          <input class='operate-input' placeholder='请输入邦分数量'></input>
+          <input class='operate-input' placeholder='请输入邦分数量' value='{{}}'></input>
           <text class='operate-right-text'>邦分/人</text>
       </view>
 
@@ -16,14 +16,14 @@
 
       <view class='operate-container'>
           <text class='operate-text'>减分权利</text>
-          <input class='operate-input' placeholder='请输入邦分数量'></input>
+          <input class='operate-input' placeholder='请输入邦分数量' value='{{}}'></input>
           <text class='operate-right-text'>邦分/人</text>
       </view>
    </view>
 
    <view class='max-container'>
     <text class='operate-text'>每次加减分最大值</text>
-          <input class='operate-input-max' placeholder='请输入邦分数量'></input>
+          <input class='operate-input-max' placeholder='请输入邦分数量' value='{{}} '></input>
           <text class='operate-right-text'>邦分/人</text>
    </view>
 

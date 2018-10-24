@@ -17,8 +17,9 @@ Page({
       score:"0",
       total_score:"0",
       user_img:"",
-      targetList:[]
-    }
+      isadmin:0,
+    },
+    targetList: []
   },
    onReady:function(){
       this.getUserInfos();
@@ -81,8 +82,10 @@ Page({
   },
   //跳转到组织
   navigateToOrg(){
+    console.log("======" );
+    console.log("======" + this.data.userInfo.isadmin);
     wx.navigateTo({
-      url: '../organization/organization'
+      url: "../organization/organization?isAdmin=" + this.data.userInfo.isadmin
     })
   },
   //跳转到我的目标
