@@ -1,12 +1,17 @@
 //app.js
 App({
   data:{
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    company_id:'',//企业id
   },
   apiData:{
     code:'',//登录需要的code
     api: 'https://devqypyp.xiaohuibang.com',//接口根地址
     session_key:'',//response.message.session_key
+  },
+  onload:function(opiton){
+    this.setData({
+      company_id:option.company_id
+    })
   },
   onLaunch: function () {
     var _this = this
@@ -25,7 +30,7 @@ App({
           url: 'https://devqypyp.xiaohuibang.com/login/miniprogram/Applet', //小程序登录
           data: {
             code: res.code,
-            company_id:'1'
+            company_id:_this.data.company_id
           },
           method: "POST",
           header: {
@@ -35,9 +40,10 @@ App({
             _this.apiData.code = res.code;//登录需要的code
             _this.apiData.session_key = response.data.message.session_key;//response.message.session_key
             //获取用户信息，并发送给后台
+
             wx.getUserInfo({
               success:function(res){
-                //console.log(res.userInfo);
+                console.log(res.userInfo);
                 wx:wx.request({
                   url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
                   data:{

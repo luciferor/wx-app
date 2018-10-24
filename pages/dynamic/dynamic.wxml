@@ -72,10 +72,10 @@
             <view class="user-li-title-box fl">
                 <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">{{subs.sub(dit.name,4)}}...</span><span class="user-li-title-box-listtitle-time">{{dit.created_at
 }}</span></view>
-                <view class="user-li-title-box-listdes">{{subs.sub(dit.content,15)}}...</view>
+                <view class="user-li-title-box-listdes">{{subs.sub(dit.content,12)}}...</view>
             </view>
             <view class="user-li-right-bf fr">
-                {{dit.status=='add'?'+'+dit.bangfen:'-'+dit.bangfen}}邦分
+                {{dit.status=='add'?'+'+dit.bangfen:''+dit.bangfen}}邦分
             </view>
           </view>
       </view>

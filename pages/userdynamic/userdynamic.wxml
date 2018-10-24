@@ -9,7 +9,7 @@
           <view class="user-li-title-box-listdes">{{subs.sub(item.content,12)}}...</view>
       </view>
       <view class="user-li-right-bf fr">
-          {{item.status=='add'?'+':'-'}}{{item.bangfen}}邦分
+          {{item.status=='add'?'+':''}}{{item.bangfen}}邦分
       </view>
     </view>
 </view>

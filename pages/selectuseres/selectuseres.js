@@ -34,9 +34,10 @@ Page({
     selectid:1,//选中的id
     selecteduser:[],//选中的人
     count:0,//选中的人数
-    type:'',
+    othertype:'',
     buff:'',
     reasonr:'',
+    searchuserlist:[],//搜索用户
   },
   selectedevent(e){
     this.setData({
@@ -57,7 +58,7 @@ Page({
   },
   onReady() {
     let _this = this;
-    api.$httpcom(function (res) {
+    api.$http(function (res) {
       _this.data.cities = [];
       let item = res.data.message;
       for (var i = 0; i < res.data.message.length; i++) {
@@ -76,11 +77,15 @@ Page({
       console.log(err)
     }, '/WeChat/Applet/getUserList', {
         session_key: app.apiData.session_key
-    }, 'POST',function(){
-    }); 
+    }, 'POST'); 
   },
   onLoad(option){
     console.log(option);
+    this.setData({
+      othertype:option.type,
+      buff:option.buff,
+      reasonr:option.reasonr,
+    })
     let _this = this;
     setTimeout(function(){
       _this.convertdata();
@@ -111,5 +116,38 @@ Page({
     this.setData({
       cities: this.data.cities
     })
+  },
+  changeSearch(e){
+    let _this = this;
+    api.$http(function(res){
+      _this.setData({
+        searchuserlist:res.data.message
+      })
+    },function(err){
+      console.log(err)
+      },'/WeChat/Applet/getUserByName',
+    {
+      session_key:app.apiData.session_key,
+      name:e.detail.value
+    },'POST')
+  },
+  otherevents(){
+    let _this = this;
+    let selused='';
+    for (let i = 0; i < _this.data.selecteduser.length;i++){
+      selused += ";"+_this.data.selecteduser[i].id;
+    }
+    console.log(_this.data.selecteduser);
+    api.$http(function (res) {
+      console.log(res);
+    }, function (err) {
+      console.log(err);
+    },'/WeChat/Applet/changeGradeApplyByOther',{
+        session_key:app.apiData.session_key,
+        bangfen:_this.data.buff,
+        reason: _this.data.reasonr,
+        type: _this.data.othertype == '加分' ? 'add' :'reduce',
+        user_ids:selused.substr(1)
+    },"POST")
   }
 });

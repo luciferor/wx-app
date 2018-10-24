@@ -1,4 +1,5 @@
 {
+  "navigationBarBackgroundColor": "#FFFFFF",
   "navigationBarTitleText": "通知",
   "usingComponents": {
     "i-tabs": "../../dist/tabs/index",

@@ -1,8 +1,10 @@
 {
-    "navigationBarTitleText": "邦分管理",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "navigationBarTitleText": "邦分管理",
     "usingComponents": {
         "i-modal": "../../dist/modal/index",
         "i-action-sheet": "../../dist/action-sheet/index",
-        "header": "/components/header/header"
+        "header": "/components/header/header",
+        "i-toast": "../../dist/toast/index"
     }
 }

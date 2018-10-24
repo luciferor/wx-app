@@ -1,5 +1,6 @@
 {
-    "usingComponents": {
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
         "i-icon": "../../dist/icon/index",
         "i-radio-group": "../../dist/radio-group/index",
         "i-radio": "../../dist/radio/index",

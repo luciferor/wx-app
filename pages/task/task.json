@@ -1,4 +1,5 @@
 {
+  "navigationBarBackgroundColor": "#FFFFFF",
   "navigationBarTitleText": "邦分管理",
   "usingComponents": {
     "i-radio-group": "../../dist/radio-group/index",
