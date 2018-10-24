@@ -31,5 +31,17 @@ Page({
       console.log(data.data.message);
     });
   },
+  //修改邦分计划
+  changePlanDetail() {
+    let _this = this;
+    api.$https('/WeChat/appreciate/allotshow', {
+      session_key: app.apiData.session_key,
+      id: "19"
+    }, 'POST', function (data) {
+      console.log(data.data.message);
+    }, function (data) {
+      console.log(data.data.message);
+    });
+  },
 });
 

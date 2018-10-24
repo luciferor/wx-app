@@ -20,7 +20,7 @@ page{
     top: 0px;
     height: auto;
     flex-direction: column;
-    padding-bottom: 20rpx;
+    min-height: 300rpx;
 }
 
 .info-container{
@@ -146,6 +146,7 @@ page{
   width: 58rpx;
   height: 58rpx;
   margin-right: 24rpx;
+  margin-top: 10rpx;  
 }
 .horizontal-line{
   background: #eeeeee;

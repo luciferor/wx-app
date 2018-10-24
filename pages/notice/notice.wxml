@@ -1,4 +1,5 @@
 <!-- notice.wxml -->
+<wxs module="subs" src="../../filter/substres.wxs"></wxs>
 <view class='layout-container'>
     
     <view class='top-fiexd'>
@@ -22,20 +23,20 @@
                   </view>
                   <view class='notice-container'>
                       <view>
-                          <i-badge dot i-class='badge' >
+                          <i-badge  i-class='badge' >
                           <image src="{{allItem.user_img==null||allItem.user_img==''?'../../images/mine/head_default_icon.png':'https://devqypyp.xiaohuibang.com'+ allItem.user_img}}" class='upic'></image>                     
                           </i-badge>
                       </view>
                       <view class='content-container'>
                           <view class='name-container'>
                           <text class='uname'>{{allItem.name}}</text>
-                          <text class='status'>已通过</text>
+                          <text class='status'>{{subs.status(allItem.status)}}</text>
                       </view>
                       <view class='info-container'>
-                            <text class='title'>{{allItem.title}}</text>
-                            <text class='content'></text>
+                            <text class='title'>{{allItem.type == 1?'排名目标':'邦分目标'}}</text>
+                            <text class='content'>{{allItem.title}}</text>
                       </view>
-                       <view class='dot-container'>
+                       <view class='dot-container' hidden='true'>
                           <image src='../../images/mine/icon_wode_shenhe.png' class='dot-image'></image>
                       </view>
                       </view>
@@ -68,8 +69,8 @@
                           <text class='status apply-text'>待审核</text>
                       </view>
                       <view class='info-container'>
-                            <text class='title'>{{applyItem.title}}</text>
-                            <text class='content'></text>
+                            <text class='title'>{{applyItem.type == 1?'排名目标':'邦分目标'}}</text>
+                            <text class='content'>{{applyItem.title}}</text>
                       </view>
                       <view class='dot-container' id="{{applyIndex}}" bindtap="showCheckBox">
                          <view class='check-container' hidden='{{applyItem.check_hidden}}'>
@@ -108,8 +109,8 @@
                           <text class='status pass-text'>已通过</text>
                       </view>
                       <view class='info-container'>
-                            <text class='title'>{{passItem.title}}</text>
-                            <text class='content'></text>
+                            <text class='title'>{{passItem.type == 1?'排名目标':'邦分目标'}}</text>
+                            <text class='content'>{{passItem.title}}</text>
                       </view>
                       </view>
                   </view>
@@ -141,8 +142,8 @@
                           <text class='status reject-text'>未通过</text>
                       </view>
                       <view class='info-container'>
-                            <text class='title'>{{rejectItem.title}}</text>
-                            <text class='content'></text>
+                            <text class='title'>{{rejectItem.type == 1?'排名目标':'邦分目标'}}</text>
+                            <text class='content'>{{rejectItem.title}}</text>
                       </view>
                       </view>
                   </view>

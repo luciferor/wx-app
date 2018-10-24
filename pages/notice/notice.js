@@ -55,7 +55,7 @@ Page({
       status: '1'
     }, 'POST', function (data) {
       if (data.data.success) {
-        console.log("=========" + data.data.message);
+
       }
     }, function () {
       console.log(请求失败);

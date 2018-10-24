@@ -17,8 +17,9 @@ Page({
             score: "0",
             total_score: "0",
             user_img: "",
-            targetList: []
-        }
+            isadmin: 0,
+        },
+        targetList: []
     },
     onReady: function() {
         this.getUserInfos();
