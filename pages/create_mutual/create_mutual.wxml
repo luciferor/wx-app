@@ -6,14 +6,14 @@
     </i-tabs>
     <view wx:if="{{showContent=='tab1'}}" class="tab1-content">
         <view class="hangye-list">
-            <view wx:for="{{hangyeArr}}" wx:for-index="idx" data-num="{{idx}}" class="list-item  {{currHangye==idx?'selected':''}}" bindtap="selectHangye">
-                <text class="item-txt">{{item.text}}</text>
+            <view wx:for="{{hangyeArr}}" wx:for-index="idx" data-num="{{idx}}" data-industryId="{{item.industry_id}}" class="list-item  {{currHangye==idx?'selected':''}}" bindtap="selectHangye">
+                <text class="item-txt">{{item.name}}</text>
             </view>
         </view>
         <view class="xingwei-list">
             <view wx:for="{{xingweiArr}}" wx:for-index="idx1" data-num="{{idx1}}" class="list-item  {{currXingwei==idx1?'picked':''}}" bindtap="pickXingwei">
                 <label>
-                    <text class="item-txt">{{item.text}}</text>
+                    <text class="item-txt">{{item.behavior}}</text>
                     <text class="item-score">({{item.score}}邦分)</text>
                     <checkbox class="xingwei-picked"></checkbox>
                 </label>
@@ -28,8 +28,11 @@
             </view>
             <view class="set-scores-wrap">
                 <text class="score-type-tip">行为类型</text>
-                <picker bindchange="bindPickerChange" value="{{typeIndex}}" range="{{typeArray}}" style="margin-right:120rpx;">
-                    <view class="picker">{{typeArray[typeIndex]}}<icon class="type-picker"/></view>
+                <picker bindchange="bindPickerChange" value="{{typeIndex}}" range="{{typeArray}}" style="margin:0 130rpx 0 14rpx; flex: 0 0 auto;">
+                    <view class="picker">
+                        {{typeArray[typeIndex]}}
+                        <icon class="type-picker" />
+                    </view>
                 </picker>
                 <text class="set-scores" bindtap="scoreToggle">{{scoreStatus}}</text>
             </view>
@@ -44,8 +47,8 @@
         <view class="lists-wrap">
             <text class="top-tips">自定义任务</text>
             <view class="zidingyi-list">
-                <view wx:for="{{zidingyiArr}}" wx:for-index="idx" data-num="{{idx}}" class="list-item">
-                    <icon class="remove-item-btn" bindtap="removeXingwei" />
+                <view wx:for="{{zidingyiArr}}" wx:for-index="idx" class="list-item">
+                    <icon class="remove-item-btn" bindtap="removeXingwei" data-idx="{{idx}}" />
                     <text class="item-txt">{{item.text}}</text>
                     <text class="item-score">{{item.score}}邦分</text>
                 </view>
@@ -61,4 +64,8 @@
         <text class="reset-btn" bindtap="handleReset">重置</text>
         <button class="sure-btn" bindtap="handleSure">确定</button>
     </view>
+    <i-toast id="toast" />
+    <i-modal title="提示" visible="{{ RomoveModal }}" bind:ok="OKRomove" bind:cancel="CancelRomove">
+        <view>确定要删除吗？</view>
+    </i-modal>
 </view>

@@ -1,39 +1,61 @@
-//index.js
+var api = require('../../utils/api.js');
 //获取应用实例
 const app = getApp()
 
 Page({
     data: {
-        current: 'tab2',
-        showContent: 'tab2',
+        current: 'tab1',
+        showContent: 'tab1',
         alreadyNum: 11,
         hangyeNum: 0,
         zidingyiNum: 1,
         userInfo: {},
         hasUserInfo: false,
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
-        hangyeArr: [{ text: '互联网' },
-            { text: '电子商111务' },
-            { text: '电子商务' },
-            { text: '互联网' },
-            { text: '电子商111务' },
-            { text: '电子商务' },
-            { text: '互联网' },
-            { text: '电子商111务' },
-            { text: '电子商务' },
-
+        hangyeArr: [{
+                "id": 934,
+                "industry_id": "49",
+                "name": "建筑安装业"
+            },
+            {
+                "id": 941,
+                "industry_id": "50",
+                "name": "建筑装饰和其他建筑业"
+            },
+            {
+                "id": 951,
+                "industry_id": "51",
+                "name": "批发业"
+            },
+            {
+                "id": 1018,
+                "industry_id": "52",
+                "name": "零售业"
+            },
+            {
+                "id": 1084,
+                "industry_id": "53",
+                "name": "铁路运输业"
+            }
         ],
-        xingweiArr: [
-            { text: '准时上班', score: '2' },
-            { text: '准时上班', score: '4' },
-            { text: '准时上班', score: '3' },
-            { text: '准时上班', score: '4' },
-            { text: '准时上班', score: '2' },
-            { text: '准时上班', score: '2' },
-            { text: '准时上班', score: '2' },
-            { text: '准时上班', score: '2' },
-            { text: '准时上班', score: '2' },
-            { text: '准时上班', score: '2' },
+        xingweiArr: [{
+                "id": 1,
+                "behavior": "测试内容---1",
+                "operation": 1,
+                "score": 1
+            },
+            {
+                "id": 4,
+                "behavior": "测试内容---2",
+                "operation": 1,
+                "score": 2
+            },
+            {
+                "id": 5,
+                "behavior": "测试内容---3",
+                "operation": 1,
+                "score": 3
+            }
         ],
         zidingyiArr: [
             { text: '每日晨會', score: '2' },
@@ -51,6 +73,7 @@ Page({
         scoreStatus: '选择邦分'
     },
     //事件处理函数
+
     handleChange({ detail }) {
         this.setData({
             current: detail.key,
@@ -85,6 +108,23 @@ Page({
             })
         }
     },
+    onReady: function() {
+        var _this = this
+        api.$http(function(res) {
+            if (res.data.message.length == 0) {
+                console.log('行业为空')
+            } else {
+                _this.setData({
+                    hangyeArr: res.data.message
+                })
+            }
+
+        }, function(err) {
+            console.log(err)
+        }, '/appreciate/industry', {
+            session_key: app.apiData.session_key
+        }, 'POST');
+    },
     getUserInfo: function(e) {
         console.log(e)
         app.globalData.userInfo = e.detail.userInfo
@@ -98,6 +138,23 @@ Page({
         this.setData({
             currHangye: currNum
         })
+
+        var data_industryId = e.currentTarget.dataset.industryId
+        var _this = this
+        api.$http(function(res) {
+            if (res.data.message.length == 0) {
+                console.log('行为为空')
+            } else {
+                _this.setData({
+                    xingweiArr: res.data.message
+                })
+            }
+        }, function(err) {
+            console.log(err)
+        }, '/appreciate/behavior', {
+            industry_id: data_industryId,
+            session_key: app.apiData.session_key
+        }, 'POST');
     },
     pickXingwei: function(e) {
         var currNum1 = e.currentTarget.dataset.num
@@ -145,5 +202,6 @@ Page({
                 { text: '积极热情', score: '2' }
             ]
         })
-    }
+    },
+
 })

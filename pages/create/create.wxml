@@ -2,7 +2,7 @@
 <view class="create-container">
   <view class="setting-area">
     <view class="setting-items">
-      <input class="setting-item organize-name" placeholder="请设置组织名称" />
+      <input class="setting-item organize-name" placeholder="请设置组织名称"  bindinput="bindKeyInput"/>
       <navigator class="setting-item" target="" url="../create_self/create_self" hover-class="navigator-hover" open-type="navigate">
         <view class="left-txt">
           自我管理行为
@@ -36,11 +36,11 @@
   </view>
   <view class="bottom-operation">
     <view class="agreement-reading">
-      <i-radio checked="{{checked}}" bindchange="handleAgreementChange" style=""></i-radio>
+      <i-radio checked="{{checked}}" bindchange="handleAgreementChange"></i-radio>
       <text style="margin-left:-20rpx;z-index:10;">我已阅读并同意</text>
       <text class="to-read" bindtap="openAgreement">《企汇邦用户协议》</text>
     </view>
-    <button class="create-and-invite">
+    <button class="create-and-invite" bindtap="createOrg" open-type='share'>
       <i-icon type="share" size="28" />
       创建并邀请成员
     </button>

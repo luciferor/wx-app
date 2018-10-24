@@ -1,4 +1,4 @@
-//index.js
+var api = require('../../utils/api.js');
 //获取应用实例
 const app = getApp()
 
@@ -10,9 +10,33 @@ Page({
         visibleRule: false,
         visibleFenpei: false,
         agreementStatus: false,
+        organizeName: '',
+        creatCompany: 187
     },
     //事件处理函数
+    onShareAppMessage: function() {
+        return {
+            title: '用邦分干了这杯事业，快来加入我们的团队吧……',
+            desc: '邦分管理',
+            path: '/pages/setting/setting?company_id=' + creatCompany, // 路径，传递参数到指定页面。
+            imageUrl: '../../images/minproShare.jpg',
+            success: function(res) {
+                console.log(res)
+                wx.switchTab({
+                    url: '../setting/setting',
+                });
+            },
+            fail: function(err) {
+                console.log('失败')
+                console.log(err)
+            }
+        }
+    },
     onLoad: function() {
+        wx.updateShareMenu({
+            withShareTicket: true,
+            success() {}
+        })
         if (app.globalData.userInfo) {
             this.setData({
                 userInfo: app.globalData.userInfo,
@@ -48,7 +72,9 @@ Page({
             hasUserInfo: true
         })
     },
-    handleAgreementChange({ detail = {} }) {
+    handleAgreementChange({
+        detail = {}
+    }) {
         this.setData({
             checked: detail.current
         });
@@ -77,10 +103,52 @@ Page({
             visibleFenpei: true
         });
     },
-
     closeFenpei() {
         this.setData({
             visibleFenpei: false
         });
     },
+    bindKeyInput: function(e) {
+        this.setData({
+            organizeName: e.detail.value
+        })
+    },
+    createOrg() {
+        var _this = this
+        var _organizeName = _this.data.organizeName
+        var _selfmanaged = [{
+            "id": 1,
+            "behavior": "测试内容---1",
+            "type": "1",
+            "score": "1"
+        }, {
+            "id": "",
+            "behavior": "我是自定义的自我管理",
+            "type": "1",
+            "score": "1"
+        }]
+        var _mutualmanaged = [{
+            "id": 4,
+            "behavior": "测试内容---2",
+            "type": "1",
+            "score": "2"
+        }, {
+            "id": "",
+            "behavior": "我是自定义的相互管理",
+            "type": "1",
+            "score": "2"
+        }]
+
+        api.$http(function(res) {
+            console.log(res)
+        }, function(err) {
+            console.log(err)
+        }, '/organization/create', {
+            session_key: app.apiData.session_key,
+            name: _organizeName,
+            selfmanaged: JSON.stringify(_selfmanaged),
+            mutualmanaged: JSON.stringify(_mutualmanaged)
+        }, 'POST');
+    },
+
 })
