@@ -7,6 +7,7 @@ App({
         code: '', //登录需要的code
         api: 'https://devqypyp.xiaohuibang.com', //接口根地址
         session_key: '', //response.message.session_key
+        userstatus: true
     },
     onload: function(opiton) {
         this.setData({
@@ -19,6 +20,7 @@ App({
         var logs = wx.getStorageSync('logs') || []
         logs.unshift(Date.now())
         wx.setStorageSync('logs', logs)
+
 
         // 登录
         wx.login({
@@ -37,80 +39,84 @@ App({
                         'content-type': 'application/json' //默认值
                     },
                     success(response) {
+                        console.log(response)
                         _this.apiData.code = res.code; //登录需要的code
                         _this.apiData.session_key = response.data.message.session_key; //response.message.session_key
                         //获取用户信息，并发送给后台
-
                         wx.getUserInfo({
-                                success: function(res) {
-                                    console.log(res.userInfo);
-                                    wx: wx.request({
-                                        url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
-                                        data: {
-                                            session_key: response.data.message.session_key,
-                                            nickname: res.userInfo.nickName,
-                                            avatarurl: res.userInfo.avatarUrl,
-                                            gender: res.userInfo.gender,
-                                            province: res.userInfo.province,
-                                            city: res.userInfo.city,
-                                            country: res.userInfo.country,
-                                        },
-                                        header: {
-                                            'content-type': 'application/json' //默认值
-                                        },
-                                        method: 'POST',
-                                        success: function(res) {},
-                                        fail: function(res) {},
-                                        complete: function(res) {},
-                                    })
-                                }
-                            })
-                            // 获取用户信息
-                        wx.getSetting({
-                                success: res => {
-                                    if (res.authSetting['scope.userInfo']) {
-                                        // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-                                        wx.getUserInfo({
-                                            success: res => {
-                                                // 可以将 res 发送给后台解码出 unionId
-                                                _this.globalData.userInfo = res.userInfo
+                            success: function(res) {
+                                console.log(res.userInfo);
+                                _this.apiData.userstatus = false;
+                                wx: wx.request({
+                                    url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
+                                    data: {
+                                        session_key: response.data.message.session_key,
+                                        nickname: res.userInfo.nickName,
+                                        avatarurl: res.userInfo.avatarUrl,
+                                        gender: res.userInfo.gender,
+                                        province: res.userInfo.province,
+                                        city: res.userInfo.city,
+                                        country: res.userInfo.country,
+                                    },
+                                    header: {
+                                        'content-type': 'application/json' //默认值
+                                    },
+                                    method: 'POST',
+                                    success: function(res) {
+                                        console.log(response)
+                                        if (response.data.code = "200" && _this.data.company_id != '') { //必须要是由申请加入的用户才会显示
+                                            wx.showModal({
+                                                title: '提示',
+                                                content: '恭喜！您已成功加入' + response.data.message.company_name + '！',
+                                                showCancel: true,
+                                                cancelText: '取消',
+                                                cancelColor: '#666666',
+                                                confirmText: '好的',
+                                                confirmColor: '#5398ff',
+                                                success: (result) => {
+                                                    if (result.confirm) {
 
-                                                // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-                                                // 所以此处加入 callback 以防止这种情况
-                                                if (_this.userInfoReadyCallback) {
-                                                    _this.userInfoReadyCallback(res)
-                                                }
-                                            }
-                                        })
-                                    }
-                                }
-                            }),
-                            wx.getSystemInfo({
-                                success: function(res) {
-                                    if (res.model == 'iPhone X') {
-                                        _this.globalData.isIpx = true;
-                                    }
-                                },
-                            })
+                                                    }
+                                                },
+                                                fail: () => {},
+                                                complete: () => {}
+                                            });
+                                        }
+                                        if (response.data.message.isnew == 1) { //判断是否新人，新人则跳转到引导页
+                                            wx.redirectTo({
+                                                url: './pages/guide/guide',
+                                                success: (result) => {
+
+                                                },
+                                                fail: () => {},
+                                                complete: () => {}
+                                            });
+                                        }
+                                    },
+                                    fail: function(res) {},
+                                    complete: function(res) {},
+                                })
+                            }
+                        })
                     }
                 })
 
             },
-            globalData: {
-                userInfo: null,
-                isIpx: false,
-            },
-            config: {
-                title_height: "64",
-                statusbarHeight: "24",
-                titleIcon_height: "32",
-                titleIcon_width: "87",
-                title_top: "24",
-                title_text: "xxx", // iphone X + 24        
-                prefix: 24,
-                x_statusbarHeight: '48',
-                x_title_height: '88'
-            }
         })
+    },
+    globalData: {
+        userInfo: null,
+        isIpx: false,
+    },
+    config: {
+        title_height: "64",
+        statusbarHeight: "24",
+        titleIcon_height: "32",
+        titleIcon_width: "87",
+        title_top: "24",
+        title_text: "xxx", // iphone X + 24        
+        prefix: 24,
+        x_statusbarHeight: '48',
+        x_title_height: '88'
     }
 })
