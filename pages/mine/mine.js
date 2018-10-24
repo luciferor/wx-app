@@ -1,11 +1,46 @@
 //mine.js
+var api = require('../../utils/api.js');
 //获取应用实例
 const app = getApp()
 
 Page({
   data: {
-    showRemindBox : false
+    showRemindBox : false,
+    userInfo : {
+      companyname : "",
+      disposable: "",
+      id:0,
+      name:"",
+      reduce:"",
+      score:"0",
+      total_score:"0",
+      user_img:""
+    }
   },
+   onReady:function(){
+      this.getUserInfo();
+    },
+
+    //获取用户信息
+    getUserInfo(){
+      let _this = this;
+      setTimeout(function () {
+        //获取用户信息
+        api.$http(_this.dosuccess, _this.dofail, '/appreciate/personalcenter', {
+          session_key: app.apiData.session_key
+        }, 'POST');
+
+      }, 5000)
+    },
+
+    dosuccess(data){
+      this.setData({
+        userInfo:data.data.message
+      });
+    },
+    dofail(data){
+      console.log('请求失败');
+    },
   //提示框
   handleRemindOpen() {
     this.setData({

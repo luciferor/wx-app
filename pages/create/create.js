@@ -23,7 +23,7 @@ Page({
             success: function(res) {
                 console.log(res)
                 wx.switchTab({
-                    url: '../setting/setting',
+                    url: '../mine/mine',
                 });
             },
             fail: function(err) {

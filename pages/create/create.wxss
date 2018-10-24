@@ -5,6 +5,7 @@
     display: flex;
     background-color: #f7f7f7;
     margin-bottom: 250rpx;
+    flex-direction: column;
 }
 
 .setting-area {

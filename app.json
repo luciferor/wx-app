@@ -1,15 +1,14 @@
 {
     "pages": [
+        "pages/guide/guide",
+        "pages/mine/mine",
+        "pages/setting/setting",
         "pages/create/create",
         "pages/mine/mine",
         "pages/setting/setting",
-
-
-
         "pages/create_mutual/create_mutual",
         "pages/create_self/create_self",
         "pages/guide/guide",
-
         "pages/notice/notice",
         "pages/index/index",
         "pages/logs/logs",
@@ -21,8 +20,12 @@
         "pages/userdynamic/userdynamic",
         "pages/awarddynamic/awarddynamic",
         "pages/ranking/ranking",
-        "components/receiveTip/receiveTip"
-
+        "components/receiveTip/receiveTip",
+        "pages/addplan/addplan",
+        "pages/allocationscore/allocationscore",
+        "pages/manageorg/manageorg",
+        "pages/organization/organization",
+        "pages/plandetail/plandetail"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -34,7 +37,7 @@
         "color": "#666666",
         "selectedColor": "#5398ff",
         "list": [{
-                "pagePath": "pages/setting/setting",
+                "pagePath": "pages/mine/mine",
                 "text": "我的",
                 "iconPath": "./images/tabs/icon_tab_mine_default.png",
                 "selectedIconPath": "./images/tabs/icon_tab_wode_selected.png"

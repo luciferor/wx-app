@@ -1,16 +1,17 @@
+<wxs module="subs" src="../../filter/substres.wxs"></wxs>
 <view>
   <view class="top-box">
       <view class="top-title">
           <span class="titlespan fl"></span>
           <span class="titletext fl">最新获奖</span>
       </view>
-      <view class="top-swiperes">
+      <view class="top-swiperes" bindtap='awardevent'>
         <swiper style='height:160rpx;'
             autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{true}}" next-margin="220rpx" skip-hidden-item-layout="{{true}}">
             <block>
                 <swiper-item>
                     <view class="top-swiperes-list1">
-                        <view class="topimg-box fl"><image src="{{this.app.apiData.api+newawardlist[0].user_img}}"></image></view>
+                        <view class="topimg-box fl"><image src="{{newawardlist[0].user_img==null||newawardlist[0].user_img==''?'../../images/img_touxiang_default.png':'https://devqypyp.xiaohuibang.com'+ newawardlist[0].user_img}}"></image></view>
                         <view class="toptext-box fl">
                             <view class="toptext-title">
                                 {{newawardlist[0].name}}
@@ -25,7 +26,7 @@
             <block>
                 <swiper-item>
                     <view class="top-swiperes-list2">
-                        <view class="topimg-box fl"><image src="{{this.app.apiData.api+newawardlist[1].user_img}}"></image></view>
+                        <view class="topimg-box fl"><image src="{{newawardlist[0].user_img==null||newawardlist[0].user_img==''?'../../images/img_touxiang_default.png':'https://devqypyp.xiaohuibang.com'+ newawardlist[1].user_img}}"></image></view>
                         <view class="toptext-box fl">
                             <view class="toptext-title">
                                 {{newawardlist[1].name}}
@@ -40,7 +41,7 @@
             <block>
                 <swiper-item>
                     <view class="top-swiperes-list3">
-                        <view class="     fl"><image src="{{app.apiData.api+newawardlist[2].user_img}}"></image></view>
+                        <view class="topimg-box fl"><image src="{{newawardlist[0].user_img==null||newawardlist[0].user_img==''?'../../images/img_touxiang_default.png':'https://devqypyp.xiaohuibang.com'+ newawardlist[2].user_img}}"></image></view>
                         <view class="toptext-box fl">
                             <view class="toptext-title">
                                 {{newawardlist[2].name}}
@@ -64,14 +65,14 @@
       </view>
       <view class="under-list-box">
 
-          <view class="user-list-content" bindtap="gotouserdynamicdes" wx:for="{{newdynamic}}" wx:for-index="did" wx:for-item="dit">
+          <view class="user-list-content" bindtap="gotouserdynamicdes" id="{{dit.user_id+'|'+dit.name}}" name="{{dit.name}}" wx:for="{{newdynamic}}" wx:for-index="did" wx:for-item="dit">
             <view class="under-list-img-box fl">
-                <image src="{{app.apiData.api+dit.user_img}}"></image>
+                <image src="{{dit.user_img==null||dit.user_img==''?'../../images/img_touxiang_default.png':'https://devqypyp.xiaohuibang.com'+ dit.user_img}}"></image>
             </view>
             <view class="user-li-title-box fl">
-                <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">{{dit.name.substring(0,5)}}</span><span class="user-li-title-box-listtitle-time">{{dit.created_at
+                <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">{{subs.sub(dit.name,4)}}...</span><span class="user-li-title-box-listtitle-time">{{dit.created_at
 }}</span></view>
-                <view class="user-li-title-box-listdes">{{dit.content.substring(0,5)}}</view>
+                <view class="user-li-title-box-listdes">{{subs.sub(dit.content,15)}}...</view>
             </view>
             <view class="user-li-right-bf fr">
                 {{dit.status=='add'?'+'+dit.bangfen:'-'+dit.bangfen}}邦分

@@ -8,29 +8,29 @@
   <image src='../../images/dynamic/img_paiming_guang.png'></image>
 </view>
 <view class='top-three-box'>
-  <view class='top-three-second fl'>
-    <view class='top-img-box'>
-      <image src='../../images/userexample.jpg'></image>
+  <view class='top-three-second fl' wx:for="{{topranklist}}" wx:if="{{twoindex==1}}" wx:for-index="twoindex" wx:for-item="twoitem" >
+    <view class='top-img-box' id="{{twoitem.user_id+'|'+twoitem.uname}}" bindtap='gotodynamic'>
+      <image src="{{twoitem.user_img==null||twoitem.user_img==''?'../../images/img_touxiang_default.png':'https://devqypyp.xiaohuibang.com'+twoitem.user_img}}"></image>
     </view>
-    <view class='top-name-box'>释迦摩尼</view>
-    <view class='top-name-rank-ionc'><image src='../../images/dynamic/img_paiming_star.png'></image></view>
-    <view class='top-rank-buff'>70</view>
+    <view class='top-name-box'>{{twoitem.uname}}</view>
+    <view class='top-name-rank-ionc'><image src="../../images/dynamic/img_paiming_star.png"></image></view>
+    <view class='top-rank-buff'>{{twoitem.total}}</view>
   </view>
-  <view class='top-three-first fl'>
-    <view class='top-img-box'>
-      <image src='../../images/userexample1.jpg'></image>
+  <view class='top-three-first fl' wx:for="{{topranklist}}" wx:if="{{oneindex==0}}" wx:for-index="oneindex" wx:for-item="oneitem">
+    <view class='top-img-box' id="{{oneitem.user_id+'|'+oneitem.uname}}" bindtap='gotodynamic'>
+      <image src="{{oneitem.user_img==null||oneitem.user_img==''?'../../images/img_touxiang_default.png':'https://devqypyp.xiaohuibang.com'+oneitem.user_img}}"></image>
     </view>
-    <view class='top-name-box'>耶稣</view>
+    <view class='top-name-box'>{{oneitem.uname}}</view>
     <view class='top-name-rank-ionc'><image src='../../images/dynamic/img_paiming_star.png'></image></view>
-    <view class='top-rank-buff'>98</view>
+    <view class='top-rank-buff'>{{oneitem.total}}</view>
   </view>
-  <view class='top-three-third fl'>
-    <view class='top-img-box'>
-      <image src='../../images/userexample2.jpg'></image>
+  <view class='top-three-third fl' wx:for="{{topranklist}}" wx:if="{{threeindex==2}}" wx:for-index="threeindex" wx:for-item="threeitem">
+    <view class='top-img-box' id="{{threeitem.user_id+'|'+threeitem.uname}}" bindtap='gotodynamic'>
+      <image src="{{threeitem.user_img==null||threeitem.user_img==''?'../../images/img_touxiang_default.png':'https://devqypyp.xiaohuibang.com'+threeitem.user_img}}"></image>
     </view>
-    <view class='top-name-box'>穆罕姆德</view>
+    <view class='top-name-box'>{{threeitem.uname}}</view>
     <view class='top-name-rank-ionc'><image src='../../images/dynamic/img_paiming_star.png'></image></view>
-    <view class='top-rank-buff'>52</view>
+    <view class='top-rank-buff'>{{threeitem.total}}</view>
   </view>
 </view>
 <view class='content-box'>
@@ -41,19 +41,55 @@
     </scroll-view>
     <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
     style="height:{{winHeight}}rpx">
-        <swiper-item wx:for="{{[0,1,2]}}">
+        <swiper-item>
+            <scroll-view scroll-y="true" class="scoll-h">
+                <view style='height:64.5%; z-index:-1;'></view>
+                <view style='height:30rpx; background:#FFF; opacity:0.9;'></view>
+                <block wx:for="{{dayranklist}}" wx:if="{{dayindex>=4}}" wx:for-index="dayindex" wx:for-item="dayitem" wx:key="*this" >
+                    <view class="item-ans" id="{{dayitem.user_id+'|'+dayitem.uname}}" bindtap='gotodynamic'>
+                        <view class='placenum fl'>{{dayindex}}</view>
+                        <view class='nameimgbox fl'><image src="{{dayitem.user_img==null||dayitem.user_img==''?'../../images/img_touxiang_default.png':'https://devqypyp.xiaohuibang.com'+dayitem.user_img}}"></image></view>
+                        <view class='nameandpost fl'>
+                          <view class='name-title'>{{dayitem.uname}}</view>
+                          <view class='des-post'>{{dayitem.department_name}}</view>
+                        </view>
+                        <view class='combuff fr'><span class="combuff-span">{{dayitem.total}}</span>邦分</view>
+                    </view>
+                </block>
+                <view style='height:30%; background:#FFF; opacity:0.9;'></view>
+            </scroll-view>
+        </swiper-item>
+        <swiper-item>
             <scroll-view scroll-y="true" class="scoll-h">
                 <view style='height:64.5%;'></view>
                 <view style='height:30rpx; background:#FFF; opacity:0.9;'></view>
-                <block wx:for="{{[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]}}" wx:key="*this">
-                    <view class="item-ans">
-                        <view class='placenum fl'>4</view>
-                        <view class='nameimgbox fl'><image src='../../images/userexample.jpg'></image></view>
+                <block wx:for="{{weekranklist}}" wx:if="{{weekindex>=4}}"  wx:for-index="weekindex" wx:for-item="weekitem" wx:key="*this">
+                    <view class="item-ans" id="{{weekitem.user_id+'|'+weekitem.uname}}" bindtap='gotodynamic'>
+                        <view class='placenum fl'>{{weekindex}}</view>
+                        <view class='nameimgbox fl'><image src="{{weekitem.user_img==null||weekitem.user_img==''?'../../images/img_touxiang_default.png':'https://devqypyp.xiaohuibang.com'+weekitem.user_img}}"></image></view>
                         <view class='nameandpost fl'>
-                          <view class='name-title'>刘洪磊</view>
-                          <view class='des-post'>邦币管理项目组</view>
+                          <view class='name-title'>{{weekitem.uname}}</view>
+                          <view class='des-post'>{{weekitem.department_id}}</view>
                         </view>
-                        <view class='combuff fr'><span class="combuff-span">72</span>邦分</view>
+                        <view class='combuff fr'><span class="combuff-span">{{weekitem.total}}</span>邦分</view>
+                    </view>
+                </block>
+                <view style='height:30%; background:#FFF; opacity:0.9;'></view>
+            </scroll-view>
+        </swiper-item>
+        <swiper-item>
+            <scroll-view scroll-y="true" class="scoll-h">
+                <view style='height:64.5%;'></view>
+                <view style='height:30rpx; background:#FFF; opacity:0.9;'></view>
+                <block wx:for="{{monthranklist}}" wx:if="{{monthindex>=4}}"  wx:for-index="monthindex" wx:for-item="monthitem" wx:key="*this">
+                    <view class="item-ans" id="{{monthitem.user_id+'|'+monthitem.uname}}" bindtap='gotodynamic'>
+                        <view class='placenum fl'>{{monthindex}}</view>
+                        <view class='nameimgbox fl'><image src="{{monthitem.user_img==null||monthitem.user_img==''?'../../images/img_touxiang_default.png':'https://devqypyp.xiaohuibang.com'+monthitem.user_img}}"></image></view>
+                        <view class='nameandpost fl'>
+                          <view class='name-title'>{{monthitem.uname}}</view>
+                          <view class='des-post'>{{monthitem.department_id}}</view>
+                        </view>
+                        <view class='combuff fr'><span class="combuff-span">{{monthitem.total}}</span>邦分</view>
                     </view>
                 </block>
                 <view style='height:30%; background:#FFF; opacity:0.9;'></view>

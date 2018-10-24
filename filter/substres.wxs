@@ -1,0 +1,27 @@
+var subs = {
+  sub:function(_str,_num){
+    if(_str==null||_str==undefined||!_str) return '';
+    return _str.substring(0,_num);
+  },
+  rank:function(_str){
+    _str = _str.substring(0,1);
+    switch(_str){
+      case '日':
+        return '日排名第一';
+        break;
+      case '周':
+        return '周排名第一';
+        break;
+      case '月':
+        return '月排名第一';
+        break;
+      default:
+        break;
+    }
+  }
+}
+
+module.exports={
+  sub:subs.sub,
+  rank:subs.rank
+}

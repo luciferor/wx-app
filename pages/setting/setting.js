@@ -1,7 +1,9 @@
 //setting.js
+var api = require('../../utils/api.js');
 //获取应用实例
 const app = getApp()
 Page({
+<<<<<<< HEAD
     data: {
         name: '请输入姓名',
         showSex: false,
@@ -23,6 +25,49 @@ Page({
             showSex: true
         });
     },
+=======
+  data: {
+      name : '请输入姓名',
+      showSex : false,
+      tempFilePaths: ''  ,
+      sex: [
+        {
+          name: '男',
+        },
+        {
+          name: '女'
+        },
+      ],
+    showRemindBox : false ,
+    userInfo : {
+      avatarurl : "",
+      gender:0,
+      id:0,
+      name:"",
+      wechat_name:""
+    }
+  },
+  onReady: function () {
+    let _this = this;
+      //获取用户信息
+      api.$http(_this.dosuccess, _this.dofail, '/appreciate/wechatuser', {
+        session_key: app.apiData.session_key
+      }, 'POST');
+  },
+  dosuccess(data) {
+    this.setData({
+      userInfo: data.data.message
+    });
+  },
+  dofail(data) {
+    console.log('请求失败');
+  },
+  showSexBox() {
+    this.setData({
+      showSex: true
+    });
+  },
+>>>>>>> e41b859ac006ac75b76fd750eea6a504836c2fac
 
     handleCancel() {
         this.setData({

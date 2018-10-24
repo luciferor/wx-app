@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "设置",
   "usingComponents": {
     "i-action-sheet": "../../dist/action-sheet/index",
     "i-modal": "../../dist/modal/index",

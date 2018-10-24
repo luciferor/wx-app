@@ -1,9 +1,6 @@
 <!-- setting.wxml -->
 <view class='layout-container'>
-
-  
     <view>
-     <header isIndex="true" title_text="设置" isShow="true"></header>
     <!-- 头像 微信号 -->
       <view class='wx-info'>
           <view class='icon-container' bindtap="chooseimage">
@@ -16,7 +13,7 @@
           <view class='horizontal-line'></view>
           <view class='info-container'>
               <text class='explain-text'>微信号</text>
-              <text class='wx-name'>爱吃萝卜丁</text>
+              <text class='wx-name'>{{userInfo.wechat_name}}</text>
           </view>
       </view>
 
@@ -24,12 +21,12 @@
         <view class='wx-info'>
           <view class='info-container'>
               <text class='explain-text'>姓名</text>
-              <input color='#666666' placeholder='{{ name }}' class='name-input' maxlength='6'></input>
+              <input color='#666666' placeholder='{{userInfo.wechat_name}}' class='name-input' maxlength='6'></input>
           </view>
           <view class='horizontal-line'></view>
           <view class='info-container' bindtap="showSexBox"> 
               <text class='explain-text'>性别</text>
-              <text class='value-text'>女</text>
+              <text class='value-text'>{{userInfo.gender == 1 ? "男" : "女"}}</text>
           </view>
       </view>
     </view>

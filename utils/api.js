@@ -22,7 +22,9 @@ function $http(_dosuccess, _dofail, _url, _params, _method) { //参数说明，�
         }
     })
 }
+
 //将模块接口暴露出来
 module.exports = {
     $http: $http,
+    $https: $https
 }
