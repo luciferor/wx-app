@@ -10,7 +10,8 @@
     -webkit-box-direction: normal;
     flex-direction: column;
     text-align: center;
-    position: relative
+    position: relative;
+    margin-bottom: 8rpx;
 }
 
 .i-tabs-tab-bar {

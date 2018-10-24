@@ -2,6 +2,8 @@
   "navigationBarBackgroundColor": "#FFFFFF",
   "usingComponents": {
         "i-tabs": "../../dist/tabs/index",
-        "i-tab": "../../dist/tab/index"
+        "i-tab": "../../dist/tab/index",
+        "i-toast": "../../dist/toast/index",
+        "i-modal": "../../dist/modal/index"
     }
 }

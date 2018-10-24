@@ -6,14 +6,14 @@
     </i-tabs>
     <view wx:if="{{showContent=='tab1'}}" class="tab1-content">
         <view class="hangye-list">
-            <view wx:for="{{hangyeArr}}" wx:for-index="idx" data-num="{{idx}}" class="list-item  {{currHangye==idx?'selected':''}}" bindtap="selectHangye">
-                <text class="item-txt">{{item.text}}</text>
+            <view wx:for="{{hangyeArr}}" wx:for-index="idx" data-num="{{idx}}" class="list-item  {{currHangye==idx?'selected':''}}"  data-industryId="{{item.industry_id}}" bindtap="selectHangye">
+                <text class="item-txt">{{item.name}}</text>
             </view>
         </view>
         <view class="xingwei-list">
             <view wx:for="{{xingweiArr}}" wx:for-index="idx1" data-num="{{idx1}}" class="list-item  {{currXingwei==idx1?'picked':''}}" bindtap="pickXingwei">
                 <label>
-                    <text class="item-txt">{{item.text}}</text>
+                    <text class="item-txt">{{item.behavior}}</text>
                     <text class="item-score">({{item.score}}邦分)</text>
                     <checkbox class="xingwei-picked"></checkbox>
                 </label>
