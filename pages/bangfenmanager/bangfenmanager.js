@@ -1,4 +1,5 @@
 var api = require('../../utils/api.js');
+const { $Toast } = require('../../dist/base/index');
 var app = getApp();
 Page({
     data:{
@@ -61,6 +62,7 @@ Page({
         console.log(res);
         if (res.data.success){
           //alert('添加成功！')
+          _this.handleSuccess(_this.data.typename+'成功')
           _this.setData({
             showModal:false
           })
@@ -259,4 +261,10 @@ Page({
     console.log(err);
   },
   //000000000000000000000000000000000000000000000=================================
+  handleSuccess(_str){
+    $Toast({
+      content:_str,
+      type: 'success'
+    });
+  }
 })
