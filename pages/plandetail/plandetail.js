@@ -26,7 +26,6 @@ Page({
       session_key: app.apiData.session_key,
       id:"19"
     }, 'POST', function (data) {
-      console.log("==========成功")
       console.log(data.data.message);
     }, function(data){
       console.log(data.data.message);

@@ -5,7 +5,6 @@
     "i-radio-group": "../../dist/radio-group/index",
     "i-radio": "../../dist/radio/index",
     "i-modal": "../../dist/modal/index",
-    "i-action-sheet": "../../dist/action-sheet/index",
-    "header": "/components/header/header"
+    "i-action-sheet": "../../dist/action-sheet/index"
   }
 }

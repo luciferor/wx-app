@@ -11,48 +11,148 @@
     </i-tabs>
     </view>
    </view>
-    
 
     <view class='layout-container'>
         <!-- all -->
-        <view class='all-container' hidden="{{ allHidden }}">
-           <view >
-                <view class='time-container'>
-                    <text class='time-text'>2018-09-25 12:00</text>
-                </view>
-                <view class='notice-container'>
-                    <view>
-                        <i-badge dot i-class='badge' >
-                        <image src='../../images/tabs/icon_tab_wode_selected.png' class='upic'></image>                     
-                        </i-badge>
-                    </view>
-                    <view class='content-container'>
-                        <view class='name-container'>
-                            <text class='uname'>艾晓晓</text>
-                            <text class='status'>已通过</text>
-                        </view>
-                        <view class='info-container'>
-                            <text class='title'>加分申请</text>
-                            <text class='content'>打扫卫生申请加2邦分</text>
-                        </view>
-                    </view>
-                </view>
+        <view class='all-container' hidden="{{ allHidden}}">
+          <view  wx:if="{{allNotice.length >= 1}}">
+                <block wx:key="*this" wx:for="{{allNotice}}" wx:for-index="allIndex" wx:for-item="allItem">
+                  <view class='time-container'>
+                      <text class='time-text'>{{allItem.created_at}}</text>
+                  </view>
+                  <view class='notice-container'>
+                      <view>
+                          <i-badge dot i-class='badge' >
+                          <image src="{{allItem.user_img==null||allItem.user_img==''?'../../images/mine/head_default_icon.png':'https://devqypyp.xiaohuibang.com'+ allItem.user_img}}" class='upic'></image>                     
+                          </i-badge>
+                      </view>
+                      <view class='content-container'>
+                          <view class='name-container'>
+                          <text class='uname'>{{allItem.name}}</text>
+                          <text class='status'>已通过</text>
+                      </view>
+                      <view class='info-container'>
+                            <text class='title'>{{allItem.title}}</text>
+                            <text class='content'></text>
+                      </view>
+                       <view class='dot-container'>
+                          <image src='../../images/mine/icon_wode_shenhe.png' class='dot-image'></image>
+                      </view>
+                      </view>
+                  </view>
+                </block>
+           </view>
+       
+           <view class='empty-container' wx:else>
+                <image src='../../images/mine/img_tongzhi_queshengye.png' class='empty-img'></image>
+                <text class='empty-text'>您还没有通知哦~</text>
            </view>
         </view>
 
         <!-- apply -->
         <view class='apply-container' hidden="{{ applyHidden }}">
-         <text>待通过</text>
+          <view wx:if="{{applyNotice.length >= 1}}">
+                 <block wx:key="*this" wx:for="{{applyNotice}}" wx:for-index="applyIndex" wx:for-item="applyItem">
+                  <view class='time-container'>
+                      <text class='time-text'>{{applyItem.created_at}}</text>
+                  </view>
+                  <view class='notice-container'>
+                      <view>
+                          <i-badge dot i-class='badge' >
+                          <image src="{{applyItem.user_img==null||applyItem.user_img==''?'../../images/mine/head_default_icon.png':'https://devqypyp.xiaohuibang.com'+ applyItem.user_img}}" class='upic'></image>                     
+                          </i-badge>
+                      </view>
+                      <view class='content-container'>
+                          <view class='name-container'>
+                          <text class='uname'>{{applyItem.name}}</text>
+                          <text class='status apply-text'>待审核</text>
+                      </view>
+                      <view class='info-container'>
+                            <text class='title'>{{applyItem.title}}</text>
+                            <text class='content'></text>
+                      </view>
+                      <view class='dot-container' id="{{applyIndex}}" bindtap="showCheckBox">
+                         <view class='check-container' hidden='{{applyItem.check_hidden}}'>
+                              <text class="reject-btn" id="{{applyIndex}}" bindtap='handleReject'>不通过</text>
+                              <text class="pass-btn" id="{{applyIndex}}" bindtap='handlePass'>通过</text>
+                         </view>
+                          <image src='../../images/mine/icon_wode_shenhe.png' class='dot-image'></image>
+                      </view>
+                      </view>
+                  </view>
+                </block>
+           </view>
+
+           <view class='empty-container' wx:else>
+                <image src='../../images/mine/img_tongzhi_queshengye.png' class='empty-img'></image>
+                <text class='empty-text'>您还没有通知哦~</text>
+           </view>
         </view>
 
         <!-- pass -->
         <view class='pass-container' hidden="{{ passHidden }}">
-         <text>已通过</text>
+           <view wx:if="{{passNotice.length >= 1}}">
+                 <block wx:key="*this" wx:for="{{passNotice}}" wx:for-index="passIndex" wx:for-item="passItem">
+                  <view class='time-container'>
+                      <text class='time-text'>passItem.created_at</text>
+                  </view>
+                  <view class='notice-container'>
+                      <view>
+                          <i-badge dot i-class='badge' >
+                          <image src="{{passItem.user_img==null||passItem.user_img==''?'../../images/mine/head_default_icon.png':'https://devqypyp.xiaohuibang.com'+ passItem.user_img}}" class='upic'></image>                     
+                          </i-badge>
+                      </view>
+                      <view class='content-container'>
+                          <view class='name-container'>
+                          <text class='uname'>{{passItem.name}}</text>
+                          <text class='status pass-text'>已通过</text>
+                      </view>
+                      <view class='info-container'>
+                            <text class='title'>{{passItem.title}}</text>
+                            <text class='content'></text>
+                      </view>
+                      </view>
+                  </view>
+                </block>
+           </view>
+
+           <view class='empty-container' wx:else>
+                <image src='../../images/mine/img_tongzhi_queshengye.png' class='empty-img'></image>
+                <text class='empty-text'>您还没有通知哦~</text>
+           </view>
         </view>
 
         <!-- fail -->
         <view class='fail-container' hidden="{{ failHidden }}">
-         <text>未通过</text>
+           <view wx:if="{{rejectNotice.length >= 1}}">
+                 <block wx:key="*this" wx:for="{{rejectNotice}}" wx:for-index="rejectIndex" wx:for-item="rejectItem">
+                  <view class='time-container'>
+                      <text class='time-text'>{{rejectItem.created_at}}</text>
+                  </view>
+                  <view class='notice-container'>
+                      <view>
+                          <i-badge dot i-class='badge' >
+                          <image src="{{rejectItem.user_img==null||rejectItem.user_img==''?'../../images/mine/head_default_icon.png':'https://devqypyp.xiaohuibang.com'+ rejectItem.user_img}}" class='upic'></image>                     
+                          </i-badge>
+                      </view>
+                      <view class='content-container'>
+                          <view class='name-container'>
+                          <text class='uname'>{{rejectItem.name}}</text>
+                          <text class='status reject-text'>未通过</text>
+                      </view>
+                      <view class='info-container'>
+                            <text class='title'>{{rejectItem.title}}</text>
+                            <text class='content'></text>
+                      </view>
+                      </view>
+                  </view>
+                </block>
+           </view>
+
+           <view class='empty-container' wx:else>
+                <image src='../../images/mine/img_tongzhi_queshengye.png' class='empty-img'></image>
+                <text class='empty-text'>您还没有通知哦~</text>
+           </view>
         </view>
     </view>
     

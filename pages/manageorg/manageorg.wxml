@@ -9,7 +9,7 @@
          <view class='horizontal-line'></view>
          
 
-        <view class='cell'>
+        <view class='cell' bindtap='navigateToSelf'>
              <text>自我管理行为</text>
              <image src='../../images/icon_caozuo_right.png' class='arrow'></image>
         </view>
@@ -17,7 +17,7 @@
         <view class='horizontal-line'></view>
 
 
-          <view class='cell'>
+          <view class='cell' bindtap='navigateToMutual'>
              <text>相互管理行为</text>
              <image src='../../images/icon_caozuo_right.png' class='arrow'></image>
         </view>
