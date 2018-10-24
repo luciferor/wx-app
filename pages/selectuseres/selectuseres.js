@@ -42,16 +42,67 @@ Page({
   },
   selectedevent(e){
     let arr = e.currentTarget.dataset.replyType.split('|');
+    let index = arr[1];
+    let lindex = arr[2];
+    this.data.cities[index].list[lindex].ischecked = !this.data.cities[index].list[lindex].ischecked;
+    this.setData({
+      cities: this.data.cities
+    })
+    console.log(this.data.cities);
     this.setData({
       selectid:arr[0],
     })
     //console.log(e.currentTarget.dataset.replyType);
     //临时变量
-    this.data.selecteduser.push({
-      id:arr[0],
-    });
+    //★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+    if (this.data.cities[index].list[lindex].ischecked) {
+      this.data.selecteduser.push({
+        id: arr[0],
+      });
+    } else {
+      console.log(arr[0] + "反选aaa");
+      for (let i = 0; i < this.data.selecteduser.length; i++) {
+        if (this.data.selecteduser[i].id==arr[0]) {
+          this.data.selecteduser.splice(i, 1);
+        }
+      }
+    }
+    //★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+
     this.setData({
       count:this.data.selecteduser.length
+    })
+    console.log(this.data.selecteduser);
+  },
+  selectedeventseach(e){
+    let arr = e.currentTarget.dataset.replyType.split('|');
+    let index = arr[1];
+    this.data.searchuserlist[index].ischecked = !this.data.searchuserlist[index].ischecked;
+    this.setData({
+      searchuserlist: this.data.searchuserlist
+    })
+    console.log(this.data.searchuserlist);
+    this.setData({
+      selectid: arr[0],
+    })
+    //console.log(e.currentTarget.dataset.replyType);
+    //临时变量
+    //★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+    if (this.data.searchuserlist[index].ischecked){
+      this.data.selecteduser.push({
+        id: arr[0],
+      });
+    }else{
+      console.log(arr[0]+"反选bbb");
+      for(let i=0;i<this.data.selecteduser.length;i++){
+        if (this.data.selecteduser[i].id == arr[0]){
+          this.data.selecteduser.splice(i, 1);
+        }
+      }
+    }
+    //★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+    this.setData({
+      count: this.data.selecteduser.length
     })
     console.log(this.data.selecteduser);
   },
@@ -69,7 +120,7 @@ Page({
             id: item[i].id,
             name: item[i].name,
             pinyin: item[i].letter,
-            post: '暂无岗位',
+            post:item.postname,
             img: item[i].user_img,
             ischecked:false
           })
@@ -110,8 +161,9 @@ Page({
         id: item.id,
         name: item.name,
         key: firstName,
-        post: item.id,
-        img: item.user_img
+        post: item.postname,
+        img: item.user_img,
+        ischecked:false
       });
     })
     this.data.cities = storeCity;

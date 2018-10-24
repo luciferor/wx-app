@@ -4,7 +4,6 @@
   "usingComponents": {
     "i-tabs": "../../dist/tabs/index",
     "i-tab": "../../dist/tab/index",
-    "i-badge": "../../dist/badge/index",
-    "header": "../../components/header/header"
+    "i-badge": "../../dist/badge/index"
   }
 }

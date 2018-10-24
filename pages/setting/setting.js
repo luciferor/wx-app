@@ -45,6 +45,7 @@ Page({
       showSex: true
     });
   },
+
     handleCancel() {
         this.setData({
             showSex: false

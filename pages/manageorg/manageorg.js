@@ -12,4 +12,17 @@ Page({
       url: '../allocationscore/allocationscore'
     })
   },
+
+  //跳转到相互管理
+  navigateToMutual(){
+    wx.navigateTo({
+      url: '../create_mutual/create_mutual'
+    })
+  },
+  //跳转到自我管理
+  navigateToSelf() {
+    wx.navigateTo({
+      url: '../create_self/create_self'
+    })
+  }
 })

@@ -2,6 +2,5 @@
   "navigationBarBackgroundColor": "#FFFFFF",
   "navigationBarTitleText": "详情",
   "usingComponents": {
-    "header": "../../components/header/header"
   }
 }

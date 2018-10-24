@@ -29,7 +29,6 @@ function $http(_dosuccess,_dofail,_url,_params,_method){//参数说明，成功�
  * postData：参数，json类型
  * doSuccess：成功的回调函数
  * doFail：失败的回调函数
-<<<<<<< HEAD
  * docomplete:完成回调函数
  * 参数：接口地址：url,接口参数：params
  */

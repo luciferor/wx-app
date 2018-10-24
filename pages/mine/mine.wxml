@@ -5,7 +5,7 @@
      <view class="top">
         <view class='info-container'>
             <view class='left-container'  bindtap='navigateToSetting'>
-                <image src='../../images/tabs/icon_tab_mine_default.png' class='pic'></image>
+                <image src="{{userInfo.avatarurl==null||userInfo.avatarurl==''?'../../images/mine/head_default_icon.png': userInfo.avatarurl}}" class='pic'></image>
                 <text class='uname'>{{userInfo.name}}</text>
             </view>
             <view class='right-container' bindtap='navigateToNotice'>
@@ -40,20 +40,29 @@
      <view class='horizontal-line'></view>
 
     <view>
-        <view class='target-container'>
-            <view class='target-left'>
-                <image src='../../images/mine/icon_wode_rijiang.png' class='target-pic'></image>
-                <view class='target-info'>
-                    <text class='target-name'>不二家棒棒糖全家桶</text>
-                    <text class='target-condition'>当前第5名/日排名第一</text>
-                    <progress class='target-status' percent="20" activeColor='#5398ff' backgroundColor='#f7f7f7' ></progress>
-                </view>
-            </view>
-            <view class='target-right'>
-                <button class='target-button'>领取</button>
-                <text class='target-price'>30~50元</text>
-            </view>
-        </view>
+        <view wx:if="{{targetList.length >= 1}}">
+              <view class='target-container' wx:for="{{targetList}}">
+              <view class='target-left'>
+                  <image src='../../images/mine/icon_wode_rijiang.png' class='target-pic'></image>
+                  <view class='target-info'>
+                      <text class='target-name'>不二家棒棒糖全家桶</text>
+                      <text class='target-condition'>当前第5名/日排名第一</text>
+                      <progress class='target-status' percent="20" activeColor='#5398ff' backgroundColor='#f7f7f7' ></progress>
+                  </view>
+              </view>
+              <view class='target-right'>
+                  <button class='target-button'>领取</button>
+                  <text class='target-price' hidden='true'>30~50元</text>
+              </view>
+          </view>
+       </view>
+
+       <view class='empty-container' wx:else>
+              <image src='../../images/mine/img_wode_jiantou.png' class='empty-img-arrow'></image>
+              <image src='../../images/mine/img_wode_queshengye.png' class='empty-img'></image>
+              <text class='empty-text'>您还没有目标~</text>
+              <text class='empty-text-bottom'>马上添加一个吧！</text>
+      </view>
     </view>
   
    <i-modal title="说明" visible="{{ showRemindBox }}" bind:ok="handleRemindClose" 

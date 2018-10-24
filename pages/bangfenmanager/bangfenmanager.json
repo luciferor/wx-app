@@ -4,7 +4,6 @@
     "usingComponents": {
         "i-modal": "../../dist/modal/index",
         "i-action-sheet": "../../dist/action-sheet/index",
-        "header": "/components/header/header",
         "i-toast": "../../dist/toast/index"
     }
 }

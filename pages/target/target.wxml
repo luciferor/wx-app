@@ -26,43 +26,52 @@
       <!-- 排名目标 -->
       <swiper-item class='swiper-item'>
         <scroll-view class='scroll-view' scroll-y>
-         <view class='list-box'>
-          <view class='listcontent' wx:for="{{firstList}}">
-              <span class="fl colorradio" ><radio color="#5398ff" value="不二家棒棒糖" checked="{{false}}">{{item}}</radio></span>
+         <view class='list-box' wx:if="{{rankTargetList.length >= 1}}">
+          <view class='listcontent' wx:for="{{rankTargetList}}" wx:for-index="rankindex" wx:for-item="rankitem">
+              <span class="fl colorradio" ><radio color="#5398ff" value="不二家棒棒糖" checked="{{rankitem.ischecked}}" id="{{rankitem.id+'|'+rankindex}}" bindtap="rankevents"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{rankitem.name}}</radio></span>
               <span class="fr colorpar">1000邦分</span>
           </view>
         </view>
+         <view class='empty-container' wx:else>
+                <image src='../../images/mine/img_tongzhi_queshengye.png' class='empty-img'></image>
+                <text class='empty-text'>您还没有排名目标~</text>
+           </view>
      </scroll-view>
         
       </swiper-item>
       <!-- 邦分目标 -->
       <swiper-item class='swiper-item'>
          <scroll-view class='scroll-view' scroll-y>
-             <view class='list-box'>
-          <view class='listcontent' wx:for="{{secondList}}">
-              <span class="fl colorradio"><radio color="#5398ff" value="不二家棒棒糖" checked="{{false}}">{{item}}</radio></span>
-              <span class="fr colorpar">1000邦分</span>
-          </view>
-        </view>
+             <view class='list-box'  wx:if="{{scoreTargetList.length >= 1}}">
+                <view class='listcontent' wx:for="{{scoreTargetList}}"  wx:for-index="scoreindex" wx:for-item="scoreitem">
+                      <span class="fl"></span>
+                      <span class="fl colorradio"><radio color="#5398ff" value="不二家棒棒糖" checked="{{scoreitem.ischecked}}"  id="{{scoreitem.id+'|'+scoreindex}}" bindtap="scoreevents"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{scoreitem.name}}</radio></span>
+                      <span class="fr colorpar">1000邦分</span>
+                 </view>
+              </view>
+                <view class='empty-container' wx:else>
+                <image src='../../images/mine/img_tongzhi_queshengye.png' class='empty-img'></image>
+                <text class='empty-text'>您还没有邦分目标~</text>
+           </view>
          </scroll-view>
      
       </swiper-item>
        <!-- 自定义 -->
        <swiper-item  class='swiper-item'>
         <view class='add-container'>
-             <view class='icon-container'>
-                <image src='../../images/icon_tianjia.png' class='add-icon' bindtap="handleApplyOpen"></image>              
+             <view class='icon-container' bindtap="applyNotice" >
+                <image src='../../images/icon_tianjia.png' class='add-icon' ></image>              
               </view>
               <view class='target-container'>
                   <view class='top-container'>
-                  <input class='target-input' placeholder='请输入目标名称' placeholder-class='placeholder'></input>
+                  <input class='target-input' placeholder='请输入目标名称' placeholder-class='placeholder' value="{{targetTitle}}" bindinput="inputValue"></input>
                   <view class='target-type'>
                       <view class='gray-icon'></view>
                       <text class='type-text' bindtap='handleTypeOpen'>{{newTargetType}}</text>
                   </view>
                 </view>
                 <view class='horizental-line'></view>
-                <view class='bottom-container'>
+                <view class='bottom-container' wx:if="{{targetType == 1}}">
                   <text class='gray-text'>目标规则</text>
                   <view class='rank-type' bindtap='handleRankOpen'>
                     <text class='rank-text'>{{newTargetRank}}</text>
@@ -74,15 +83,19 @@
                     <image class='rank-arrow' src='../../images/icon_caozuo_xia_little.png'></image>
                   </view>
                 </view>
+                <view class='score-container' wx:else>
+                  <text class='gray-text'>邦分数量</text>
+                  <input class='score-input' type='number' placeholder='请输入邦分数量' placeholder-class='placeholder'  bindinput="inputScoreValue"></input>
+                </view>
               </view>
         </view>
-        <text class='custom-title'>自定义目标</text>
-        <scroll-view class='scroll-view' scroll-y>
-        <view class='list-box'>
-          <view class='listcontent-custom' wx:for="{{secondList}}">
+        <text class='custom-title' wx:if="{{false}}">自定义目标</text>
+        <scroll-view wx:if="{{false}}" class='scroll-view' scroll-y>
+        <view class='list-box' wx:if="{{customTargetList.length >= 1}}">
+          <view class='listcontent-custom' wx:for="{{customTargetList}}"  wx:for-index="customindex" wx:for-item="customitem" id="{{customitem.id}}">
               <view class='custom-container'>
                 <image class='delicon' src='../../images/mine/icon_delete_default.png'></image>
-                <text class='custom-target-title'>{{item}}</text>
+                <text class='custom-target-title'>{{customitem.name}}</text>
               </view>
               <span class="fr colorpar">1000邦分</span>
           </view>
@@ -92,10 +105,10 @@
     </swiper>
 
     <view class='bottom-container'>
-       <text class='num-text'>已添加目标({{rankTargetNum+scoreTargetNum+customTargetNum}}个)</text>
+       <text class='num-text'>已添加目标({{rankTargetNum+scoreTargetNum}}个)</text>
        <view class='button-container'>
-          <text class='reset'>重置</text>
-          <button class='confirm'>确定</button>
+          <text class='reset' bindtap='resetall' style='color:#5398ff;'>重置</text>
+          <button class='confirm' bindtap='submitall'>确定</button>
        </view>
     </view>
   </view>
@@ -112,3 +125,4 @@
 
 
 <i-action-sheet visible="{{ showNumBox }}" actions="{{ numAction }}" show-cancel bind:cancel="handleNumCancel" bind:click="handleNumClickItem" />
+<i-toast id="toast" />
