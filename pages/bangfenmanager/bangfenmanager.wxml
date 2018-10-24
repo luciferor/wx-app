@@ -153,4 +153,5 @@
       </view>
       <i-action-sheet visible="{{ showtype }}" actions="{{ typelist }}" show-cancel bind:cancel="closetype" bind:click="exittype" />
       <i-action-sheet visible="{{ showothertype }}" actions="{{ othertype }}" show-cancel bind:cancel="closeothertype" bind:click="exitothertype" />
+      <i-toast id="toast" />
 </view>

@@ -18,7 +18,7 @@ Component({
     },
 
     methods: {
-        handleShow (options) {
+        handleShow(options) {
             const { type = 'default', duration = 2 } = options;
 
             this.setData({
@@ -39,7 +39,7 @@ Component({
             }
         },
 
-        handleHide () {
+        handleHide() {
             this.setData({
                 ...default_data
             });

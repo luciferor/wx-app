@@ -3,7 +3,6 @@
   "navigationBarBackgroundColor": "#ffffff",
   "usingComponents": {
     "i-action-sheet": "../../dist/action-sheet/index",
-    "i-modal": "../../dist/modal/index",
-    "header": "../../components/header/header"
+    "i-modal": "../../dist/modal/index"
   }
 }

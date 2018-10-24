@@ -1,5 +1,6 @@
 {
-    "usingComponents": {
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
       "topbar": "/components/topbar/topbar"
     }
 }

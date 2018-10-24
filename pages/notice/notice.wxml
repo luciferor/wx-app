@@ -11,7 +11,6 @@
     </i-tabs>
     </view>
    </view>
-    
 
     <view class='layout-container'>
         <!-- all -->
@@ -74,8 +73,8 @@
                       </view>
                       <view class='dot-container' id="{{applyIndex}}" bindtap="showCheckBox">
                          <view class='check-container' hidden='{{applyItem.check_hidden}}'>
-                              <text class="reject-btn">不通过</text>
-                              <text class="pass-btn">通过</text>
+                              <text class="reject-btn" id="{{applyIndex}}" bindtap='handleReject'>不通过</text>
+                              <text class="pass-btn" id="{{applyIndex}}" bindtap='handlePass'>通过</text>
                          </view>
                           <image src='../../images/mine/icon_wode_shenhe.png' class='dot-image'></image>
                       </view>
