@@ -40,7 +40,6 @@ App({
             _this.apiData.code = res.code;//登录需要的code
             _this.apiData.session_key = response.data.message.session_key;//response.message.session_key
             //获取用户信息，并发送给后台
-
             wx.getUserInfo({
               success:function(res){
                 console.log(res.userInfo);
