@@ -3,17 +3,17 @@
    <view class='top-fiexd'>
    <!--Tab布局-->
     <view class='title'>
-      <view class="{{0 == currentIndex ? 'titleSel' : 'titleUnsel'}}" bindtap='titleClick' data-idx='0'>
+      <view class="{{0 == currentIndex ? 'titleSel' : 'titleUnsel'}}" bindtap='titleClick' id="{{1}}" data-idx='0'>
         <text>排名目标({{rankTargetNum}})</text>
         <hr class="{{0 == currentIndex ? 'headerLineSel' : 'headerLineUnsel'}}" />
       </view>
       
-      <view class="{{1 == currentIndex ? 'titleSel' : 'titleUnsel'}}" bindtap='titleClick' data-idx='1'>
+      <view class="{{1 == currentIndex ? 'titleSel' : 'titleUnsel'}}" bindtap='titleClick' id="{{2}}" data-idx='1'>
         <text>邦分目标({{scoreTargetNum}})</text>
         <hr class="{{1 == currentIndex ? 'headerLineSel' : 'headerLineUnsel'}} " />
       </view>
 
-      <view class="{{2 == currentIndex ? 'titleSel' : 'titleUnsel'}}" bindtap='titleClick' data-idx='2'>
+      <view class="{{2 == currentIndex ? 'titleSel' : 'titleUnsel'}}" bindtap='titleClick' id="{{3}}" data-idx='2'>
         <text>自定义({{customTargetNum}})</text>
         <hr class="{{2 == currentIndex ? 'headerLineSel' : 'headerLineUnsel'}} " />
       </view>
@@ -27,8 +27,8 @@
       <swiper-item class='swiper-item'>
         <scroll-view class='scroll-view' scroll-y>
          <view class='list-box' wx:if="{{rankTargetList.length >= 1}}">
-          <view class='listcontent' wx:for="{{rankTargetList}}">
-              <span class="fl colorradio" ><radio color="#5398ff" value="不二家棒棒糖" checked="{{false}}">{{item}}</radio></span>
+          <view class='listcontent' wx:for="{{rankTargetList}}" wx:for-index="rankindex" wx:for-item="rankitem">
+              <span class="fl colorradio" ><radio color="#5398ff" value="不二家棒棒糖" checked="{{rankitem.ischecked}}" id="{{rankitem.id+'|'+rankindex}}" bindtap="rankevents"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{rankitem.name}}</radio></span>
               <span class="fr colorpar">1000邦分</span>
           </view>
         </view>
@@ -43,8 +43,9 @@
       <swiper-item class='swiper-item'>
          <scroll-view class='scroll-view' scroll-y>
              <view class='list-box'  wx:if="{{scoreTargetList.length >= 1}}">
-                <view class='listcontent' wx:for="{{scoreTargetList}}">
-                      <span class="fl colorradio"><radio color="#5398ff" value="不二家棒棒糖" checked="{{false}}">{{item}}</radio></span>
+                <view class='listcontent' wx:for="{{scoreTargetList}}"  wx:for-index="scoreindex" wx:for-item="scoreitem">
+                      <span class="fl"></span>
+                      <span class="fl colorradio"><radio color="#5398ff" value="不二家棒棒糖" checked="{{scoreitem.ischecked}}"  id="{{scoreitem.id+'|'+scoreindex}}" bindtap="scoreevents"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{scoreitem.name}}</radio></span>
                       <span class="fr colorpar">1000邦分</span>
                  </view>
               </view>
@@ -88,13 +89,13 @@
                 </view>
               </view>
         </view>
-        <text class='custom-title' wx:if="{{customTargetList.length >= 1}}">自定义目标</text>
-        <scroll-view class='scroll-view' scroll-y>
+        <text class='custom-title' wx:if="{{false}}">自定义目标</text>
+        <scroll-view wx:if="{{false}}" class='scroll-view' scroll-y>
         <view class='list-box' wx:if="{{customTargetList.length >= 1}}">
-          <view class='listcontent-custom' wx:for="{{customTargetList}}">
+          <view class='listcontent-custom' wx:for="{{customTargetList}}"  wx:for-index="customindex" wx:for-item="customitem" id="{{customitem.id}}">
               <view class='custom-container'>
                 <image class='delicon' src='../../images/mine/icon_delete_default.png'></image>
-                <text class='custom-target-title'>{{item}}</text>
+                <text class='custom-target-title'>{{customitem.name}}</text>
               </view>
               <span class="fr colorpar">1000邦分</span>
           </view>
@@ -103,11 +104,11 @@
       </swiper-item>
     </swiper>
 
-    <view class='bottom-container' >
-       <text class='num-text'>已添加目标({{totalTargetNum}}个)</text>
+    <view class='bottom-container'>
+       <text class='num-text'>已添加目标({{rankTargetNum+scoreTargetNum}}个)</text>
        <view class='button-container'>
-          <text class='reset'>重置</text>
-          <button class='confirm'>确定</button>
+          <text class='reset' bindtap='resetall' style='color:#5398ff;'>重置</text>
+          <button class='confirm' bindtap='submitall'>确定</button>
        </view>
     </view>
   </view>
@@ -124,3 +125,4 @@
 
 
 <i-action-sheet visible="{{ showNumBox }}" actions="{{ numAction }}" show-cancel bind:cancel="handleNumCancel" bind:click="handleNumClickItem" />
+<i-toast id="toast" />

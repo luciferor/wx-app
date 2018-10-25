@@ -12,7 +12,7 @@
           </view>
           <view class='horizontal-line'></view>
           <view class='info-container'>
-              <text class='explain-text'>微信号</text>
+              <text class='explain-text'>微信名</text>
               <text class='wx-name'>{{userInfo.wechat_name}}</text>
           </view>
       </view>

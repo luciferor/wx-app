@@ -10,7 +10,7 @@
                   <block wx:key="*this" wx:for="{{ownerlist}}" wx:for-index="idx" wx:for-item="owner" wx:if="{{owner.name!=''}}">
                       <view class="item-ans">
                           <span>
-                              <radio color="#5398ff" class="radio" value="{{owner.id}}" checked="{{false}}">{{owner.name}}</radio>
+                              <radio color="#5398ff" class="radio" id="{{owner.id+'|'+idx+'|'+owner.name}}" bindtap='ownerevents' value="{{owner.id}}" checked="{{owner.ischecked}}"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{owner.name}}</radio>
                           </span>
                           <span class="bf">{{owner.bangfen}}邦分</span>
                       </view>
@@ -22,7 +22,7 @@
                   <block wx:key="*this" wx:for="{{mutullist}}" wx:for-index="mi" wx:for-item="mit">
                       <view class="item-ans">
                           <span>
-                              <radio color="#5398ff" class="radio" value="{{mit.id}}" checked="{{false}}">{{mit.behavior}}</radio>
+                              <radio color="#5398ff" id="{{mit.id+'|'+mi+'|'+mit.behavior}}" bindtap='mutuevents' class="radio" value="{{mit.id}}" checked="{{mit.ischecked}}"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{mit.behavior}}</radio>
                           </span>
                           <span class="bf">{{mit.score}}邦分</span>
                       </view>
@@ -144,4 +144,7 @@
       <i-action-sheet visible="{{ showtype }}" actions="{{ typelist }}" show-cancel bind:cancel="closetype" bind:click="exittype" />
       <i-action-sheet visible="{{ showothertype }}" actions="{{ othertype }}" show-cancel bind:cancel="closeothertype" bind:click="exitothertype" />
       <i-toast id="toast" />
+      <i-modal title="{{madoltitle}}" visible="{{ madolshow }}" id="{{actionid+'|'+actionindex+'|'+actiontype}}" bind:ok="finishevent" bind:cancel="cacelevent">
+          <view>{{madolinfos}}</view>
+      </i-modal>
 </view>

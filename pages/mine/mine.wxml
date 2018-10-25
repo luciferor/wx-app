@@ -56,7 +56,7 @@
                     <view class='target-condition' wx:elif="{{target.gift_type ==2}}">当前第<span class="hight-color">{{target.weekrank}}</span>名/{{subs.targetType(target.gift_type)}}{{subs.targetRank(target.rank)}}</view>
                     <view class='target-condition' wx:else>当前第<span class="hight-color">{{target.monthrank}}</span>名/{{subs.targetType(target.gift_type)}}{{subs.targetRank(target.rank)}}</view>
                       </view>
-                      <view class='target-condition' wx:else><span class="hight-color">{{target.gift_score}}</span>邦分/{{target.gift_score}}邦分</view>
+                      <view class='target-condition' wx:else><span class="hight-color">{{target.score}}</span>邦分/{{target.gift_score}}邦分</view>
                       <progress class='target-status' percent="20" activeColor='#5398ff' backgroundColor='#f7f7f7' ></progress>
                   </view>
               </view>
