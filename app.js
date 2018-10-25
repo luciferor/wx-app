@@ -6,17 +6,13 @@ App({
     apiData: {
         code: '', //登录需要的code
         api: 'https://devqypyp.xiaohuibang.com', //接口根地址
-        session_key: '', //response.message.session_key
-        isAdmin:0,
-        userstatus:true
-
-    },
-    onload: function(opiton) {
-        this.setData({
-            company_id: option.company_id
-        })
+        session_key: '', //response.data.message.session_key
+        userstatus: true,
+        Company_Id: '', //response.data.message.company_id
+        isAdmin: 0,
     },
     onLaunch: function() {
+        console.log('onlaunch')
         var _this = this
             // 展示本地存储能力
         var logs = wx.getStorageSync('logs') || []
@@ -45,66 +41,44 @@ App({
                         console.log(response)
                         _this.apiData.code = res.code; //登录需要的code
                         _this.apiData.session_key = response.data.message.session_key; //response.message.session_key
+                        _this.apiData.Company_Id = response.data.message.company_id;
                         _this.apiData.isAdmin = response.data.message.isadmin;
-                        //获取用户信息，并发送给后台
+                        //*****
+                        //*
                         wx.getUserInfo({
-                            success: function(res) {
-                                console.log(res.userInfo);
-                                _this.apiData.userstatus = false;
-                                wx: wx.request({
-                                    url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
-                                    data: {
-                                        session_key: response.data.message.session_key,
-                                        nickname: res.userInfo.nickName,
-                                        avatarurl: res.userInfo.avatarUrl,
-                                        gender: res.userInfo.gender,
-                                        province: res.userInfo.province,
-                                        city: res.userInfo.city,
-                                        country: res.userInfo.country,
-                                    },
-                                    header: {
-                                        'content-type': 'application/json' //默认值
-                                    },
-                                    method: 'POST',
-                                    success: function(res) {
-                                        console.log(response)
-                                        if (response.data.code = "200" && _this.data.company_id != '') { //必须要是由申请加入的用户才会显示
-                                            wx.showModal({
-                                                title: '提示',
-                                                content: '恭喜！您已成功加入' + response.data.message.company_name + '！',
-                                                showCancel: true,
-                                                cancelText: '取消',
-                                                cancelColor: '#666666',
-                                                confirmText: '好的',
-                                                confirmColor: '#5398ff',
-                                                success: (result) => {
-                                                    if (result.confirm) {
-
-                                                    }
-                                                },
-                                                fail: () => {},
-                                                complete: () => {}
-                                            });
-                                        }
-                                        if (response.data.message.isnew == 1) { //判断是否新人，新人则跳转到引导页
-                                            wx.redirectTo({
-                                                url: './pages/guide/guide',
-                                                success: (result) => {
-
-                                                },
-                                                fail: () => {},
-                                                complete: () => {}
-                                            });
-                                        }
-                                    },
-                                    fail: function(res) {},
-                                    complete: function(res) {},
-                                })
+                          success:function(){
+                            wx.request({
+                              url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
+                              data: {
+                                session_key: app.apiData.session_key,
+                                nickname: res.userInfo.nickName,
+                                avatarurl: res.userInfo.avatarUrl,
+                                gender: res.userInfo.gender,
+                                province: res.userInfo.province,
+                                city: res.userInfo.city,
+                                country: res.userInfo.country,
+                              },
+                              header: {
+                                'content-type': 'application/json' //默认值
+                              },
+                              method: 'POST',
+                              success: function (res) {
+                                _this.apiData.userstatus = false
+                              },
+                            })
+                          },
+                          fail:function(){
+                            if (response.data.message.company_id != 0 && response.data.message.company_id != '') {
+                              wx.switchTab({
+                                url: '/pages/mine/mine',
+                              });
                             }
+                          }
                         })
+                        //*
+                        //***** */
                     }
                 })
-
             },
         })
     },

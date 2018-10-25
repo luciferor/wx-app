@@ -33,7 +33,7 @@ Page({
         othertype:[
           {name:'加分'},{name:'减分'}
         ],
-        otherbuff:0,
+        otherbuff:'',
         otherreasonr:'',
         madoltitle:'标题',
         madolshow:false,

@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
     data: {
+        company_id:'',
         userInfo: {},
         hasUserInfo: false,
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -15,42 +16,68 @@ Page({
         ],
         showBtn: false,
     },
-    onLoad: function() {
-        if (app.globalData.userInfo) {
-            this.setData({
-                userInfo: app.globalData.userInfo,
-                hasUserInfo: true
-            })
-        } else if (this.data.canIUse) {
-            // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-            // 所以此处加入 callback 以防止这种情况
-            app.userInfoReadyCallback = res => {
-                console.log(res)
-                this.setData({
-                    userInfo: res.userInfo,
-                    hasUserInfo: true
-                })
-            }
-        } else {
-            // 在没有 open-type=getUserInfo 版本的兼容处理
-            wx.getUserInfo({
-                success: res => {
-                    app.globalData.userInfo = res.userInfo
-                    this.setData({
-                        userInfo: res.userInfo,
-                        hasUserInfo: true
-                    })
-                }
-            })
-        }
+    onReady(){
     },
-    getUserInfo: function(e) {
-        console.log(e)
-        app.globalData.userInfo = e.detail.userInfo
-        this.setData({
-            userInfo: e.detail.userInfo,
-            hasUserInfo: true
+    onLoad: function (option) {
+      let _this = this;
+      this.setData({
+        company_id:option.company_id
+      })
+      if (_this.data.company_id != '' && _this.data.company_id == response.data.message.company_id) { //必须要是由申请加入的无组织用户才会显示
+        wx.showModal({
+          title: '提示',
+          content: '恭喜！您已成功加入' + response.data.message.company_name + '！',
+          showCancel: true,
+          cancelText: '取消',
+          cancelColor: '#666666',
+          confirmText: '好的',
+          confirmColor: '#5398ff',
+          success: (result) => {
+            if (result.confirm) {
+
+            }
+          },
+          fail: () => { },
+          complete: () => { }
+        });
+      }
+    },
+    toCreateOrg: function (e) {
+      let _this = this;
+      //获取用户信息，并发送给后台
+      let res = e.detail;
+      app.apiData.userstatus = false;
+      wx.request({
+        url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
+        data: {
+          session_key: app.apiData.session_key,
+          nickname: res.userInfo.nickName,
+          avatarurl: res.userInfo.avatarUrl,
+          gender: res.userInfo.gender,
+          province: res.userInfo.province,
+          city: res.userInfo.city,
+          country: res.userInfo.country,
+        },
+        header: {
+          'content-type': 'application/json' //默认值
+        },
+        method: 'POST',
+        success: function (res) {
+          
+        },
+      })
+      
+
+      setTimeout(function(){
+        wx.navigateTo({
+          url: '../create/create',
+          success: (result) => {
+
+          },
+          fail: () => { },
+          complete: () => { }
         })
+      },2000)
     },
     swiperfinish: function(e) {
         console.log(e.detail)

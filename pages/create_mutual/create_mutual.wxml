@@ -7,7 +7,7 @@
     <view wx:if="{{showContent=='tab1'}}" class="tab1-content">
         <view class="hangye-list">
             <view wx:for="{{hangyeArr}}" wx:for-index="idx" data-num="{{idx}}" data-industryId="{{item.industry_id}}" class="list-item  {{currHangye==idx?'selected':''}}" bindtap="selectHangye">
-                <text class="item-txt">{{item.name}}</text>
+                <text class="item-txt {{currHangye!=idx?'ellipsis':''}}">{{item.name}}</text>
             </view>
         </view>
         <view class="xingwei-list">

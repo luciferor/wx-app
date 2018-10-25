@@ -101,13 +101,15 @@ Page({
           api.$https('/targetmy/target', {
              session_key: app.apiData.session_key
         }, 'POST', function(data) {
-             _this.setData({
-            targetList: data.data.message
+            if(data.data.success){
+              _this.setData({
+                targetList: data.data.message
             });
+          }            
           }, function(data) {
                 console.log('请求失败');
             });
-        }, 6000);
+        }, 3000);
     },
 
     //提示框

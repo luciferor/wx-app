@@ -259,7 +259,9 @@ Page({
   //申请自定义目标
   applyNotice() {
     let _this = this;
-    console.log("====title" + _this.data.targetTitle)
+    _this.setData({
+      showApplyBox: false
+    });
     api.$https('/application/target', {
       session_key: app.apiData.session_key,
       type: _this.data.targetType,
@@ -268,12 +270,19 @@ Page({
       rank:_this.data.rank,
       gift_score:''
     }, 'POST', function (data) {
-      console.log(data.data.message);
-      if (data.data.success) {
-        
+      if(data.data.success){
+        $Toast({
+          content: data.data.message
+        });
+      }else{
+        $Toast({
+          content: data.data.message
+        });
       }
     }, function () {
-      console.log(请求失败);
+      $Toast({
+        content: '申请失败，请重试'
+      });
     });
   },
 

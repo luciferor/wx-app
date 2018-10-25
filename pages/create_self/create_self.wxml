@@ -7,7 +7,7 @@
     <view wx:if="{{showContent=='tab1'}}" class="tab1-content">
         <view class="hangye-list">
             <view wx:for="{{hangyeArr}}" wx:for-index="idx" data-num="{{idx}}" class="list-item  {{currHangye==idx?'selected':''}}"  data-industryId="{{item.industry_id}}" bindtap="selectHangye">
-                <text class="item-txt">{{item.name}}</text>
+                <text class="item-txt {{currHangye!=idx?'ellipsis':''}}">{{item.name}}</text>
             </view>
         </view>
         <view class="xingwei-list">
@@ -49,4 +49,8 @@
         <text class="reset-btn" bindtap="handleReset">重置</text>
         <button class="sure-btn" bindtap="handleSure">确定</button>
     </view>
+        <i-toast id="toast" />
+    <i-modal title="提示" visible="{{ RomoveModal }}" bind:ok="OKRomove" bind:cancel="CancelRomove">
+        <view>确定要删除吗？</view>
+    </i-modal>
 </view>

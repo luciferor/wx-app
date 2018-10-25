@@ -196,8 +196,8 @@ Page({
     console.log(_this.data.selecteduser);
     api.$http(function (res) {
       console.log(res);
+      _this.alertsuccess('他人' + _this.data.othertype + '成功');
       if(res.data.success){
-        _this.alertsuccess('他人'+_this.data.othertype+'成功');
         setTimeout(function(){
           wx.navigateBack({
             data:res.data.success

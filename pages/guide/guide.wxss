@@ -1,15 +1,11 @@
 /**guide.wxss**/
 
-.guide-container {
-    /* display: flex;
-    align-items: center;
-    flex-direction: column; */
-}
+.guide-container {}
 
 swiper {
     height: 900rpx;
     width: 100%;
-    margin-top: 40rpx;
+    margin-top: 120rpx;
 }
 
 swiper image {
@@ -36,5 +32,5 @@ swiper image {
     color: #5398ff;
     font-size: 32rpx;
     text-align: center;
-    margin: 100rpx auto 0
+    margin: 40rpx auto 0
 }
