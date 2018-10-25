@@ -14,13 +14,14 @@
 }
 
 .under-list-img-box{
-    width:120rpx;
-    height: 120rpx;
+    width:100rpx;
+    height: 100rpx;
+    padding:10rpx;
 }
 
 .under-list-img-box image{
-    width:118rpx;
-    height: 118rpx;
+    width:98rpx;
+    height: 98rpx;
     border-radius:69px;
 	border: solid 1px #5398ff;
 }
@@ -54,7 +55,7 @@
 .user-li-title-box-listdes{
     height: 60rpx;
     line-height: 60rpx;
-    font-size: 35rpx;
+    font-size: 32rpx;
     color: #333333;
 }
 
