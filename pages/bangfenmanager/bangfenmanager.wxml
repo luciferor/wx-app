@@ -78,7 +78,7 @@
                   <button style="width:95%; float:left; background:#dedede;" type="default" size="{{defaultSize}}" plain="{{plain}}"bindtap="go" hover-class="other-button-hover">取消 </button>
               </span>
               <span class="fr" style="width:50%;">
-                  <button form-type='submit' style="width:95%; float:right; background:#5398ff;" type="primary" size="{{defaultSize}}" plain="{{plain}}"bindtap="ownnerplusevent" hover-class="other-button-hover">确定</button>
+                  <button form-type='submit' style="width:95%; float:right; background:#5398ff;" type="primary" size="{{defaultSize}}" plain="{{plain}}" bindtap="ownnerplusevent" hover-class="other-button-hover">确定</button>
               </span>
           </view>
         </form>

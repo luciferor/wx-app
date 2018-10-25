@@ -3,7 +3,6 @@ const { $Toast } = require('../../dist/base/index');
 var app = getApp();
 Page({
     data:{
-        state:false,
         winHeight:"",//窗口高度
         currentTab:0, //预设当前项的值
         scrollLeft:0, //tab标题的滚动条位置
@@ -236,6 +235,12 @@ Page({
     applyevent(){
       wx.navigateTo({
         url: '../../pages/selectuseres/selectuseres?type=' + this.data.othertypename + "&buff=" + this.data.otherbuff + "&reasonr=" + this.data.otherreasonr,
+      })
+      this.setData({
+        showother: false,
+        othertypename: '',//他人加减分类型
+        otherbuff: 0,
+        otherreasonr: '',
       })
     },
     closetype(){

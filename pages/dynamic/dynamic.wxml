@@ -1,6 +1,6 @@
 <wxs module="subs" src="../../filter/substres.wxs"></wxs>
 <view>
-  <view class="top-box" wx:if="{{newawardlist.length>=0}}">
+  <view class="top-box" wx:if="{{newawardlist.length>0}}">
       <view class="top-title">
           <span class="titlespan fl"></span>
           <span class="titletext fl">最新获奖</span>
