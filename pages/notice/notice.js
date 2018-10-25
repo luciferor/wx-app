@@ -1,5 +1,6 @@
 //notice.js
 var api = require('../../utils/api.js');
+const { $Toast } = require('../../dist/base/index');
 //获取应用实例
 const app = getApp()
 
@@ -27,6 +28,7 @@ Page({
 
   //不通过
   handleReject(e){
+    let index = e.currentTarget.id;
     let notice = this.data.applyNotice[index];
     api.$https('/toexamine/target', {
       session_key: app.apiData.session_key,
@@ -35,6 +37,14 @@ Page({
       status:'0'
     }, 'POST', function (data) {
       if (data.data.success) {
+        $Toast({
+          content: data.data.message
+        });
+        this.getNoticeList(1, this.data.applyPage);
+      }else{
+        $Toast({
+          content: data.data.message
+        });
       }
     }, function () {
       console.log(请求失败);
@@ -43,10 +53,6 @@ Page({
   //通过
   handlePass(e){
     let index = e.currentTarget.id;
-    this.data.applyNotice[index].check_hidden = !this.data.applyNotice[index].check_hidden;
-    this.setData({
-      applyNotice: this.data.applyNotice
-    });
     let notice = this.data.applyNotice[index];
     api.$https('/toexamine/target', {
       session_key: app.apiData.session_key,
@@ -55,12 +61,71 @@ Page({
       status: '1'
     }, 'POST', function (data) {
       if (data.data.success) {
-
+        $Toast({
+          content: data.data.message
+        });
+        this.getNoticeList(1, this.data.applyPage);
+      } else {
+        $Toast({
+          content: data.data.message
+        });
       }
     }, function () {
       console.log(请求失败);
     });
   },
+
+  //不通过
+  handleAllReject(e) {
+    let _this = this;
+    let index = e.currentTarget.id;
+    let notice = _this.data.allNotice[index];
+    api.$https('/toexamine/target', {
+      session_key: app.apiData.session_key,
+      type: notice.type,
+      id: notice.id,
+      status: '0'
+    }, 'POST', function (data) {
+      if (data.data.success) {
+        $Toast({
+          content: data.data.message
+        });
+        _this.getNoticeList(0, _this.data.allPage);
+      } else {
+        $Toast({
+          content: data.data.message
+        });
+      }
+    }, function () {
+      console.log(请求失败);
+    });
+  },
+  //通过
+  handleAllPass(e) {
+    let _this = this;
+    let index = e.currentTarget.id;
+    let notice = _this.data.allNotice[index];
+    api.$https('/toexamine/target', {
+      session_key: app.apiData.session_key,
+      type: notice.type,
+      id: notice.id,
+      status: '1'
+    }, 'POST', function (data) {
+      if (data.data.success) {
+        $Toast({
+          content: data.data.message
+        });
+        _this.getNoticeList(0, _this.data.allPage);
+      } else {
+        $Toast({
+          content: data.data.message
+        });
+      }
+    }, function () {
+      console.log(请求失败);
+    });
+  },
+
 
 
 
@@ -87,8 +152,21 @@ Page({
           allNotice: []
         });
       }
+      let list = [];
+      for (var index in data) {//x = index
+        list.push({
+          id: data[index].id,
+          name: data[index].name,
+          state: data[index].state,
+          created_at: data[index].created_at,
+          title: data[index].title,
+          type: data[index].type,
+          user_img: data[index].user_img,
+          check_hidden: true
+        });
+      }
       this.setData({
-        allNotice:this.data.allNotice.concat(data)
+        allNotice: this.data.allNotice.concat(list)
       })
     }else if(types == 1){
       if (page == 1) {
@@ -132,6 +210,16 @@ Page({
       })
     }
   },
+
+  //全部审核
+  showAllCheckBox(e) {
+    let index = e.currentTarget.id;
+    this.data.allNotice[index].check_hidden = !this.data.allNotice[index].check_hidden;
+    this.setData({
+      allNotice: this.data.allNotice
+    })
+  },
+
   //审核弹窗
   showCheckBox(e){
     console.log(e.currentTarget.id)

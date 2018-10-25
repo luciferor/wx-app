@@ -7,7 +7,7 @@ const app = getApp()
 Page({
     data: {
         memberList: [],
-        isAdmin: 0
+        isAdmin: app.apiData.isAdmin
     },
 
     //事件处理函数
@@ -35,9 +35,8 @@ Page({
                 success() {}
             }),
             this.setData({
-                isAdmin: options.isAdmin,
+                isAdmin: app.apiData.isAdmin,
             });
-        console.log("-----" + this.data.isAdmin)
     },
 
     //跳转到组织管理

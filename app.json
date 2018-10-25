@@ -1,8 +1,8 @@
 {
     "pages": [
         "pages/guide/guide",
-        "pages/create/create",
         "pages/mine/mine",
+        "pages/create/create",
         "pages/setting/setting",
         "pages/create_mutual/create_mutual",
         "pages/create_self/create_self",
@@ -23,7 +23,8 @@
         "pages/manageorg/manageorg",
         "pages/organization/organization",
         "pages/plandetail/plandetail",
-        "pages/target/target"
+        "pages/target/target",
+        "pages/selectmutuluser/selectmutuluser"
     ],
     "window": {
         "backgroundTextStyle": "light",

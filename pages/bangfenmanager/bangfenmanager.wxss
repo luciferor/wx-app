@@ -39,8 +39,8 @@
     width: 62rpx;
     background: #4675F9;
     position: absolute;
-    bottom:18rpx;
-    left:32rpx;
+    bottom:15rpx;
+    left:39rpx;
     border-radius: 16rpx;
 }
 .item-ans{ 
@@ -74,12 +74,12 @@
     color:#999999;
 }
 .fagsbox{
-    width:150rpx;
+    width:0rpx;
     cursor: pointer;
     position:fixed;
     z-index: 0;
     bottom:40rpx;
-    right:40rpx;
+    right:190rpx;
     text-align: center;
 }
 .fabs{
@@ -95,6 +95,32 @@
     height: 150rpx;
 }
 
+.ownerdes{
+  position: absolute;
+  width:180rpx;
+  height: 62rpx;
+  background: #000000;
+  opacity: 0.4;
+  border-radius: 8rpx;
+  color:#FFFFFF;
+  font-size: 26rpx;
+  line-height: 62rpx;
+  left:-180rpx;
+  top:25rpx;
+}
+.mutudes{
+  position: absolute;
+  width:180rpx;
+  height: 62rpx;
+  background: #000000;
+  opacity: 0.4;
+  border-radius: 8rpx;
+  color:#FFFFFF;
+  font-size: 26rpx;
+  line-height: 62rpx;
+  left:-180rpx;
+  top:160rpx;
+}
 .fabplusred{
     width:110rpx;
     height:110rpx;
@@ -143,6 +169,7 @@
     font-size: 35rpx;
     height: 80rpx;
     line-height:100%;
+    text-align: center;
 }
 
 .select-type{
@@ -181,7 +208,8 @@
 }
 .input-li{
     width:80rpx;
-    font-size: 35rpx;
+    font-size: 30rpx;
+    line-height: 50rpx;
 }
 
 .input-area{

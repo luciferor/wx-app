@@ -32,15 +32,13 @@ Page({
       // { "id": 26, "name": "里亚蒂", "pinyin": "Liyadi", "post": "虚构人物" },
       // { "id": 27, "name": "葵花宝典", "pinyin": "Kuihuabaodian", "post": "绝世武功" },
     ],
-    selectid:1,//选中的id
-    selecteduser:[],//选中的人
-    count:0,//选中的人数
-    othertype:'',
-    buff:'',
-    reasonr:'',
-    searchuserlist:[],//搜索用户
+    selectid: 1,//选中的id
+    selecteduser: [],//选中的人
+    count: 0,//选中的人数
+    mutuid: '',
+    searchuserlist: [],//搜索用户
   },
-  selectedevent(e){
+  selectedevent(e) {
     let arr = e.currentTarget.dataset.replyType.split('|');
     let index = arr[1];
     let lindex = arr[2];
@@ -50,7 +48,7 @@ Page({
     })
     console.log(this.data.cities);
     this.setData({
-      selectid:arr[0],
+      selectid: arr[0],
     })
     //console.log(e.currentTarget.dataset.replyType);
     //临时变量
@@ -62,7 +60,7 @@ Page({
     } else {
       console.log(arr[0] + "反选aaa");
       for (let i = 0; i < this.data.selecteduser.length; i++) {
-        if (this.data.selecteduser[i].id==arr[0]) {
+        if (this.data.selecteduser[i].id == arr[0]) {
           this.data.selecteduser.splice(i, 1);
         }
       }
@@ -70,12 +68,11 @@ Page({
     //★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
 
     this.setData({
-      count:this.data.selecteduser.length
+      count: this.data.selecteduser.length
     })
     console.log(this.data.selecteduser);
   },
-  selectedeventseach(e){
-    console.log("执行中");
+  selectedeventseach(e) {
     let arr = e.currentTarget.dataset.replyType.split('|');
     let index = arr[1];
     this.data.searchuserlist[index].ischecked = !this.data.searchuserlist[index].ischecked;
@@ -89,14 +86,14 @@ Page({
     //console.log(e.currentTarget.dataset.replyType);
     //临时变量
     //★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-    if (this.data.searchuserlist[index].ischecked){
+    if (this.data.searchuserlist[index].ischecked) {
       this.data.selecteduser.push({
         id: arr[0],
       });
-    }else{
-      console.log(arr[0]+"反选bbb");
-      for(let i=0;i<this.data.selecteduser.length;i++){
-        if (this.data.selecteduser[i].id == arr[0]){
+    } else {
+      console.log(arr[0] + "反选bbb");
+      for (let i = 0; i < this.data.selecteduser.length; i++) {
+        if (this.data.selecteduser[i].id == arr[0]) {
           this.data.selecteduser.splice(i, 1);
         }
       }
@@ -115,15 +112,16 @@ Page({
     api.$http(function (res) {
       _this.data.cities = [];
       let item = res.data.message;
+
       for (var i = 0; i < res.data.message.length; i++) {
-        if (item[i].name){
+        if (item[i].name) {
           _this.data.cities.push({
             id: item[i].id,
             name: item[i].name,
             pinyin: item[i].letter,
-            post:item.postname,
+            post: item.postname,
             img: item[i].user_img,
-            ischecked:false
+            ischecked: false
           })
         }
       }
@@ -132,21 +130,18 @@ Page({
       console.log(err)
     }, '/WeChat/Applet/getUserList', {
         session_key: app.apiData.session_key
-    }, 'POST'); 
+      }, 'POST');
   },
-  onLoad(option){
-    console.log(option);
+  onLoad(option) {
     this.setData({
-      othertype:option.type,
-      buff:option.buff,
-      reasonr:option.reasonr,
+      mutuid: option.id,
     })
     let _this = this;
-    setTimeout(function(){
+    setTimeout(function () {
       _this.convertdata();
-    },10000)
+    }, 10000)
   },
-  convertdata(){
+  convertdata() {
     let storeCity = new Array(26);
     const words = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     words.forEach((item, index) => {
@@ -164,7 +159,7 @@ Page({
         key: firstName,
         post: item.postname,
         img: item.user_img,
-        ischecked:false
+        ischecked: false
       });
     })
     this.data.cities = storeCity;
@@ -173,48 +168,42 @@ Page({
       cities: this.data.cities
     })
   },
-  changeSearch(e){
+  changeSearch(e) {
     let _this = this;
-    api.$http(function(res){
+    api.$http(function (res) {
       _this.setData({
-        searchuserlist:res.data.message
+        searchuserlist: res.data.message
       })
-    },function(err){
+    }, function (err) {
       console.log(err)
-      },'/WeChat/Applet/getUserByName',
-    {
-      session_key:app.apiData.session_key,
-      name:e.detail.value
-    },'POST')
+    }, '/WeChat/Applet/getUserByName',
+      {
+        session_key: app.apiData.session_key,
+        name: e.detail.value
+      }, 'POST')
   },
-  otherevents(){
+  otherevents() {
     let _this = this;
-    let selused='';
-    for (let i = 0; i < _this.data.selecteduser.length;i++){
-      selused += ";"+_this.data.selecteduser[i].id;
+    let selused = '';
+    for (let i = 0; i < _this.data.selecteduser.length; i++) {
+      selused += ";" + _this.data.selecteduser[i].id;
     }
     console.log(_this.data.selecteduser);
     api.$http(function (res) {
       console.log(res);
-      if(res.data.success){
-        _this.alertsuccess('他人'+_this.data.othertype+'成功');
-        setTimeout(function(){
-          wx.navigateBack({
-            data:res.data.success
-          });
-        },1000)
+      _this.alertsuccess(res.data.message);
+      if (res.data.success) {
+        setTimeout(function () { wx.navigateBack();},2000)
       }
     }, function (err) {
       console.log(err);
-    },'/WeChat/Applet/changeGradeApplyByOther',{
-        session_key:app.apiData.session_key,
-        bangfen:_this.data.buff,
-        reason: _this.data.reasonr,
-        type: _this.data.othertype == '加分' ? 'add' :'reduce',
-        user_ids:selused.substr(1)
-    },"POST")
+      }, '/WeChat/Applet/finishMutualManaged', {
+        session_key: app.apiData.session_key,
+        id:this.data.mutuid,
+        user_ids: selused.substr(1)
+      }, "POST")
   },
-  alertsuccess(_str){
+  alertsuccess(_str) {
     $Toast({
       content: _str,
       type: 'success'

@@ -30,13 +30,19 @@
                       <view class='content-container'>
                           <view class='name-container'>
                           <text class='uname'>{{allItem.name}}</text>
-                          <text class='status'>{{subs.status(allItem.status)}}</text>
+                          <text class='pass-text' wx:if="{{allItem.state == 1}}">{{subs.status(allItem.state)}}</text>
+                          <text class='apply-text' wx:elif="{{allItem.state == 2}}">{{subs.status(allItem.state)}}</text>
+                          <text class='reject-text' wx:else>{{subs.status(allItem.state)}}</text>
                       </view>
                       <view class='info-container'>
                             <text class='title'>{{allItem.type == 1?'排名目标':'邦分目标'}}</text>
                             <text class='content'>{{allItem.title}}</text>
                       </view>
-                       <view class='dot-container' hidden='true'>
+                      <view class='dot-container' id="{{allIndex}}" bindtap="showAllCheckBox" wx:if="{{allItem.state ==2}}">
+                         <view class='check-container' hidden='{{allItem.check_hidden}}'>
+                              <text class="reject-btn" id="{{allIndex}}" bindtap='handleAllReject'>不通过</text>
+                              <text class="pass-btn" id="{{allIndex}}" bindtap='handleAllPass'>通过</text>
+                         </view>
                           <image src='../../images/mine/icon_wode_shenhe.png' class='dot-image'></image>
                       </view>
                       </view>
@@ -60,7 +66,7 @@
                   <view class='notice-container'>
                       <view>
                           <i-badge dot i-class='badge' >
-                          <image src="{{applyItem.user_img==null||applyItem.user_img==''?'../../images/mine/head_default_icon.png':'https://devqypyp.xiaohuibang.com'+ applyItem.user_img}}" class='upic'></image>                     
+                          <image src="{{applyItem.user_img==null||applyItem.user_img==''?'../../images/mine/head_default_icon.png':'https://devqypyp.xiaohuibang.com'+ applyItem.user_img}}" class='upic'></image> 
                           </i-badge>
                       </view>
                       <view class='content-container'>
@@ -95,11 +101,11 @@
            <view wx:if="{{passNotice.length >= 1}}">
                  <block wx:key="*this" wx:for="{{passNotice}}" wx:for-index="passIndex" wx:for-item="passItem">
                   <view class='time-container'>
-                      <text class='time-text'>passItem.created_at</text>
+                      <text class='time-text'>{{passItem.created_at}}</text>
                   </view>
                   <view class='notice-container'>
                       <view>
-                          <i-badge dot i-class='badge' >
+                          <i-badge  i-class='badge' >
                           <image src="{{passItem.user_img==null||passItem.user_img==''?'../../images/mine/head_default_icon.png':'https://devqypyp.xiaohuibang.com'+ passItem.user_img}}" class='upic'></image>                     
                           </i-badge>
                       </view>
@@ -132,7 +138,7 @@
                   </view>
                   <view class='notice-container'>
                       <view>
-                          <i-badge dot i-class='badge' >
+                          <i-badge  i-class='badge' >
                           <image src="{{rejectItem.user_img==null||rejectItem.user_img==''?'../../images/mine/head_default_icon.png':'https://devqypyp.xiaohuibang.com'+ rejectItem.user_img}}" class='upic'></image>                     
                           </i-badge>
                       </view>
@@ -158,3 +164,4 @@
     </view>
     
 </view>
+<i-toast id="toast" />

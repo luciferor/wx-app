@@ -58,8 +58,14 @@ page{
 }
 
 .badge{
-  top: 0rpx !important;
-  right: 0rpx !important;
+  top: 24rpx !important;
+  right: 28rpx !important;
+  background: #ff5959;
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 18rpx;
+  border: 1rpx solid white;
+  position: absolute;
 }
 
 .setting{
@@ -124,18 +130,21 @@ page{
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  padding-top:30rpx;
 }
 .add-text-container{
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-left: 24rpx;
+  justify-content: center;
 }
 .add-icon{
   width: 6rpx;
-  height: 26rpx;
+  height: 28rpx;
   background-color: #5398ff;
-  border-radius: 10rpx;
+  border-radius: 50rpx;
+  margin-top: 2rpx;
 }
 .add-text{
   color: #666666;
@@ -159,6 +168,7 @@ page{
   flex-direction: row;
   padding: 35rpx 20rpx 35rpx 24rpx;
   justify-content: space-between;
+  align-content: center
 }
 .target-left{
   display: flex;
@@ -193,6 +203,7 @@ page{
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center
 }
 
 .target-button{
@@ -269,4 +280,20 @@ page{
   color: #b5c9e6;
   font-size: 30rpx;
   margin-top: 5rpx;
+}
+
+.target-un-button{
+    color: white;
+    background-color: #5398ff;
+    border-radius: 30rpx;
+    width: 150rpx;
+    height: 60rpx;
+    text-align: center;
+    line-height: 60rpx;
+    font-size: 24rpx;
+    opacity: 0.3;
+}
+
+.hight-color{
+  color: #5398ff;
 }

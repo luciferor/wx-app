@@ -1,7 +1,7 @@
 {
   "navigationBarBackgroundColor": "#FFFFFF",
   "navigationBarTitleText": "选择对象",
-  "backgroundTextStyle":"dark",
+  "backgroundTextStyle": "dark",
   "usingComponents": {
     "i-index": "../../dist/index/index",
     "i-index-item": "../../dist/index-item/index",

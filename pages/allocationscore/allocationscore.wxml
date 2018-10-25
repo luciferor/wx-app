@@ -6,23 +6,23 @@
         </view>
 
         <view class='bottom-container'>
-            <view class='content-container' wx:for="{{yearList}}" wx:for-item="item">
-                <text class='year-text'>2018</text>
-                <view class='plan-container' wx:for="{{item.monthList}}" bindtap='navigateToPlanDetail'>
-                    <view class='detail-container'>
+            <!-- <view class='content-container' wx:for="{{yearList}}" wx:for-item="item">
+                <text class='year-text'>2018</text> -->
+                <view class='plan-container'wx:key="*this" wx:for="{{planList}}" wx:for-index="idx" wx:for-item="plan"  >
+                    <view class='detail-container' bindtap='navigateToPlanDetail' id='{{idx}}'>
                         <view class='left-container'>
                           <view class='month-container'>
-                            <text class='month-text'>十一月</text>
+                            <text class='month-text'>{{plan.effective_time}}</text>
                           </view> 
                           <view class='info-container'>
-                              <text class='score-text'>已分配邦分：80邦分</text>
-                              <text class='number-text'>分配人数：3人</text>
+                              <text class='score-text'>已分配邦分：{{plan.total}}邦分</text>
+                              <text class='number-text'>分配人数：{{plan.number}}人</text>
                           </view>
                         </view>
                         <image src='../../images/icon_caozuo_right.png' class='arrow'></image>
                     </view>
                 </view>
-            </view>
+            <!-- </view> -->
         </view>
     </view>
 

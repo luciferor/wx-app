@@ -8,7 +8,8 @@ App({
         api: 'https://devqypyp.xiaohuibang.com', //接口根地址
         session_key: '', //response.data.message.session_key
         userstatus: true,
-        Company_Id: '' //response.data.message.company_id
+        Company_Id: '', //response.data.message.company_id
+        isAdmin: 0,
     },
     onload: function(opiton) {
         this.setData({
@@ -40,10 +41,12 @@ App({
                         'content-type': 'application/json' //默认值
                     },
                     success(response) {
+                        console.log('查看信息')
                         console.log(response)
                         _this.apiData.code = res.code; //登录需要的code
                         _this.apiData.session_key = response.data.message.session_key; //response.message.session_key
                         _this.apiData.Company_Id = response.data.message.company_id;
+                        _this.apiData.isAdmin = response.data.message.isadmin;
                         //获取用户信息，并发送给后台
                         wx.getUserInfo({
                             success: function(res) {

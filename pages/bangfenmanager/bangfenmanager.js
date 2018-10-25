@@ -3,6 +3,7 @@ const { $Toast } = require('../../dist/base/index');
 var app = getApp();
 Page({
     data:{
+        state:false,
         winHeight:"",//窗口高度
         currentTab:0, //预设当前项的值
         scrollLeft:0, //tab标题的滚动条位置
@@ -35,6 +36,120 @@ Page({
         ],
         otherbuff:0,
         otherreasonr:'',
+        madoltitle:'标题',
+        madolshow:false,
+        madolinfos:'详细信息',
+        actionid:'',
+        actionindex:'',
+        actiontype:''
+    },
+    finishevent(e){
+      let _this = this;
+      let arr = e.currentTarget.id.split('|');
+      let id = arr[0];
+      let index = arr[1];
+      let type = arr[2];
+      switch (type) {
+        case 'owner':
+          //
+          api.$http(function (res) {
+            console.log(res)
+            if(res.data.success){
+              _this.handleSuccess("自我管理加分成功");
+            }
+          }, function (err) { },'/WeChat/Applet/finishSelfManaged',{
+            session_key:app.apiData.session_key,
+            id:id
+          },'POST')
+          this.data.ownerlist[index].ischecked = false;
+          this.setData({
+            ownerlist: this.data.ownerlist
+          });
+          break;
+        case 'mutu':
+          //
+          // api.$http(function (res) {
+          //   console.log(res)
+          // }, function (err) { }, '/WeChat/Applet/finishMutualManaged', {
+          //     session_key: app.apiData.session_key,
+          //     id: id
+          //   }, 'POST')
+          // console.log('相互管理了');
+          this.data.mutullist[index].ischecked = false;
+          this.setData({
+            mutullist: this.data.mutullist
+          });
+          //跳转到选择用户
+          wx.navigateTo({
+            url: '../../pages/selectmutuluser/selectmutuluser?id='+id,
+          })
+          break;
+        default:
+          break;
+      }
+      this.setData({
+        madolshow:false
+      })
+    },
+    cacelevent(e){
+      let arr = e.currentTarget.id.split('|');
+      let id = arr[0];
+      let index = arr[1];
+      let type = arr[2];
+      switch (type) {
+        case 'owner':
+          //
+          this.data.ownerlist[index].ischecked = false;
+          this.setData({
+            ownerlist: this.data.ownerlist
+          });
+          break;
+        case 'mutu':
+          //
+          this.data.mutullist[index].ischecked = false;
+          this.setData({
+            mutullist: this.data.mutullist
+          });
+          break;
+        default:
+          break;
+      }
+      this.setData({
+        madolshow:false
+      })
+    },
+    ownerevents(e){
+      let arr = e.currentTarget.id.split('|');
+      let id = arr[0];
+      let index = arr[1];
+      let info = '提交后不可取消，您确认任务完成了么？';//arr[2];
+      this.data.ownerlist[index].ischecked = !this.data.ownerlist[index].ischecked;
+      this.setData({
+        ownerlist: this.data.ownerlist,
+        madoltitle: '自我管理',
+        madolshow: true,
+        madolinfos: info,
+        actionid:id,
+        actionindex:index,
+        actiontype:'owner'
+      });
+      
+    },
+    mutuevents(e){
+      let arr = e.currentTarget.id.split('|');
+      let id = arr[0];
+      let index = arr[1];
+      let info = '提交后不可取消，您确认任务完成了么'//arr[2];
+      this.data.mutullist[index].ischecked = !this.data.mutullist[index].ischecked;
+      this.setData({
+        mutullist: this.data.mutullist,
+        madoltitle: '相互管理',
+        madolshow: true,
+        madolinfos: info,
+        actionid:id,
+        actionindex:index,
+        actiontype:'mutu'
+      });
     },
     closeothertype() {
       this.setData({
@@ -243,9 +358,19 @@ Page({
     }, 'POST');
   },
   odosuccess(data) {
+    console.log('aaaaaaaaa')
     console.log(data);
+    for(let i=0;i<data.data.message.length;i++){
+      let item = data.data.message;
+      this.data.ownerlist.push({
+        id:item[i].id,
+        bangfen:item[i].bangfen,
+        name:item[i].name,
+        ischecked:false
+      })
+    }
     this.setData({
-      ownerlist: data.data.message
+      ownerlist:this.data.ownerlist
     })
   },
   odofail(err) {
@@ -253,8 +378,19 @@ Page({
   },
   mdosuccess(data) {
     console.log(data);
+    for (let i = 0; i < data.data.message.length; i++) {
+      let item = data.data.message;
+      this.data.mutullist.push({
+        id: item[i].id,
+        bangfen: item[i].bangfen,
+        behavior: item[i].behavior,
+        score: item[i].score,
+        type: item[i].type,
+        ischecked: false
+      })
+    }
     this.setData({
-      mutullist:data.data.message
+      mutullist: this.data.mutullist
     })
   },
   mdofail(err) {
