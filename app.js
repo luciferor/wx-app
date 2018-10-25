@@ -6,8 +6,9 @@ App({
     apiData: {
         code: '', //登录需要的code
         api: 'https://devqypyp.xiaohuibang.com', //接口根地址
-        session_key: '', //response.message.session_key
-        userstatus: true
+        session_key: '', //response.data.message.session_key
+        userstatus: true,
+        Company_Id: '' //response.data.message.company_id
     },
     onload: function(opiton) {
         this.setData({
@@ -42,6 +43,7 @@ App({
                         console.log(response)
                         _this.apiData.code = res.code; //登录需要的code
                         _this.apiData.session_key = response.data.message.session_key; //response.message.session_key
+                        _this.apiData.Company_Id = response.data.message.company_id;
                         //获取用户信息，并发送给后台
                         wx.getUserInfo({
                             success: function(res) {
@@ -64,7 +66,7 @@ App({
                                     method: 'POST',
                                     success: function(res) {
                                         console.log(response)
-                                        if (response.data.code = "200" && _this.data.company_id != '') { //必须要是由申请加入的用户才会显示
+                                        if (response.data.code = "200" && _this.data.company_id != '' && _this.data.company_id == response.data.message.company_id) { //必须要是由申请加入的无组织用户才会显示
                                             wx.showModal({
                                                 title: '提示',
                                                 content: '恭喜！您已成功加入' + response.data.message.company_name + '！',
@@ -82,9 +84,9 @@ App({
                                                 complete: () => {}
                                             });
                                         }
-                                        if (response.data.message.isnew == 1) { //判断是否新人，新人则跳转到引导页
+                                        if (response.data.message.company_id != 0 && response.data.message.company_id != '') { //判断是否有无组织，有组织的跳转到mine页面
                                             wx.redirectTo({
-                                                url: './pages/guide/guide',
+                                                url: '/pages/mine/mine',
                                                 success: (result) => {
 
                                                 },

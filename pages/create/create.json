@@ -1,9 +1,10 @@
 {
-  "navigationBarBackgroundColor": "#FFFFFF",
-  "usingComponents": {
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "usingComponents": {
         "i-icon": "../../dist/icon/index",
         "i-radio-group": "../../dist/radio-group/index",
         "i-radio": "../../dist/radio/index",
-        "i-modal": "../../dist/modal/index"
+        "i-modal": "../../dist/modal/index",
+        "i-toast": "../../dist/toast/index"
     }
 }

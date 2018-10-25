@@ -31,10 +31,17 @@ page {
 }
 
 .hangye-list .list-item {
-    height: 100rpx;
+    min-height: 100rpx;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 28rpx;
+}
+
+.hangye-list .list-item .item-txt.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .hangye-list .list-item.selected .item-txt {
@@ -50,7 +57,7 @@ page {
     color: #666666;
     font-size: 30rpx;
     flex: 1 1 auto;
-    max-height: 988rpx;
+    height: 985rpx;
     overflow: auto;
     background-color: #ffffff;
 }
