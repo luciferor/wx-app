@@ -1,5 +1,6 @@
 //获取应用实例
 var api = require('../../utils/api.js');
+const { $Toast } = require('../../dist/base/index');
 const app = getApp()
 
 Page({
@@ -8,20 +9,52 @@ Page({
     addScoreNum:0,
     reduceScoreNum:0,
     maxScoreNum:0,
+    count:0,
+  },
+
+  onLoad: function () {
+    this.getCount();
+  },
+
+
+  getCount(){
+    let _this = this;
+    api.$https('/appreciate/companycoin', {
+      session_key: app.apiData.session_key,
+    }, 'POST', function (data) {
+      _this.setData({
+        count: data.data.message
+      });
+    }, function (data) {
+      console.log('请求失败');
+    });
   },
 
   addPlan(){
-    let _this = this;
-    api.$https('/appreciate/personalcenter', {
+    api.$https('/WeChat/appreciate/allocation', {
       session_key: app.apiData.session_key,
-      
+      score: this.data.addScoreNum,
+      rescore: this.data.reduceScoreNum,
+      range_max: this.data.maxScoreNum,
+      range_min: this.data.maxScoreNum,
+      effective_time: this.timeToTimestamp(this.data.date)
     }, 'POST', function (data) {
-      this.setData({
-       userInfo: data.data.message
-      });
+      console.log(data.data.message);
+        $Toast({
+          content: data.data.message
+        });
+        if(data.data.success){
+          wx.navigateBack()
+        }
     }, function (data) {
-       console.log('请求失败');
+      $Toast({
+        content: '添加失败'
+      });
     });
+  },
+
+   timeToTimestamp(date){
+     return Date.parse(date)/1000;
   },
 
   //日期改变

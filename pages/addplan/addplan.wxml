@@ -2,7 +2,7 @@
   <view>
     <view class='title-container'>
       <view class='blue-icon'></view>
-      <text class='title-text'>可分配邦分100000邦分</text>
+      <text class='title-text'>可分配邦分{{count}}邦分</text>
    </view>
 
    <view class='score-container'>
@@ -40,9 +40,11 @@
   </view>
 
    
-    <view class='bottom-container'>
+    <view class='bottom-container' bindtap='addPlan'>
         <button class='button'>确定</button>
    </view>
 
   
 </view>
+
+<i-toast id="toast" />

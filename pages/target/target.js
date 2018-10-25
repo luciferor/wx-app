@@ -334,7 +334,7 @@ Page({
       targetType:index+1,
       newTargetType: this.data.typeAction[index].name,
       showTypeBox: false
-    })
+    });
   },
   //关闭排名类型
   handleRankCancel() {

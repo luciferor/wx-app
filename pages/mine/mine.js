@@ -1,5 +1,6 @@
 //mine.js
 var api = require('../../utils/api.js');
+const { $Toast } = require('../../dist/base/index');
 //获取应用实例
 const app = getApp()
 
@@ -17,13 +18,65 @@ Page({
             score: "0",
             total_score: "0",
             user_img: "",
-            isadmin: 0,
+          isadmin: 0,
         },
-        targetList: []
+        targetList: [
+          // {
+          //   "id": 1,
+          //   "type": 1,
+          //   "ranktitle": "休假三天",
+          //   "gift_type": 3,
+          //   "rank": 1,
+          //   "scoretitle": null,
+          //   "gift_score": null,
+          //   "todayrank":1,
+          //   "weekrank":2,
+          //   "monthrank":3
+          // },
+          // {
+          //   "id": 2,
+          //   "type": 2,
+          //   "ranktitle": null,
+          //   "gift_type": null,
+          //   "rank": null,
+          //   "scoretitle": "成都一日游",
+          //   "gift_score": 2000, "todayrank": 1,
+          //   "weekrank": 2,
+          //   "monthrank": 3
+          // }
+        ]
     },
     onReady: function() {
         this.getUserInfos();
+        this.getTargetList();
     },
+
+   handleReceive(e){
+     console.log(e.currentTarget.id);
+     let index = e.currentTarget.id;
+     let target = this.data.targetList[index];
+     if (target.isreceive){
+       api.$https('/receive/target', {
+         session_key: app.apiData.session_key,
+         id:target.id
+       }, 'POST', function (data) {
+         $Toast({
+           content: data.data.message
+         });
+         if(data.data.success){
+           this.getTargetList();
+         }
+       }, function (data) {
+         $Toast({
+           content: "领取失败"
+         });
+       });
+     }else{
+       $Toast({
+         content: "暂未达成，无法领取"
+       });
+     }
+   },
 
     //获取用户信息
     getUserInfos() {
@@ -43,15 +96,15 @@ Page({
 
     //获取我的目标
     getTargetList() {
-        let _this = this;
-        setTimeout(function() {
-            api.$https('/targetmy/target', {
-                session_key: app.apiData.session_key
-            }, 'POST', function(data) {
-                _this.setData({
-                    targetList: data.data.message
-                });
-            }, function(data) {
+      let _this = this;
+      setTimeout(function() {
+          api.$https('/targetmy/target', {
+             session_key: app.apiData.session_key
+        }, 'POST', function(data) {
+             _this.setData({
+            targetList: data.data.message
+            });
+          }, function(data) {
                 console.log('请求失败');
             });
         }, 6000);

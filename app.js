@@ -7,7 +7,9 @@ App({
         code: '', //登录需要的code
         api: 'https://devqypyp.xiaohuibang.com', //接口根地址
         session_key: '', //response.message.session_key
+        isAdmin:0,
         userstatus:true
+
     },
     onload: function(opiton) {
         this.setData({
@@ -43,6 +45,7 @@ App({
                         console.log(response)
                         _this.apiData.code = res.code; //登录需要的code
                         _this.apiData.session_key = response.data.message.session_key; //response.message.session_key
+                        _this.apiData.isAdmin = response.data.message.isadmin;
                         //获取用户信息，并发送给后台
                         wx.getUserInfo({
                             success: function(res) {
