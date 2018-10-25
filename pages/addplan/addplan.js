@@ -5,18 +5,18 @@ const app = getApp()
 
 Page({
   data: {
-    date: '',
-    addScoreNum:0,
-    reduceScoreNum:0,
-    maxScoreNum:0,
-    count:0,
+    date: '',//日期
+    addScoreNum:0,//加分权利
+    reduceScoreNum:0,//减分权利
+    maxScoreNum:0,//加减分最大值
+    count:0,//可分配邦分
   },
 
   onLoad: function () {
     this.getCount();
   },
 
-
+  //获取可分配邦分
   getCount(){
     let _this = this;
     api.$https('/appreciate/companycoin', {
@@ -29,7 +29,7 @@ Page({
       console.log('请求失败');
     });
   },
-
+ //添加邦分分配计划
   addPlan(){
     api.$https('/WeChat/appreciate/allocation', {
       session_key: app.apiData.session_key,

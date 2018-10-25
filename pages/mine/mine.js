@@ -10,16 +10,17 @@ Page({
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         showRemindBox: false,
         userInfo: {
-            companyname: "",
-            disposable: "",
+            companyname: "",//公司名称
+            disposable: "",//加分权利
             id: 0,
             name: "",
-            reduce: "",
+            reduce: "",//减分权利
             score: "0",
-            total_score: "0",
-            user_img: "",
+            total_score: "0",//总分
+            user_img: "",//用户头像
           isadmin: 0,
         },
+        name:"",//姓名
         targetList: [
           // {
           //   "id": 1,
@@ -44,11 +45,17 @@ Page({
           //   "weekrank": 2,
           //   "monthrank": 3
           // }
-        ]
+        ]//我的目标列表
     },
     onReady: function() {
         this.getUserInfos();
         this.getTargetList();
+    },
+
+    onShow:function(){
+      console.log("------------" +"onShow");
+      this.getUserInfos();
+      this.getTargetList();
     },
 
    handleReceive(e){
@@ -86,7 +93,8 @@ Page({
                 session_key: app.apiData.session_key
             }, 'POST', function(data) {
                 _this.setData({
-                    userInfo: data.data.message
+                    userInfo: data.data.message,
+                    name: data.data.message.name == "" ? app.globalData.nickName : data.data.message.name
                 });
             }, function(data) {
                 console.log('请求失败');

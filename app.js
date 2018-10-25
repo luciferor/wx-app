@@ -51,7 +51,8 @@ App({
                             success: function(res) {
                                 console.log(res.userInfo);
                                 _this.apiData.userstatus = false;
-                                wx: wx.request({
+                                _this.globalData.nickName = res.userInfo.nickName;
+                                 wx.request({
                                     url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
                                     data: {
                                         session_key: response.data.message.session_key,
@@ -111,6 +112,7 @@ App({
     globalData: {
         userInfo: null,
         isIpx: false,
+        nickName:''
     },
     config: {
         title_height: "64",

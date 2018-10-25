@@ -6,7 +6,7 @@ const app = getApp()
 Page({
   data: {
     yearList: [],
-    planList:[]
+    planList:[]//计划列表
   },
   //跳转到添加邦分分配计划
   navigateToAddPlan() {
@@ -64,7 +64,7 @@ Page({
       console.log('请求失败');
     });
   },  
-
+//时间戳转换成月份
 timestampToTime(timestamp) {
     var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
     var M = date.getMonth() + 1  ;
