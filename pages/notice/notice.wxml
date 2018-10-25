@@ -23,7 +23,7 @@
                   </view>
                   <view class='notice-container'>
                       <view class='badge-container'>
-                          <image src="{{allItem.user_img==null||allItem.user_img==''?'../../images/mine/head_default_icon.png':'https://devqypyp.xiaohuibang.com'+ allItem.user_img}}" class='upic'></image>   
+                          <image src="{{allItem.user_img==null||allItem.user_img==''?'../../images/mine/head_default_icon.png': allItem.user_img}}" class='upic'></image>   
                           <view class='badge' wx:if="{{allItem.state ==2}}"></view>                
                       </view>
                       <view class='content-container'>
@@ -65,7 +65,7 @@
                   <view class='notice-container'>
                       <view>
                           <i-badge dot  >
-                          <image src="{{applyItem.user_img==null||applyItem.user_img==''?'../../images/mine/head_default_icon.png':'https://devqypyp.xiaohuibang.com'+ applyItem.user_img}}" class='upic'></image> 
+                          <image src="{{applyItem.user_img==null||applyItem.user_img==''?'../../images/mine/head_default_icon.png': applyItem.user_img}}" class='upic'></image> 
                           </i-badge>
                       </view>
                       <view class='content-container'>
@@ -104,7 +104,7 @@
                   </view>
                   <view class='notice-container'>
                       <view>
-                          <image src="{{passItem.user_img==null||passItem.user_img==''?'../../images/mine/head_default_icon.png':'https://devqypyp.xiaohuibang.com'+ passItem.user_img}}" class='upic'></image>                     
+                          <image src="{{passItem.user_img==null||passItem.user_img==''?'../../images/mine/head_default_icon.png': passItem.user_img}}" class='upic'></image>                     
                       </view>
                       <view class='content-container'>
                           <view class='name-container'>
@@ -135,7 +135,7 @@
                   </view>
                   <view class='notice-container'>
                       <view>
-                          <image src="{{rejectItem.user_img==null||rejectItem.user_img==''?'../../images/mine/head_default_icon.png':'https://devqypyp.xiaohuibang.com'+ rejectItem.user_img}}" class='upic'></image>                     
+                          <image src="{{rejectItem.user_img==null||rejectItem.user_img==''?'../../images/mine/head_default_icon.png':rejectItem.user_img}}" class='upic'></image>                     
                       </view>
                       <view class='content-container'>
                           <view class='name-container'>
