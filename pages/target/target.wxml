@@ -3,17 +3,17 @@
    <view class='top-fiexd'>
    <!--Tab布局-->
     <view class='title'>
-      <view class="{{0 == currentIndex ? 'titleSel' : 'titleUnsel'}}" bindtap='titleClick' data-idx='0'>
+      <view class="{{0 == currentIndex ? 'titleSel' : 'titleUnsel'}}" bindtap='titleClick' id="{{1}}" data-idx='0'>
         <text>排名目标({{rankTargetNum}})</text>
         <hr class="{{0 == currentIndex ? 'headerLineSel' : 'headerLineUnsel'}}" />
       </view>
       
-      <view class="{{1 == currentIndex ? 'titleSel' : 'titleUnsel'}}" bindtap='titleClick' data-idx='1'>
+      <view class="{{1 == currentIndex ? 'titleSel' : 'titleUnsel'}}" bindtap='titleClick' id="{{2}}" data-idx='1'>
         <text>邦分目标({{scoreTargetNum}})</text>
         <hr class="{{1 == currentIndex ? 'headerLineSel' : 'headerLineUnsel'}} " />
       </view>
 
-      <view class="{{2 == currentIndex ? 'titleSel' : 'titleUnsel'}}" bindtap='titleClick' data-idx='2'>
+      <view class="{{2 == currentIndex ? 'titleSel' : 'titleUnsel'}}" bindtap='titleClick' id="{{3}}" data-idx='2'>
         <text>自定义({{customTargetNum}})</text>
         <hr class="{{2 == currentIndex ? 'headerLineSel' : 'headerLineUnsel'}} " />
       </view>

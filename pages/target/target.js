@@ -68,7 +68,9 @@ Page({
       currentIndex:0
     })
     //加载初始数据
-    this.getNoticeList(this.data.currentIndex,10);
+    this.getNoticeList(1,10);
+    this.getNoticeList(2,10);
+
   },
   submitall(){
     let _this = this;
@@ -199,11 +201,11 @@ Page({
     console.log(types);
       console.log(data)
       let type = types
-      if(type == 0){
+      if(type == 1){
         for (let i = 0; i < data.length;i++){
           this.data.rankTargetList.push({
             id:data[i].id,
-            name:data[i].scoretitle,
+            name:data[i].title,
             ischecked:false,
             rank: data[i].rank,
             ranktitle: data[i].ranktitle,
@@ -217,11 +219,11 @@ Page({
         });
         console.log('-------------------------------1');
         console.log(this.data.scoreTargetList);
-      }else if(type ==1){
+      }else if(type ==2){
         for (let i = 0; i < data.length; i++) {
           this.data.scoreTargetList.push({
             id: data[i].id,
-            name: data[i].scoretitle,
+            name: data[i].title,
             ischecked: false,
             rank: data[i].rank,
             ranktitle: data[i].ranktitle,
@@ -298,7 +300,7 @@ Page({
         //拿到当前索引并动态改变
         currentIndex: e.currentTarget.dataset.idx
       })
-    this.getNoticeList(this.data.currentIndex,10);
+    //this.getNoticeList(e.currentTarget.id,10);
   },
   
   //申请提示框

@@ -4,44 +4,6 @@ var api = require('../../utils/api.js');
 const app = getApp()
 
 Page({
-<<<<<<< HEAD
-  data: {
-    hasUserInfo: app.apiData.userstatus,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    showRemindBox : false,
-    userInfo : {
-      companyname : "",
-      disposable: "",
-      id:0,
-      name:"",
-      reduce:"",
-      score:"0",
-      total_score:"0",
-      user_img:"",
-      targetList:[]
-    }
-  },
-   onReady:function(){
-      this.getUserInfos();
-      this.getTargetList();
-    },
-
-    //获取用户信息
-    getUserInfos(){
-      let _this = this;
-      setTimeout(function () {
-        api.$https('/appreciate/personalcenter', {
-          session_key: app.apiData.session_key
-        }, 'POST', function (data) {
-          _this.setData({
-            userInfo: data.data.message
-          });
-          console.log(_this.data.userInfo);
-        }, function (data) {
-          console.log('请求失败');
-        });
-      }, 5000);
-=======
     data: {
         hasUserInfo: false,
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -77,7 +39,6 @@ Page({
                 console.log('请求失败');
             });
         }, 5000);
->>>>>>> 6b87d01adf5271c28e1a6f529b7d8c2c18395743
     },
 
     //获取我的目标

@@ -7,11 +7,7 @@ App({
         code: '', //登录需要的code
         api: 'https://devqypyp.xiaohuibang.com', //接口根地址
         session_key: '', //response.message.session_key
-<<<<<<< HEAD
         userstatus:true
-=======
-        userstatus: true
->>>>>>> 6b87d01adf5271c28e1a6f529b7d8c2c18395743
     },
     onload: function(opiton) {
         this.setData({
@@ -43,36 +39,7 @@ App({
                         'content-type': 'application/json' //默认值
                     },
                     success(response) {
-<<<<<<< HEAD
-                      _this.apiData.code = res.code; //登录需要的code
-                      _this.apiData.session_key = response.data.message.session_key; //response.message.session_key
-                      //获取用户信息，并发送给后台
-                      wx.getUserInfo({
-                        success: function (res) {
-                          console.log(res.userInfo);
-                          _this.apiData.userstatus = false;
-                          wx: wx.request({
-                            url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
-                            data: {
-                              session_key: response.data.message.session_key,
-                              nickname: res.userInfo.nickName,
-                              avatarurl: res.userInfo.avatarUrl,
-                              gender: res.userInfo.gender,
-                              province: res.userInfo.province,
-                              city: res.userInfo.city,
-                              country: res.userInfo.country,
-                            },
-                            header: {
-                              'content-type': 'application/json' //默认值
-                            },
-                            method: 'POST',
-                            success: function (res) { },
-                            fail: function (res) { },
-                            complete: function (res) { },
-                          })
-                        }
-                      })
-=======
+                        console.log('查看信息')
                         console.log(response)
                         _this.apiData.code = res.code; //登录需要的code
                         _this.apiData.session_key = response.data.message.session_key; //response.message.session_key
@@ -132,7 +99,6 @@ App({
                                 })
                             }
                         })
->>>>>>> 6b87d01adf5271c28e1a6f529b7d8c2c18395743
                     }
                 })
 
