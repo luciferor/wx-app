@@ -332,3 +332,7 @@ color: transparent;
   color: #333;
   margin-left: 20rpx;
 }
+
+.hight-color{
+  color: #5398ff;
+}

@@ -14,7 +14,7 @@
       </view>
 
       <view class="{{2 == currentIndex ? 'titleSel' : 'titleUnsel'}}" bindtap='titleClick' id="{{3}}" data-idx='2'>
-        <text>自定义({{customTargetNum}})</text>
+        <text>自定义</text>
         <hr class="{{2 == currentIndex ? 'headerLineSel' : 'headerLineUnsel'}} " />
       </view>
     </view>
@@ -59,7 +59,7 @@
        <!-- 自定义 -->
        <swiper-item  class='swiper-item'>
         <view class='add-container'>
-             <view class='icon-container' bindtap="applyNotice" >
+             <view class='icon-container' bindtap="handleApplyOpen" >
                 <image src='../../images/icon_tianjia.png' class='add-icon' ></image>              
               </view>
               <view class='target-container'>
@@ -105,7 +105,7 @@
     </swiper>
 
     <view class='bottom-container'>
-       <text class='num-text'>已添加目标({{rankTargetNum+scoreTargetNum}}个)</text>
+       <view class='num-text'>已添加目标(<span class="hight-color">{{rankTargetNum+scoreTargetNum}}</span>个)</view>
        <view class='button-container'>
           <text class='reset' bindtap='resetall' style='color:#5398ff;'>重置</text>
           <button class='confirm' bindtap='submitall'>确定</button>
@@ -113,16 +113,16 @@
     </view>
   </view>
 
-  <i-modal title="提交申请" visible="{{ showApplyBox }}" bind:ok="handleClose" bind:cancel="handleClose"
+  <i-modal title="提交申请" visible="{{ showApplyBox }}" bind:ok="applyNotice" bind:cancel="handleClose"
   ok-text="提交">
     <view class='modal-text'>提交申请后，需经过管理员审核，可前
      往通知中心查看审批状态</view>
 </i-modal>
 
-<i-action-sheet visible="{{ showTypeBox }}" actions="{{ typeAction }}" show-cancel bind:cancel="handleTypeCancel" bind:click="handleClickItem" />
+<i-action-sheet visible="{{ showTypeBox }}" actions="{{ typeAction }}"  bind:cancel="handleTypeCancel" bind:click="handleClickItem" />
 
-<i-action-sheet visible="{{ showRankBox }}" actions="{{ rankAction }}" show-cancel bind:cancel="handleRankCancel" bind:click="handleRankClickItem" />
+<i-action-sheet visible="{{ showRankBox }}" actions="{{ rankAction }}" bind:cancel="handleRankCancel" bind:click="handleRankClickItem" />
 
 
-<i-action-sheet visible="{{ showNumBox }}" actions="{{ numAction }}" show-cancel bind:cancel="handleNumCancel" bind:click="handleNumClickItem" />
+<i-action-sheet visible="{{ showNumBox }}" actions="{{ numAction }}"  bind:cancel="handleNumCancel" bind:click="handleNumClickItem" />
 <i-toast id="toast" />
