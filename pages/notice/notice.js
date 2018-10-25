@@ -28,8 +28,9 @@ Page({
 
   //不通过
   handleReject(e){
+    let _this = this;
     let index = e.currentTarget.id;
-    let notice = this.data.applyNotice[index];
+    let notice = _this.data.applyNotice[index];
     api.$https('/toexamine/target', {
       session_key: app.apiData.session_key,
       type: notice.type,
@@ -40,7 +41,7 @@ Page({
         $Toast({
           content: data.data.message
         });
-        this.getNoticeList(1, this.data.applyPage);
+        _this.getNoticeList(1, _this.data.applyPage);
       }else{
         $Toast({
           content: data.data.message
@@ -52,8 +53,9 @@ Page({
   },
   //通过
   handlePass(e){
+    let _this = this;
     let index = e.currentTarget.id;
-    let notice = this.data.applyNotice[index];
+    let notice = _this.data.applyNotice[index];
     api.$https('/toexamine/target', {
       session_key: app.apiData.session_key,
       type: notice.type,
@@ -64,7 +66,7 @@ Page({
         $Toast({
           content: data.data.message
         });
-        this.getNoticeList(1, this.data.applyPage);
+        _this.getNoticeList(1, _this.data.applyPage);
       } else {
         $Toast({
           content: data.data.message

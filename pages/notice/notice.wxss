@@ -165,3 +165,17 @@ page{
   border: none;
   text-align: center
 }
+
+.badge{
+  left: 80rpx;
+  background: #ff5959;
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 18rpx;
+  border: 1rpx solid white;
+  position: absolute;
+}
+
+.badge-container{
+  display: flex;
+}

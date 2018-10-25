@@ -2,11 +2,11 @@
 page{
   height: 100%;/*生效*/
   width: 100%;
+  background: white
 }
 .view-container{
   display: flex;
   flex-direction: column;
-  height: 100%;
   width: 100%;
 }
 .bgimg{
@@ -130,6 +130,7 @@ page{
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  line-height: 100rpx;
 }
 .add-text-container{
   display: flex;
@@ -296,3 +297,9 @@ page{
 .hight-color{
   color: #5398ff;
 }
+
+.scroll-view{
+  height: 100%;
+}
+
+

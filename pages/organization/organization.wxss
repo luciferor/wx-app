@@ -71,7 +71,8 @@ page{
   height: 64rpx;
   margin-top: 28rpx;
   margin-bottom: 28rpx;
-}
+  border-radius: 64rpx;
+  }
 
 .uname{
   color: #333333;
