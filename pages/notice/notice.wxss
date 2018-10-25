@@ -70,9 +70,9 @@ page{
   font-size: 30rpx;
 }
 .content{
-  color: #666666;
   font-size: 26rpx;
   margin-top: 10rpx;
+  color: #666666
 }
 
 
@@ -109,14 +109,17 @@ page{
 
 .apply-text{
   color: #ffb400;
+   font-size: 24rpx;
 }
 
 .pass-text{
   color: #5398ff;
+  font-size: 24rpx;
 }
 
 .reject-text{
   color: #ff4b48;
+   font-size: 24rpx;
 }
 
 .check-container{

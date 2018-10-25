@@ -1,4 +1,7 @@
 {
   "navigationBarBackgroundColor": "#FFFFFF",
-  "navigationBarTitleText": "组织管理"
+  "navigationBarTitleText": "组织管理",
+  "usingComponents": {
+    "i-toast": "../../dist/toast/index"
+  }
 }

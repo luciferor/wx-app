@@ -133,7 +133,7 @@ Page({
   },
   //用户点击tab时调用
   titleClick: function (e) {
-    let currentPageIndex =
+    let currentPageIndex = currentTarget.dataset.idx
       this.setData({
         //拿到当前索引并动态改变
         currentIndex: e.currentTarget.dataset.idx
@@ -171,7 +171,7 @@ Page({
       targetType:index+1,
       newTargetType: this.data.typeAction[index].name,
       showTypeBox: false
-    })
+    });
   },
   //关闭排名类型
   handleRankCancel() {

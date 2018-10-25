@@ -1,10 +1,11 @@
 //setting.js
 var api = require('../../utils/api.js');
+const { $Toast } = require('../../dist/base/index');
 //获取应用实例
 const app = getApp()
 Page({
     data: {
-        name: '请输入姓名',
+        name: '',
         showSex: false,
         tempFilePaths: '',
         sex: [{
@@ -23,6 +24,38 @@ Page({
             wechat_name: ""
         }
     },
+
+  //用户输入的改变
+  changeNameInput(e) {
+    this.setData({
+      name: e.detail.value
+    });
+  },
+
+  //修改组织名
+  changeName() {
+    let _this = this;
+    api.$https('/appreciate/changename', {
+      session_key: app.apiData.session_key,
+      name: _this.data.name
+    }, 'POST', function (data) {
+      console.log(data.success)
+      if (data.data.success) {
+        $Toast({
+          content: data.data.message
+        });
+      } else {
+        $Toast({
+          content: data.data.message
+        });
+      }
+    }, function (data) {
+      $Toast({
+        content: '修改失败'
+      });
+    });
+  },
+
     onReady: function() {
         let _this = this;
         //获取用户信息
@@ -32,7 +65,8 @@ Page({
     },
     dosuccess(data) {
         this.setData({
-            userInfo: data.data.message
+            userInfo: data.data.message,
+            name:data.data.message.name
         });
     },
     dofail(data) {

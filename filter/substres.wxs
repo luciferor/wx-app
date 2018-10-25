@@ -21,23 +21,55 @@ var subs = {
   },
   status:function(_str){
     switch (_str) {
-      case 0:
+      case 1:
         return '已通过';
         break;
-      case 1:
+      case 2:
         return '待审核';
         break;
-      case 2:
+      case 3:
         return '未通过';
         break;
       default:
         break;
     }
-  }
+  },
+  targetType: function (_str) {
+    switch (_str) {
+      case 1:
+        return '日排名';
+        break;
+      case 2:
+        return '周排名';
+        break;
+      case 3:
+        return '月排名';
+        break;
+      default:
+        break;
+    }
+  },
+  targetRank: function (_str) {
+    switch (_str) {
+      case 1:
+        return '第一';
+        break;
+      case 2:
+        return '第二';
+        break;
+      case 3:
+        return '第三';
+        break;
+      default:
+        break;
+    }
+  },
 }
 
 module.exports={
   sub:subs.sub,
   rank:subs.rank,
-  status:subs.status
+  status:subs.status,
+  targetType: subs.targetType,
+  targetRank: subs.targetRank
 }
