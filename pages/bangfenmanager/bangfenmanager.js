@@ -76,7 +76,7 @@ Page({
           });
           //跳转到选择用户
           wx.navigateTo({
-            url: '',
+            url: '../../pages/selectmutuluser/selectmutuluser?id='+id,
           })
           break;
         default:
