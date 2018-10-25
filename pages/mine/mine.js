@@ -96,7 +96,7 @@ Page({
                 _this.setData({
                     userInfo: data.data.message,
                     name: data.data.message.name == "" ? app.globalData.nickName : data.data.message.name,
-                   score: Number(data.data.message.score) + Number(data.data.message.total_score)
+                    score: Number(data.data.message.score) + Number(data.data.message.total_score)
                 });
             }, function(data) {
                 console.log('请求失败');

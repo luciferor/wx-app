@@ -182,6 +182,7 @@ page{
   display: flex;
   flex-direction: column;
   margin-left: 20rpx;
+  justify-content: center;
 }
 .target-name{
   color: #333333;
