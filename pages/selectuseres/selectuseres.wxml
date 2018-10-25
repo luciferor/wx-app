@@ -5,7 +5,7 @@
                 <image src="../../images/icon_sousuo.png" />
             </span>
             <span class="fr inputtxt">
-                <input bindblur='changeSearch' bindconfirm='changeSearch' bindinput='changeSearch' placeholder="搜索对象" />
+                <input  bindinput='changeSearch' placeholder="搜索对象" />
             </span>
         </view>
     </view>
@@ -13,23 +13,23 @@
       <view 
           class="i-index-demo-item" 
           wx:for="{{searchuserlist}}" 
-          wx:for-index="index"  
-          wx:for-item="item" data-reply-Type="{{item.id+'|'+index}}" bindtap='selectedeventseach'>
-          <view class="{{item.ischecked?'unlistboxbig':'listboxbig'}}">
+          wx:for-index="indexs"  
+          wx:for-item="items" >
+          <view class="{{items.ischecked?'unlistboxbig':'listboxbig'}}" data-reply-Type="{{items.id+'|'+indexs}}" bindtap='selectedeventseach'>
             <view class='imgbox fl'><image src='../../images/tabs/icon_tab_wode_selected.png'></image></view>
-            <view class='namebox fl'>{{item.name}}</view>
+            <view class='namebox fl'>{{items.name}}</view>
             <view class='postbox fl'>岗位为空</view>
-            <view class='selectbox fr'><image wx:if="{{item.ischecked}}" src='../../images/icon_xuanze.png'></image></view>
+            <view class='selectbox fr'><image wx:if="{{items.ischecked}}" src='../../images/icon_xuanze.png'></image></view>
           </view>
       </view>
     </view>
-    <view wx:if="{{searchuserlist.length==0}}" class="i-index-demo">
+    <view wx:if="{{searchuserlist.length<1}}" class="i-index-demo">
         <i-index height="100%" bind:change="onChange">
             <i-index-item 
                 wx:for="{{ cities }}" 
                 wx:for-index="index" 
                 wx:key="{{index}}" 
-                wx:for-item="item" name="{{item.key}}">
+                wx:for-item="item" name="{{item.key}}" wx:if="{{item.list.length>0}}">
                 <view 
                     class="i-index-demo-item" 
                     wx:for="{{item.list}}" 

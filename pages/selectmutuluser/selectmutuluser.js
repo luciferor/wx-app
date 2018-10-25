@@ -112,8 +112,9 @@ Page({
     api.$http(function (res) {
       _this.data.cities = [];
       let item = res.data.message;
+
       for (var i = 0; i < res.data.message.length; i++) {
-        if (item[i].user_img != "") {
+        if (item[i].name) {
           _this.data.cities.push({
             id: item[i].id,
             name: item[i].name,
@@ -190,13 +191,13 @@ Page({
     console.log(_this.data.selecteduser);
     api.$http(function (res) {
       console.log(res);
-      _this.alertsuccess('操作成功');
+      _this.alertsuccess(res.data.message);
       if (res.data.success) {
-        wx.navigateBack();
+        setTimeout(function () { wx.navigateBack();},2000)
       }
     }, function (err) {
       console.log(err);
-    }, '/WeChat/Applet/changeGradeApplyByOther', {
+      }, '/WeChat/Applet/finishMutualManaged', {
         session_key: app.apiData.session_key,
         id:this.data.mutuid,
         user_ids: selused.substr(1)

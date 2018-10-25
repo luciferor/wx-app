@@ -3,6 +3,7 @@ const { $Toast } = require('../../dist/base/index');
 var app = getApp();
 Page({
     data:{
+        state:false,
         winHeight:"",//窗口高度
         currentTab:0, //预设当前项的值
         scrollLeft:0, //tab标题的滚动条位置
@@ -43,6 +44,7 @@ Page({
         actiontype:''
     },
     finishevent(e){
+      let _this = this;
       let arr = e.currentTarget.id.split('|');
       let id = arr[0];
       let index = arr[1];
@@ -52,6 +54,9 @@ Page({
           //
           api.$http(function (res) {
             console.log(res)
+            if(res.data.success){
+              _this.handleSuccess("自我管理加分成功");
+            }
           }, function (err) { },'/WeChat/Applet/finishSelfManaged',{
             session_key:app.apiData.session_key,
             id:id

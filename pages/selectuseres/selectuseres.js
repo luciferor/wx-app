@@ -75,6 +75,7 @@ Page({
     console.log(this.data.selecteduser);
   },
   selectedeventseach(e){
+    console.log("执行中");
     let arr = e.currentTarget.dataset.replyType.split('|');
     let index = arr[1];
     this.data.searchuserlist[index].ischecked = !this.data.searchuserlist[index].ischecked;
@@ -115,7 +116,7 @@ Page({
       _this.data.cities = [];
       let item = res.data.message;
       for (var i = 0; i < res.data.message.length; i++) {
-        if(item[i].user_img!=""){
+        if (item[i].name){
           _this.data.cities.push({
             id: item[i].id,
             name: item[i].name,
@@ -197,7 +198,11 @@ Page({
       console.log(res);
       if(res.data.success){
         _this.alertsuccess('他人'+_this.data.othertype+'成功');
-        wx.navigateBack();
+        setTimeout(function(){
+          wx.navigateBack({
+            data:res.data.success
+          });
+        },1000)
       }
     }, function (err) {
       console.log(err);
