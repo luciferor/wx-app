@@ -31,11 +31,11 @@
           </swiper-item>
       </swiper>
       <view class='fagsbox'>
-        <view wx:if="{{menushow}}">
+        <view wx:if="{{menushow}}" style='padding-left:10rpx;'>
           <view class='ownerdes'>自我加减分</view>
           <image bindtap='ownnerplusandrem' class="fabplusred" src="../../images/fabs/icon_xuanfu_ziwo.png" />
         </view>
-        <view wx:if="{{menushow}}">
+        <view wx:if="{{menushow}}" style='padding-left:10rpx;'>
           <view class='mutudes'>他人加减分</view>
           <image bindtap="otherplusandrem" class="fabotherplus" src="../../images/fabs/icon_xuanfu_taren.png" />
         </view>
