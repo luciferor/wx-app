@@ -15,11 +15,12 @@ Page({
             id: 0,
             name: "",
             reduce: "",//减分权利
-            score: "0",
-            total_score: "0",//总分
+            score: 0,
+            total_score: 0,//总分
             user_img: "",//用户头像
           isadmin: 0,
         },
+        score:0,
         name:"",//姓名
         targetList: [
           // {
@@ -94,7 +95,8 @@ Page({
             }, 'POST', function(data) {
                 _this.setData({
                     userInfo: data.data.message,
-                    name: data.data.message.name == "" ? app.globalData.nickName : data.data.message.name
+                    name: data.data.message.name == "" ? app.globalData.nickName : data.data.message.name,
+                   score: Number(data.data.message.score) + Number(data.data.message.total_score)
                 });
             }, function(data) {
                 console.log('请求失败');

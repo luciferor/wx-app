@@ -17,7 +17,7 @@
         <view class='score-org-container'>
             <view class='score-container'>
              <text class='total-text'>总邦分</text>
-             <text class='total-score'>{{userInfo.total_score}}</text>
+             <text class='total-score'>{{score}}</text>
              <view class='remind-container' bindtap='handleRemindOpen'>
                 <text class='remind-text'>剩{{userInfo.disposable ==null ?0:userInfo.disposable}}邦分加分权利，{{userInfo.reduce ==null ? 0:userInfo.reduce}}邦分减分权利</text>
                 <image class='remind-icon' src='../../images/mine/icon_wode_shuoming.png'></image>
