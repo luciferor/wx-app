@@ -1,4 +1,6 @@
 var api = require('../../utils/api.js');
+const { $Toast } = require('../../dist/base/index');
+
 //获取应用实例
 const app = getApp()
 
@@ -12,6 +14,7 @@ Page({
         userInfo: {},
         hasUserInfo: false,
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
+        RomoveMoadal: false,
         hangyeArr: [{
                 "id": 934,
                 "industry_id": "49",
@@ -57,24 +60,41 @@ Page({
                 "score": 3
             }
         ],
-        zidingyiArr: [
-            { text: '每日晨會', score: '2' },
-            { text: '每日晨會', score: '4' },
-            { text: '每日晨會', score: '3' },
-            { text: '每日晨會', score: '4' },
-            { text: '每日晨會', score: '2' },
-            { text: '每日晨會', score: '2' },
-            { text: '积极热情', score: '2' },
-            { text: '积极热情', score: '2' },
+        zidingyiArr: [{
+                text: '每日晨會',
+                score: '+2'
+            },
+            {
+                text: '每日晨會',
+                score: '-4'
+            },
+            {
+                text: '积极热情',
+                score: '+2'
+            },
+            {
+                text: '积极热情',
+                score: '-2'
+            },
         ],
         currHangye: '',
-        scoresArr: [{ score: 1 }, { score: 2 }, { score: 3 }],
+        scoresArr: [{
+            score: 1
+        }, {
+            score: 2
+        }, {
+            score: 3
+        }],
         isShowScore: false,
-        scoreStatus: '选择邦分'
+        scoreStatus: '选择邦分',
+        typeArray: ['加分', '减分'],
+        typeIndex: 0,
     },
     //事件处理函数
-
-    handleChange({ detail }) {
+    handleChange({
+        detail
+    }) {
+        console.log(detail)
         this.setData({
             current: detail.key,
             showContent: detail.key,
@@ -169,17 +189,13 @@ Page({
 
     },
     addXingwei: function() { //添加自定义行为
+        var addRes = this.data.zidingyiArr
+        addRes.push({
+            text: '新增测试行为',
+            score: '+2'
+        })
         this.setData({
-            zidingyiArr: [
-                { text: '每日晨會', score: '2' },
-                { text: '每日晨會', score: '2' },
-                { text: '积极热情', score: '2' },
-                { text: '积极热情', score: '2' },
-                { text: '每日晨會', score: '2' },
-                { text: '每日晨會', score: '2' },
-                { text: '积极热情', score: '2' },
-                { text: '积极热情', score: '2' }
-            ]
+            zidingyiArr: addRes
         })
     },
     scoreToggle: function() { //控制分数模态框
@@ -190,18 +206,40 @@ Page({
     changeScore: function(e) { //选中自定义分数
         var score = e.currentTarget.dataset.score
         this.setData({
-            scoreStatus: '+' + score + '邦分'
+            scoreStatus: score + '邦分'
         })
     },
-    removeXingwei: function() { //删除自定义行为
+    removeXingwei: function(e) { //删除自定义行为
         this.setData({
-            zidingyiArr: [
-                { text: '每日晨會', score: '2' },
-                { text: '每日晨會', score: '2' },
-                { text: '积极热情', score: '2' },
-                { text: '积极热情', score: '2' }
-            ]
+            RomoveModal: true
+        });
+    },
+    bindPickerChange: function(e) {
+        console.log(e.detail)
+        this.setData({
+            typeIndex: e.detail.value
         })
+    },
+    OKRomove(e) {
+        var _this = this
+        let removeRes = _this.data.zidingyiArr
+        let idx = e.target.dataset.idx
+        removeRes.splice(idx, 1);
+        _this.setData({
+            zidingyiArr: removeRes
+        })
+        $Toast({
+            content: '删除成功',
+            type: 'success'
+        });
+        this.setData({
+            RomoveModal: false
+        });
     },
 
+    CancelRomove() {
+        this.setData({
+            RomoveModal: false
+        });
+    },
 })

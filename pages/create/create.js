@@ -1,4 +1,6 @@
 var api = require('../../utils/api.js');
+const { $Toast } = require('../../dist/base/index');
+
 //获取应用实例
 const app = getApp()
 
@@ -11,14 +13,16 @@ Page({
         visibleFenpei: false,
         agreementStatus: false,
         organizeName: '',
-        creatCompany: 187
+        canShare: true,
+        createStatus: 1 //1:创建  2：创建中 3：分享按钮
     },
     //事件处理函数
     onShareAppMessage: function() {
+        console.log(app.apiData.Company_Id)
         return {
             title: '用邦分干了这杯事业，快来加入我们的团队吧……',
             desc: '邦分管理',
-            path: '/pages/mine/mine?company_id=' + this.data.creatCompany, // 路径，传递参数到指定页面。
+            path: '/pages/mine/mine?company_id=' + app.apiData.Company_Id, // 路径，传递参数到指定页面。
             imageUrl: '../../images/minproShare.jpg',
             success: function(res) {
                 console.log(res)
@@ -32,11 +36,65 @@ Page({
             }
         }
     },
-    onLoad: function() {
-        wx.updateShareMenu({
-            withShareTicket: true,
-            success() {}
+    createOrg() {
+        var _this = this
+        var _organizeName = _this.data.organizeName
+        _this.setData({
+            createStatus: 2
         })
+        var _selfmanaged = [{
+            "id": 1,
+            "behavior": "测试内容---1",
+            "type": "1",
+            "score": "1"
+        }, {
+            "id": "",
+            "behavior": "我是自定义的自我管理",
+            "type": "1",
+            "score": "1"
+        }]
+        var _mutualmanaged = [{
+            "id": 4,
+            "behavior": "测试内容---2",
+            "type": "1",
+            "score": "2"
+        }, {
+            "id": "",
+            "behavior": "我是自定义的相互管理",
+            "type": "1",
+            "score": "2"
+        }]
+
+        api.$http(function(res) {
+            console.log(res)
+            if (res.data.code == 200) {
+                app.apiData.Company_Id = res.data.message
+                wx.showShareMenu();
+                _this.setData({
+                    createStatus: 3
+                })
+            } else {
+                wx.hideShareMenu();
+                _this.setData({
+                    createStatus: 1
+                })
+                $Toast({
+                    content: '创建失败:' + res.data.message,
+                    type: 'error',
+                    duration: 4
+                });
+            }
+        }, function(err) {
+            console.log(err)
+        }, '/organization/create', {
+            session_key: app.apiData.session_key,
+            name: _organizeName,
+            selfmanaged: JSON.stringify(_selfmanaged),
+            mutualmanaged: JSON.stringify(_mutualmanaged)
+        }, 'POST');
+    },
+    onLoad: function() {
+        wx.hideShareMenu();
         if (app.globalData.userInfo) {
             this.setData({
                 userInfo: app.globalData.userInfo,
@@ -113,42 +171,4 @@ Page({
             organizeName: e.detail.value
         })
     },
-    createOrg() {
-        var _this = this
-        var _organizeName = _this.data.organizeName
-        var _selfmanaged = [{
-            "id": 1,
-            "behavior": "测试内容---1",
-            "type": "1",
-            "score": "1"
-        }, {
-            "id": "",
-            "behavior": "我是自定义的自我管理",
-            "type": "1",
-            "score": "1"
-        }]
-        var _mutualmanaged = [{
-            "id": 4,
-            "behavior": "测试内容---2",
-            "type": "1",
-            "score": "2"
-        }, {
-            "id": "",
-            "behavior": "我是自定义的相互管理",
-            "type": "1",
-            "score": "2"
-        }]
-
-        api.$http(function(res) {
-            console.log(res)
-        }, function(err) {
-            console.log(err)
-        }, '/organization/create', {
-            session_key: app.apiData.session_key,
-            name: _organizeName,
-            selfmanaged: JSON.stringify(_selfmanaged),
-            mutualmanaged: JSON.stringify(_mutualmanaged)
-        }, 'POST');
-    },
-
 })

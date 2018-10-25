@@ -2,7 +2,7 @@
 <view class="create-container">
   <view class="setting-area">
     <view class="setting-items">
-      <input class="setting-item organize-name" placeholder="请设置组织名称"  bindinput="bindKeyInput"/>
+      <input class="setting-item organize-name" placeholder-class="phcolor" placeholder="请设置组织名称"  bindinput="bindKeyInput"/>
       <navigator class="setting-item" target="" url="../create_self/create_self" hover-class="navigator-hover" open-type="navigate">
         <view class="left-txt">
           自我管理行为
@@ -40,9 +40,15 @@
       <text style="margin-left:-20rpx;z-index:10;">我已阅读并同意</text>
       <text class="to-read" bindtap="openAgreement">《企汇邦用户协议》</text>
     </view>
-    <button class="create-and-invite" bindtap="createOrg" open-type='share'>
+    <button class="to-create" bindtap="createOrg" wx:if="{{createStatus==1}}">
+      创建
+    </button>
+       <button class="to-creating" wx:if="{{createStatus==2}}">
+      创建中...
+    </button>
+       <button class="to-invite" open-type="share"  wx:if="{{createStatus==3}}">
       <i-icon type="share" size="28" />
-      创建并邀请成员
+      邀请成员
     </button>
   </view>
   <i-modal title="提示" visible="{{ visibleFenpei }}" bind:ok="closeFenpei" show-cancel="{{false}}" ok-text="好的">
@@ -56,4 +62,5 @@
     <view>《企汇邦用户协议》</view>
     <view>《企汇邦用户协议》</view>
   </i-modal>
+  <i-toast id="toast" />
 </view>
