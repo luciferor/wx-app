@@ -92,15 +92,17 @@
         </view>
         <text class='custom-title' wx:if="{{false}}">自定义目标</text>
         <scroll-view wx:if="{{false}}" class='scroll-view' scroll-y>
-        <view class='list-box' wx:if="{{customTargetList.length >= 1}}">
-          <view class='listcontent-custom' wx:for="{{customTargetList}}"  wx:for-index="customindex" wx:for-item="customitem" id="{{customitem.id}}">
+          <block>
+              <view class='list-box' wx:if="{{customTargetList.length >= 1}}">
+              <view class='listcontent-custom' wx:for="{{customTargetList}}"  wx:for-index="customindex" wx:for-item="customitem" id="{{customitem.id}}">
               <view class='custom-container'>
                 <image class='delicon' src='../../images/mine/icon_delete_default.png'></image>
                 <text class='custom-target-title'>{{customitem.name}}</text>
               </view>
               <span class="fr colorpar">1000邦分</span>
-          </view>
+           </view>
         </view>
+          </block>
        </scroll-view>
       </swiper-item>
     </swiper>

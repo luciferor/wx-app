@@ -329,6 +329,16 @@ Page({
         $Toast({
           content: data.data.message
         });
+        _this.setData({
+          newTargetType: '目标类型',
+          newTargetRank: '日排名',
+          newTargetNum: '第一名',
+          targetType: 1,//申请类型
+          giftType: 1,//礼品类型
+          rank: 1,//排名
+          targetTitle: '',//目标名称
+          gift_score: 0,//兑换所需邦分
+        })
       }else{
         $Toast({
           content: data.data.message

@@ -116,7 +116,7 @@ page{
 .total-score{
   color: white;
   font-weight: bold;
-  margin-top:10rpx;
+  margin-top:-10rpx;
   font-size:72rpx;
 }
 
