@@ -156,7 +156,7 @@
     top: 50%;
     left: 0;
     z-index: 1;
-    margin: -365rpx 45rpx;
+    margin: -365rpx 50rpx;
     background-color: #fff;
     border-radius: 20rpx;
     display: flex;
@@ -176,7 +176,7 @@
     height: 40rpx;
     border:1px solid #ededed;
     line-height: 100%;
-    width: calc(100% - 100rpx);
+    width: calc(100% - 66rpx);
     padding:30rpx;
 }
 .selectinput{
@@ -197,7 +197,7 @@
     height: 55rpx;
     border:1px solid #ededed;
     line-height: 100%;
-    width: calc(100% - 100rpx);
+    width: calc(100% - 66rpx);
     padding:20rpx 30rpx;
     margin-top:30rpx;
 }
@@ -216,7 +216,7 @@
     height: 140rpx;
     border:1px solid #ededed;
     line-height: 100%;
-    width: calc(100% - 100rpx);
+    width: calc(100% - 66rpx);
     padding:30rpx;
     margin-top:30rpx;
     font-size: 28rpx;
@@ -243,7 +243,7 @@
 }
 
 .btnbox{
-    padding:30rpx 0rpx;
+    padding:30rpx 25rpx;
     margin-top:30rpx;
     width:92%;
 }

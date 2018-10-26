@@ -27,9 +27,9 @@
       <!-- 排名目标 -->
       <swiper-item class='swiper-item'>
         <scroll-view class='scroll-view' scroll-y>
-         <view class='list-box' wx:for="{{rankTargetList}}" wx:for-index="rankindex" wx:for-item="rankitem" wx:if="{{rankTargetList.length>0}}">
-          <view class='listcontent' >
-              <span class="fl colorradio" ><radio color="#5398ff" value="不二家棒棒糖" checked="{{rankitem.ischecked}}" id="{{rankitem.id+'|'+rankindex}}" bindtap="rankevents"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{rankitem.name}}</radio></span>
+         <view class='list-box'>
+          <view class='listcontent' wx:for="{{rankTargetList}}" wx:for-index="rankindex" wx:for-item="rankitem" wx:if="{{rankTargetList.length>0}}">
+              <span class="fl colorradio" ><radio color="#5398ff" value="不二家棒棒糖" checked="{{rankitem.ischecked}}" id="{{rankitem.id+'|'+rankindex}}" bindtap="rankevents"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{subs.sub(rankitem.name,10)}}</radio></span>
               <span class="fr colorpar">{{subs.targetType(rankitem.gift_type)}}{{subs.targetRank(rankitem.rank)}}</span>
           </view>
         </view>
@@ -46,7 +46,7 @@
              <view class='list-box'>
                 <view class='listcontent' wx:for="{{scoreTargetList}}"  wx:for-index="scoreindex" wx:for-item="scoreitem" wx:if="{{scoreTargetList.length>0}}">
                       <span class="fl"></span>
-                      <span class="fl colorradio"><radio color="#5398ff" value="不二家棒棒糖" checked="{{scoreitem.ischecked}}"  id="{{scoreitem.id+'|'+scoreindex}}" bindtap="scoreevents"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{scoreitem.name}}</radio></span>
+                      <span class="fl colorradio"><radio color="#5398ff" value="不二家棒棒糖" checked="{{scoreitem.ischecked}}"  id="{{scoreitem.id+'|'+scoreindex}}" bindtap="scoreevents"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{subs.sub(scoreitem.name,10)}}</radio></span>
                       <span class="fr colorpar">{{scoreitem.gift_score}}邦分</span>
                  </view>
               </view>

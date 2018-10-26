@@ -50,6 +50,9 @@ Page({
         ]//我的目标列表
         ,
         session_key:'',
+        golding:false,
+        infores:'',
+        getid:0,
     },
     onReady: function() {
         this.getUserInfos();
@@ -63,33 +66,46 @@ Page({
     },
 
    handleReceive(e){
-     let _this = this;
-     console.log(e.currentTarget.id);
-     let index = e.currentTarget.id;
-     let target = this.data.targetList[index];
-     if (target.isreceive){
-       api.$https('/receive/target', {
-         session_key: app.apiData.session_key,
-         id:target.id
-       }, 'POST', function (data) {
-         $Toast({
-           content: data.data.message
-         });
-         if(data.data.success){
-           _this.getTargetList();
-         }
-       }, function (data) {
-         $Toast({
-           content: "领取失败"
-         });
-       });
-     }else{
-       $Toast({
-         content: "暂未达成，无法领取"
-       });
-     }
+    let arr = (e.currentTarget.id).split('|');
+    if(arr[2]==1){
+      this.setData({
+        golding: true,
+        infores: arr[1],
+        getid:arr[0]
+      })
+    }else{
+      $Toast({
+        content: "暂未达成，无法领取"
+      });
+    }
    },
+    nowingget(e){
+      let _id = 0;
+      _id = e.currentTarget.id;
+      let _this = this;
+      api.$http(function (res) {
+        console.log(res);
+        _this.setData({
+          golding: false,
+          infores:''
+        })
+        if(res.data.success){
+          $Toast({
+            content:res.data.message,
+            type:'success'
+          });
 
+          //重新获取数据
+          _this.getTargetList();
+        }
+      }, function (err) {
+        console.log(err)
+      }, '/receive/target', {
+          session_key: app.apiData.session_key,
+          id: _id
+      }, 'POST')
+      
+    },
     //获取用户信息
     getUserInfos() {
         let _this = this;

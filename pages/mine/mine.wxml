@@ -59,7 +59,7 @@
                       <progress class='target-status' percent="{{target.progressbar|Number}}" activeColor='#5398ff' backgroundColor='#f7f7f7'></progress>
                   </view>
               </view>
-              <view class='target-right' bindtap='handleReceive' id='{{idx}}'>
+              <view class='target-right' bindtap='handleReceive' id="{{target.id+'|'+(target.type ==1 ? target.ranktitle:target.scoretitle)+'|'+target.isreceive}}">
                   <button class="{{target.isreceive == 1 ? 'target-button' : 'target-un-button'}}">{{target.isreceive ==1 ?'领取':'未达成'}}</button>
               </view>
           </view>
@@ -91,3 +91,16 @@
 </view>
 </view>
 <i-toast id="toast" />
+
+
+<view class='maskwin' wx:if="{{golding}}">
+ <view class='win-dialog'>
+    <image src='../../images/img_lingqu.png'></image>
+ </view>
+ <view class='win-content'>
+  <view class='topwin'></view>
+  <view class='descontent'>恭喜您达成目标</view>
+  <view class='info-content-win'>{{infores}}</view>
+  <view class='info-under' bindtap='nowingget' id="{{getid}}">立即领取</view>
+ </view>
+</view>

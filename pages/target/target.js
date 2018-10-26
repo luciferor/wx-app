@@ -91,6 +91,10 @@ Page({
       console.log(res)
       _this.alertmsg(res.data.message);
       if(res.data.success){
+        //重新读取数据
+        _this.getNoticeList(1, 10);
+        _this.getNoticeList(2, 10);
+        //重置数据
         _this.resetall();
       }
     },function(err){

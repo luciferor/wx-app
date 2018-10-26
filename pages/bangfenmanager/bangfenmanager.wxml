@@ -30,7 +30,7 @@
               </scroll-view>
           </swiper-item>
       </swiper>
-      <view class='fagsbox' wx:if="{{menushowid==0}}">
+      <view class='fagsbox' wx:if="{{true}}">
         <view wx:if="{{menushow}}" style='padding-left:10rpx;'>
           <view class='ownerdes'>自我加减分</view>
           <image bindtap='ownnerplusandrem' class="fabplusred" src="../../images/fabs/icon_xuanfu_ziwo.png" />

@@ -56,6 +56,18 @@ Page({
       session_key:app.apiData.session_key
     },'POST');
   },
+  onShow:function(){
+    //获取最新获奖
+    api.$http(this.adosuccess, this.adofail, '/WeChat/Applet/getNewestAward', {
+      session_key: app.apiData.session_key
+    }, 'POST');
+    //获取最新动态
+    api.$http(this.ddosuccess, this.ddofail, '/WeChat/Applet/getNoticeEveryOne', {
+      pageSize: 10,
+      page: 1,
+      session_key: app.apiData.session_key
+    }, 'POST');
+  },
   adosuccess(data) {
     console.log(data)
     this.setData({

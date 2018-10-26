@@ -367,9 +367,24 @@ Page({
       session_key: app.apiData.session_key
     }, 'POST');
   },
+  onShow:function(){
+    //自我管理
+    api.$http(this.odosuccess, this.odofail, '/WeChat/Applet/getSelfManagedList', {
+      type: 1,
+      session_key: app.apiData.session_key
+    }, 'POST');
+    //相互管理
+    api.$http(this.mdosuccess, this.mdofail, '/WeChat/Applet/getMutualManagedList', {
+      type: 1,
+      session_key: app.apiData.session_key
+    }, 'POST');
+  },
   odosuccess(data) {
     console.log('aaaaaaaaa')
     console.log(data);
+    this.setData({
+      ownerlist:[]
+    })
     for(let i=0;i<data.data.message.length;i++){
       let item = data.data.message;
       this.data.ownerlist.push({
@@ -388,6 +403,9 @@ Page({
   },
   mdosuccess(data) {
     console.log(data);
+    this.setData({
+      mutullist: []
+    })
     for (let i = 0; i < data.data.message.length; i++) {
       let item = data.data.message;
       this.data.mutullist.push({

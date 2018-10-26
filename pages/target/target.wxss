@@ -185,6 +185,8 @@ color: transparent;
   font-size: 34rpx;
   color: #5398ff;
   margin-left: 10rpx;
+  word-break:keep-all;      /* 不换行 */
+  white-space:nowrap; 
 }
 
 .horizental-line{

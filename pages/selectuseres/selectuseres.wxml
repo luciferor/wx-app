@@ -18,7 +18,7 @@
           <view class="{{items.ischecked?'unlistboxbig':'listboxbig'}}" data-reply-Type="{{items.id+'|'+indexs}}" bindtap='selectedeventseach'>
             <view class='imgbox fl'><image src='../../images/tabs/icon_tab_wode_selected.png'></image></view>
             <view class='namebox fl'>{{items.name}}</view>
-            <view class='postbox fl'>岗位为空</view>
+            <view class='postbox fl'>((items.wechat_name))</view>
             <view class='selectbox fr'><image wx:if="{{items.ischecked}}" src='../../images/icon_xuanze.png'></image></view>
           </view>
       </view>
@@ -39,7 +39,7 @@
                     <view class="{{it.ischecked?'unlistboxbig':'listboxbig'}}">
                       <view class='imgbox fl'><image src='../../images/tabs/icon_tab_wode_selected.png'></image></view>
                       <view class='namebox fl'>{{it.name}}</view>
-                      <view class='postbox fl'>{{it.post}}</view>
+                      <view class='postbox fl'>({{it.wechat_name}})</view>
                       <view class='selectbox fr'><image wx:if="{{it.ischecked}}" src='../../images/icon_xuanze.png'></image></view>
                     </view>
                 </view>
@@ -53,4 +53,10 @@
         </view>
     </view>
     <i-toast id="toast" />
+    <i-grid-item i-class="item" wx:if="{{isshow}}">
+        <i-spin custom>
+            <i-icon type="refresh" size="20" i-class="icon-load"></i-icon>
+            <view>数据加载中，请稍后...</view>
+        </i-spin>
+    </i-grid-item>
 </view>
