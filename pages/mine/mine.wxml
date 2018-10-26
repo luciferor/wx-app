@@ -1,13 +1,12 @@
 <!--mine.wxml-->
 <wxs module="subs" src="../../filter/substres.wxs"></wxs>
 <view class="view-container">
-     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" hidden='true'> 获取头像昵称 </button>
      <image src='../../images/mine/img_wode_beijing.png' class='bgimg'></image>
      <view class="top">
         <view class='info-container'>
             <view class='left-container'  bindtap='navigateToSetting'>
                 <image src="{{userInfo.avatarurl==null||userInfo.avatarurl==''?'../../images/mine/head_default_icon.png': userInfo.avatarurl}}" class='pic'></image>
-                <text class='uname'>{{userInfo.name}}</text>
+                <text class='uname'>{{name}}</text>
             </view>
             <view class='right-container' bindtap='navigateToNotice'>
                 <image src='../../images/mine/icon_wode_tongzhi.png' class='message'></image>
@@ -17,7 +16,7 @@
         <view class='score-org-container'>
             <view class='score-container'>
              <text class='total-text'>总邦分</text>
-             <text class='total-score'>{{userInfo.total_score}}</text>
+             <text class='total-score'>{{score|Number}}</text>
              <view class='remind-container' bindtap='handleRemindOpen'>
                 <text class='remind-text'>剩{{userInfo.disposable ==null ?0:userInfo.disposable}}邦分加分权利，{{userInfo.reduce ==null ? 0:userInfo.reduce}}邦分减分权利</text>
                 <image class='remind-icon' src='../../images/mine/icon_wode_shuoming.png'></image>
@@ -56,7 +55,7 @@
                     <view class='target-condition' wx:else>当前第<span class="hight-color">{{target.monthrank}}</span>名/{{subs.targetType(target.gift_type)}}{{subs.targetRank(target.rank)}}</view>
                       </view>
                       <view class='target-condition' wx:else><span class="hight-color">{{target.score}}</span>邦分/{{target.gift_score}}邦分</view>
-                      <progress class='target-status' percent="20" activeColor='#5398ff' backgroundColor='#f7f7f7' ></progress>
+                      <progress class='target-status' percent="20" activeColor='#5398ff' backgroundColor='#f7f7f7' hidden='true'></progress>
                   </view>
               </view>
               <view class='target-right' bindtap='handleReceive' id='{{idx}}'>
@@ -80,5 +79,13 @@
       <text class='modal-text'>2、相互管理剩余邦分由管理员分配。</text>
     </view>
 </i-modal>
+<view class='linces-wx-mask' wx:if="{{!hasUserInfo && canIUse}}"></view>
+<view class='linces-wx-dialog' wx:if="{{!hasUserInfo && canIUse}}">
+  <view class='lincesbox'>
+    <view style='height:80rpx; background:white; line-height:80rpx; font-size:28rpx;'>登录提示</view>
+    <view style='width:calc(100% - 59rpx); height:104rpx; color:#999; background:white; font-size:28rpx; padding:30rpx; text-align:left;'>小程序需要您的授权才能提供更好的服务哦！</view>
+    <button class='linscesbtn' type="default" open-type="getUserInfo" bindgetuserinfo="getUserInfo">好 的</button>
+  </view>
+</view>
 </view>
 <i-toast id="toast" />

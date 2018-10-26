@@ -260,12 +260,12 @@ color: transparent;
   height: 100%;
   width: 180rpx;
   background: #5398ff;
-  border: none;
+  border: 0rpx !important;
   color: white;
   font-size: 34rpx;
   margin-left: 40rpx;
   margin-right: 18rpx;
-  border-radius: 4rpx;
+  border-radius: 5rpx;
 }
 
 .custom-container{

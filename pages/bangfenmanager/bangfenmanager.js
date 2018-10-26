@@ -40,7 +40,8 @@ Page({
         madolinfos:'详细信息',
         actionid:'',
         actionindex:'',
-        actiontype:''
+        actiontype:'',
+        menushowid:0,
     },
     finishevent(e){
       let _this = this;
@@ -274,6 +275,10 @@ Page({
     },
     // 点击标题切换当前页时改变样式
     swichNav:function(e){
+      this.setData({
+        menushowid: e.target.dataset.current
+      })
+      console.log(e.target.dataset.current);
         var cur=e.target.dataset.current;
         if(this.data.currentTaB==cur){return false;}
         else{

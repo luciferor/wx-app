@@ -20,10 +20,14 @@ Page({
     applyPage : 1,
     passPage : 1,
     rejectPage : 1,
+    isAdmin: 0
   },
 
   onReady: function () {
     this.getNoticeList(0,1);
+    this.setData({
+      isAdmin: app.apiData.isAdmin
+    })
   },
 
   //不通过

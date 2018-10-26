@@ -1,4 +1,4 @@
-<view>
+<view style='background:#f7f7f7; height:100%;'>
       <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
         <view class="tab-item {{currentTab==0?'active':''}}"  data-current="0" bindtap="swichNav">自我管理</view>
         <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">相互管理</view>
@@ -30,7 +30,7 @@
               </scroll-view>
           </swiper-item>
       </swiper>
-      <view class='fagsbox'>
+      <view class='fagsbox' wx:if="{{menushowid==0}}">
         <view wx:if="{{menushow}}" style='padding-left:10rpx;'>
           <view class='ownerdes'>自我加减分</view>
           <image bindtap='ownnerplusandrem' class="fabplusred" src="../../images/fabs/icon_xuanfu_ziwo.png" />

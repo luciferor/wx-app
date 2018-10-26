@@ -1,4 +1,5 @@
 <!--pages/ranking/ranking.wxml-->
+<wxs module="subs" src="../../filter/substres.wxs"></wxs>
 <view class='bigbox'>
 </view>
 <view class='columnbox'>
@@ -10,25 +11,25 @@
 <view class='top-three-box'>
   <view class='top-three-second fl' wx:for="{{topranklist}}" wx:if="{{twoindex==1}}" wx:for-index="twoindex" wx:for-item="twoitem" >
     <view class='top-img-box' id="{{twoitem.user_id+'|'+twoitem.uname}}" bindtap='gotodynamic'>
-      <image src="{{twoitem.user_img==null||twoitem.user_img==''?'../../images/img_touxiang_default.png':'https://devqypyp.xiaohuibang.com'+twoitem.user_img}}"></image>
+      <image src="{{twoitem.user_img==null||twoitem.user_img==''?'../../images/img_touxiang_default.png':twoitem.user_img}}"></image>
     </view>
-    <view class='top-name-box'>{{twoitem.uname}}</view>
+    <view class='top-name-box'>{{subs.sub(twoitem.uname,4)}}</view>
     <view class='top-name-rank-ionc'><image src="../../images/dynamic/img_paiming_star.png"></image></view>
     <view class='top-rank-buff'>{{twoitem.total}}</view>
   </view>
   <view class='top-three-first fl' wx:for="{{topranklist}}" wx:if="{{oneindex==0}}" wx:for-index="oneindex" wx:for-item="oneitem">
     <view class='top-img-box' id="{{oneitem.user_id+'|'+oneitem.uname}}" bindtap='gotodynamic'>
-      <image src="{{oneitem.user_img==null||oneitem.user_img==''?'../../images/img_touxiang_default.png':'https://devqypyp.xiaohuibang.com'+oneitem.user_img}}"></image>
+      <image src="{{oneitem.user_img==null||oneitem.user_img==''?'../../images/img_touxiang_default.png':oneitem.user_img}}"></image>
     </view>
-    <view class='top-name-box'>{{oneitem.uname}}</view>
+    <view class='top-name-box'>{{subs.sub(oneitem.uname,4)}}</view>
     <view class='top-name-rank-ionc'><image src='../../images/dynamic/img_paiming_star.png'></image></view>
     <view class='top-rank-buff'>{{oneitem.total}}</view>
   </view>
   <view class='top-three-third fl' wx:for="{{topranklist}}" wx:if="{{threeindex==2}}" wx:for-index="threeindex" wx:for-item="threeitem">
     <view class='top-img-box' id="{{threeitem.user_id+'|'+threeitem.uname}}" bindtap='gotodynamic'>
-      <image src="{{threeitem.user_img==null||threeitem.user_img==''?'../../images/img_touxiang_default.png':'https://devqypyp.xiaohuibang.com'+threeitem.user_img}}"></image>
+      <image src="{{threeitem.user_img==null||threeitem.user_img==''?'../../images/img_touxiang_default.png':threeitem.user_img}}"></image>
     </view>
-    <view class='top-name-box'>{{threeitem.uname}}</view>
+    <view class='top-name-box'>{{subs.sub(threeitem.uname,4)}}</view>
     <view class='top-name-rank-ionc'><image src='../../images/dynamic/img_paiming_star.png'></image></view>
     <view class='top-rank-buff'>{{threeitem.total}}</view>
   </view>
@@ -48,7 +49,7 @@
                 <block wx:for="{{dayranklist}}" wx:if="{{dayindex>=4}}" wx:for-index="dayindex" wx:for-item="dayitem" wx:key="*this" >
                     <view class="item-ans" id="{{dayitem.user_id+'|'+dayitem.uname}}" bindtap='gotodynamic'>
                         <view class='placenum fl'>{{dayindex}}</view>
-                        <view class='nameimgbox fl'><image src="{{dayitem.user_img==null||dayitem.user_img==''?'../../images/img_touxiang_default.png':'https://devqypyp.xiaohuibang.com'+dayitem.user_img}}"></image></view>
+                        <view class='nameimgbox fl'><image src="{{dayitem.user_img==null||dayitem.user_img==''?'../../images/img_touxiang_default.png':dayitem.user_img}}"></image></view>
                         <view class='nameandpost fl'>
                           <view class='name-title'>{{dayitem.uname}}</view>
                           <view class='des-post'>{{dayitem.department_name}}</view>
@@ -66,7 +67,7 @@
                 <block wx:for="{{weekranklist}}" wx:if="{{weekindex>=4}}"  wx:for-index="weekindex" wx:for-item="weekitem" wx:key="*this">
                     <view class="item-ans" id="{{weekitem.user_id+'|'+weekitem.uname}}" bindtap='gotodynamic'>
                         <view class='placenum fl'>{{weekindex}}</view>
-                        <view class='nameimgbox fl'><image src="{{weekitem.user_img==null||weekitem.user_img==''?'../../images/img_touxiang_default.png':'https://devqypyp.xiaohuibang.com'+weekitem.user_img}}"></image></view>
+                        <view class='nameimgbox fl'><image src="{{weekitem.user_img==null||weekitem.user_img==''?'../../images/img_touxiang_default.png':weekitem.user_img}}"></image></view>
                         <view class='nameandpost fl'>
                           <view class='name-title'>{{weekitem.uname}}</view>
                           <view class='des-post'>{{weekitem.department_id}}</view>
@@ -84,7 +85,7 @@
                 <block wx:for="{{monthranklist}}" wx:if="{{monthindex>=4}}"  wx:for-index="monthindex" wx:for-item="monthitem" wx:key="*this">
                     <view class="item-ans" id="{{monthitem.user_id+'|'+monthitem.uname}}" bindtap='gotodynamic'>
                         <view class='placenum fl'>{{monthindex}}</view>
-                        <view class='nameimgbox fl'><image src="{{monthitem.user_img==null||monthitem.user_img==''?'../../images/img_touxiang_default.png':'https://devqypyp.xiaohuibang.com'+monthitem.user_img}}"></image></view>
+                        <view class='nameimgbox fl'><image src="{{monthitem.user_img==null||monthitem.user_img==''?'../../images/img_touxiang_default.png':monthitem.user_img}}"></image></view>
                         <view class='nameandpost fl'>
                           <view class='name-title'>{{monthitem.uname}}</view>
                           <view class='des-post'>{{monthitem.department_id}}</view>

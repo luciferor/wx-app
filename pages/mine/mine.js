@@ -10,16 +10,18 @@ Page({
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         showRemindBox: false,
         userInfo: {
-            companyname: "",
-            disposable: "",
+            companyname: "",//公司名称
+            disposable: "",//加分权利
             id: 0,
             name: "",
-            reduce: "",
-            score: "0",
-            total_score: "0",
-            user_img: "",
+            reduce: "",//减分权利
+            score: 0,
+            total_score: 0,//总分
+            user_img: "",//用户头像
           isadmin: 0,
         },
+        score:Number(0),
+        name:"",//姓名
         targetList: [
           // {
           //   "id": 1,
@@ -44,11 +46,19 @@ Page({
           //   "weekrank": 2,
           //   "monthrank": 3
           // }
-        ]
+        ]//我的目标列表
+        ,
+        session_key:'',
     },
     onReady: function() {
         this.getUserInfos();
         this.getTargetList();
+    },
+
+    onShow:function(){
+      console.log("------------" +"onShow");
+      this.getUserInfos();
+      this.getTargetList();
     },
 
    handleReceive(e){
@@ -81,35 +91,32 @@ Page({
     //获取用户信息
     getUserInfos() {
         let _this = this;
-        setTimeout(function() {
-            api.$https('/appreciate/personalcenter', {
-                session_key: app.apiData.session_key
-            }, 'POST', function(data) {
-                _this.setData({
-                    userInfo: data.data.message
-                });
-            }, function(data) {
-                console.log('请求失败');
+        api.$https('/appreciate/personalcenter', {
+            session_key: app.apiData.session_key
+        }, 'POST', function(data) {
+            _this.setData({
+                userInfo: data.data.message,
+                name: !data.data.message.name? app.apiData.nickName : data.data.message.name,
+                score: Number(data.data.message.score) + Number(data.data.message.total_score)
             });
-        }, 5000);
+        }, function(data) {
+            console.log('请求失败');
+        });
     },
-
     //获取我的目标
     getTargetList() {
       let _this = this;
-      setTimeout(function() {
-          api.$https('/targetmy/target', {
-             session_key: app.apiData.session_key
-        }, 'POST', function(data) {
-            if(data.data.success){
-              _this.setData({
-                targetList: data.data.message
-            });
-          }            
-          }, function(data) {
-                console.log('请求失败');
-            });
-        }, 3000);
+      api.$https('/targetmy/target', {
+        session_key: app.apiData.session_key
+      }, 'POST', function(data) {
+        if(data.data.success){
+          _this.setData({
+            targetList: data.data.message
+        });
+      }            
+      }, function(data) {
+        console.log('请求失败');
+      });
     },
 
     //提示框
@@ -144,10 +151,62 @@ Page({
     //跳转到我的目标
     navigateToTarget() {
         wx.navigateTo({
-            url: '../target/target'
+          url: '../target/target'
         })
     },
-    onLoad: function() {
+    onLoad: function(option) {
+        //获取邀请的公司id
+        console.log('查看公司id');
+        console.log(option.company_id);
+        app.apiData.invite_id = option.company_id;
+        // 登录
+        wx.login({
+          success: res => {
+            //发送 res.code 到后台换取 openId, sessionKey, unionId
+            //登录，从后台获取到session_key
+            //发起网络请求
+            wx.request({
+              url: 'https://devqypyp.xiaohuibang.com/login/miniprogram/Applet', //小程序登录
+              data: {
+                code: res.code,
+                company_id: option.company_id
+              },
+              method: "POST",
+              header: {
+                'content-type': 'application/json'//默认值
+              },
+              success(response) {
+                console.log('查看信息')
+                console.log(response)
+                app.apiData.code = res.code; //登录需要的code
+                app.apiData.session_key = response.data.message.session_key; //response.message.session_key
+                app.apiData.Company_Id = response.data.message.company_id;
+                app.apiData.isAdmin = response.data.message.isadmin;
+
+                if (option.company_id != 0 && option.company_id != '' && response.data.message.company_id == option.company_id) { //必须要是由申请加入的无组织用户才会显示
+                  setTimeout(function () {
+                    wx.showModal({
+                      title: '提示',
+                      content: '恭喜！您已成功加入' + response.data.message.company_name + '！',
+                      showCancel: true,
+                      cancelText: '取消',
+                      cancelColor: '#666666',
+                      confirmText: '知道了',
+                      confirmColor: '#5398ff'
+                    });
+                  }, 5000)
+                }
+
+                if (response.data.message.company_id == "" || response.data.message.company_id == 0 || response.data.message.company_id == null || response.data.message.company_id == undefined) {
+                  wx.redirectTo({
+                    url: '../guide/guide'
+                  })
+                }
+
+              }
+            })
+          },
+        })
         if (app.globalData.userInfo) {
             this.setData({
                 userInfo: app.globalData.userInfo,
@@ -177,11 +236,37 @@ Page({
         }
     },
     getUserInfo: function(e) {
-        console.log(e)
-        app.globalData.userInfo = e.detail.userInfo
-        this.setData({
-            userInfo: e.detail.userInfo,
-            hasUserInfo: true
-        })
+      console.log(e.detail);
+      let _this = this;
+      //*****
+      //*
+      app.apiData.nickName = e.detail.userInfo.nickName;
+      wx.request({
+        url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
+        data: {
+          session_key: app.apiData.session_key,
+          nickname: e.detail.userInfo.nickName,
+          avatarurl: e.detail.userInfo.avatarUrl,
+          gender: e.detail.userInfo.gender,
+          province: e.detail.userInfo.province,
+          city: e.detail.userInfo.city,
+          country: e.detail.userInfo.country,
+        },
+        header: {
+          'content-type': 'application/json' //默认值
+        },
+        method: 'POST',
+        success: function (res) {
+          //执行啥啥啥
+          _this.getUserInfos()
+          _this.getTargetList()
+        },
+      })
+
+      //*
+      //***** */
+      this.setData({
+          hasUserInfo: true
+      })
     }
 })
