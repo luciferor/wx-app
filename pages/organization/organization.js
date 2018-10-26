@@ -7,7 +7,9 @@ const app = getApp()
 Page({
     data: {
         memberList: [],
-        isAdmin: app.apiData.isAdmin
+        isAdmin: app.apiData.isAdmin,
+        showRemindBox:false,
+        delId:""
     },
 
     //事件处理函数
@@ -68,32 +70,57 @@ Page({
     },
 
     //删除成员列表
-    deleteMember(e) {
+    deleteMember() {
       let _this = this;
-      let index = e.currentTarget.id;
-      let member = _this.data.memberList[index];
-      console.log(_this.data.memberList);
-      if (_this.data.isAdmin == 0) {
+      _this.setData({
+        showRemindBox: false,
+      });
+       api.$https('/WeChat/appreciate/memberdel', {
+           session_key: app.apiData.session_key,
+          uid: member.id
+        }, 'POST', function(data) {
             $Toast({
-                content: '你还没有权限'
+               content: data.data.message
             });
-        } else {
-            if (member.isadmin == 0) {
-              api.$https('/WeChat/appreciate/memberdel', {
-                    session_key: app.apiData.session_key,
-                    uid: member.id
-                }, 'POST', function(data) {
-                    $Toast({
-                        content: data.data.message
-                    });
-                    if(data.data.success){
-                      _this.getMemberList()
-                    }
-                }, function() {});
+            if(data.data.success){
+               _this.getMemberList()
             }
-        }
+           }, function() {
+             $Toast({
+               content: '删除失败'
+             });
+           });
     },
 
 
+  //提示框
+  handleRemindOpen(e) {
+    console.log("==========删除提示框")
+    let _this = this;
+    if (_this.data.isAdmin == 0) {
+      $Toast({
+        content: '你还没有权限'
+      });
+    } else{
+      let index = e.currentTarget.id;
+      let member = _this.data.memberList[index];
+      if (member.isadmin == 0){
+        _this.setData({
+          showRemindBox: true,
+          delId: member.id
+        });
+      }else{
+        $Toast({
+          content: '无法删除创建者'
+        });
+      }
+    }
+  },
+  handleRemindClose() {
+    this.setData({
+      showRemindBox: false,
+      delId: ""
+    });
+  },
 
 })

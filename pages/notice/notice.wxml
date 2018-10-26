@@ -23,15 +23,19 @@
                   </view>
                   <view class='notice-container'>
                       <view class='badge-container'>
-                          <image src="{{allItem.user_img==null||allItem.user_img==''?'../../images/mine/head_default_icon.png': allItem.user_img}}" class='upic'></image>   
-                          <view class='badge' wx:if="{{allItem.state ==2}}"></view>                
+                          <image src="{{allItem.user_img==null||allItem.user_img==''?'../../images/mine/head_default_icon.png': allItem.user_img}}" class='upic'></image>  
+                          <block> 
+                             <view class='badge' wx:if="{{allItem.state ==2}}"></view>                                          
+                           </block>
                       </view>
                       <view class='content-container'>
                           <view class='name-container'>
                           <text class='uname'>{{allItem.name}}</text>
-                          <text class='pass-text' wx:if="{{allItem.state == 1}}">{{subs.status(allItem.state)}}</text>
-                          <text class='apply-text' wx:elif="{{allItem.state == 2}}">{{subs.status(allItem.state)}}</text>
-                          <text class='reject-text' wx:else>{{subs.status(allItem.state)}}</text>
+                          <block>
+                            <text class='pass-text' wx:if="{{allItem.state ==1}}">已通过</text>
+                            <text class='apply-text' wx:elif="{{allItem.state == 2}}">待审核</text>
+                            <text class='reject-text' wx:else>未通过</text>
+                          </block>
                       </view>
                       <view class='info-container'>
                             <text class='title'>{{allItem.type == 1?'排名目标':'邦分目标'}}</text>

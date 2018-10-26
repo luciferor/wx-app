@@ -22,25 +22,31 @@ Page({
   //修改组织名
   changeName(){
     let _this = this;
-    api.$https('/appreciate/changecompanyname', {
-      session_key: app.apiData.session_key,
-      name: _this.data.name
-    }, 'POST', function (data) {
-      console.log(data.success)
-      if (data.data.success) {
-        $Toast({
-          content: data.data.message
-        });
-      }else{
-        $Toast({
-          content: data.data.message
-        });
-      }
-    }, function (data) {
+    if (_this.data.name == "" || _this.data.name =="null"){
       $Toast({
-        content: '修改失败'
+        content: "请输入组织名称"
       });
-    });
+    }else{
+      api.$https('/appreciate/changecompanyname', {
+        session_key: app.apiData.session_key,
+        name: _this.data.name
+      }, 'POST', function (data) {
+        console.log(data.success)
+        if (data.data.success) {
+          $Toast({
+            content: data.data.message
+          });
+        } else {
+          $Toast({
+            content: data.data.message
+          });
+        }
+      }, function (data) {
+        $Toast({
+          content: '修改失败'
+        });
+      });
+    }
   },
 
   onLoad: function () {
@@ -53,7 +59,6 @@ Page({
     api.$https('/appreciate/companydetail', {
       session_key: app.apiData.session_key
     }, 'POST', function (data) {
-      console.log(data.success)
       if (data.data.success) {
         _this.setData({
           name: data.data.message.name == "" ? "我的组织" : data.data.message.name ,

@@ -224,6 +224,8 @@ Page({
         rejectNotice: this.data.rejectNotice.concat(data)
       })
     }
+    console.log("=======全部通知的数据=====")
+    console.log(this.data.allNotice)
   },
 
   //全部审核

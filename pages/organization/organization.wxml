@@ -13,7 +13,7 @@
             <image  src="{{member.avatarurl==null||member.avatarurl==''?'../../images/mine/head_default_icon.png': member.avatarurl}}" class='upic'></image>
             <text class='uname'>{{member.name}}</text>
           </view>
-          <text class='user-right' id="{{idx}}" bindtap='deleteMember'>{{member.isadmin == 1 ? "创建者" :"删除"}}</text>
+          <text class='user-right' id="{{idx}}" bindtap='handleRemindOpen'>{{member.isadmin == 1 ? "创建者" :"删除"}}</text>
       </view>
       <view class='horizontal-line'></view>
   </view>
@@ -26,5 +26,10 @@
       </view>
    </view>
 </view>
-
+ <i-modal title="提示" visible="{{ showRemindBox}}" bind:ok="deleteMember" 
+   ok-text="删除" bind:cancel="handleRemindClose">
+    <view class='modal-text'>
+     您确认删除该成员么？
+    </view>
+</i-modal>
 <i-toast id="toast" />

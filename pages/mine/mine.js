@@ -65,7 +65,7 @@ Page({
      console.log(e.currentTarget.id);
      let index = e.currentTarget.id;
      let target = this.data.targetList[index];
-     if (target.isreceive){
+     if (target.isreceive==1){
        api.$https('/receive/target', {
          session_key: app.apiData.session_key,
          id:target.id
