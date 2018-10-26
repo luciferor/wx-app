@@ -59,17 +59,16 @@ Page({
         name: '第三名'
       }
     ],
-
   },
   onReady:function(){
     this.setData({
       currentIndex:0
     })
     //加载初始数据
-    setTimeout(this.getNoticeList(1, 10),100)
-    setTimeout(this.getNoticeList(2, 10),500)
-    //this.getNoticeList(1,10);
-    //this.getNoticeList(2,10);
+    this.getNoticeList(1,10);
+    this.getNoticeList(2,10);
+    // this.getranktargetlist();
+    // this.getbufftargetlist();
   },
   submitall(){
     let _this = this;
@@ -176,7 +175,61 @@ Page({
       scoreTargetNum: this.data.selectscorelist.length
     })
   },
-  //获取目标列表(1:排名2:邦分3:自定义)
+
+  //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+  // getranktargetlist(){
+  //   let _this = this;
+  //   api.$http(function (res) {
+  //     console.log(res.data.message);
+  //     if(res.data.success){
+  //       for (let i = 0; i < res.data.message.length; i++) {
+  //         _this.data.rankTargetList.push({
+  //           id: res.data.message[i].id,
+  //           name: res.data.message[i].title,
+  //           ischecked: false,
+  //           rank: res.data.message[i].rank,
+  //           ranktitle: res.data.message[i].ranktitle,
+  //           type: res.data.message[i].type,
+  //           gift_type: res.data.message[i].gift_type,
+  //           gift_score: res.data.message[i].gift_score
+  //         })
+  //       }
+  //       console.log(_this.data.rankTargetList);
+  //     }
+  //   }, function () { }, '/targetlist/target',{
+  //     session_key: app.apiData.session_key,
+  //     type:1,
+  //   },'POST')
+  // },
+  // getbufftargetlist(){
+  //   let _this = this;
+  //   api.$http(function (res) {
+  //     console.log(res.data.message);
+  //     if(res.data.success){
+  //       for (let i = 0; i < res.data.message.length; i++) {
+  //         _this.data.scoreTargetList.push({
+  //           id: res.data.message[i].id,
+  //           name: res.data.message[i].title,
+  //           ischecked: false,
+  //           rank: res.data.message[i].rank,
+  //           ranktitle: res.data.message[i].ranktitle,
+  //           type: res.data.message[i].type,
+  //           gift_type: res.data.message[i].gift_type,
+  //           gift_score: res.data.message[i].gift_score
+  //         })
+  //       }
+  //       console.log(_this.data.scoreTargetList);
+  //     }
+  //   }, function () { }, '/targetlist/target', {
+  //       session_key: app.apiData.session_key,
+  //       type: 2,
+  //     }, 'POST')
+  // },
+
+  //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+  // 获取目标列表(1:排名2:邦分3:自定义)
   getNoticeList(types, pages) {
     console.log(types);
     let _this = this;
@@ -193,14 +246,13 @@ Page({
   },
   //获取目标列表结果处理getNoticeList
   dosuccess(types,data){
-    this.setData({
-      rankTargetList:[],
-      scoreTargetList:[]
-    })
     console.log(types);
       console.log(data)
       let type = types
       if(type == 1){
+        this.setData({
+          rankTargetList: []
+        })
         for (let i = 0; i < data.length;i++){
           this.data.rankTargetList.push({
             id:data[i].id,
@@ -217,8 +269,11 @@ Page({
           rankTargetList: this.data.rankTargetList
         });
         console.log('-------------------------------1');
-        console.log(this.data.rankTargetList.length>0);
+        console.log(this.data.rankTargetList);
       }else if(type ==2){
+        this.setData({
+          scoreTargetList: []
+        })
         for (let i = 0; i < data.length; i++) {
           this.data.scoreTargetList.push({
             id: data[i].id,
@@ -235,7 +290,7 @@ Page({
           scoreTargetList: this.data.scoreTargetList
         });
         console.log('-------------------------------2');
-        console.log(this.data.scoreTargetList.length>0);
+        console.log(this.data.scoreTargetList);
       }else if(type == 3){
         this.setData({
           customTargetList: data
@@ -296,17 +351,11 @@ Page({
   },
   //用户点击tab时调用
   titleClick: function (e) {
-    this.setData({
-      rankTargetNum: 0,//排名目标
-      scoreTargetNum: 0,//邦分目标
-      selectedranklist: [],//选择的排名目标
-      selectscorelist: [],//选择的邦分目标
-    })
     console.log(e.currentTarget.dataset.idx)
     let currentPageIndex = e.currentTarget.dataset.idx;
       this.setData({
         //拿到当前索引并动态改变
-        currentIndex: e.currentTarget.dataset.idx
+        currentIndex: e.currentTarget.dataset.idx,
       })
     //this.getNoticeList(e.currentTarget.id,10);
   },

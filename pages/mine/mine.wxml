@@ -79,6 +79,7 @@
       <text class='modal-text'>2、相互管理剩余邦分由管理员分配。</text>
     </view>
 </i-modal>
+
 <view class='linces-wx-mask' wx:if="{{!hasUserInfo && canIUse}}"></view>
 <view class='linces-wx-dialog' wx:if="{{!hasUserInfo && canIUse}}">
   <view class='lincesbox'>

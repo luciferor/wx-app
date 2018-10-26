@@ -6,6 +6,7 @@ const app = getApp()
 
 Page({
     data: {
+        userInfos: {},
         hasUserInfo: false,
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         showRemindBox: false,
@@ -62,6 +63,7 @@ Page({
     },
 
    handleReceive(e){
+     let _this = this;
      console.log(e.currentTarget.id);
      let index = e.currentTarget.id;
      let target = this.data.targetList[index];
@@ -74,7 +76,7 @@ Page({
            content: data.data.message
          });
          if(data.data.success){
-           this.getTargetList();
+           _this.getTargetList();
          }
        }, function (data) {
          $Toast({
@@ -95,11 +97,13 @@ Page({
             api.$https('/appreciate/personalcenter', {
                 session_key: app.apiData.session_key
             }, 'POST', function(data) {
+              if(data.data.success){
                 _this.setData({
-                    userInfo: data.data.message,
-                    name: data.data.message.name == "" ? app.apiData.nickName : data.data.message.name,
-                    score: Number(data.data.message.score) + Number(data.data.message.total_score)
+                  userInfo: data.data.message,
+                  name: data.data.message.name == "" ? app.apiData.nickName : data.data.message.name,
+                  score: Number(data.data.message.score) + Number(data.data.message.total_score)
                 });
+              }
             }, function(data) {
                 console.log('请求失败');
             });
@@ -159,33 +163,62 @@ Page({
         })
     },
     onLoad: function(option) {
-      if (app.globalData.userInfo) {
-        this.setData({
-          userInfo: app.globalData.userInfo,
-          hasUserInfo: true
-        })
-      } else if (this.data.canIUse) {
-        // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-        // 所以此处加入 callback 以防止这种情况
-        app.userInfoReadyCallback = res => {
+      let _this = this;
+      console.log(app.globalData.userInfo);
+        if (app.globalData.userInfo) {
           this.setData({
-            userInfo: res.userInfo,
+            userInfos: app.globalData.userInfo,
             hasUserInfo: true
           })
-        }
-      } else {
-        // 在没有 open-type=getUserInfo 版本的兼容处理
-        wx.getUserInfo({
-          success: res => {
-            console.log(res)
-            app.globalData.userInfo = res.userInfo
+        } else if (this.data.canIUse) {
+          // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+          // 所以此处加入 callback 以防止这种情况
+          app.userInfoReadyCallback = res => {
             this.setData({
-              userInfo: res.userInfo,
+              userInfos: res.userInfo,
               hasUserInfo: true
             })
           }
-        })
-      }
+        } else {
+          // 在没有 open-type=getUserInfo 版本的兼容处理
+          wx.getUserInfo({
+            success: res => {
+              console.log('打印数据啊啊啊 啊啊啊啊 3');
+              console.log(res);
+              return;
+              app.apiData.nickName = e.detail.userInfo.nickName;
+              wx.request({
+                url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
+                data: {
+                  session_key: app.apiData.session_key,
+                  nickname: e.detail.userInfo.nickName,
+                  avatarurl: e.detail.userInfo.avatarUrl,
+                  gender: e.detail.userInfo.gender,
+                  province: e.detail.userInfo.province,
+                  city: e.detail.userInfo.city,
+                  country: e.detail.userInfo.country,
+                },
+                header: {
+                  'content-type': 'application/json' //默认值
+                },
+                method: 'POST',
+                success: function (res) {
+                  //执行啥啥啥
+                  _this.getUserInfos()
+                  _this.getTargetList()
+                },
+              })
+
+              //*
+              //***** */
+              app.globalData.userInfo = res.userInfo
+              this.setData({
+                userInfos: res.userInfo,
+                hasUserInfo: true
+              })
+            }
+          })
+        }
 
         //获取邀请的公司id
         console.log('查看公司id');
@@ -215,7 +248,17 @@ Page({
                 app.apiData.Company_Id = response.data.message.company_id;
                 app.apiData.isAdmin = response.data.message.isadmin;
 
-                if (option.company_id != 0 && option.company_id != '' && response.data.message.company_id == option.company_id) { //必须要是由申请加入的无组织用户才会显示
+                if (response.data.message.company_id == "" || response.data.message.company_id == 0 || response.data.message.company_id == null || response.data.message.company_id == undefined) {
+                  console.log('-------------------------------');
+                  console.log(response.data.message.company_id+"返回回来的id");
+                  console.log(option.company_id+"传过来的id");
+                  console.log('-------------------------------');
+                  wx.redirectTo({
+                    url: '../guide/guide'
+                  })
+                }
+
+                if (option.company_id != undefined && option.company_id!=null && option.company_id != 0 && option.company_id != '' && response.data.message.company_id == option.company_id) { //必须要是由申请加入的无组织用户才会显示
                   setTimeout(function () {
                     wx.showModal({
                       title: '提示',
@@ -229,11 +272,44 @@ Page({
                   }, 5000)
                 }
 
-                if (response.data.message.company_id == "" || response.data.message.company_id == 0 || response.data.message.company_id == null || response.data.message.company_id == undefined) {
-                  wx.redirectTo({
-                    url: '../guide/guide'
-                  })
-                }
+
+                wx.getUserInfo({
+                  success: res => {
+                    console.log('打印数据啊啊啊 啊啊啊啊 3');
+                    console.log(res);
+                    console.log('打印数据啊啊啊啊啊啊啊啊啊啊啊啊啊');
+                    app.apiData.nickName = res.userInfo.nickName;
+                    wx.request({
+                      url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
+                      data: {
+                        session_key: app.apiData.session_key,
+                        nickname: res.userInfo.nickName,
+                        avatarurl: res.userInfo.avatarUrl,
+                        gender: res.userInfo.gender,
+                        province: res.userInfo.province,
+                        city: res.userInfo.city,
+                        country: res.userInfo.country,
+                      },
+                      header: {
+                        'content-type': 'application/json' //默认值
+                      },
+                      method: 'POST',
+                      success: function (res) {
+                        //执行啥啥啥
+                        _this.getUserInfos()
+                        _this.getTargetList()
+                      },
+                    })
+
+                    //*
+                    //***** */
+                    app.globalData.userInfo = res.userInfo
+                    _this.setData({
+                      userInfos: res.userInfo,
+                      hasUserInfo: true
+                    })
+                  }
+                })
 
               }
             })
@@ -241,6 +317,10 @@ Page({
         })
     },
     getUserInfo: function(e) {
+      this.setData({
+        userInfos: e.detail.userInfo,
+        hasUserInfo: true
+      })
       console.log(e.detail);
       let _this = this;
       //*****
@@ -270,8 +350,5 @@ Page({
 
       //*
       //***** */
-      this.setData({
-          hasUserInfo: true
-      })
     }
 })

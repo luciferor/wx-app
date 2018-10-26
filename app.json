@@ -37,7 +37,7 @@
         "selectedColor": "#5398ff",
         "list": [{
                 "pagePath": "pages/mine/mine",
-                "text": "我的",
+                "text": "企汇邦",
                 "iconPath": "./images/tabs/icon_tab_mine_default.png",
                 "selectedIconPath": "./images/tabs/icon_tab_wode_selected.png"
             },
