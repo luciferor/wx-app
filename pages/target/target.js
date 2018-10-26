@@ -191,14 +191,13 @@ Page({
   },
   //获取目标列表结果处理getNoticeList
   dosuccess(types,data){
-    this.setData({
-      rankTargetList:[],
-      scoreTargetList:[]
-    })
     console.log(types);
       console.log(data)
       let type = types
       if(type == 1){
+        this.setData({
+          rankTargetList: []
+        });
         for (let i = 0; i < data.length;i++){
           this.data.rankTargetList.push({
             id:data[i].id,
@@ -215,8 +214,11 @@ Page({
           rankTargetList: this.data.rankTargetList
         });
         console.log('-------------------------------1');
-        console.log(this.data.rankTargetList.length>0);
+        console.log(this.data.rankTargetList);
       }else if(type ==2){
+        this.setData({
+          scoreTargetList: []
+        });
         for (let i = 0; i < data.length; i++) {
           this.data.scoreTargetList.push({
             id: data[i].id,
@@ -271,6 +273,16 @@ Page({
         $Toast({
           content: data.data.message
         });
+        _this.setData({
+          newTargetType: '目标类型',
+          newTargetRank: '日排名',
+          newTargetNum: '第一名',
+          targetType: 1,//申请类型
+          giftType: 1,//礼品类型
+          rank: 1,//排名
+          targetTitle: '',//目标名称
+          gift_score: 0,//兑换所需邦分
+        })
       }else{
         $Toast({
           content: data.data.message
