@@ -29,7 +29,7 @@
 
    <view class='max-container'>
       <text class='operate-text'>分配时间</text>
-      <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+      <picker mode="date" value="{{date}}" bindchange="bindDateChange" fields="month">
         <view class='date-container'>
             <input  class='operate-input-date' placeholder-class="phcolor" disabled='true' placeholder='请选择时间' value='{{ date }}'></input>
             <image src='../../images/mine/icon_zuji_date.png' class='date-icon'></image>

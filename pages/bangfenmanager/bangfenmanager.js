@@ -3,7 +3,6 @@ const { $Toast } = require('../../dist/base/index');
 var app = getApp();
 Page({
     data:{
-        state:false,
         winHeight:"",//窗口高度
         currentTab:0, //预设当前项的值
         scrollLeft:0, //tab标题的滚动条位置
@@ -34,14 +33,15 @@ Page({
         othertype:[
           {name:'加分'},{name:'减分'}
         ],
-        otherbuff:0,
+        otherbuff:'',
         otherreasonr:'',
         madoltitle:'标题',
         madolshow:false,
         madolinfos:'详细信息',
         actionid:'',
         actionindex:'',
-        actiontype:''
+        actiontype:'',
+        menushowid:0,
     },
     finishevent(e){
       let _this = this;
@@ -172,24 +172,41 @@ Page({
     ownnerplusevent(){
       console.log(this.data.ownerdatalist.buff);
       let _this = this;
-      console.log("自我加减分申请");
-      api.$http(function(res){
-        console.log(res);
-        if (res.data.success){
-          //alert('添加成功！')
-          _this.handleSuccess(_this.data.typename+'成功')
-          _this.setData({
-            showModal:false
-          })
-        }
-      },function(err){
-        console.log(err)
-      },"/WeChat/Applet/changeGradeApplyBySelf",{
-        session_key:app.apiData.session_key,
-        type:this.data.typename=='自我加分'?'add':'reduce',
-        bangfen:this.data.ownerdatalist.buff,
-        reason:this.data.ownerdatalist.reasonr,
-      },"POST");
+      if (_this.data.typename ==""){
+        $Toast({
+          content: "请选择加减分类型",
+        });
+      } else if (_this.data.ownerdatalist.buff == 0 || _this.data.ownerdatalist.buff == ""){
+        $Toast({
+          content: "请输入邦分",
+        });
+      } else if (_this.data.ownerdatalist.reasonr == ""){
+        $Toast({
+          content: "请输入理由",
+        });
+      }else{
+        console.log("自我加减分申请");
+        api.$http(function (res) {
+          console.log(res);
+          if (res.data.success) {
+            //alert('添加成功！')
+            $Toast({
+              content: res.data.message,
+            });
+            _this.handleSuccess(_this.data.typename + '成功')
+            _this.setData({
+              showModal: false
+            })
+          }
+        }, function (err) {
+          console.log(err)
+        }, "/WeChat/Applet/changeGradeApplyBySelf", {
+            session_key: app.apiData.session_key,
+            type: _this.data.typename == '自我加分' ? 'add' : 'reduce',
+            bangfen: _this.data.ownerdatalist.buff,
+            reason: _this.data.ownerdatalist.reasonr,
+          }, "POST");
+      }
     },
     otherbuffevent(e){
       console.log(e.detail.value);
@@ -234,9 +251,29 @@ Page({
     },
     //===========================================================================================================选择加减分类型
     applyevent(){
-      wx.navigateTo({
-        url: '../../pages/selectuseres/selectuseres?type=' + this.data.othertypename + "&buff=" + this.data.otherbuff + "&reasonr=" + this.data.otherreasonr,
-      })
+      if(this.data.othertypename == ""){
+        $Toast({
+          content: "请选择加减分类型",
+        });
+      } else if (this.data.otherbuff == 0 || this.data.otherbuff == ""){
+        $Toast({
+          content: "请输入邦分",
+        });
+      } else if (this.data.otherreasonr == ""){
+        $Toast({
+          content: "请输入理由",
+        });
+      }else{
+        wx.navigateTo({
+          url: '../../pages/selectuseres/selectuseres?type=' + this.data.othertypename + "&buff=" + this.data.otherbuff + "&reasonr=" + this.data.otherreasonr,
+        })
+        this.setData({
+          showother: false,
+          othertypename: '',//他人加减分类型
+          otherbuff: 0,
+          otherreasonr: '',
+        })
+      }
     },
     closetype(){
       this.setData({
@@ -269,6 +306,10 @@ Page({
     },
     // 点击标题切换当前页时改变样式
     swichNav:function(e){
+      this.setData({
+        menushowid: e.target.dataset.current
+      })
+      console.log(e.target.dataset.current);
         var cur=e.target.dataset.current;
         if(this.data.currentTaB==cur){return false;}
         else{
@@ -357,9 +398,24 @@ Page({
       session_key: app.apiData.session_key
     }, 'POST');
   },
+  onShow:function(){
+    //自我管理
+    api.$http(this.odosuccess, this.odofail, '/WeChat/Applet/getSelfManagedList', {
+      type: 1,
+      session_key: app.apiData.session_key
+    }, 'POST');
+    //相互管理
+    api.$http(this.mdosuccess, this.mdofail, '/WeChat/Applet/getMutualManagedList', {
+      type: 1,
+      session_key: app.apiData.session_key
+    }, 'POST');
+  },
   odosuccess(data) {
     console.log('aaaaaaaaa')
     console.log(data);
+    this.setData({
+      ownerlist:[]
+    })
     for(let i=0;i<data.data.message.length;i++){
       let item = data.data.message;
       this.data.ownerlist.push({
@@ -378,6 +434,9 @@ Page({
   },
   mdosuccess(data) {
     console.log(data);
+    this.setData({
+      mutullist: []
+    })
     for (let i = 0; i < data.data.message.length; i++) {
       let item = data.data.message;
       this.data.mutullist.push({

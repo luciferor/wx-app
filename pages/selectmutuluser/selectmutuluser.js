@@ -37,6 +37,7 @@ Page({
     count: 0,//选中的人数
     mutuid: '',
     searchuserlist: [],//搜索用户
+    isshow:true,
   },
   selectedevent(e) {
     let arr = e.currentTarget.dataset.replyType.split('|');
@@ -114,14 +115,15 @@ Page({
       let item = res.data.message;
 
       for (var i = 0; i < res.data.message.length; i++) {
-        if (item[i].name) {
+        if (item[i].wechat_name) {
           _this.data.cities.push({
             id: item[i].id,
             name: item[i].name,
             pinyin: item[i].letter,
             post: item.postname,
             img: item[i].user_img,
-            ischecked: false
+            ischecked: false,
+            wechat_name: item[i].wechat_name
           })
         }
       }
@@ -139,11 +141,14 @@ Page({
     let _this = this;
     setTimeout(function () {
       _this.convertdata();
-    }, 10000)
+      _this.setData({
+        isshow:false
+      })
+    }, 3000)
   },
   convertdata() {
     let storeCity = new Array(26);
-    const words = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+    const words = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9","A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     words.forEach((item, index) => {
       storeCity[index] = {
         key: item,
@@ -159,7 +164,8 @@ Page({
         key: firstName,
         post: item.postname,
         img: item.user_img,
-        ischecked: false
+        ischecked: false,
+        wechat_name: item.wechat_name
       });
     })
     this.data.cities = storeCity;

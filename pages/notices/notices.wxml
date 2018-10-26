@@ -1,44 +1,59 @@
-<!-- notice.wxml -->
 <wxs module="subs" src="../../filter/substres.wxs"></wxs>
-<view class='layout-container'>
-    
-    <view class='top-fiexd'>
-        <view class='tab-container'>
-        <i-tabs current="{{ current }}"  color="#5398ff" bindchange="handleChange">
-        <i-tab key="all" title="全部"></i-tab>
-        <i-tab key="apply" title="待审核"></i-tab>
-        <i-tab key="pass" title="已通过"></i-tab>
-        <i-tab key="fail" title="未通过"></i-tab>
-    </i-tabs>
+<view class='container'>
+   <view class='top-fiexd'>
+   <!--Tab布局-->
+    <view class='title'>
+      <view class="{{0 == currentIndex ? 'titleSel' : 'titleUnsel'}}" bindtap='titleClick' id="{{1}}" data-idx='0'>
+        <text>全部</text>
+        <hr class="{{0 == currentIndex ? 'headerLineSel' : 'headerLineUnsel'}}" />
+      </view>
+      
+      <view class="{{1 == currentIndex ? 'titleSel' : 'titleUnsel'}}" bindtap='titleClick' id="{{2}}" data-idx='1'>
+        <text>待审核</text>
+        <hr class="{{1 == currentIndex ? 'headerLineSel' : 'headerLineUnsel'}} " />
+      </view>
+
+      <view class="{{2 == currentIndex ? 'titleSel' : 'titleUnsel'}}" bindtap='titleClick' id="{{3}}" data-idx='2'>
+        <text>已通过</text>
+        <hr class="{{2 == currentIndex ? 'headerLineSel' : 'headerLineUnsel'}} " />
+      </view>
+       <view class="{{3 == currentIndex ? 'titleSel' : 'titleUnsel'}}" bindtap='titleClick' id="{{4}}" data-idx='3'>
+        <text>未通过</text>
+        <hr class="{{3 == currentIndex ? 'headerLineSel' : 'headerLineUnsel'}} " />
+      </view>
     </view>
    </view>
-
-    <view class='layout-container'>
-        <!-- all -->
-        <view class='all-container' hidden="{{ allHidden}}">
-          <view  wx:if="{{allNotice.length >= 1}}">
+    
+    
+    <!--内容布局-->
+    <swiper class='swiper' bindchange='pagechange' current='{{currentIndex}}'>
+      <!-- all全部 -->
+      <swiper-item class='swiper-item'>
+        <scroll-view class='scroll-view' scroll-y>
+         <block>
+            <view  wx:if="{{allNotice.length >0}}">
                 <block wx:key="*this" wx:for="{{allNotice}}" wx:for-index="allIndex" wx:for-item="allItem">
                   <view class='time-container'>
                       <text class='time-text'>{{allItem.created_at}}</text>
                   </view>
                   <view class='notice-container'>
                       <view class='badge-container'>
-                          <image src="{{allItem.user_img==null||allItem.user_img==''?'../../images/mine/head_default_icon.png': allItem.user_img}}" class='upic'></image>  
-                          <block> 
-                             <view class='badge' wx:if="{{allItem.state ==2}}"></view>                                          
-                           </block>
+                          <image src="{{allItem.user_img==null||allItem.user_img==''?'../../images/mine/head_default_icon.png': allItem.user_img}}" class='upic'></image>   
+                          <bolck>
+                          <view class='badge' hidden='true'></view>   
+                          </bolck>             
                       </view>
                       <view class='content-container'>
                           <view class='name-container'>
                           <text class='uname'>{{allItem.name}}</text>
                           <block>
-                            <text class='pass-text' wx:if="{{allItem.state ==1}}">已通过</text>
-                            <text class='apply-text' wx:elif="{{allItem.state == 2}}">待审核</text>
-                            <text class='reject-text' wx:else>未通过</text>
-                          </block>
+                          <text class='pass-text' wx:if="{{allItem.state == 1}}">{{subs.status(allItem.state)}}</text>
+                          <text class='apply-text' wx:elif="{{allItem.state == 2}}">{{subs.status(allItem.state)}}</text>
+                          <text class='reject-text' wx:else>{{subs.status(allItem.state)}}</text>
+                        </block>
                       </view>
                       <view class='info-container'>
-                            <text class='title'>{{allItem.type == 1?'排名目标':'邦分目标'}}</text>
+                            <text class='notice_title'>{{allItem.type == 1?'排名目标':'邦分目标'}}</text>
                             <text class='content'>{{allItem.title}}</text>
                       </view>
                       <view class='dot-container' id="{{allIndex}}" bindtap="showAllCheckBox" wx:if="{{allItem.state ==2}}">
@@ -57,18 +72,20 @@
                 <image src='../../images/mine/img_tongzhi_queshengye.png' class='empty-img'></image>
                 <text class='empty-text'>您还没有通知哦~</text>
            </view>
-        </view>
-
-        <!-- apply -->
-        <view class='apply-container' hidden="{{ applyHidden }}">
-          <view wx:if="{{applyNotice.length >= 1}}">
+         </block>
+     </scroll-view>
+      </swiper-item>
+      <!-- apply 待审核-->
+      <swiper-item class='swiper-item'>
+         <scroll-view class='scroll-view' scroll-y>
+             <view wx:if="{{applyNotice.length >0}}">
                  <block wx:key="*this" wx:for="{{applyNotice}}" wx:for-index="applyIndex" wx:for-item="applyItem">
                   <view class='time-container'>
                       <text class='time-text'>{{applyItem.created_at}}</text>
                   </view>
                   <view class='notice-container'>
                       <view>
-                          <i-badge dot  >
+                          <i-badge >
                           <image src="{{applyItem.user_img==null||applyItem.user_img==''?'../../images/mine/head_default_icon.png': applyItem.user_img}}" class='upic'></image> 
                           </i-badge>
                       </view>
@@ -78,7 +95,7 @@
                           <text class='status apply-text'>待审核</text>
                       </view>
                       <view class='info-container'>
-                            <text class='title'>{{applyItem.type == 1?'排名目标':'邦分目标'}}</text>
+                            <text class='notice_title'>{{applyItem.type == 1?'排名目标':'邦分目标'}}</text>
                             <text class='content'>{{applyItem.title}}</text>
                       </view>
                       <view class='dot-container' id="{{applyIndex}}" bindtap="showCheckBox">
@@ -97,11 +114,14 @@
                 <image src='../../images/mine/img_tongzhi_queshengye.png' class='empty-img'></image>
                 <text class='empty-text'>您还没有通知哦~</text>
            </view>
-        </view>
-
-        <!-- pass -->
-        <view class='pass-container' hidden="{{ passHidden }}">
-           <view wx:if="{{passNotice.length >= 1}}">
+         </scroll-view>
+     
+      </swiper-item>
+      <!-- pass通过 -->
+      <swiper-item class='swiper-item'>
+         <scroll-view class='scroll-view' scroll-y>
+          <block>
+             <view wx:if="{{passNotice.length > 0}}">
                  <block wx:key="*this" wx:for="{{passNotice}}" wx:for-index="passIndex" wx:for-item="passItem">
                   <view class='time-container'>
                       <text class='time-text'>{{passItem.created_at}}</text>
@@ -116,7 +136,7 @@
                           <text class='status pass-text'>已通过</text>
                       </view>
                       <view class='info-container'>
-                            <text class='title'>{{passItem.type == 1?'排名目标':'邦分目标'}}</text>
+                            <text class='notice_title'>{{passItem.type == 1?'排名目标':'邦分目标'}}</text>
                             <text class='content'>{{passItem.title}}</text>
                       </view>
                       </view>
@@ -128,11 +148,14 @@
                 <image src='../../images/mine/img_tongzhi_queshengye.png' class='empty-img'></image>
                 <text class='empty-text'>您还没有通知哦~</text>
            </view>
-        </view>
-
-        <!-- fail -->
-        <view class='fail-container' hidden="{{ failHidden }}">
-           <view wx:if="{{rejectNotice.length >= 1}}">
+           </block>
+         </scroll-view>
+      </swiper-item>
+      <!-- reject未通过 -->
+      <swiper-item class='swiper-item'>
+         <scroll-view class='scroll-view' scroll-y>
+          <block>
+             <view wx:if="{{rejectNotice.length > 0}}">
                  <block wx:key="*this" wx:for="{{rejectNotice}}" wx:for-index="rejectIndex" wx:for-item="rejectItem">
                   <view class='time-container'>
                       <text class='time-text'>{{rejectItem.created_at}}</text>
@@ -147,7 +170,7 @@
                           <text class='status reject-text'>未通过</text>
                       </view>
                       <view class='info-container'>
-                            <text class='title'>{{rejectItem.type == 1?'排名目标':'邦分目标'}}</text>
+                            <text class='notice_title'>{{rejectItem.type == 1?'排名目标':'邦分目标'}}</text>
                             <text class='content'>{{rejectItem.title}}</text>
                       </view>
                       </view>
@@ -159,8 +182,10 @@
                 <image src='../../images/mine/img_tongzhi_queshengye.png' class='empty-img'></image>
                 <text class='empty-text'>您还没有通知哦~</text>
            </view>
-        </view>
-    </view>
-    
-</view>
+            </block>
+         </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+
 <i-toast id="toast" />

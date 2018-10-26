@@ -8,8 +8,6 @@ Page({
   data: {
     current: 'tab1',
     currentIndex: 0,
-    "firstList": ["不二家棒棒糖", "清风湿至今", "床上四件套", "其他噢", "我要加一百分", "野心勃勃", "不二家棒棒糖", "清风湿至今", "床上四件套", "其他噢", "我要加一百分", "野心勃勃"],
-    "secondList": ["帮助他人", "保持桌面清洁", "有责任心", "乱丢垃圾", "随地吐痰", "不讲卫生", "帮助他人", "保持桌面清洁", "有责任心", "乱丢垃圾", "随地吐痰", "不讲卫生","帮助他人", "保持桌面清洁", "有责任心", "乱丢垃圾", "随地吐痰", "不讲卫生"],
     rankTargetNum: 0,//排名目标
     scoreTargetNum: 0,//邦分目标
     customTargetNum: 0,//自定义目标
@@ -26,7 +24,7 @@ Page({
     newTargetType: '目标类型',
     newTargetRank: '日排名',
     newTargetNum : '第一名',
-    targetType:1,//申请类型
+    targetType:0,//申请类型
     giftType:1,//礼品类型
     rank:1,//排名
     targetTitle:'',//目标名称
@@ -61,7 +59,6 @@ Page({
         name: '第三名'
       }
     ],
-
   },
   onReady:function(){
     this.setData({
@@ -70,6 +67,8 @@ Page({
     //加载初始数据
     this.getNoticeList(1,10);
     this.getNoticeList(2,10);
+    // this.getranktargetlist();
+    // this.getbufftargetlist();
 
   },
   submitall(){
@@ -87,12 +86,20 @@ Page({
         type: Number(this.data.selectscorelist[i].type)
       })
     }
-    
+    console.log('打印一下提交的数据看看')
+    console.log(this.data.allselectedlist);
     api.$http(function(res){
       console.log(res)
       _this.alertmsg(res.data.message);
       if(res.data.success){
+        //重新读取数据
+        _this.getNoticeList(1, 10);
+        _this.getNoticeList(2, 10);
+        //重置数据
         _this.resetall();
+        _this.setData({
+          allselectedlist:[]
+        })
       }
     },function(err){
       console.log(err)
@@ -177,7 +184,61 @@ Page({
       scoreTargetNum: this.data.selectscorelist.length
     })
   },
-  //获取目标列表(1:排名2:邦分3:自定义)
+
+  //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+  // getranktargetlist(){
+  //   let _this = this;
+  //   api.$http(function (res) {
+  //     console.log(res.data.message);
+  //     if(res.data.success){
+  //       for (let i = 0; i < res.data.message.length; i++) {
+  //         _this.data.rankTargetList.push({
+  //           id: res.data.message[i].id,
+  //           name: res.data.message[i].title,
+  //           ischecked: false,
+  //           rank: res.data.message[i].rank,
+  //           ranktitle: res.data.message[i].ranktitle,
+  //           type: res.data.message[i].type,
+  //           gift_type: res.data.message[i].gift_type,
+  //           gift_score: res.data.message[i].gift_score
+  //         })
+  //       }
+  //       console.log(_this.data.rankTargetList);
+  //     }
+  //   }, function () { }, '/targetlist/target',{
+  //     session_key: app.apiData.session_key,
+  //     type:1,
+  //   },'POST')
+  // },
+  // getbufftargetlist(){
+  //   let _this = this;
+  //   api.$http(function (res) {
+  //     console.log(res.data.message);
+  //     if(res.data.success){
+  //       for (let i = 0; i < res.data.message.length; i++) {
+  //         _this.data.scoreTargetList.push({
+  //           id: res.data.message[i].id,
+  //           name: res.data.message[i].title,
+  //           ischecked: false,
+  //           rank: res.data.message[i].rank,
+  //           ranktitle: res.data.message[i].ranktitle,
+  //           type: res.data.message[i].type,
+  //           gift_type: res.data.message[i].gift_type,
+  //           gift_score: res.data.message[i].gift_score
+  //         })
+  //       }
+  //       console.log(_this.data.scoreTargetList);
+  //     }
+  //   }, function () { }, '/targetlist/target', {
+  //       session_key: app.apiData.session_key,
+  //       type: 2,
+  //     }, 'POST')
+  // },
+
+  //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+  // 获取目标列表(1:排名2:邦分3:自定义)
   getNoticeList(types, pages) {
     console.log(types);
     let _this = this;
@@ -194,14 +255,13 @@ Page({
   },
   //获取目标列表结果处理getNoticeList
   dosuccess(types,data){
-    this.setData({
-      rankTargetList:[],
-      scoreTargetList:[]
-    })
     console.log(types);
       console.log(data)
       let type = types
       if(type == 1){
+        this.setData({
+          rankTargetList: []
+        })
         for (let i = 0; i < data.length;i++){
           this.data.rankTargetList.push({
             id:data[i].id,
@@ -218,8 +278,11 @@ Page({
           rankTargetList: this.data.rankTargetList
         });
         console.log('-------------------------------1');
-        console.log(this.data.scoreTargetList);
+        console.log(this.data.rankTargetList);
       }else if(type ==2){
+        this.setData({
+          scoreTargetList: []
+        })
         for (let i = 0; i < data.length; i++) {
           this.data.scoreTargetList.push({
             id: data[i].id,
@@ -262,28 +325,38 @@ Page({
     _this.setData({
       showApplyBox: false
     });
-    api.$https('/application/target', {
-      session_key: app.apiData.session_key,
-      type: _this.data.targetType,
-      title: _this.data.targetTitle,
-      gift_type:_this.data.giftType,
-      rank:_this.data.rank,
-      gift_score:''
-    }, 'POST', function (data) {
-      if(data.data.success){
+      api.$https('/application/target', {
+        session_key: app.apiData.session_key,
+        type: _this.data.targetType,
+        title: _this.data.targetTitle,
+        gift_type: _this.data.giftType,
+        rank: _this.data.rank,
+        gift_score: _this.data.gift_score
+      }, 'POST', function (data) {
+        if (data.data.success) {
+          $Toast({
+            content: data.data.message
+          });
+          _this.setData({
+            newTargetType: '目标类型',
+            newTargetRank: '日排名',
+            newTargetNum: '第一名',
+            targetType: 0,//申请类型
+            giftType: 1,//礼品类型
+            rank: 1,//排名
+            targetTitle: '',//目标名称
+            gift_score: 0,//兑换所需邦分
+          })
+        } else {
+          $Toast({
+            content: data.data.message
+          });
+        }
+      }, function () {
         $Toast({
-          content: data.data.message
+          content: '申请失败，请重试'
         });
-      }else{
-        $Toast({
-          content: data.data.message
-        });
-      }
-    }, function () {
-      $Toast({
-        content: '申请失败，请重试'
       });
-    });
   },
 
   //swiper切换时会调用
@@ -297,26 +370,34 @@ Page({
   },
   //用户点击tab时调用
   titleClick: function (e) {
-    this.setData({
-      rankTargetNum: 0,//排名目标
-      scoreTargetNum: 0,//邦分目标
-      selectedranklist: [],//选择的排名目标
-      selectscorelist: [],//选择的邦分目标
-    })
     console.log(e.currentTarget.dataset.idx)
     let currentPageIndex = e.currentTarget.dataset.idx;
       this.setData({
         //拿到当前索引并动态改变
-        currentIndex: e.currentTarget.dataset.idx
+        currentIndex: e.currentTarget.dataset.idx,
       })
     //this.getNoticeList(e.currentTarget.id,10);
   },
   
   //申请提示框
   handleApplyOpen(){
-      this.setData({
-        showApplyBox : true
+    if (this.data.targetTitle == "" || this.data.targetTitle == null) {
+      $Toast({
+        content: "请输入目标名称"
       });
+    } else if (this.data.targetType == 2 && this.data.gift_score <= 0 ) {
+      $Toast({
+        content: "请输入正确的目标邦分"
+      });
+    } else if (this.data.targetType ==0){
+      $Toast({
+        content: "请选择目标类型"
+      });
+    }else{
+      this.setData({
+        showApplyBox: true
+      });
+    } 
   },
   handleClose(){
     this.setData({

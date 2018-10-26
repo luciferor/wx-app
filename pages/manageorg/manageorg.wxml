@@ -3,7 +3,7 @@
          <view class='content-container' >
 
         <view class='title'>
-           <input value='{{name}}' maxlength='20' bindinput="changeNameInput"></input>
+           <input value='{{name}}' maxlength='8' bindinput="changeNameInput"></input>
         </view>
      
          <view class='horizontal-line'></view>

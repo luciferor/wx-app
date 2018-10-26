@@ -1,5 +1,6 @@
 {
   "navigationBarBackgroundColor": "#FFFFFF",
+  "navigationBarTitleText": "动态",
   "usingComponents": {
     }
 }

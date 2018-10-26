@@ -5,9 +5,13 @@ page{
   background: white
 }
 .view-container{
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-height: 100%;/*生效*/
 }
 .bgimg{
   width: 100%;
@@ -16,6 +20,9 @@ page{
   height:300rpx;
 }
 .top{
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-ms-flexbox;
     display: flex;
     top: 0px;
     height: auto;
@@ -24,6 +31,9 @@ page{
 }
 
 .info-container{
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -45,12 +55,18 @@ page{
 .left-container{
   margin-left: 30rpx;
   align-items: center;
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
   display: flex;
 }
 .right-container{
   margin-right: 30rpx;
   align-items: center;
-   display: flex;
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
+  display: flex;
 }
 .message{
  width: 45rpx;
@@ -75,6 +91,9 @@ page{
 }
 
 .score-org-container{
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-ms-flexbox;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -82,6 +101,9 @@ page{
     margin-top: 25rpx;
 }
 .score-container{
+   display:-webkit-box;
+   display:-webkit-flex;
+   display:-ms-flexbox;
    display: flex;
    flex-direction: column;
    margin-left: 30rpx;
@@ -94,12 +116,15 @@ page{
 .total-score{
   color: white;
   font-weight: bold;
-  margin-top:10rpx;
+  margin-top:-10rpx;
   font-size:72rpx;
 }
 
 .remind-container{
-  display: flex;
+  display:-webkit-box;
+   display:-webkit-flex;
+   display:-ms-flexbox;
+   display: flex;
   flex-direction: row;
   align-items: center;
 }
@@ -124,6 +149,9 @@ page{
 }
 
 .add-target-container{
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
   display: flex;
   width: 100%;
   height: 100rpx;
@@ -133,6 +161,9 @@ page{
   line-height: 100rpx;
 }
 .add-text-container{
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -164,6 +195,9 @@ page{
 }
 
 .target-container{
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
   display: flex;
   flex-direction: row;
   padding: 35rpx 20rpx 35rpx 24rpx;
@@ -171,6 +205,9 @@ page{
   align-content: center
 }
 .target-left{
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
   display: flex;
   flex-direction: row;
 }
@@ -179,9 +216,13 @@ page{
   height: 120rpx;
 }
 .target-info{
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
   display: flex;
   flex-direction: column;
   margin-left: 20rpx;
+  justify-content: space-around
 }
 .target-name{
   color: #333333;
@@ -190,16 +231,20 @@ page{
 .target-condition{
   color: #666666;
   font-size: 24rpx;
-  margin-top: 20rpx;
+  margin-top: 10rpx;
 }
 .target-status{
   width: 340rpx;
   height: 10rpx;
-  border-radius: 10rpx;
-   margin-top: 20rpx;
+  margin-top: 20rpx;
+  border-radius:100px;
+  overflow:hidden;
 }
 
 .target-right{
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -302,4 +347,121 @@ page{
   height: 100%;
 }
 
+/* components/receiveTip/receiveTip.wxss */
+.linces-wx-mask{
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+}
+.linces-wx-dialog{
+  position: fixed;
+  z-index: 5000;
+  width: 60%;
+  max-width: 600rpx;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color:transparent;
+  text-align: center;
+  border-radius: 3px;
+  overflow: hidden;
+}
 
+.lincesbox{
+  background:#5398ff;
+  width:100%;
+  height:320rpx;
+  box-shadow: 0px 6px 10px 0px 
+  rgba(0, 65, 163, 0.3);
+}
+
+.linscesbtn{
+  height: 80rpx;
+  background-color: #5398ff !important;
+  font-size: 30rpx;
+  line-height: 80rpx;
+  color:white !important;
+}
+
+.maskwin{
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+.win-dialog{
+  position: fixed;
+  z-index: 5000;
+  width: 70%;
+  max-width: 600rpx;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.win-dialog image{
+  width:100%;
+  height: 700rpx;
+}
+
+.win-content{
+  position: fixed;
+  z-index: 5000;
+  width: 70%;
+  max-width: 600rpx;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.topwin{
+  height: 400rpx;
+}
+
+.descontent{
+  height: 100rpx;
+  line-height: 120rpx;
+  font-size: 26rpx;
+	color: #999999;
+}
+
+.info-content-win{
+  height: 60rpx;
+  line-height: 0rpx;
+  font-size:32rpx;
+  text-align: center;
+  font-size: 36rpx;
+	color: #5398ff;
+  font-weight: bold;
+}
+
+.info-under{
+  height: 100rpx;
+  line-height: 60rpx;
+  color:#ffffff;
+  font-size: 30rpx;
+}
+
+.closebtn{
+  width:80rpx;
+  height:80rpx;
+  position: absolute;
+  right:0rpx;
+  top:100rpx;
+}

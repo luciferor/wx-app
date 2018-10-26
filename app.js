@@ -1,8 +1,5 @@
 //app.js
 App({
-    data: {
-        company_id: '', //企业id
-    },
     apiData: {
         code: '', //登录需要的code
         api: 'https://devqypyp.xiaohuibang.com', //接口根地址
@@ -10,6 +7,7 @@ App({
         userstatus: true,
         Company_Id: '', //response.data.message.company_id
         isAdmin: 0,
+<<<<<<< HEAD
         mutualMergeArr: [], // 创建组织时相互管理的数组参数
         selfMergeArr: [], // 创建组织时自我管理的数组参数
     },
@@ -17,6 +15,10 @@ App({
         this.setData({
             company_id: option.company_id
         })
+=======
+        nickName:'',
+        invite_id:''
+>>>>>>> af696ba549bfc14f387d173489ed19f36167442a
     },
     onShareAppMessage: function() {
         console.log(app.apiData.Company_Id)
@@ -38,11 +40,13 @@ App({
         }
     },
     onLaunch: function() {
+        console.log('onlaunch')
         var _this = this
             // 展示本地存储能力
         var logs = wx.getStorageSync('logs') || []
         logs.unshift(Date.now())
         wx.setStorageSync('logs', logs)
+<<<<<<< HEAD
 
 
         // 登录
@@ -125,6 +129,8 @@ App({
 
             },
         })
+=======
+>>>>>>> af696ba549bfc14f387d173489ed19f36167442a
     },
     globalData: {
         userInfo: null,

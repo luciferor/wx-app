@@ -1,6 +1,11 @@
 {
     "pages": [
+<<<<<<< HEAD
         "pages/mine/mine",
+=======
+       "pages/mine/mine",
+        "pages/guide/guide",
+>>>>>>> af696ba549bfc14f387d173489ed19f36167442a
         "pages/create/create",
         "pages/guide/guide",
         "pages/setting/setting",
@@ -24,7 +29,8 @@
         "pages/organization/organization",
         "pages/plandetail/plandetail",
         "pages/target/target",
-        "pages/selectmutuluser/selectmutuluser"
+        "pages/selectmutuluser/selectmutuluser",
+        "pages/notices/notices"
     ],
     "window": {
         "backgroundTextStyle": "light",

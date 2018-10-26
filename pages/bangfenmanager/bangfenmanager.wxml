@@ -1,4 +1,4 @@
-<view>
+<view style='background:#f7f7f7; height:100%;'>
       <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
         <view class="tab-item {{currentTab==0?'active':''}}"  data-current="0" bindtap="swichNav">自我管理</view>
         <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">相互管理</view>
@@ -30,12 +30,12 @@
               </scroll-view>
           </swiper-item>
       </swiper>
-      <view class='fagsbox'>
-        <view wx:if="{{menushow}}">
+      <view class='fagsbox' wx:if="{{true}}">
+        <view wx:if="{{menushow}}" style='padding-left:10rpx;'>
           <view class='ownerdes'>自我加减分</view>
           <image bindtap='ownnerplusandrem' class="fabplusred" src="../../images/fabs/icon_xuanfu_ziwo.png" />
         </view>
-        <view wx:if="{{menushow}}">
+        <view wx:if="{{menushow}}" style='padding-left:10rpx;'>
           <view class='mutudes'>他人加减分</view>
           <image bindtap="otherplusandrem" class="fabotherplus" src="../../images/fabs/icon_xuanfu_taren.png" />
         </view>
@@ -57,7 +57,7 @@
           </view>
           <view class="select-type" bindtap='selecttype'>
               <span class="fl selectinput">
-                  <input disabled='{{true}}' value='{{typename}}'  placeholder="请选择加减分类型" />
+                  <input type='digit' disabled='{{true}}' value='{{typename}}'  placeholder="请选择加减分类型" />
               </span>
               <span class="fr selectright">
                   <image src="../../images/icon_caozuo_xia.png" />
@@ -68,7 +68,7 @@
               <span class="fr input-li">邦分</span>
           </view>
           <view class="input-area">
-              <textarea bindblur='reasonevent' name="reasonrtext" maxlength='15' style="height: 3em" value='{{ownerdatalist.reasonr}}' placeholder="请填写理由，不超过15个字" />
+              <textarea fixed="true" bindblur='reasonevent' name="reasonrtext" maxlength='15' style="height: 3em" value='{{ownerdatalist.reasonr}}' placeholder="请填写理由，不超过15个字" />
           </view>
           <view class="input-des">
               注：请根据实际情况进行加减分，如发现谎报将受到多倍的惩罚！
@@ -78,7 +78,7 @@
                   <button style="width:95%; float:left; background:#dedede;" type="default" size="{{defaultSize}}" plain="{{plain}}"bindtap="go" hover-class="other-button-hover">取消 </button>
               </span>
               <span class="fr" style="width:50%;">
-                  <button form-type='submit' style="width:95%; float:right; background:#5398ff;" type="primary" size="{{defaultSize}}" plain="{{plain}}"bindtap="ownnerplusevent" hover-class="other-button-hover">确定</button>
+                  <button form-type='submit' style="width:95%; float:right; background:#5398ff;" type="primary" size="{{defaultSize}}" plain="{{plain}}" bindtap="ownnerplusevent" hover-class="other-button-hover">确定</button>
               </span>
           </view>
         </form>
@@ -100,7 +100,7 @@
               <span class="fr input-li">邦分</span>
           </view>
           <view class="input-area">
-              <textarea style="height: 3em" placeholder="请填写理由，不超过15个字" />
+              <textarea fixed="true" style="height: 3em" placeholder="请填写理由，不超过15个字" />
           </view>
           <view class="input-des">
               注：请根据实际情况进行加减分，如发现谎报将受到多倍的惩罚！
@@ -132,7 +132,7 @@
               <span class="fr input-li">邦分</span>
           </view>
           <view class="input-area">
-              <textarea bindblur="otherreasonrevent" value='{{otherreasonr}}' style="height: 3em" placeholder="请填写理由，不超过15个字" />
+              <textarea fixed="true" bindblur="otherreasonrevent" value='{{otherreasonr}}' style="height: 3em" placeholder="请填写理由，不超过15个字" />
           </view>
           <view class="input-des">
               注：请根据实际情况进行加减分，如发现谎报将受到多倍的惩罚！

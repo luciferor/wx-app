@@ -7,7 +7,11 @@
       </swiper-item>
     </block>
   </swiper>
+<<<<<<< HEAD
   <button class="create-organization-btn" wx:if="{{showBtn}}" open-type="getUserInfo" bindgetuserinfo="toCreateOrg">
+=======
+   <button class="create-organization-btn" wx:if="{{showBtn}}" open-type="getUserInfo" bindgetuserinfo="toCreateOrg">
+>>>>>>> af696ba549bfc14f387d173489ed19f36167442a
     <image class="add-logo" src="../../images/guide/icon_chuangjian.png"  />
     创建组织
   </button>

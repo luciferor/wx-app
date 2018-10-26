@@ -185,6 +185,8 @@ color: transparent;
   font-size: 34rpx;
   color: #5398ff;
   margin-left: 10rpx;
+  word-break:keep-all;      /* 不换行 */
+  white-space:nowrap; 
 }
 
 .horizental-line{
@@ -204,6 +206,8 @@ color: transparent;
 .gray-text{
   color: #999999;
   font-size: 34rpx;
+  word-break:keep-all;      /* 不换行 */
+  white-space:nowrap; 
 }
 
 
@@ -260,12 +264,12 @@ color: transparent;
   height: 100%;
   width: 180rpx;
   background: #5398ff;
-  border: none;
+  border: 0rpx !important;
   color: white;
   font-size: 34rpx;
   margin-left: 40rpx;
   margin-right: 18rpx;
-  border-radius: 4rpx;
+  border-radius: 5rpx;
 }
 
 .custom-container{

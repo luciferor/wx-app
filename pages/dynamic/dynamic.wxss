@@ -111,8 +111,9 @@
 	color: #ffffff;
 }
 
+/* height:calc(100% - 260rpx); */
 .under-list{
-    height:calc(100% - 260rpx);
+    height: 100%;
     overflow:hidden;
 }
 
@@ -131,13 +132,14 @@
 }
 
 .under-list-img-box{
-    width:120rpx;
-    height: 120rpx;
+    width:100rpx;
+    height: 100rpx;
+    padding:10rpx;
 }
 
 .under-list-img-box image{
-    width:118rpx;
-    height: 118rpx;
+    width:98rpx;
+    height: 98rpx;
     border-radius:69px;
 	border: solid 1px #5398ff;
 }
@@ -153,7 +155,7 @@
 }
 
 .user-li-title-box-listtitle-name{
-    font-size: 32rpx;
+    font-size: 30rpx;
 	font-weight: normal;
 	font-stretch: normal;
 	letter-spacing: 0px;
@@ -171,7 +173,7 @@
 .user-li-title-box-listdes{
     height: 60rpx;
     line-height: 60rpx;
-    font-size: 35rpx;
+    font-size: 32rpx;
     color: #333333;
 }
 

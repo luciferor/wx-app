@@ -171,48 +171,48 @@ Page({
         session_key: app.apiData.session_key,
         type: 'day'
       }, 'POST')
-    },2000);
+    },100);
     setTimeout(function () {
       api.$http(_this.weekrankdosuccess, _this.dofail, '/WeChat/Applet/getAllUserRank', {
         session_key: app.apiData.session_key,
         type: 'week'
       }, 'POST')
-    }, 4000);
+    }, 500);
     setTimeout(function () {
       api.$http(_this.monthrankdosuccess, _this.dofail, '/WeChat/Applet/getAllUserRank', {
         session_key: app.apiData.session_key,
         type: 'month'
       }, 'POST')
-    }, 6000);
+    }, 1000);
   },
   dayrankdosuccess(data){//日排名
     console.log(data);
     this.setData({
-      dayranklist:data.data.message
+      dayranklist:data.data.message.desc
     })
     if(this.data.thenid==0){
       this.setData({
-        topranklist:data.data.message
+        topranklist:data.data.message.desc
       })
     }
   },
   weekrankdosuccess(data){//周排名
     this.setData({
-      weekranklist:data.data.message
+      weekranklist:data.data.message.desc
     })
     if (this.data.thenid == 1) {
       this.setData({
-        topranklist: data.data.message
+        topranklist: data.data.message.desc
       })
     }
   },
   monthrankdosuccess(data){//月排名
     this.setData({
-      monthranklist:data.data.message
+      monthranklist:data.data.message.desc
     })
     if (this.data.thenid == 2) {
       this.setData({
-        topranklist: data.data.message
+        topranklist: data.data.message.desc
       })
     }
   },

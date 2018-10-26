@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "navigationBarTitleText": "通知",
+  "usingComponents": {
+    "i-toast": "../../dist/toast/index",
+    "i-badge": "../../dist/badge/index"
+  }
+}

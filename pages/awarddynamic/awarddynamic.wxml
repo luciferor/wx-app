@@ -2,7 +2,7 @@
 <view>
     <view class="user-list-content" wx:for="{{awardlist}}" wx:for-index="index" wx:for-item="item">
         <view class="under-list-img-box fl">
-            <image src="{{item.user_img==null||item.user_img==''?'../../images/img_touxiang_default.png':'https://devqypyp.xiaohuibang.com'+item.user_img}}"></image>
+            <image src="{{item.user_img==null||item.user_img==''?'../../images/img_touxiang_default.png':item.user_img}}"></image>
         </view>
         <view class="user-li-title-box fl">
             <view class="user-li-title-box-listdes">{{item.name}}</view>
