@@ -22,7 +22,7 @@ Page({
         return {
             title: '用邦分干了这杯事业，快来加入我们的团队吧……',
             desc: '邦分管理',
-            path: '/pages/mine/mine?company_id=' + app.apiData.Company_Id, // 路径，传递参数到指定页面。
+            path: '/mine/mine/guide?company_id=' + app.apiData.Company_Id, // 路径，传递参数到指定页面。
             imageUrl: '../../images/minproShare.jpg',
             success: function(res) {
                 console.log(res)

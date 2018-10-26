@@ -66,8 +66,10 @@ Page({
       currentIndex:0
     })
     //加载初始数据
-    this.getNoticeList(1,10);
-    this.getNoticeList(2,10);
+    setTimeout(this.getNoticeList(1, 10),100)
+    setTimeout(this.getNoticeList(2, 10),500)
+    //this.getNoticeList(1,10);
+    //this.getNoticeList(2,10);
   },
   submitall(){
     let _this = this;
@@ -215,7 +217,7 @@ Page({
           rankTargetList: this.data.rankTargetList
         });
         console.log('-------------------------------1');
-        console.log(this.data.scoreTargetList);
+        console.log(this.data.rankTargetList.length>0);
       }else if(type ==2){
         for (let i = 0; i < data.length; i++) {
           this.data.scoreTargetList.push({
@@ -233,7 +235,7 @@ Page({
           scoreTargetList: this.data.scoreTargetList
         });
         console.log('-------------------------------2');
-        console.log(this.data.scoreTargetList);
+        console.log(this.data.scoreTargetList.length>0);
       }else if(type == 3){
         this.setData({
           customTargetList: data

@@ -3,7 +3,6 @@ const { $Toast } = require('../../dist/base/index');
 var app = getApp();
 Page({
     data:{
-        state:false,
         winHeight:"",//窗口高度
         currentTab:0, //预设当前项的值
         scrollLeft:0, //tab标题的滚动条位置
@@ -34,14 +33,15 @@ Page({
         othertype:[
           {name:'加分'},{name:'减分'}
         ],
-        otherbuff:0,
+        otherbuff:'',
         otherreasonr:'',
         madoltitle:'标题',
         madolshow:false,
         madolinfos:'详细信息',
         actionid:'',
         actionindex:'',
-        actiontype:''
+        actiontype:'',
+        menushowid:0,
     },
     finishevent(e){
       let _this = this;
@@ -237,6 +237,12 @@ Page({
       wx.navigateTo({
         url: '../../pages/selectuseres/selectuseres?type=' + this.data.othertypename + "&buff=" + this.data.otherbuff + "&reasonr=" + this.data.otherreasonr,
       })
+      this.setData({
+        showother: false,
+        othertypename: '',//他人加减分类型
+        otherbuff: 0,
+        otherreasonr: '',
+      })
     },
     closetype(){
       this.setData({
@@ -269,6 +275,10 @@ Page({
     },
     // 点击标题切换当前页时改变样式
     swichNav:function(e){
+      this.setData({
+        menushowid: e.target.dataset.current
+      })
+      console.log(e.target.dataset.current);
         var cur=e.target.dataset.current;
         if(this.data.currentTaB==cur){return false;}
         else{
