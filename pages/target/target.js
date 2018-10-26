@@ -8,8 +8,6 @@ Page({
   data: {
     current: 'tab1',
     currentIndex: 0,
-    "firstList": ["不二家棒棒糖", "清风湿至今", "床上四件套", "其他噢", "我要加一百分", "野心勃勃", "不二家棒棒糖", "清风湿至今", "床上四件套", "其他噢", "我要加一百分", "野心勃勃"],
-    "secondList": ["帮助他人", "保持桌面清洁", "有责任心", "乱丢垃圾", "随地吐痰", "不讲卫生", "帮助他人", "保持桌面清洁", "有责任心", "乱丢垃圾", "随地吐痰", "不讲卫生","帮助他人", "保持桌面清洁", "有责任心", "乱丢垃圾", "随地吐痰", "不讲卫生"],
     rankTargetNum: 0,//排名目标
     scoreTargetNum: 0,//邦分目标
     customTargetNum: 0,//自定义目标
@@ -70,7 +68,6 @@ Page({
     //加载初始数据
     this.getNoticeList(1,10);
     this.getNoticeList(2,10);
-
   },
   submitall(){
     let _this = this;

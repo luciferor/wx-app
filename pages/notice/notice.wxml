@@ -42,7 +42,7 @@
                               <text class="reject-btn" id="{{allIndex}}" bindtap='handleAllReject'>不通过</text>
                               <text class="pass-btn" id="{{allIndex}}" bindtap='handleAllPass'>通过</text>
                          </view>
-                          <image src='../../images/mine/icon_wode_shenhe.png' class='dot-image'></image>
+                          <image src='../../images/mine/icon_wode_shenhe.png' class='dot-image' wx:if="{{isAdmin==1}}"></image>
                       </view>
                       </view>
                   </view>
@@ -82,7 +82,7 @@
                               <text class="reject-btn" id="{{applyIndex}}" bindtap='handleReject'>不通过</text>
                               <text class="pass-btn" id="{{applyIndex}}" bindtap='handlePass'>通过</text>
                          </view>
-                          <image src='../../images/mine/icon_wode_shenhe.png' class='dot-image'></image>
+                          <image src='../../images/mine/icon_wode_shenhe.png' class='dot-image' wx:if="{{isAdmin==1}}"></image>
                       </view>
                       </view>
                   </view>
