@@ -141,7 +141,7 @@ Page({
     //跳转到通知界面
     navigateToNotice() {
         wx.navigateTo({
-            url: '../notice/notice'
+            url: '../notices/notices'
         })
     },
     //跳转到设置界面

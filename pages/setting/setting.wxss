@@ -62,6 +62,8 @@ page{
 .explain-text{
   color: #333333;
   font-size: 32rpx;
+  word-break:keep-all;      /* 不换行 */
+  white-space:nowrap; 
 }
 
 .value-text{

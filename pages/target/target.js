@@ -69,6 +69,7 @@ Page({
     this.getNoticeList(2,10);
     // this.getranktargetlist();
     // this.getbufftargetlist();
+
   },
   submitall(){
     let _this = this;
