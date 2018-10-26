@@ -15,8 +15,9 @@
         </view>
         <view class='score-org-container'>
             <view class='score-container'>
-             <text class='total-text'>总邦分</text>
-             <text class='total-score'>{{score|Number}}</text>
+             <text class='total-text'></text>
+             <!-- <text class=''>{{score|Number}}<span style="font-size:28rpx;">总邦分<span></text> -->
+             <view style='padding-top:30rpx;'><span class="total-score fl">{{score|Number}}</span><span style="color:#fff;">邦分</span></view>
              <view class='remind-container' bindtap='handleRemindOpen'>
                 <text class='remind-text'>剩{{userInfo.disposable ==null ?0:userInfo.disposable}}邦分加分权利，{{userInfo.reduce ==null ? 0:userInfo.reduce}}邦分减分权利</text>
                 <image class='remind-icon' src='../../images/mine/icon_wode_shuoming.png'></image>
@@ -58,7 +59,7 @@
                       <progress class='target-status' percent="{{target.progressbar|Number}}" activeColor='#5398ff' backgroundColor='#f7f7f7'></progress>
                   </view>
               </view>
-              <view class='target-right' bindtap='handleReceive' id='{{idx}}'>
+              <view class='target-right' bindtap='handleReceive' id="{{target.id+'|'+(target.type ==1 ? target.ranktitle:target.scoretitle)+'|'+target.isreceive}}">
                   <button class="{{target.isreceive == 1 ? 'target-button' : 'target-un-button'}}">{{target.isreceive ==1 ?'领取':'未达成'}}</button>
               </view>
           </view>
@@ -79,6 +80,7 @@
       <text class='modal-text'>2、相互管理剩余邦分由管理员分配。</text>
     </view>
 </i-modal>
+
 <view class='linces-wx-mask' wx:if="{{!hasUserInfo && canIUse}}"></view>
 <view class='linces-wx-dialog' wx:if="{{!hasUserInfo && canIUse}}">
   <view class='lincesbox'>
@@ -89,3 +91,18 @@
 </view>
 </view>
 <i-toast id="toast" />
+
+
+<view class='maskwin' wx:if="{{golding}}">
+ <view class='win-dialog'>
+    <image src='../../images/img_lingqu.png'></image>
+ </view>
+ <view class='win-content'>
+  <view class='topwin'>
+    <view class='closebtn' bindtap='closegetwin'></view>
+  </view>
+  <view class='descontent'>恭喜您达成目标</view>
+  <view class='info-content-win'>{{infores}}</view>
+  <view class='info-under' bindtap='nowingget' id="{{getid}}">立即领取</view>
+ </view>
+</view>

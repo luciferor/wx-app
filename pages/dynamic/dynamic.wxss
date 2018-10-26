@@ -111,8 +111,9 @@
 	color: #ffffff;
 }
 
+/* height:calc(100% - 260rpx); */
 .under-list{
-    height:calc(100% - 260rpx);
+    height: 100%;
     overflow:hidden;
 }
 

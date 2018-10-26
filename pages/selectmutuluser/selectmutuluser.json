@@ -3,8 +3,9 @@
   "navigationBarTitleText": "选择对象",
   "backgroundTextStyle": "dark",
   "usingComponents": {
+    "i-icon": "../../dist/icon/index",
     "i-index": "../../dist/index/index",
     "i-index-item": "../../dist/index-item/index",
-    "i-toast": "../../dist/toast/index"
-  }
+    "i-toast": "../../dist/toast/index",
+    "i-spin": "../../dist/spin/index"  }
 }

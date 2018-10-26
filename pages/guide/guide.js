@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
     data: {
-        company_id:'',
+        company_id: '',
         userInfo: {},
         hasUserInfo: false,
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -16,68 +16,54 @@ Page({
         ],
         showBtn: false,
     },
-    onReady(){
-    },
-    onLoad: function (option) {
-      let _this = this;
-      this.setData({
-        company_id:option.company_id
-      })
-      if (_this.data.company_id != '' && _this.data.company_id == response.data.message.company_id) { //必须要是由申请加入的无组织用户才会显示
-        wx.showModal({
-          title: '提示',
-          content: '恭喜！您已成功加入' + response.data.message.company_name + '！',
-          showCancel: true,
-          cancelText: '取消',
-          cancelColor: '#666666',
-          confirmText: '好的',
-          confirmColor: '#5398ff',
-          success: (result) => {
-            if (result.confirm) {
-
-            }
-          },
-          fail: () => { },
-          complete: () => { }
-        });
-      }
-    },
-    toCreateOrg: function (e) {
-      let _this = this;
-      //获取用户信息，并发送给后台
-      let res = e.detail;
-      app.apiData.userstatus = false;
-      wx.request({
-        url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
-        data: {
-          session_key: app.apiData.session_key,
-          nickname: res.userInfo.nickName,
-          avatarurl: res.userInfo.avatarUrl,
-          gender: res.userInfo.gender,
-          province: res.userInfo.province,
-          city: res.userInfo.city,
-          country: res.userInfo.country,
-        },
-        header: {
-          'content-type': 'application/json' //默认值
-        },
-        method: 'POST',
-        success: function (res) {
-          
-        },
-      })
-      
-
-      setTimeout(function(){
-        wx.navigateTo({
-          url: '../create/create',
-          success: (result) => {
-
-          },
-          fail: () => { },
-          complete: () => { }
+    onReady() {},
+    onLoad: function(option) {
+        let _this = this;
+        this.setData({
+            company_id: option.company_id
         })
-      },2000)
+        if (_this.data.company_id != '' && _this.data.company_id == response.data.message.company_id) { //必须要是由申请加入的无组织用户才会显示
+            wx.showModal({
+                title: '提示',
+                content: '恭喜！您已成功加入' + response.data.message.company_name + '！',
+                showCancel: true,
+                cancelText: '取消',
+                cancelColor: '#666666',
+                confirmText: '好的',
+                confirmColor: '#5398ff',
+                success: (result) => {
+                    if (result.confirm) {
+
+                    }
+                },
+                fail: () => {},
+                complete: () => {}
+            });
+        }
+    },
+    onShareAppMessage: function() {
+        return {
+            title: '用邦分干了这杯事业，快来使用企汇邦……',
+            desc: '邦分管理',
+            path: '/pages//mine/mine',
+            imageUrl: '../../images/minproShare.jpg',
+            success: function(res) {
+                console.log(res)
+                wx.switchTab({
+                    url: '../mine/mine',
+                });
+            },
+            fail: function(err) {
+                console.log('失败')
+                console.log(err)
+            }
+        }
+    },
+    toCreateOrg: function() {
+        console.log("跳转至创建组织")
+        wx.redirectTo({
+            url: '../create/create',
+        });
     },
     swiperfinish: function(e) {
         console.log(e.detail)

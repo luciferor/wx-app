@@ -1,12 +1,14 @@
 var api = require('../../utils/api.js');
-const { $Toast } = require('../../dist/base/index');
+const {
+    $Toast
+} = require('../../dist/base/index');
 
 //获取应用实例
 const app = getApp()
 
 Page({
     data: {
-        checked: false,
+        isRead: false,
         showTip: true,
         showRule: false,
         visibleRule: false,
@@ -22,7 +24,7 @@ Page({
         return {
             title: '用邦分干了这杯事业，快来加入我们的团队吧……',
             desc: '邦分管理',
-            path: '/mine/mine/guide?company_id=' + app.apiData.Company_Id, // 路径，传递参数到指定页面。
+            path: '/pages/mine/mine?company_id=' + app.apiData.Company_Id, // 路径，传递参数到指定页面。
             imageUrl: '../../images/minproShare.jpg',
             success: function(res) {
                 console.log(res)
@@ -37,33 +39,28 @@ Page({
         }
     },
     createOrg() {
+        if (this.data.organizeName == '') {
+            $Toast({
+                content: '请填写组织名称',
+                type: 'error',
+                duration: 3
+            });
+            return;
+        }
+        if (this.data.isRead == false) {
+            $Toast({
+                content: '请勾选已阅读合同',
+                type: 'error',
+                duration: 3
+            });
+            return;
+        }
+
         var _this = this
         var _organizeName = _this.data.organizeName
         _this.setData({
             createStatus: 2
         })
-        var _selfmanaged = [{
-            "id": 1,
-            "behavior": "测试内容---1",
-            "type": "1",
-            "score": "1"
-        }, {
-            "id": "",
-            "behavior": "我是自定义的自我管理",
-            "type": "1",
-            "score": "1"
-        }]
-        var _mutualmanaged = [{
-            "id": 4,
-            "behavior": "测试内容---2",
-            "type": "1",
-            "score": "2"
-        }, {
-            "id": "",
-            "behavior": "我是自定义的相互管理",
-            "type": "1",
-            "score": "2"
-        }]
 
         api.$http(function(res) {
             console.log(res)
@@ -89,8 +86,8 @@ Page({
         }, '/organization/create', {
             session_key: app.apiData.session_key,
             name: _organizeName,
-            selfmanaged: JSON.stringify(_selfmanaged),
-            mutualmanaged: JSON.stringify(_mutualmanaged)
+            selfmanaged: JSON.stringify(app.apiData.selfMergeArr),
+            mutualmanaged: JSON.stringify(app.apiData.selfMergeArr)
         }, 'POST');
     },
     onLoad: function() {
@@ -133,8 +130,9 @@ Page({
     handleAgreementChange({
         detail = {}
     }) {
+
         this.setData({
-            checked: detail.current
+            isRead: detail.current
         });
     },
     toggleRule: function(e) {

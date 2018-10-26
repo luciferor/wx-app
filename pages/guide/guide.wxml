@@ -1,13 +1,13 @@
 <!-- guide.wxml -->
 <view class="guide-container">
-  <swiper indicator-dots="true" indicator-color="#e4e5ed" indicator-active-color="#5398ff" duration="500" bindchange="swiperchang" bindanimationfinish="swiperfinish" >
-    <block wx:for="{{imgUrls}}" wx:for-index="index" >
+  <swiper indicator-dots="true" indicator-color="#e4e5ed" indicator-active-color="#5398ff" duration="500" bindchange="swiperchang" bindanimationfinish="swiperfinish">
+    <block wx:for="{{imgUrls}}" wx:for-index="index">
       <swiper-item id="{{index}}">
         <image src="{{item}}" class="slide-image" width="355" height="150" />
       </swiper-item>
     </block>
   </swiper>
-   <button class="create-organization-btn" wx:if="{{showBtn}}" open-type="getUserInfo" bindgetuserinfo="toCreateOrg">
+   <button class="create-organization-btn" wx:if="{{showBtn}}" bindgetuserinfo="toCreateOrg">
     <image class="add-logo" src="../../images/guide/icon_chuangjian.png"  />
     创建组织
   </button>
