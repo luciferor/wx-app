@@ -82,32 +82,32 @@ Page({
     onReady: function() {
         var _this = this
 
-        // api.$http(function(res) { //获取公司相互管理的所有行为
-        //     console.log(res)
-        //     let zidingyiArr = res.data.message.selfmanaged
-        //     for (var i = 0; i < zidingyiArr.length; i++) { //数据加工，别问我为什么
-        //         zidingyiArr[i].selfid = zidingyiArr[i].id
-        //         zidingyiArr[i].id = ""
-        //     }
-        //     let hangyeArr = res.data.message.selfmanagedtem
+        api.$http(function(res) { //获取公司相互管理的所有行为
+            console.log(res)
+            let zidingyiArr = res.data.message.selfmanaged
+            for (var i = 0; i < zidingyiArr.length; i++) { //数据加工，别问我为什么
+                zidingyiArr[i].selfid = zidingyiArr[i].id
+                zidingyiArr[i].id = ""
+            }
+            let hangyeArr = res.data.message.selfmanagedtem
 
-        //     _this.setData({ //行为留值用于重置
-        //         resetZidingyiBehaviorArr: JSON.parse(JSON.stringify(zidingyiArr)),
-        //         resetHangyeBehaviorArr: JSON.parse(JSON.stringify(hangyeArr))
-        //     })
-        //     _this.setData({
-        //         zidingyiBehaviorArr: zidingyiArr, //自定义的已有行为数组
-        //         hangyeBehaviorArr: hangyeArr, //行业对应的已有行为数组
-        //         hangyeNum: hangyeArr.length,
-        //         zidingyiNum: zidingyiArr.length,
-        //         alreadyNum: zidingyiArr.length + hangyeArr.length,
-        //     })
+            _this.setData({ //行为留值用于重置
+                resetZidingyiBehaviorArr: JSON.parse(JSON.stringify(zidingyiArr)),
+                resetHangyeBehaviorArr: JSON.parse(JSON.stringify(hangyeArr))
+            })
+            _this.setData({
+                zidingyiBehaviorArr: zidingyiArr, //自定义的已有行为数组
+                hangyeBehaviorArr: hangyeArr, //行业对应的已有行为数组
+                hangyeNum: hangyeArr.length,
+                zidingyiNum: zidingyiArr.length,
+                alreadyNum: zidingyiArr.length + hangyeArr.length,
+            })
 
-        // }, function(err) {
-        //     console.log(err)
-        // }, '/appreciate/companydetail', {
-        //     session_key: app.apiData.session_key
-        // }, 'POST');
+        }, function(err) {
+            console.log(err)
+        }, '/appreciate/companydetail', {
+            session_key: app.apiData.session_key
+        }, 'POST');
 
 
         api.$http(function(res) { //获取行业列表
@@ -136,9 +136,6 @@ Page({
                         res.data.message[i].checked = false
                     }
                 }
-                if (_this.data.hangyeBehaviorArr.length == 0) {
-                    res.data.message[i].checked = false
-                }
             }
             _this.setData({
                 xingweiArr: res.data.message
@@ -153,8 +150,8 @@ Page({
     },
     pickXingwei: function(e) {
         var currItem = e.currentTarget.dataset.item
-        console.log(currItem)
-            // console.log(this.data.xingweiArr)
+
+        // console.log(this.data.xingweiArr)
         if (currItem.checked == true) { //之前为选中，现在去除
             console.log('去掉勾')
             console.log(currItem)
@@ -203,15 +200,12 @@ Page({
             var flag = 0
             for (var i = 0; i < New_hangyeBehaviorArr.length; i++) {
                 if (New_hangyeBehaviorArr[i].id != currItem.id) {
-                    console.log('000000000000000000')
                     flag++
                 } else {
                     New_hangyeBehaviorArr[i].state = 1;
                     return
                 }
             }
-            console.log(flag)
-            console.log(New_hangyeBehaviorArr.length)
             if (flag == New_hangyeBehaviorArr.length) {
                 delete currItem.checked
                 currItem.state = 1
@@ -229,7 +223,6 @@ Page({
                 alreadyNum: this.data.zidingyiNum + hangyeLength,
                 hangyeNum: hangyeLength
             })
-            console.log(New_hangyeBehaviorArr)
         }
     },
     addXingwei: function() { //添加自定义行为
@@ -273,9 +266,8 @@ Page({
     OKRomove(e) {
         var zidingyiArr = this.data.zidingyiBehaviorArr
         var zidingyiLength = 0
-        console.log(zidingyiArr)
         for (var i = 0; i < zidingyiArr.length; i++) {
-            if (zidingyiArr[i].selfid == this.data.zidingyiCurrItem.selfid && zidingyiArr[i].behavior == this.data.zidingyiCurrItem.behavior && zidingyiArr[i].score == this.data.zidingyiCurrItem.score) {
+            if (zidingyiArr[i].selfid == this.data.zidingyiCurrItem.selfid) {
                 zidingyiArr[i].state = 0
             }
             if (zidingyiArr[i].state == 1) {
@@ -325,61 +317,45 @@ Page({
         var _this = this
         let hangyeArr = this.data.hangyeBehaviorArr
         let zidingyiArr = this.data.zidingyiBehaviorArr
-        let MergeArr = hangyeArr.concat(zidingyiArr) //合并最终的数组
+        let selfMergeArr = hangyeArr.concat(zidingyiArr) //合并最终的数组
 
         console.log(zidingyiArr)
         console.log(hangyeArr)
-        console.log(MergeArr)
-
-        app.apiData.selfMergeArr = MergeArr
-        console.log(app.apiData.selfMergeArr)
-
-        $Toast({
-            content: '编辑成功！',
-            type: 'success'
-        });
-
-        setTimeout(function() {
-            wx.redirectTo({
-                url: '../create/create',
+        console.log(selfMergeArr)
+        api.$http(function(res) { //返回添加结果
+            if (res.data.code == 200) {
+                $Toast({
+                    content: '编辑成功！',
+                    type: 'success'
+                });
+                _this.setData({
+                    resetZidingyiBehaviorArr: JSON.parse(JSON.stringify(zidingyiArr)), //自定义行为留值用于重置
+                    resetHangyeBehaviorArr: JSON.parse(JSON.stringify(hangyeArr)) //行业行为留值用于重置
+                })
+                setTimeout(function() {
+                    wx.redirectTo({
+                        url: '../manageorg/manageorg',
+                    });
+                }, 2000);
+            } else {
+                $Toast({
+                    content: '编辑失败！',
+                    type: 'error'
+                });
+            }
+        }, function(err) {
+            $Toast({
+                content: '编辑失败！',
+                type: 'error'
             });
-        }, 2000);
-
-        // api.$http(function(res) { //返回添加结果
-        //     if (res.data.code == 200) {
-        //         $Toast({
-        //             content: '编辑成功！',
-        //             type: 'success'
-        //         });
-        //         _this.setData({
-        //             resetZidingyiBehaviorArr: JSON.parse(JSON.stringify(zidingyiArr)), //自定义行为留值用于重置
-        //             resetHangyeBehaviorArr: JSON.parse(JSON.stringify(hangyeArr)) //行业行为留值用于重置
-        //         })
-        //         setTimeout(function() {
-        //             wx.redirectTo({
-        //                 url: '../create/create',
-        //             });
-        //         }, 2000);
-        //     } else {
-        //         $Toast({
-        //             content: '编辑失败！',
-        //             type: 'error'
-        //         });
-        //     }
-        // }, function(err) {
-        //     $Toast({
-        //         content: '编辑失败！',
-        //         type: 'error'
-        //     });
-        // }, '/appreciate/behavioradd', {
-        //     session_key: app.apiData.session_key,
-        //     type: 1,
-        //     selfmanaged: JSON.stringify(mutualMergeArr),
-        // }, 'POST');
+        }, '/appreciate/behavioradd', {
+            session_key: app.apiData.session_key,
+            type: 1,
+            selfmanaged: JSON.stringify(selfMergeArr),
+        }, 'POST');
     },
     removeXingwei: function(e) { //删除自定义行为
         let currItem = e.currentTarget.dataset.item
-        console.log(currItem)
         this.setData({
             zidingyiCurrItem: currItem,
             RomoveModal: true

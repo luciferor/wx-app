@@ -30,6 +30,7 @@ Page({
         }
     },
     onLoad: function(options) {
+        wx.hideShareMenu()
         wx.updateShareMenu({
                 withShareTicket: true,
                 success() {}

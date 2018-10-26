@@ -44,13 +44,17 @@ Page({
             })
         }
     },
-    getUserInfo: function(e) {
+    toCreateOrg: function(e) {
         console.log(e)
-        app.globalData.userInfo = e.detail.userInfo
-        this.setData({
-            userInfo: e.detail.userInfo,
-            hasUserInfo: true
-        })
+        console.log("授权并跳转至创建组织")
+        wx.navigateTo({
+            url: '../create/create',
+            success: (result) => {
+
+            },
+            fail: () => {},
+            complete: () => {}
+        });
     },
     swiperfinish: function(e) {
         console.log(e.detail)

@@ -11,7 +11,7 @@
             </view>
         </view>
         <view class="xingwei-list">
-            <view wx:for="{{xingweiArr}}" wx:for-index="idx1" data-num="{{idx1}}" data-item="{{item}}" class="list-item  {{currXingwei==idx1?'picked':''}}" bindtap="pickXingwei">
+            <view wx:for="{{xingweiArr}}" wx:for-index="idx1" data-num="{{idx1}}"  data-item="{{item}}" class="list-item  {{currXingwei==idx1?'picked':''}}" bindtap="pickXingwei">
                 <label>
                     <text class="item-txt">{{item.behavior}}</text>
                     <text class="item-score">({{item.score}}邦分)</text>
@@ -34,7 +34,7 @@
         <view class="lists-wrap">
             <text class="top-tips">自定义任务</text>
             <view class="zidingyi-list">
-                <view wx:for="{{zidingyiBehaviorArr}}" wx:for-index="idx" data-num="{{idx}}" class="list-item" wx:if="{{item.state==1}}">
+                <view wx:for="{{zidingyiBehaviorArr}}" wx:for-index="idx" data-num="{{idx}}" class="list-item"  wx:if="{{item.state==1}}">
                     <icon class="remove-item-btn" bindtap="removeXingwei" data-item="{{item}}" data-idx="{{idx}}"/>
                     <text class="item-txt">{{item.behavior}}</text>
                     <text class="item-score">{{item.score}}邦分</text>

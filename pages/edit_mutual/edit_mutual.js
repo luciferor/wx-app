@@ -1,5 +1,7 @@
 var api = require('../../utils/api.js');
-const { $Toast } = require('../../dist/base/index');
+const {
+    $Toast
+} = require('../../dist/base/index');
 
 //获取应用实例
 const app = getApp()
@@ -15,9 +17,8 @@ Page({
         hasUserInfo: false,
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         RomoveMoadal: false,
-        hangyeArr: [],
-        xingweiArr: [],
-        zidingyiArr: [],
+        hangyeArr: [], //后台设置的行业列表
+        xingweiArr: [], //后台设置的行业对应的行为列表
         currHangye: null,
         addName: '',
         scoresArr: [{
@@ -82,32 +83,32 @@ Page({
     onReady: function() {
         var _this = this
 
-        // api.$http(function(res) { //获取公司相互管理的所有行为
-        //     console.log(res)
-        //     let zidingyiArr = res.data.message.selfmanaged
-        //     for (var i = 0; i < zidingyiArr.length; i++) { //数据加工，别问我为什么
-        //         zidingyiArr[i].selfid = zidingyiArr[i].id
-        //         zidingyiArr[i].id = ""
-        //     }
-        //     let hangyeArr = res.data.message.selfmanagedtem
+        api.$http(function(res) { //获取公司相互管理的所有行为
+            console.log(res)
+            let zidingyiArr = res.data.message.mutualmanaged
+            for (var i = 0; i < zidingyiArr.length; i++) { //数据加工，别问我为什么
+                zidingyiArr[i].managedid = zidingyiArr[i].id
+                zidingyiArr[i].id = ""
+            }
+            let hangyeArr = res.data.message.mutualmanagedtem
 
-        //     _this.setData({ //行为留值用于重置
-        //         resetZidingyiBehaviorArr: JSON.parse(JSON.stringify(zidingyiArr)),
-        //         resetHangyeBehaviorArr: JSON.parse(JSON.stringify(hangyeArr))
-        //     })
-        //     _this.setData({
-        //         zidingyiBehaviorArr: zidingyiArr, //自定义的已有行为数组
-        //         hangyeBehaviorArr: hangyeArr, //行业对应的已有行为数组
-        //         hangyeNum: hangyeArr.length,
-        //         zidingyiNum: zidingyiArr.length,
-        //         alreadyNum: zidingyiArr.length + hangyeArr.length,
-        //     })
+            _this.setData({ //行为留值用于重置
+                resetZidingyiBehaviorArr: JSON.parse(JSON.stringify(zidingyiArr)),
+                resetHangyeBehaviorArr: JSON.parse(JSON.stringify(hangyeArr))
+            })
+            _this.setData({
+                zidingyiBehaviorArr: zidingyiArr, //自定义的已有行为数组
+                hangyeBehaviorArr: hangyeArr, //行业对应的已有行为数组
+                hangyeNum: hangyeArr.length,
+                zidingyiNum: zidingyiArr.length,
+                alreadyNum: zidingyiArr.length + hangyeArr.length,
+            })
 
-        // }, function(err) {
-        //     console.log(err)
-        // }, '/appreciate/companydetail', {
-        //     session_key: app.apiData.session_key
-        // }, 'POST');
+        }, function(err) {
+            console.log(err)
+        }, '/appreciate/companydetail', {
+            session_key: app.apiData.session_key
+        }, 'POST');
 
 
         api.$http(function(res) { //获取行业列表
@@ -125,7 +126,7 @@ Page({
         _this.setData({ //控制选中样式
             currHangye: e.currentTarget.dataset.num
         })
-        console.log(_this.data.hangyeBehaviorArr)
+
         api.$http(function(res) {
             for (let i = 0; i < res.data.message.length; i++) { //将"行业对应的行为列表[]" 循环去和"行业已选行为[]"进行对应查询，存在的则赋值checked属性为checked,否则为false
                 for (let m = 0; m < _this.data.hangyeBehaviorArr.length; m++) {
@@ -135,9 +136,6 @@ Page({
                     } else {
                         res.data.message[i].checked = false
                     }
-                }
-                if (_this.data.hangyeBehaviorArr.length == 0) {
-                    res.data.message[i].checked = false
                 }
             }
             _this.setData({
@@ -151,10 +149,11 @@ Page({
             industry_id: e.currentTarget.dataset.industryid
         }, 'POST');
     },
-    pickXingwei: function(e) {
+    pickXingwei: function(e) { //勾选中行业对应的行为
+
         var currItem = e.currentTarget.dataset.item
-        console.log(currItem)
-            // console.log(this.data.xingweiArr)
+
+        // console.log(this.data.xingweiArr)
         if (currItem.checked == true) { //之前为选中，现在去除
             console.log('去掉勾')
             console.log(currItem)
@@ -203,15 +202,12 @@ Page({
             var flag = 0
             for (var i = 0; i < New_hangyeBehaviorArr.length; i++) {
                 if (New_hangyeBehaviorArr[i].id != currItem.id) {
-                    console.log('000000000000000000')
                     flag++
                 } else {
                     New_hangyeBehaviorArr[i].state = 1;
                     return
                 }
             }
-            console.log(flag)
-            console.log(New_hangyeBehaviorArr.length)
             if (flag == New_hangyeBehaviorArr.length) {
                 delete currItem.checked
                 currItem.state = 1
@@ -229,15 +225,18 @@ Page({
                 alreadyNum: this.data.zidingyiNum + hangyeLength,
                 hangyeNum: hangyeLength
             })
-            console.log(New_hangyeBehaviorArr)
         }
+
+        this.setData({
+
+        })
     },
     addXingwei: function() { //添加自定义行为
         var _this = this
         var addItem = {
             id: '',
             behavior: _this.data.addName,
-            operation: "add",
+            operation: _this.data.typeIndex,
             score: _this.data.scoreStatus,
             state: 1,
         }
@@ -270,12 +269,11 @@ Page({
             scoreStatus: '选择',
         })
     },
-    OKRomove(e) {
+    OKRomove(e) { //删除某条自定义行为
         var zidingyiArr = this.data.zidingyiBehaviorArr
         var zidingyiLength = 0
-        console.log(zidingyiArr)
         for (var i = 0; i < zidingyiArr.length; i++) {
-            if (zidingyiArr[i].selfid == this.data.zidingyiCurrItem.selfid && zidingyiArr[i].behavior == this.data.zidingyiCurrItem.behavior && zidingyiArr[i].score == this.data.zidingyiCurrItem.score) {
+            if (zidingyiArr[i].managedid == this.data.zidingyiCurrItem.managedid) {
                 zidingyiArr[i].state = 0
             }
             if (zidingyiArr[i].state == 1) {
@@ -325,64 +323,54 @@ Page({
         var _this = this
         let hangyeArr = this.data.hangyeBehaviorArr
         let zidingyiArr = this.data.zidingyiBehaviorArr
-        let MergeArr = hangyeArr.concat(zidingyiArr) //合并最终的数组
+        let mutualMergeArr = hangyeArr.concat(zidingyiArr) //合并最终的数组
 
         console.log(zidingyiArr)
         console.log(hangyeArr)
-        console.log(MergeArr)
-
-        app.apiData.selfMergeArr = MergeArr
-        console.log(app.apiData.selfMergeArr)
-
-        $Toast({
-            content: '编辑成功！',
-            type: 'success'
-        });
-
-        setTimeout(function() {
-            wx.redirectTo({
-                url: '../create/create',
+        console.log(mutualMergeArr)
+        api.$http(function(res) { //返回添加结果
+            if (res.data.code == 200) {
+                $Toast({
+                    content: '编辑成功！',
+                    type: 'success'
+                });
+                _this.setData({
+                    resetZidingyiBehaviorArr: JSON.parse(JSON.stringify(zidingyiArr)), //自定义行为留值用于重置
+                    resetHangyeBehaviorArr: JSON.parse(JSON.stringify(hangyeArr)) //行业行为留值用于重置
+                })
+                setTimeout(function() {
+                    wx.redirectTo({
+                        url: '../manageorg/manageorg',
+                    });
+                }, 2000);
+            } else {
+                $Toast({
+                    content: '编辑失败！',
+                    type: 'error'
+                });
+            }
+        }, function(err) {
+            $Toast({
+                content: '编辑失败！',
+                type: 'error'
             });
-        }, 2000);
-
-        // api.$http(function(res) { //返回添加结果
-        //     if (res.data.code == 200) {
-        //         $Toast({
-        //             content: '编辑成功！',
-        //             type: 'success'
-        //         });
-        //         _this.setData({
-        //             resetZidingyiBehaviorArr: JSON.parse(JSON.stringify(zidingyiArr)), //自定义行为留值用于重置
-        //             resetHangyeBehaviorArr: JSON.parse(JSON.stringify(hangyeArr)) //行业行为留值用于重置
-        //         })
-        //         setTimeout(function() {
-        //             wx.redirectTo({
-        //                 url: '../create/create',
-        //             });
-        //         }, 2000);
-        //     } else {
-        //         $Toast({
-        //             content: '编辑失败！',
-        //             type: 'error'
-        //         });
-        //     }
-        // }, function(err) {
-        //     $Toast({
-        //         content: '编辑失败！',
-        //         type: 'error'
-        //     });
-        // }, '/appreciate/behavioradd', {
-        //     session_key: app.apiData.session_key,
-        //     type: 1,
-        //     selfmanaged: JSON.stringify(mutualMergeArr),
-        // }, 'POST');
+        }, '/appreciate/behavioradd', {
+            session_key: app.apiData.session_key,
+            type: 2,
+            mutualmanaged: JSON.stringify(mutualMergeArr),
+        }, 'POST');
     },
+
     removeXingwei: function(e) { //删除自定义行为
         let currItem = e.currentTarget.dataset.item
-        console.log(currItem)
         this.setData({
             zidingyiCurrItem: currItem,
             RomoveModal: true
+        });
+    },
+    CancelRomove() {
+        this.setData({
+            RomoveModal: false
         });
     },
     scoreToggle: function() { //控制分数模态框
@@ -391,25 +379,14 @@ Page({
         })
     },
     changeScore: function(e) { //选中自定义分数
-        var score = e.currentTarget.dataset.score
         this.setData({
-            scoreStatus: score
+            scoreStatus: e.currentTarget.dataset.score
         })
     },
-
-
     bindPickerChange: function(e) {
-        console.log(e.detail)
         this.setData({
             typeIndex: e.detail.value
         })
-    },
-
-
-    CancelRomove() {
-        this.setData({
-            RomoveModal: false
-        });
     },
     bindKeyInput: function(e) {
         this.setData({
