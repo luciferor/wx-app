@@ -206,7 +206,6 @@ Page({
             success: res => {
               console.log('打印数据啊啊啊 啊啊啊啊 3');
               console.log(res);
-              return;
               app.apiData.nickName = e.detail.userInfo.nickName;
               wx.request({
                 url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
