@@ -1,5 +1,5 @@
+<wxs module="subs" src="../../filter/substres.wxs"></wxs>
 <view class='container'>
-   
    <view class='top-fiexd'>
    <!--Tab布局-->
     <view class='title'>
@@ -39,14 +39,18 @@
                   <view class='notice-container'>
                       <view class='badge-container'>
                           <image src="{{allItem.user_img==null||allItem.user_img==''?'../../images/mine/head_default_icon.png': allItem.user_img}}" class='upic'></image>   
-                          <view class='badge' wx:if="{{allItem.state ==2}}"></view>                
+                          <bolck>
+                          <view class='badge' hidden='true'></view>   
+                          </bolck>             
                       </view>
                       <view class='content-container'>
                           <view class='name-container'>
                           <text class='uname'>{{allItem.name}}</text>
+                          <block>
                           <text class='pass-text' wx:if="{{allItem.state == 1}}">{{subs.status(allItem.state)}}</text>
                           <text class='apply-text' wx:elif="{{allItem.state == 2}}">{{subs.status(allItem.state)}}</text>
                           <text class='reject-text' wx:else>{{subs.status(allItem.state)}}</text>
+                        </block>
                       </view>
                       <view class='info-container'>
                             <text class='notice_title'>{{allItem.type == 1?'排名目标':'邦分目标'}}</text>
@@ -81,7 +85,7 @@
                   </view>
                   <view class='notice-container'>
                       <view>
-                          <i-badge dot  >
+                          <i-badge >
                           <image src="{{applyItem.user_img==null||applyItem.user_img==''?'../../images/mine/head_default_icon.png': applyItem.user_img}}" class='upic'></image> 
                           </i-badge>
                       </view>

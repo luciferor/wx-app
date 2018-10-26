@@ -457,3 +457,11 @@ page{
   color:#ffffff;
   font-size: 30rpx;
 }
+
+.closebtn{
+  width:80rpx;
+  height:80rpx;
+  position: absolute;
+  right:0rpx;
+  top:100rpx;
+}

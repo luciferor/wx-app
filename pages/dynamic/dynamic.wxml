@@ -11,13 +11,13 @@
             <block>
                 <swiper-item>
                     <view class="top-swiperes-list1">
-                        <view class="topimg-box fl"><image src="{{newawardlist[0].user_img==null||newawardlist[0].user_img==''?'../../images/img_touxiang_default.png':newawardlist[0].user_img}}"></image></view>
+                        <view class="topimg-box fl"><image src="{{newawardlist[0].avatarurl==null||newawardlist[0].avatarurl==''?'../../images/img_touxiang_default.png':newawardlist[0].avatarurl}}"></image></view>
                         <view class="toptext-box fl">
                             <view class="toptext-title">
-                                {{newawardlist[0].name}}
+                                {{newawardlist[0].title}}
                             </view>
                             <view class="toptext-content-time">
-                                <span style="opacity:0.8;">{{newawardlist[0].user_name}}</span><span style="opacity:0.5;">{{newawardlist[0].created_at}}</span>
+                                <span style="opacity:0.8;">{{newawardlist[0].name}}</span><span style="opacity:0.5;">{{newawardlist[0].created_at}}</span>
                             </view>
                         </view>
                     </view>
@@ -26,13 +26,13 @@
             <block>
                 <swiper-item>
                     <view class="top-swiperes-list2">
-                        <view class="topimg-box fl"><image src="{{newawardlist[0].user_img==null||newawardlist[0].user_img==''?'../../images/img_touxiang_default.png':newawardlist[1].user_img}}"></image></view>
+                        <view class="topimg-box fl"><image src="{{newawardlist[0].avatarurl==null||newawardlist[0].avatarurl==''?'../../images/img_touxiang_default.png':newawardlist[1].avatarurl}}"></image></view>
                         <view class="toptext-box fl">
                             <view class="toptext-title">
-                                {{newawardlist[1].name}}
+                                {{newawardlist[1].title}}
                             </view>
                             <view class="toptext-content-time">
-                                <span style="opacity:0.8;">{{newawardlist[1].user_name}}</span><span style="opacity:0.5;">{{newawardlist[1].created_at}}</span>
+                                <span style="opacity:0.8;">{{newawardlist[1].name}}</span><span style="opacity:0.5;">{{newawardlist[1].created_at}}</span>
                             </view>
                         </view>
                     </view>
@@ -41,13 +41,13 @@
             <block>
                 <swiper-item>
                     <view class="top-swiperes-list3">
-                        <view class="topimg-box fl"><image src="{{newawardlist[0].user_img==null||newawardlist[0].user_img==''?'../../images/img_touxiang_default.png':newawardlist[2].user_img}}"></image></view>
+                        <view class="topimg-box fl"><image src="{{newawardlist[0].avatarurl==null||newawardlist[0].avatarurl==''?'../../images/img_touxiang_default.png':newawardlist[2].avatarurl}}"></image></view>
                         <view class="toptext-box fl">
                             <view class="toptext-title">
-                                {{newawardlist[2].name}}
+                                {{newawardlist[2].title}}
                             </view>
                             <view class="toptext-content-time">
-                                <span style="opacity:0.8;">{{newawardlist[2].user_name}}</span><span style="opacity:0.5;">{{newawardlist[2].created_at}}</span>
+                                <span style="opacity:0.8;">{{newawardlist[2].name}}</span><span style="opacity:0.5;">{{newawardlist[2].created_at}}</span>
                             </view>
                         </view>
                     </view>
@@ -70,9 +70,9 @@
                 <image src="{{dit.user_img==null||dit.user_img==''?'../../images/img_touxiang_default.png':dit.user_img}}"></image>
             </view>
             <view class="user-li-title-box fl">
-                <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">{{subs.sub(dit.name,4)}}...</span><span class="user-li-title-box-listtitle-time">{{dit.created_at
+                <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">{{subs.sub(dit.name,6)}}</span><span class="user-li-title-box-listtitle-time">{{dit.created_at
 }}</span></view>
-                <view class="user-li-title-box-listdes">{{subs.sub(dit.content,12)}}...</view>
+                <view class="user-li-title-box-listdes">{{subs.sub(dit.content,12)}}</view>
             </view>
             <view class="user-li-right-bf fr">
                 {{dit.status=='add'?'+'+dit.bangfen:''+dit.bangfen}}邦分

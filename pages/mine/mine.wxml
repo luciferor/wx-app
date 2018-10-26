@@ -98,7 +98,9 @@
     <image src='../../images/img_lingqu.png'></image>
  </view>
  <view class='win-content'>
-  <view class='topwin'></view>
+  <view class='topwin'>
+    <view class='closebtn' bindtap='closegetwin'></view>
+  </view>
   <view class='descontent'>恭喜您达成目标</view>
   <view class='info-content-win'>{{infores}}</view>
   <view class='info-under' bindtap='nowingget' id="{{getid}}">立即领取</view>

@@ -24,7 +24,7 @@ Page({
     newTargetType: '目标类型',
     newTargetRank: '日排名',
     newTargetNum : '第一名',
-    targetType:1,//申请类型
+    targetType:0,//申请类型
     giftType:1,//礼品类型
     rank:1,//排名
     targetTitle:'',//目标名称
@@ -86,7 +86,8 @@ Page({
         type: Number(this.data.selectscorelist[i].type)
       })
     }
-    
+    console.log('打印一下提交的数据看看')
+    console.log(this.data.allselectedlist);
     api.$http(function(res){
       console.log(res)
       _this.alertmsg(res.data.message);
@@ -96,6 +97,9 @@ Page({
         _this.getNoticeList(2, 10);
         //重置数据
         _this.resetall();
+        _this.setData({
+          allselectedlist:[]
+        })
       }
     },function(err){
       console.log(err)
@@ -321,38 +325,38 @@ Page({
     _this.setData({
       showApplyBox: false
     });
-    api.$https('/application/target', {
-      session_key: app.apiData.session_key,
-      type: _this.data.targetType,
-      title: _this.data.targetTitle,
-      gift_type:_this.data.giftType,
-      rank:_this.data.rank,
-      gift_score:''
-    }, 'POST', function (data) {
-      if(data.data.success){
+      api.$https('/application/target', {
+        session_key: app.apiData.session_key,
+        type: _this.data.targetType,
+        title: _this.data.targetTitle,
+        gift_type: _this.data.giftType,
+        rank: _this.data.rank,
+        gift_score: _this.data.gift_score
+      }, 'POST', function (data) {
+        if (data.data.success) {
+          $Toast({
+            content: data.data.message
+          });
+          _this.setData({
+            newTargetType: '目标类型',
+            newTargetRank: '日排名',
+            newTargetNum: '第一名',
+            targetType: 0,//申请类型
+            giftType: 1,//礼品类型
+            rank: 1,//排名
+            targetTitle: '',//目标名称
+            gift_score: 0,//兑换所需邦分
+          })
+        } else {
+          $Toast({
+            content: data.data.message
+          });
+        }
+      }, function () {
         $Toast({
-          content: data.data.message
+          content: '申请失败，请重试'
         });
-        _this.setData({
-          newTargetType: '目标类型',
-          newTargetRank: '日排名',
-          newTargetNum: '第一名',
-          targetType: 1,//申请类型
-          giftType: 1,//礼品类型
-          rank: 1,//排名
-          targetTitle: '',//目标名称
-          gift_score: 0,//兑换所需邦分
-        })
-      }else{
-        $Toast({
-          content: data.data.message
-        });
-      }
-    }, function () {
-      $Toast({
-        content: '申请失败，请重试'
       });
-    });
   },
 
   //swiper切换时会调用
@@ -377,9 +381,23 @@ Page({
   
   //申请提示框
   handleApplyOpen(){
-      this.setData({
-        showApplyBox : true
+    if (this.data.targetTitle == "" || this.data.targetTitle == null) {
+      $Toast({
+        content: "请输入目标名称"
       });
+    } else if (this.data.targetType == 2 && this.data.gift_score <= 0 ) {
+      $Toast({
+        content: "请输入正确的目标邦分"
+      });
+    } else if (this.data.targetType ==0){
+      $Toast({
+        content: "请选择目标类型"
+      });
+    }else{
+      this.setData({
+        showApplyBox: true
+      });
+    } 
   },
   handleClose(){
     this.setData({

@@ -24,7 +24,7 @@ Page({
     })
   },
 
-  onReady: function () {
+  onShow: function () {
     this.getPlanList();
   },
 
@@ -67,7 +67,11 @@ Page({
 //时间戳转换成月份
 timestampToTime(timestamp) {
     var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
-    var M = date.getMonth() + 1  ;
-    return M+'月';
+    var M = date.getMonth()  ;
+    if(M=="0"){
+      return  '12月';
+    }else{
+      return M + '月';
+    }
   }
 })

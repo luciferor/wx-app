@@ -54,7 +54,12 @@ Page({
         infores:'',
         getid:0,
     },
-    onReady: function() {
+    closegetwin(){
+      this.setData({
+        golding:false
+      })
+    },
+    onLoad: function() {
         this.getUserInfos();
         this.getTargetList();
     },

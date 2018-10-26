@@ -65,14 +65,14 @@
               </view>
               <view class='target-container'>
                   <view class='top-container'>
-                  <input class='target-input' placeholder='请输入目标名称' placeholder-class='placeholder' value="{{targetTitle}}" bindinput="inputValue"></input>
+                  <input class='target-input' placeholder='请输入目标名称' placeholder-class='placeholder' value="{{targetTitle}}" bindinput="inputValue" maxlength='8'></input>
                   <view class='target-type'>
                       <view class='gray-icon'></view>
                       <text class='type-text' bindtap='handleTypeOpen'>{{newTargetType}}</text>
                   </view>
                 </view>
                 <view class='horizental-line'></view>
-                <view class='bottom-container' wx:if="{{targetType == 1}}">
+                <view class='bottom-container' wx:if="{{targetType == 1 || targetType ==0}}">
                   <text class='gray-text'>目标规则</text>
                   <view class='rank-type' bindtap='handleRankOpen'>
                     <text class='rank-text'>{{newTargetRank}}</text>
@@ -86,7 +86,7 @@
                 </view>
                 <view class='score-container' wx:else>
                   <text class='gray-text'>邦分数量</text>
-                  <input class='score-input' type='number' placeholder='请输入邦分数量' placeholder-class='placeholder'  bindinput="inputScoreValue"></input>
+                  <input class='score-input' type='number' placeholder='请输入邦分数量' placeholder-class='placeholder'  bindinput="inputScoreValue" value='{{gift_score}}'></input>
                 </view>
               </view>
         </view>
