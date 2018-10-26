@@ -5,9 +5,13 @@ page{
   background: white
 }
 .view-container{
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-height: 100%;/*生效*/
 }
 .bgimg{
   width: 100%;
@@ -16,6 +20,9 @@ page{
   height:300rpx;
 }
 .top{
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-ms-flexbox;
     display: flex;
     top: 0px;
     height: auto;
@@ -24,6 +31,9 @@ page{
 }
 
 .info-container{
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -45,12 +55,18 @@ page{
 .left-container{
   margin-left: 30rpx;
   align-items: center;
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
   display: flex;
 }
 .right-container{
   margin-right: 30rpx;
   align-items: center;
-   display: flex;
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
+  display: flex;
 }
 .message{
  width: 45rpx;
@@ -75,6 +91,9 @@ page{
 }
 
 .score-org-container{
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-ms-flexbox;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -82,6 +101,9 @@ page{
     margin-top: 25rpx;
 }
 .score-container{
+   display:-webkit-box;
+   display:-webkit-flex;
+   display:-ms-flexbox;
    display: flex;
    flex-direction: column;
    margin-left: 30rpx;
@@ -99,7 +121,10 @@ page{
 }
 
 .remind-container{
-  display: flex;
+  display:-webkit-box;
+   display:-webkit-flex;
+   display:-ms-flexbox;
+   display: flex;
   flex-direction: row;
   align-items: center;
 }
@@ -124,6 +149,9 @@ page{
 }
 
 .add-target-container{
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
   display: flex;
   width: 100%;
   height: 100rpx;
@@ -133,6 +161,9 @@ page{
   line-height: 100rpx;
 }
 .add-text-container{
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -164,6 +195,9 @@ page{
 }
 
 .target-container{
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
   display: flex;
   flex-direction: row;
   padding: 35rpx 20rpx 35rpx 24rpx;
@@ -171,6 +205,9 @@ page{
   align-content: center
 }
 .target-left{
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
   display: flex;
   flex-direction: row;
 }
@@ -179,6 +216,9 @@ page{
   height: 120rpx;
 }
 .target-info{
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
   display: flex;
   flex-direction: column;
   margin-left: 20rpx;
@@ -201,6 +241,9 @@ page{
 }
 
 .target-right{
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
   display: flex;
   align-items: center;
   flex-direction: column;
