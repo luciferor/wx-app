@@ -1,16 +1,13 @@
 {
     "pages": [
-<<<<<<< HEAD
         "pages/mine/mine",
-=======
-       "pages/mine/mine",
-        "pages/guide/guide",
->>>>>>> af696ba549bfc14f387d173489ed19f36167442a
         "pages/create/create",
         "pages/guide/guide",
         "pages/setting/setting",
         "pages/create_mutual/create_mutual",
         "pages/create_self/create_self",
+        "pages/edit_mutual/edit_mutual",
+        "pages/edit_self/edit_self",
         "pages/notice/notice",
         "pages/index/index",
         "pages/logs/logs",

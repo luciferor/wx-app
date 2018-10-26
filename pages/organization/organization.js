@@ -8,8 +8,8 @@ Page({
     data: {
         memberList: [],
         isAdmin: app.apiData.isAdmin,
-        showRemindBox:false,
-        delId:""
+        showRemindBox: false,
+        delId: ""
     },
 
     //事件处理函数
@@ -41,7 +41,24 @@ Page({
                 isAdmin: app.apiData.isAdmin,
             });
     },
-
+    onShareAppMessage: function() {
+        return {
+            title: '用邦分干了这杯事业，快来使用企汇邦……',
+            desc: '邦分管理',
+            path: '/pages//mine/mine',
+            imageUrl: '../../images/minproShare.jpg',
+            success: function(res) {
+                console.log(res)
+                wx.switchTab({
+                    url: '../mine/mine',
+                });
+            },
+            fail: function(err) {
+                console.log('失败')
+                console.log(err)
+            }
+        }
+    },
     //跳转到组织管理
     navigateToManageOrg() {
         wx.navigateTo({
@@ -72,56 +89,56 @@ Page({
 
     //删除成员列表
     deleteMember() {
-      let _this = this;
-      _this.setData({
-        showRemindBox: false,
-      });
-       api.$https('/WeChat/appreciate/memberdel', {
-           session_key: app.apiData.session_key,
-          uid: _this.data.delId
+        let _this = this;
+        _this.setData({
+            showRemindBox: false,
+        });
+        api.$https('/WeChat/appreciate/memberdel', {
+            session_key: app.apiData.session_key,
+            uid: _this.data.delId
         }, 'POST', function(data) {
             $Toast({
-               content: data.data.message
+                content: data.data.message
             });
-            if(data.data.success){
-               _this.getMemberList()
+            if (data.data.success) {
+                _this.getMemberList()
             }
-           }, function() {
-             $Toast({
-               content: '删除失败'
-             });
-           });
+        }, function() {
+            $Toast({
+                content: '删除失败'
+            });
+        });
     },
 
 
-  //提示框
-  handleRemindOpen(e) {
-    console.log("==========删除提示框")
-    let _this = this;
-    if (_this.data.isAdmin == 0) {
-      $Toast({
-        content: '你还没有权限'
-      });
-    } else{
-      let index = e.currentTarget.id;
-      let member = _this.data.memberList[index];
-      if (member.isadmin == 0){
-        _this.setData({
-          showRemindBox: true,
-          delId: member.id
+    //提示框
+    handleRemindOpen(e) {
+        console.log("==========删除提示框")
+        let _this = this;
+        if (_this.data.isAdmin == 0) {
+            $Toast({
+                content: '你还没有权限'
+            });
+        } else {
+            let index = e.currentTarget.id;
+            let member = _this.data.memberList[index];
+            if (member.isadmin == 0) {
+                _this.setData({
+                    showRemindBox: true,
+                    delId: member.id
+                });
+            } else {
+                $Toast({
+                    content: '无法删除创建者'
+                });
+            }
+        }
+    },
+    handleRemindClose() {
+        this.setData({
+            showRemindBox: false,
+            delId: ""
         });
-      }else{
-        $Toast({
-          content: '无法删除创建者'
-        });
-      }
-    }
-  },
-  handleRemindClose() {
-    this.setData({
-      showRemindBox: false,
-      delId: ""
-    });
-  },
+    },
 
 })

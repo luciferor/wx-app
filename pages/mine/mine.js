@@ -63,7 +63,24 @@ Page({
         this.getUserInfos();
         this.getTargetList();
     },
-
+    onShareAppMessage: function() {
+        return {
+            title: '用邦分干了这杯事业，快来使用企汇邦……',
+            desc: '邦分管理',
+            path: '/pages//mine/mine',
+            imageUrl: '../../images/minproShare.jpg',
+            success: function(res) {
+                console.log(res)
+                wx.switchTab({
+                    url: '../mine/mine',
+                });
+            },
+            fail: function(err) {
+                console.log('失败')
+                console.log(err)
+            }
+        }
+    },
     onShow: function() {
         console.log("------------" + "onShow");
         this.getUserInfos();
@@ -206,7 +223,6 @@ Page({
                 success: res => {
                     console.log('打印数据啊啊啊 啊啊啊啊 3');
                     console.log(res);
-                    return;
                     app.apiData.nickName = e.detail.userInfo.nickName;
                     wx.request({
                         url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',

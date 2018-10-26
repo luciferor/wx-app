@@ -43,6 +43,24 @@ Page({
         zidingyiCurrItem: '',
     },
     //事件处理函数
+    onShareAppMessage: function() {
+        return {
+            title: '用邦分干了这杯事业，快来使用企汇邦……',
+            desc: '邦分管理',
+            path: '/pages//mine/mine',
+            imageUrl: '../../images/minproShare.jpg',
+            success: function(res) {
+                console.log(res)
+                wx.switchTab({
+                    url: '../mine/mine',
+                });
+            },
+            fail: function(err) {
+                console.log('失败')
+                console.log(err)
+            }
+        }
+    },
     handleChange({
         detail
     }) {
