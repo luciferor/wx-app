@@ -77,7 +77,7 @@ Page({
       });
        api.$https('/WeChat/appreciate/memberdel', {
            session_key: app.apiData.session_key,
-          uid: member.id
+          uid: _this.data.delId
         }, 'POST', function(data) {
             $Toast({
                content: data.data.message
