@@ -8,7 +8,7 @@ Page({
   data: {
     organization:{},
     id:0,
-    name:'组织'
+    name:'我的组织'
   },
 
 
@@ -56,7 +56,7 @@ Page({
       console.log(data.success)
       if (data.data.success) {
         _this.setData({
-          name: data.data.message.name,
+          name: data.data.message.name == "" ? "我的组织" : data.data.message.name ,
           id:data.data.message.id
         });
       }

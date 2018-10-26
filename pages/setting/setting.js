@@ -44,6 +44,7 @@ Page({
         $Toast({
           content: data.data.message
         });
+        wx.navigateBack()
       } else {
         $Toast({
           content: data.data.message
@@ -56,7 +57,7 @@ Page({
     });
   },
 
-    onReady: function() {
+    onLoad: function() {
         let _this = this;
         //获取用户信息
         api.$http(_this.dosuccess, _this.dofail, '/appreciate/wechatuser', {
@@ -64,10 +65,12 @@ Page({
         }, 'POST');
     },
     dosuccess(data) {
+      if(data.data.success){
         this.setData({
-            userInfo: data.data.message,
-            name:data.data.message.name
+          userInfo: data.data.message,
+          name: data.data.message.name
         });
+      } 
     },
     dofail(data) {
         console.log('请求失败');

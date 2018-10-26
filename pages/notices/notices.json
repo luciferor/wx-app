@@ -1,6 +1,5 @@
 {
   "navigationBarBackgroundColor": "#FFFFFF",
-  "enablePullDownRefresh": true,
   "navigationBarTitleText": "通知",
   "usingComponents": {
     "i-toast": "../../dist/toast/index",

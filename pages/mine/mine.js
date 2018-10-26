@@ -50,7 +50,7 @@ Page({
         ,
         session_key:'',
     },
-    onReady: function() {
+    onLoad: function() {
         this.getUserInfos();
         this.getTargetList();
     },
