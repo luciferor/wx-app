@@ -69,21 +69,26 @@ Page({
 
     //删除成员列表
     deleteMember(e) {
-        let index = e.currentTarget.id;
-        let member = this.data.memberList[index];
-        if (this.data.isAdmin == 0) {
+      let _this = this;
+      let index = e.currentTarget.id;
+      let member = _this.data.memberList[index];
+      console.log(_this.data.memberList);
+      if (_this.data.isAdmin == 0) {
             $Toast({
                 content: '你还没有权限'
             });
         } else {
             if (member.isadmin == 0) {
-                api.$https('/WeChat/appreciate/memberlist', {
+              api.$https('/WeChat/appreciate/memberdel', {
                     session_key: app.apiData.session_key,
                     uid: member.id
-                }, 'POST', function() {
+                }, 'POST', function(data) {
                     $Toast({
-                        content: '删除成功'
+                        content: data.data.message
                     });
+                    if(data.data.success){
+                      _this.getMemberList()
+                    }
                 }, function() {});
             }
         }

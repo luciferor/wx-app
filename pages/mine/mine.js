@@ -95,11 +95,13 @@ Page({
             api.$https('/appreciate/personalcenter', {
                 session_key: app.apiData.session_key
             }, 'POST', function(data) {
+              if(data.data.success){
                 _this.setData({
-                    userInfo: data.data.message,
-                    name: data.data.message.name == "" ? app.apiData.nickName : data.data.message.name,
-                    score: Number(data.data.message.score) + Number(data.data.message.total_score)
+                  userInfo: data.data.message,
+                  name: data.data.message.name == "" ? app.apiData.nickName : data.data.message.name,
+                  score: Number(data.data.message.score) + Number(data.data.message.total_score)
                 });
+              }
             }, function(data) {
                 console.log('请求失败');
             });
@@ -137,7 +139,7 @@ Page({
     //跳转到通知界面
     navigateToNotice() {
         wx.navigateTo({
-            url: '../notice/notice'
+            url: '../notices/notices'
         })
     },
     //跳转到设置界面

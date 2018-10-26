@@ -24,7 +24,8 @@
         "pages/organization/organization",
         "pages/plandetail/plandetail",
         "pages/target/target",
-        "pages/selectmutuluser/selectmutuluser"
+        "pages/selectmutuluser/selectmutuluser",
+        "pages/notices/notices"
     ],
     "window": {
         "backgroundTextStyle": "light",

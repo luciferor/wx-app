@@ -140,7 +140,7 @@ color: transparent;
   flex-direction: column;
   border-radius: 10rpx;
 }
-.title{
+.notice_title{
   color: #333333;
   font-size: 30rpx;
 }
@@ -253,4 +253,8 @@ color: transparent;
 
 .badge-container{
   display: flex;
+}
+
+.all-container{
+  height: 100%;
 }

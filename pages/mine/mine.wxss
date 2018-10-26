@@ -222,7 +222,7 @@ page{
   display: flex;
   flex-direction: column;
   margin-left: 20rpx;
-  justify-content: center;
+  justify-content: space-around
 }
 .target-name{
   color: #333333;
@@ -231,13 +231,14 @@ page{
 .target-condition{
   color: #666666;
   font-size: 24rpx;
-  margin-top: 20rpx;
+  margin-top: 10rpx;
 }
 .target-status{
   width: 340rpx;
   height: 10rpx;
-  border-radius: 10rpx;
-   margin-top: 20rpx;
+  margin-top: 20rpx;
+  border-radius:100px;
+  overflow:hidden;
 }
 
 .target-right{

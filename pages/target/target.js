@@ -66,10 +66,8 @@ Page({
       currentIndex:0
     })
     //加载初始数据
-    setTimeout(this.getNoticeList(1, 10),100)
-    setTimeout(this.getNoticeList(2, 10),500)
-    //this.getNoticeList(1,10);
-    //this.getNoticeList(2,10);
+    this.getNoticeList(1,10);
+    this.getNoticeList(2,10);
   },
   submitall(){
     let _this = this;
