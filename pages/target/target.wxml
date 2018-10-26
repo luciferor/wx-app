@@ -26,7 +26,7 @@
       <!-- 排名目标 -->
       <swiper-item class='swiper-item'>
         <scroll-view class='scroll-view' scroll-y>
-         <view class='list-box' wx:if="{{rankTargetList.length>0}}">
+         <view class='list-box' wx:if="{{rankTargetList.length >0}}">
           <view class='listcontent' wx:for="{{rankTargetList}}" wx:for-index="rankindex" wx:for-item="rankitem">
               <span class="fl colorradio" ><radio color="#5398ff" value="不二家棒棒糖" checked="{{rankitem.ischecked}}" id="{{rankitem.id+'|'+rankindex}}" bindtap="rankevents"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{rankitem.name}}</radio></span>
               <span class="fr colorpar">1000邦分</span>
@@ -42,7 +42,7 @@
       <!-- 邦分目标 -->
       <swiper-item class='swiper-item'>
          <scroll-view class='scroll-view' scroll-y>
-             <view class='list-box' wx:if="{{scoreTargetList>0}}">
+             <view class='list-box'  wx:if="{{scoreTargetList.length >0}}">
                 <view class='listcontent' wx:for="{{scoreTargetList}}"  wx:for-index="scoreindex" wx:for-item="scoreitem">
                       <span class="fl"></span>
                       <span class="fl colorradio"><radio color="#5398ff" value="不二家棒棒糖" checked="{{scoreitem.ischecked}}"  id="{{scoreitem.id+'|'+scoreindex}}" bindtap="scoreevents"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{scoreitem.name}}</radio></span>
