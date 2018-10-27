@@ -46,26 +46,44 @@ Page({
     },
     //添加邦分分配计划
     addPlan() {
-        api.$https('/WeChat/appreciate/allocation', {
-            session_key: app.apiData.session_key,
-            score: this.data.addScoreNum,
-            rescore: this.data.reduceScoreNum,
-            range_max: this.data.maxScoreNum,
-            range_min: this.data.maxScoreNum,
-            effective_time: this.timeToTimestamp(this.data.date)
-        }, 'POST', function(data) {
-            console.log(data.data.message);
-            $Toast({
-                content: data.data.message
-            });
-            if (data.data.success) {
-                wx.navigateBack()
-            }
-        }, function(data) {
-            $Toast({
-                content: '添加失败'
-            });
+      if (this.data.addScoreNum==0){
+        $Toast({
+          content: "请输入正确的加分邦分数量"
         });
+      } else if (this.data.reduceScoreNum ==0){
+        $Toast({
+          content: "请输入正确的减分邦分数量"
+        });
+      } else if (this.data.maxScoreNum == 0 ){
+        $Toast({
+          content: "请输入正确的加减分最大值"
+        });
+      } else if (this.data.date == ""){
+        $Toast({
+          content: "请选择时间"
+        });
+      }else{
+        api.$https('/WeChat/appreciate/allocation', {
+          session_key: app.apiData.session_key,
+          score: this.data.addScoreNum,
+          rescore: this.data.reduceScoreNum,
+          range_max: this.data.maxScoreNum,
+          range_min: this.data.maxScoreNum,
+          effective_time: this.timeToTimestamp(this.data.date)
+        }, 'POST', function (data) {
+          console.log(data.data.message);
+          $Toast({
+            content: data.data.message
+          });
+          if (data.data.success) {
+            wx.navigateBack()
+          }
+        }, function (data) {
+          $Toast({
+            content: '添加失败'
+          });
+        });
+      }
     },
 
     timeToTimestamp(date) {

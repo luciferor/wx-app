@@ -127,25 +127,22 @@ Page({
     },
     //获取用户信息
     getUserInfos() {
-        let _this = this;
-        setTimeout(function() {
-            api.$https('/appreciate/personalcenter', {
-                session_key: app.apiData.session_key
-            }, 'POST', function(data) {
-                if (data.data.success) {
-                    _this.setData({
-                        userInfo: data.data.message,
-                        name: data.data.message.name == "" ? app.apiData.nickName : data.data.message.name,
-                        score: Number(data.data.message.score) + Number(data.data.message.total_score)
-                    });
-                }
-            }, function(data) {
-                console.log('请求失败');
-            });
-        }, function(data) {
-            console.log('请求失败');
-        });
-    },
+      let _this = this;
+      api.$https('/appreciate/personalcenter', {
+        session_key: app.apiData.session_key
+      }, 'POST', function (data) {
+        if (data.data.success) {
+          _this.setData({
+            userInfo: data.data.message,
+            name: data.data.message.name == "" ? app.apiData.nickName : data.data.message.name,
+            score: Number(data.data.message.score) + Number(data.data.message.total_score)
+          });
+        }
+        console.log(data.data.message)
+      }, function (data) {
+        console.log('请求失败');
+      });
+ },
     //获取我的目标
     getTargetList() {
         let _this = this;
@@ -218,8 +215,6 @@ Page({
             // 在没有 open-type=getUserInfo 版本的兼容处理
             wx.getUserInfo({
                 success: res => {
-                    console.log('打印数据啊啊啊 啊啊啊啊 3');
-                    console.log(res);
                     app.apiData.nickName = e.detail.userInfo.nickName;
                     wx.request({
                         url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
@@ -311,7 +306,7 @@ Page({
                             success: res => {
                                 console.log('打印数据啊啊啊 啊啊啊啊 3');
                                 console.log(res);
-                                console.log('打印数据啊啊啊啊啊啊啊啊啊啊啊啊啊');
+                                console.log('打印数据啊啊啊啊啊啊啊啊啊啊啊啊啊??????????');
                                 app.apiData.nickName = res.userInfo.nickName;
                                 wx.request({
                                     url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
@@ -332,8 +327,13 @@ Page({
                                         //执行啥啥啥
                                         _this.getUserInfos()
                                         _this.getTargetList()
+                                       console.log('打印数据啊啊啊啊啊啊啊啊啊啊啊啊啊|||||||||||???????');
                                     },
-                                })
+                                    fail:function(res){
+                                      console.log('上传信息失败=========');
+                                      console.log(res)
+                                    }
+                                },)
 
                                 //*
                                 //***** */

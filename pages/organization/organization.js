@@ -88,6 +88,13 @@ Page({
             });
         });
     },
+  //跳转到个人动态
+  gotouserdynamicdes(e) {
+    console.log(e);
+    wx.navigateTo({
+      url: '../../pages/userdynamic/userdynamic?uid=' + e.currentTarget.id,
+    });
+  },
 
 
     //提示框
