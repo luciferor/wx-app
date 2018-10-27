@@ -359,10 +359,10 @@ Page({
         });
 
         setTimeout(function() {
-            wx.redirectTo({
-                url: '../create/create',
-            });
-        }, 500);
+            wx.navigateBack({
+                delta: 1
+            })
+        }, 200);
     },
     removeXingwei: function(e) { //删除自定义行为
         let currItem = e.currentTarget.dataset.item

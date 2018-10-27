@@ -352,10 +352,10 @@ Page({
         });
 
         setTimeout(function() {
-            wx.redirectTo({
-                url: '../create/create',
-            });
-        }, 500);
+            wx.navigateBack({
+                delta: 1
+            })
+        }, 200);
 
     },
 

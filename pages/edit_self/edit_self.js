@@ -352,10 +352,10 @@ Page({
                     resetHangyeBehaviorArr: JSON.parse(JSON.stringify(hangyeArr)) //行业行为留值用于重置
                 })
                 setTimeout(function() {
-                    wx.redirectTo({
-                        url: '../manageorg/manageorg',
-                    });
-                }, 5000);
+                    wx.navigateBack({
+                        delta: 1
+                    })
+                }, 200);
             } else {
                 $Toast({
                     content: '编辑失败！',
