@@ -47,13 +47,10 @@ Page({
         return {
             title: '用邦分干了这杯事业，快来使用企汇邦……',
             desc: '邦分管理',
-            path: '/pages//mine/mine',
+            path: '/pages/mine/mine',
             imageUrl: '../../images/minproShare.jpg',
             success: function(res) {
                 console.log(res)
-                wx.switchTab({
-                    url: '../mine/mine',
-                });
             },
             fail: function(err) {
                 console.log('失败')
@@ -101,34 +98,27 @@ Page({
     onReady: function() {
         var _this = this
 
-        // api.$http(function(res) { //获取公司相互管理的所有行为
-        //     console.log(res)
-        //     let zidingyiArr = res.data.message.mutualmanaged
-        //     for (var i = 0; i < zidingyiArr.length; i++) { //数据加工，别问我为什么
-        //         zidingyiArr[i].managedid = zidingyiArr[i].id
-        //         zidingyiArr[i].id = ""
-        //     }
-        //     let hangyeArr = res.data.message.mutualmanagedtem
-
-        //     _this.setData({ //行为留值用于重置
-        //         resetZidingyiBehaviorArr: JSON.parse(JSON.stringify(zidingyiArr)),
-        //         resetHangyeBehaviorArr: JSON.parse(JSON.stringify(hangyeArr))
-        //     })
-        //     _this.setData({
-        //         zidingyiBehaviorArr: zidingyiArr, //自定义的已有行为数组
-        //         hangyeBehaviorArr: hangyeArr, //行业对应的已有行为数组
-        //         hangyeNum: hangyeArr.length,
-        //         zidingyiNum: zidingyiArr.length,
-        //         alreadyNum: zidingyiArr.length + hangyeArr.length,
-        //     })
-
-        // }, function(err) {
-        //     console.log(err)
-        // }, '/appreciate/companydetail', {
-        //     session_key: app.apiData.session_key
-        // }, 'POST');
-
-
+        let zidingyiArr = app.apiData.creatOrg.mutualZidingyiBehaviorArr
+        let hangyeArr = app.apiData.creatOrg.mutualHangyeBehaviorArr
+        let zidingyiArrLength = 0
+        let hangyeArrArrLength = 0
+        for (var i = 0; i < zidingyiArr.length; i++) {
+            if (zidingyiArr[i].state == 1) {
+                zidingyiArrLength++
+            }
+        }
+        for (var m = 0; m < hangyeArr.length; m++) {
+            if (hangyeArr[m].state == 1) {
+                hangyeArrArrLength++
+            }
+        }
+        _this.setData({
+            zidingyiBehaviorArr: JSON.parse(JSON.stringify(zidingyiArr)), //自定义的已编辑行为数组
+            hangyeBehaviorArr: JSON.parse(JSON.stringify(hangyeArr)), //行业对应的已编辑行为数组
+            hangyeNum: hangyeArrArrLength,
+            zidingyiNum: zidingyiArrLength,
+            alreadyNum: zidingyiArrLength + hangyeArrArrLength,
+        })
 
         api.$http(function(res) { //获取行业列表
             _this.setData({
@@ -314,10 +304,11 @@ Page({
             alreadyNum: zidingyiArr.length + hangyeArr.length,
             zidingyiNum: zidingyiArr.length,
             hangyeNum: hangyeArr.length,
-
         })
 
+
         var referXingweiArr = this.data.xingweiArr
+        console.log(this.data.hangyeBehaviorArr)
         for (let i = 0; i < referXingweiArr.length; i++) {
             for (let m = 0; m < this.data.hangyeBehaviorArr.length; m++) {
                 if (referXingweiArr[i].id == this.data.hangyeBehaviorArr[m].id && this.data.hangyeBehaviorArr[m].state == 1) {
@@ -344,8 +335,14 @@ Page({
         console.log(hangyeArr)
         console.log(mutualMergeArr)
 
-        app.apiData.mutualMergeArr = mutualMergeArr
-        console.log(app.apiData.mutualMergeArr)
+        app.apiData.creatOrg.mutualHangyeBehaviorArr = hangyeArr
+        app.apiData.creatOrg.mutualZidingyiBehaviorArr = zidingyiArr
+        app.apiData.creatOrg.mutualMergeArr = mutualMergeArr
+        if (mutualMergeArr.length > 0) {
+            app.apiData.creatOrg.showMutualTip = false;
+        } else {
+            app.apiData.creatOrg.showMutualTip = true;
+        }
         $Toast({
             content: '编辑成功！',
             type: 'success'
@@ -355,38 +352,8 @@ Page({
             wx.redirectTo({
                 url: '../create/create',
             });
-        }, 2000);
-        // api.$http(function(res) { //返回添加结果
-        //     if (res.data.code == 200) {
-        //         $Toast({
-        //             content: '编辑成功！',
-        //             type: 'success'
-        //         });
-        //         _this.setData({
-        //             resetZidingyiBehaviorArr: JSON.parse(JSON.stringify(zidingyiArr)), //自定义行为留值用于重置
-        //             resetHangyeBehaviorArr: JSON.parse(JSON.stringify(hangyeArr)) //行业行为留值用于重置
-        //         })
-        //         setTimeout(function() {
-        //             wx.redirectTo({
-        //                 url: '../create/create',
-        //             });
-        //         }, 2000);
-        //     } else {
-        //         $Toast({
-        //             content: '编辑失败！',
-        //             type: 'error'
-        //         });
-        //     }
-        // }, function(err) {
-        //     $Toast({
-        //         content: '编辑失败！',
-        //         type: 'error'
-        //     });
-        // }, '/appreciate/behavioradd', {
-        //     session_key: app.apiData.session_key,
-        //     type: 2,
-        //     mutualmanaged: JSON.stringify(mutualMergeArr),
-        // }, 'POST');
+        }, 500);
+
     },
 
     removeXingwei: function(e) { //删除自定义行为

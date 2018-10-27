@@ -17,13 +17,10 @@ Page({
         return {
             title: '用邦分干了这杯事业，快来加入我们的团队吧……',
             desc: '邦分管理',
-            path: '/pages/mine/mine?company_id=' + app.apiData.Company_Id, // 路径，传递参数到指定页面。
+            path: '/pages/mine/mine?company_id=' + app.apiData.Company_Id, //路径，传递参数到指定页面。
             imageUrl: '../../images/minproShare.jpg',
             success: function(res) {
                 console.log(res)
-                wx.switchTab({
-                    url: '../mine/mine',
-                });
             },
             fail: function(err) {
                 console.log('失败')
@@ -40,24 +37,6 @@ Page({
             this.setData({
                 isAdmin: app.apiData.isAdmin,
             });
-    },
-    onShareAppMessage: function() {
-        return {
-            title: '用邦分干了这杯事业，快来使用企汇邦……',
-            desc: '邦分管理',
-            path: '/pages//mine/mine',
-            imageUrl: '../../images/minproShare.jpg',
-            success: function(res) {
-                console.log(res)
-                wx.switchTab({
-                    url: '../mine/mine',
-                });
-            },
-            fail: function(err) {
-                console.log('失败')
-                console.log(err)
-            }
-        }
     },
     //跳转到组织管理
     navigateToManageOrg() {
@@ -109,6 +88,13 @@ Page({
             });
         });
     },
+  //跳转到个人动态
+  gotouserdynamicdes(e) {
+    console.log(e);
+    wx.navigateTo({
+      url: '../../pages/userdynamic/userdynamic?uid=' + e.currentTarget.id,
+    });
+  },
 
 
     //提示框

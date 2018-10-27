@@ -9,26 +9,16 @@ App({
         isAdmin: 0,
         nickName: '',
         invite_id: '',
+        creatOrg: {
         mutualMergeArr: [],
-        selfMergeArr: []
-    },
-    onShareAppMessage: function() {
-        console.log(app.apiData.Company_Id)
-        return {
-            title: '用邦分干了这杯事业，快来加入我们的团队吧……',
-            desc: '邦分管理',
-            path: '/pages/mine/mine',
-            imageUrl: '../../images/minproShare.jpg',
-            success: function(res) {
-                console.log(res)
-                wx.switchTab({
-                    url: '../mine/mine',
-                });
-            },
-            fail: function(err) {
-                console.log('失败')
-                console.log(err)
-            }
+        selfMergeArr: [],
+        createOrgName: '',
+        showSelfTip: true,
+        showMutualTip: true,
+        mutualHangyeBehaviorArr: [],
+        mutualZidingyiBehaviorArr: [],
+        selfHangyeBehaviorArr: [],
+        selfZidingyiBehaviorArr: []
         }
     },
     onLaunch: function() {

@@ -220,13 +220,10 @@ Page({
         return {
             title: '用邦分干了这杯事业，快来使用企汇邦……',
             desc: '邦分管理',
-            path: '/pages//mine/mine',
+            path: '/pages/mine/mine',
             imageUrl: '../../images/minproShare.jpg',
             success: function(res) {
                 console.log(res)
-                wx.switchTab({
-                    url: '../mine/mine',
-                });
             },
             fail: function(err) {
                 console.log('失败')
@@ -331,7 +328,7 @@ Page({
             });
         } else {
             wx.navigateTo({
-                url: '../../pages/selectmutuluser/selectuseres?type=' + this.data.othertypename + "&buff=" + this.data.otherbuff + "&reasonr=" + this.data.otherreasonr,
+              url: '../../pages/selectuseres/selectuseres?type=' + this.data.othertypename + "&buff=" + this.data.otherbuff + "&reasonr=" + this.data.otherreasonr,
             })
             this.setData({
                 showother: false,
