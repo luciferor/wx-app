@@ -125,7 +125,8 @@ Page({
     getTargetList() {
         let _this = this;
         api.$https('/targetmy/target', {
-            session_key: app.apiData.session_key
+            session_key: app.apiData.session_key,
+           company_id: app.apiData.Company_Id
         }, 'POST', function(data) {
             if (data.data.success) {
                 _this.setData({

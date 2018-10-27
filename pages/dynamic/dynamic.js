@@ -84,19 +84,21 @@ Page({
         }, 'POST');
     },
     adosuccess(data) {
-        console.log(data)
-        this.setData({
+        if(data.data.success){
+          this.setData({
             newawardlist: data.data.message
-        })
+          })
+        }
     },
     adofail(err) {
         console.log(err);
     },
     ddosuccess(data) {
-        console.log(data)
+      if (data.data.success) {
         this.setData({
-            newdynamic: data.data.message
+          newdynamic: data.data.message
         })
+      }
     },
     ddofail(err) {
         console.log(err);
