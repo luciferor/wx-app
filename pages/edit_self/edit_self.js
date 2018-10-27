@@ -56,7 +56,7 @@ Page({
             title: '用邦分干了这杯事业，快来使用企汇邦……',
             desc: '邦分管理',
             path: '/pages/mine/mine',
-            imageUrl: '../../images/minproShare.jpg',
+            imageUrl: '../../images/minproTranspond.png',
             success: function(res) {
                 console.log(res)
             },
@@ -218,7 +218,7 @@ Page({
                     flag++
                 } else {
                     New_hangyeBehaviorArr[i].state = 1;
-                    return
+                    break;
                 }
             }
             if (flag == New_hangyeBehaviorArr.length) {

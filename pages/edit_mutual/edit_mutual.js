@@ -57,7 +57,7 @@ Page({
             title: '用邦分干了这杯事业，快来使用企汇邦……',
             desc: '邦分管理',
             path: '/pages/mine/mine',
-            imageUrl: '../../images/minproShare.jpg',
+            imageUrl: '../../images/minproTranspond.png',
             success: function(res) {
                 console.log(res)
             },
@@ -167,11 +167,10 @@ Page({
     pickXingwei: function(e) { //勾选中行业对应的行为
 
         var currItem = e.currentTarget.dataset.item
-
-        // console.log(this.data.xingweiArr)
+        console.log(currItem)
+            // console.log(this.data.xingweiArr)
         if (currItem.checked == true) { //之前为选中，现在去除
             console.log('去掉勾')
-            console.log(currItem)
             var New_hangyeBehaviorArr = this.data.hangyeBehaviorArr
             var referXingweiArr = this.data.xingweiArr
             for (var i = 0; i < referXingweiArr.length; i++) {
@@ -191,7 +190,8 @@ Page({
                     hangyeLength++
                 }
             }
-
+            console.log(hangyeLength)
+            console.log(New_hangyeBehaviorArr)
             this.setData({
                 hangyeBehaviorArr: New_hangyeBehaviorArr,
                 alreadyNum: this.data.zidingyiNum + hangyeLength,
@@ -201,7 +201,7 @@ Page({
 
         } else { //之前为未选中，现在新增
             console.log('打勾')
-            console.log(currItem)
+
             var New_hangyeBehaviorArr = this.data.hangyeBehaviorArr
             var referXingweiArr = this.data.xingweiArr
             for (var i = 0; i < referXingweiArr.length; i++) {
@@ -220,7 +220,7 @@ Page({
                     flag++
                 } else {
                     New_hangyeBehaviorArr[i].state = 1;
-                    return
+                    break;
                 }
             }
             if (flag == New_hangyeBehaviorArr.length) {
@@ -234,7 +234,6 @@ Page({
                     hangyeLength++
                 }
             }
-
             this.setData({
                 hangyeBehaviorArr: New_hangyeBehaviorArr,
                 alreadyNum: this.data.zidingyiNum + hangyeLength,
