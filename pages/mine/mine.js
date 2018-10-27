@@ -110,7 +110,7 @@ Page({
                 _this.setData({
                     userInfo: data.data.message,
                     name: data.data.message.name == "" ? app.apiData.nickName : data.data.message.name,
-                    score: Number(data.data.message.score) + Number(data.data.message.total_score)-Number(data.data.message.reduce)
+                  score: parseFloat(data.data.message.score) + parseFloat(data.data.message.total_score) - parseFloat(data.data.message.reduce)
                 });
             }
             console.log(data.data.message)
