@@ -241,10 +241,6 @@ Page({
                 hangyeNum: hangyeLength
             })
         }
-
-        this.setData({
-
-        })
     },
     addXingwei: function() { //添加自定义行为
         var _this = this

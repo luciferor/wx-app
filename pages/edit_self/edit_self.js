@@ -347,18 +347,6 @@ Page({
                     content: '编辑成功！',
                     type: 'success'
                 });
-                wx.showToast({
-                    title: '编辑成功！',
-                    icon: 'none',
-                    image: '',
-                    duration: 1500,
-                    mask: false,
-                    success: (result) => {
-
-                    },
-                    fail: () => {},
-                    complete: () => {}
-                });
                 _this.setData({
                     resetZidingyiBehaviorArr: JSON.parse(JSON.stringify(zidingyiArr)), //自定义行为留值用于重置
                     resetHangyeBehaviorArr: JSON.parse(JSON.stringify(hangyeArr)) //行业行为留值用于重置
