@@ -81,7 +81,8 @@ color: transparent;
   width:100%;
   flex:1;
   overflow:scroll;
-  padding:24rpx;
+  padding:24rpx 0;
+  box-sizing: border-box;
   background:#f7f7f7;
   height: 100%;
 }

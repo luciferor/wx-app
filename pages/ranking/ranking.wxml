@@ -29,7 +29,7 @@
     <view class='top-img-box' id="{{topranklist[2].user_id+'|'+topranklist[2].uname}}" bindtap='gotodynamic'>
       <image src="{{topranklist[2].user_img==null||topranklist[2].user_img==''?'../../images/img_touxiang_default.png':topranklist[2].user_img}}"></image>
     </view>
-    <view class='top-name-box'>{{subs.sub(topranklist[2].uname==''?topranklist[2].wechat_name:topranklist[2].uname,4)}}</view>
+    <view class='top-name-box'>{{subs.sub(topranklist[2].uname==''?topranklist[2].wechat_name:topranklist[2].uname,6)}}</view>
     <view class='top-name-rank-ionc'><image src='../../images/dynamic/img_paiming_star.png'></image></view>
     <view class='top-rank-buff'>{{topranklist[2].total}}</view>
   </view>
@@ -46,12 +46,12 @@
             <scroll-view scroll-y="true" class="scoll-h">
                 <view style='height:64.5%; z-index:-1;'></view>
                 <view style='height:30rpx; background:#FFF; opacity:0.9;'></view>
-                <block wx:for="{{dayranklist}}" wx:if="{{dayindex>=4}}" wx:for-index="dayindex" wx:for-item="dayitem" wx:key="*this" >
+                <block wx:for="{{dayranklist}}" wx:if="{{dayindex>=3}}" wx:for-index="dayindex" wx:for-item="dayitem" wx:key="*this" >
                     <view class="item-ans" id="{{dayitem.user_id+'|'+dayitem.uname}}" bindtap='gotodynamic'>
                         <view class='placenum fl'>{{dayindex}}</view>
                         <view class='nameimgbox fl'><image src="{{dayitem.user_img==null||dayitem.user_img==''?'../../images/img_touxiang_default.png':dayitem.user_img}}"></image></view>
                         <view class='nameandpost fl'>
-                          <view class='name-title'>{{dayitem.uname}}</view>
+                          <view class='name-title'>{{subs.sub(dayitem.uname==''?dayitem.wechat_name:dayitem.uname,6)}}</view>
                           <view class='des-post'>{{dayitem.department_name}}</view>
                         </view>
                         <view class='combuff fr'><span class="combuff-span">{{dayitem.total}}</span>邦分</view>
@@ -64,13 +64,13 @@
             <scroll-view scroll-y="true" class="scoll-h">
                 <view style='height:64.5%;'></view>
                 <view style='height:30rpx; background:#FFF; opacity:0.9;'></view>
-                <block wx:for="{{weekranklist}}" wx:if="{{weekindex>=4}}"  wx:for-index="weekindex" wx:for-item="weekitem" wx:key="*this">
+                <block wx:for="{{weekranklist}}" wx:if="{{weekindex>=3}}"  wx:for-index="weekindex" wx:for-item="weekitem" wx:key="*this">
                     <view class="item-ans" id="{{weekitem.user_id+'|'+weekitem.uname}}" bindtap='gotodynamic'>
                         <view class='placenum fl'>{{weekindex}}</view>
                         <view class='nameimgbox fl'><image src="{{weekitem.user_img==null||weekitem.user_img==''?'../../images/img_touxiang_default.png':weekitem.user_img}}"></image></view>
                         <view class='nameandpost fl'>
-                          <view class='name-title'>{{weekitem.uname}}</view>
-                          <view class='des-post'>{{weekitem.department_id}}</view>
+                          <view class='name-title'>{{subs.sub(weekitem.uname==''?weekitem.wechat_name:weekitem.uname,6)}}</view>
+                          <view class='des-post'>{{weekitem.department_name}}</view>
                         </view>
                         <view class='combuff fr'><span class="combuff-span">{{weekitem.total}}</span>邦分</view>
                     </view>
@@ -82,13 +82,13 @@
             <scroll-view scroll-y="true" class="scoll-h">
                 <view style='height:64.5%;'></view>
                 <view style='height:30rpx; background:#FFF; opacity:0.9;'></view>
-                <block wx:for="{{monthranklist}}" wx:if="{{monthindex>=4}}"  wx:for-index="monthindex" wx:for-item="monthitem" wx:key="*this">
+                <block wx:for="{{monthranklist}}" wx:if="{{monthindex>=3}}"  wx:for-index="monthindex" wx:for-item="monthitem" wx:key="*this">
                     <view class="item-ans" id="{{monthitem.user_id+'|'+monthitem.uname}}" bindtap='gotodynamic'>
                         <view class='placenum fl'>{{monthindex}}</view>
                         <view class='nameimgbox fl'><image src="{{monthitem.user_img==null||monthitem.user_img==''?'../../images/img_touxiang_default.png':monthitem.user_img}}"></image></view>
                         <view class='nameandpost fl'>
-                          <view class='name-title'>{{monthitem.uname}}</view>
-                          <view class='des-post'>{{monthitem.department_id}}</view>
+                          <view class='name-title'>{{subs.sub(monthitem.uname==''?monthitem.wechat_name:monthitem.uname,4)}}</view>
+                          <view class='des-post'>{{monthitem.department_name}}</view>
                         </view>
                         <view class='combuff fr'><span class="combuff-span">{{monthitem.total}}</span>邦分</view>
                     </view>

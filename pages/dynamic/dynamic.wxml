@@ -6,8 +6,8 @@
           <span class="titletext fl">最新获奖</span>
       </view>
       <view class="top-swiperes" bindtap='awardevent'>
-        <swiper style='height:160rpx;'
-            autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{true}}" next-margin="220rpx" skip-hidden-item-layout="{{true}}">
+        <swiper style='height:180rpx;'
+            autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{false}}" next-margin="220rpx" skip-hidden-item-layout="{{true}}">
             <block wx:for="{{newawardlist}}" wx:for-index="bri" wx:for-item="brit">
                 <swiper-item>
                     <view class="{{brit.type==1?'top-swiperes-list2':'top-swiperes-list1'}}">
@@ -40,7 +40,7 @@
                 <image src="{{dit.user_img==null||dit.user_img==''?'../../images/img_touxiang_default.png':dit.user_img}}"></image>
             </view>
             <view class="user-li-title-box fl">
-                <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">{{dit.name == "" ? subs.sub(dit.wechat_name,8) :subs.sub(dit.name,8) }}</span><span class="user-li-title-box-listtitle-time">{{dit.created_at
+                <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">{{dit.name == "" ? subs.sub(dit.wechat_name,4) :subs.sub(dit.name,8) }}</span><span class="user-li-title-box-listtitle-time">{{dit.created_at
 }}</span></view>
                 <view class="user-li-title-box-listdes">{{subs.sub(dit.content,14)}}</view>
             </view>
