@@ -38,8 +38,8 @@
                     wx:for-item="it" data-reply-Type="{{it.id+'|'+index+'|'+in}}" bindtap='selectedevent'>
                     <view class="{{it.ischecked?'unlistboxbig':'listboxbig'}}">
                       <view class='imgbox fl'><image src='../../images/tabs/icon_tab_wode_selected.png'></image></view>
-                      <view class='namebox fl'>{{it.name}}</view>
-                      <view class='postbox fl'>({{it.wechat_name}})</view>
+                      <view class='namebox fl'>{{it.name==''?it.wechat_name:it.name}}</view>
+                      <view class='postbox fl'>{{it.post}}</view>
                       <view class='selectbox fr'><image wx:if="{{it.ischecked}}" src='../../images/icon_xuanze.png'></image></view>
                     </view>
                 </view>
