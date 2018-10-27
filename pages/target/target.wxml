@@ -90,6 +90,7 @@
                 </view>
               </view>
         </view>
+        <view style='background:white; text-align:right; margin:0 24rpx; padding:24rpx; overflow:hidden; border:1px solid #ededed; border-top:1px solid none;'><button style='height:80rpx; width:200rpx; font-size:28rpx; color:white; background:#5398ff; line-height:80rpx;' class=' fr' bindtap='handleApplyOpen'>添加</button></view>
         <text class='custom-title' wx:if="{{false}}">自定义目标</text>
         <scroll-view wx:if="{{false}}" class='scroll-view' scroll-y>
           <block>
@@ -101,7 +102,7 @@
               </view>
               <span class="fr colorpar">1000邦分</span>
            </view>
-        </view>
+          </view>
           </block>
        </scroll-view>
       </swiper-item>

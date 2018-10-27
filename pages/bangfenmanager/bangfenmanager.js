@@ -400,7 +400,7 @@ Page({
                 var clientHeight = res.windowHeight,
                     clientWidth = res.windowWidth,
                     rpxR = 750 / clientWidth;
-                var calc = clientHeight * rpxR - 40;
+                var calc = clientHeight * rpxR - 120;
                 console.log(calc)
                 that.setData({
                     winHeight: calc
@@ -484,8 +484,7 @@ Page({
                 id: item[i].id,
                 bangfen: item[i].bangfen,
                 name: item[i].name,
-                ischecked: false,
-                type:item[i].type
+                ischecked: false
             })
         }
         this.setData({

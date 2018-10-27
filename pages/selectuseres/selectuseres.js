@@ -135,7 +135,7 @@ Page({
                 if (item[i].wechat_name) {
                     _this.data.cities.push({
                         id: item[i].id,
-                        name: item[i].name == "" ? "..." : item[i].name,
+                        name: item[i].name,
                         pinyin: item[i].letter,
                         post: item.postname,
                         img: item[i].user_img,
@@ -186,7 +186,7 @@ Page({
                 name: item.name,
                 key: firstName,
                 post: item.postname,
-                img: item.user_img,
+                img: item.img,
                 ischecked: false,
                 wechat_name: item.wechat_name
             });

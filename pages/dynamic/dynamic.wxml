@@ -8,46 +8,16 @@
       <view class="top-swiperes" bindtap='awardevent'>
         <swiper style='height:160rpx;'
             autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{true}}" next-margin="220rpx" skip-hidden-item-layout="{{true}}">
-            <block>
+            <block wx:for="{{newawardlist}}" wx:for-index="bri" wx:for-item="brit">
                 <swiper-item>
-                    <view class="top-swiperes-list1">
-                        <view class="topimg-box fl"><image src="{{newawardlist[0].avatarurl==null||newawardlist[0].avatarurl==''?'../../images/img_touxiang_default.png':newawardlist[0].avatarurl}}"></image></view>
+                    <view class="{{brit.type==1?'top-swiperes-list2':'top-swiperes-list1'}}">
+                        <view class="topimg-box fl"><image src="{{brit.avatarurl==null||brit.avatarurl==''?'../../images/img_touxiang_default.png':brit.avatarurl}}"></image></view>
                         <view class="toptext-box fl">
                             <view class="toptext-title">
-                                {{newawardlist[0].title}}
+                                {{brit.title}}
                             </view>
                             <view class="toptext-content-time">
-                                <span style="opacity:0.8;">{{newawardlist[0].name}}</span><span style="opacity:0.5;">{{newawardlist[0].created_at}}</span>
-                            </view>
-                        </view>
-                    </view>
-                </swiper-item>
-            </block>
-            <block>
-                <swiper-item>
-                    <view class="top-swiperes-list2">
-                        <view class="topimg-box fl"><image src="{{newawardlist[0].avatarurl==null||newawardlist[0].avatarurl==''?'../../images/img_touxiang_default.png':newawardlist[1].avatarurl}}"></image></view>
-                        <view class="toptext-box fl">
-                            <view class="toptext-title">
-                                {{newawardlist[1].title}}
-                            </view>
-                            <view class="toptext-content-time">
-                                <span style="opacity:0.8;">{{newawardlist[1].name}}</span><span style="opacity:0.5;">{{newawardlist[1].created_at}}</span>
-                            </view>
-                        </view>
-                    </view>
-                </swiper-item>
-            </block>
-            <block>
-                <swiper-item>
-                    <view class="top-swiperes-list3">
-                        <view class="topimg-box fl"><image src="{{newawardlist[0].avatarurl==null||newawardlist[0].avatarurl==''?'../../images/img_touxiang_default.png':newawardlist[2].avatarurl}}"></image></view>
-                        <view class="toptext-box fl">
-                            <view class="toptext-title">
-                                {{newawardlist[2].title}}
-                            </view>
-                            <view class="toptext-content-time">
-                                <span style="opacity:0.8;">{{newawardlist[2].name}}</span><span style="opacity:0.5;">{{newawardlist[2].created_at}}</span>
+                                <span style="opacity:0.8;">{{brit.name}}</span><span style="opacity:0.5;"> {{brit.created_at}}</span>
                             </view>
                         </view>
                     </view>
