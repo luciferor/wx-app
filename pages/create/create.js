@@ -21,7 +21,7 @@ Page({
         createStatus: 1 //1:创建  2：创建中 3：分享按钮
     },
     //事件处理函数
-    onReady: function() {
+    onShow: function() {
         this.setData({
             organizeName: app.apiData.creatOrg.createOrgName,
             showMutualTip: app.apiData.creatOrg.showMutualTip,

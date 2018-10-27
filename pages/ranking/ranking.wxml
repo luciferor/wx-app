@@ -9,29 +9,29 @@
   <image src='../../images/dynamic/img_paiming_guang.png'></image>
 </view>
 <view class='top-three-box'>
-  <view class='top-three-second fl' wx:for="{{topranklist}}"  wx:for-index="twoindex" wx:for-item="twoitem" >
-    <view class='top-img-box' id="{{twoitem.user_id+'|'+twoitem.uname}}" bindtap='gotodynamic' wx:if="{{twoindex==1}}">
-      <image src="{{twoitem.user_img==null||twoitem.user_img==''?'../../images/img_touxiang_default.png':twoitem.user_img}}"></image>
+  <view class='top-three-second fl'>
+    <view class='top-img-box' id="{{topranklist[1].user_id+'|'+topranklist[1].uname}}" bindtap='gotodynamic'>
+      <image src="{{topranklist[1].user_img==null||topranklist[1].user_img==''?'../../images/img_touxiang_default.png':topranklist[1].user_img}}"></image>
     </view>
-    <view class='top-name-box' wx:if="{{twoindex==1}}">{{subs.sub(twoitem.uname==''?twoitem.wechat_name:twoitem.uname,4)}}{{twoitem.wechat_name.length>4?'...':''}}</view>
-    <view class='top-name-rank-ionc' wx:if="{{twoindex==1}}"><image src="../../images/dynamic/img_paiming_star.png"></image></view>
-    <view class='top-rank-buff' wx:if="{{twoindex==1}}">{{twoitem.total}}</view>
+    <view class='top-name-box'>{{subs.sub(topranklist[1].uname==''?topranklist[1].wechat_name:topranklist[1].uname,4)}}{{twoitem.wechat_name.length>4?'...':''}}</view>
+    <view class='top-name-rank-ionc'><image src="../../images/dynamic/img_paiming_star.png"></image></view>
+    <view class='top-rank-buff' >{{topranklist[1].total}}</view>
   </view>
-  <view class='top-three-first fl' wx:for="{{topranklist}}" wx:for-index="oneindex" wx:for-item="oneitem">
-    <view wx:if="{{oneindex==0}}" class='top-img-box' id="{{oneitem.user_id+'|'+oneitem.uname}}" bindtap='gotodynamic'>
-      <image src="{{oneitem.user_img==null||oneitem.user_img==''?'../../images/img_touxiang_default.png':oneitem.user_img}}"></image>
+  <view class='top-three-first fl'>
+    <view class='top-img-box' id="{{topranklist[0].user_id+'|'+topranklist[0].uname}}" bindtap='gotodynamic'>
+      <image src="{{topranklist[0].user_img==null||topranklist[0].user_img==''?'../../images/img_touxiang_default.png':topranklist[0].user_img}}"></image>
     </view>
-    <view wx:if="{{oneindex==0}}" class='top-name-box'>{{subs.sub(oneitem.uname,4)}}</view>
-    <view wx:if="{{oneindex==0}}" class='top-name-rank-ionc'><image src='../../images/dynamic/img_paiming_star.png'></image></view>
-    <view wx:if="{{oneindex==0}}" class='top-rank-buff'>{{oneitem.total}}</view>
+    <view class='top-name-box'>{{subs.sub(topranklist[0].uname==''?topranklist[0].wechat_name:topranklist[0].uname,4)}}</view>
+    <view class='top-name-rank-ionc'><image src='../../images/dynamic/img_paiming_star.png'></image></view>
+    <view class='top-rank-buff'>{{topranklist[0].total}}</view>
   </view>
-  <view class='top-three-third fl' wx:for="{{topranklist}}" wx:for-index="threeindex" wx:for-item="threeitem">
-    <view wx:if="{{threeindex==2}}" class='top-img-box' id="{{threeitem.user_id+'|'+threeitem.uname}}" bindtap='gotodynamic'>
-      <image src="{{threeitem.user_img==null||threeitem.user_img==''?'../../images/img_touxiang_default.png':threeitem.user_img}}"></image>
+  <view class='top-three-third fl' >
+    <view class='top-img-box' id="{{topranklist[2].user_id+'|'+topranklist[2].uname}}" bindtap='gotodynamic'>
+      <image src="{{topranklist[2].user_img==null||topranklist[2].user_img==''?'../../images/img_touxiang_default.png':topranklist[2].user_img}}"></image>
     </view>
-    <view wx:if="{{threeindex==2}}" class='top-name-box'>{{subs.sub(threeitem.uname,4)}}</view>
-    <view wx:if="{{threeindex==2}}" class='top-name-rank-ionc'><image src='../../images/dynamic/img_paiming_star.png'></image></view>
-    <view wx:if="{{threeindex==2}}" class='top-rank-buff'>{{threeitem.total}}</view>
+    <view class='top-name-box'>{{subs.sub(topranklist[2].uname==''?topranklist[2].wechat_name:topranklist[2].uname,4)}}</view>
+    <view class='top-name-rank-ionc'><image src='../../images/dynamic/img_paiming_star.png'></image></view>
+    <view class='top-rank-buff'>{{topranklist[2].total}}</view>
   </view>
 </view>
 <view class='content-box'>

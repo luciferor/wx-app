@@ -97,9 +97,9 @@ Page({
         })
     },
     getUserInfo: function(e) {
+      let _this = this;
       app.apiData.nickName = e.detail.userInfo.nickName;
       console.log(e.detail.userInfo); 
-      console.log(resiswx);
       console.log('成功');
       app.apiData.GetLincesShow = false;//隐藏授权按钮
       _this.setData({
@@ -107,7 +107,6 @@ Page({
       })
       //提交信息到服务器
       api.$http(function (resinfo) {
-       
         console.log(resinfo);
         console.log(resinfo.data.message)
         console.log(resinfo.data.success ? "更新成功的" : "没有更新成功");
@@ -115,6 +114,7 @@ Page({
         _this.setData({
           isshow: app.apiData.GetLincesShow
         })
+        console.log('执行了吗？');
         wx.switchTab({
           url: '../../pages/mine/mine',
         })
