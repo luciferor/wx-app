@@ -484,7 +484,8 @@ Page({
                 id: item[i].id,
                 bangfen: item[i].bangfen,
                 name: item[i].name,
-                ischecked: false
+                ischecked: false,
+                type:item[i].type
             })
         }
         this.setData({

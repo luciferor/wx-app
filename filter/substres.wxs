@@ -68,6 +68,7 @@ var subs = {
         break;
     }
   },
+
 }
 
 module.exports={
@@ -75,5 +76,5 @@ module.exports={
   rank:subs.rank,
   status:subs.status,
   targetType: subs.targetType,
-  targetRank: subs.targetRank
+  targetRank: subs.targetRank,
 }
