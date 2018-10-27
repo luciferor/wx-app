@@ -12,7 +12,7 @@
                           <span>
                               <radio color="#5398ff" class="radio" id="{{owner.id+'|'+idx+'|'+owner.name}}" bindtap='ownerevents' value="{{owner.id}}" checked="{{owner.ischecked}}"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{owner.name}}</radio>
                           </span>
-                          <span class="bf">{{owner.bangfen}}邦分</span>
+                          <span class="bf">+{{owner.bangfen}}邦分</span>
                       </view>
                   </block>
               </scroll-view>
@@ -24,7 +24,7 @@
                           <span>
                               <radio color="#5398ff" id="{{mit.id+'|'+mi+'|'+mit.behavior}}" bindtap='mutuevents' class="radio" value="{{mit.id}}" checked="{{mit.ischecked}}"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{mit.behavior}}</radio>
                           </span>
-                          <span class="bf">{{mit.score}}邦分</span>
+                          <span class="bf">+{{mit.score}}邦分</span>
                       </view>
                   </block>
               </scroll-view>
@@ -63,8 +63,8 @@
                   <image src="../../images/icon_caozuo_xia.png" />
               </span>
           </view>
-          <view class="input-buff">
-              <span class="fl input-left"><input bindchange="buffevent" placeholder="请输入邦分" value='{{ownerdatalist.buff}}' /></span>
+          <view class="input-buff" bindtap='selectbufftype'>
+              <span class="fl input-left"><input disabled='{{true}}' placeholder="请选择邦分" value='{{buff}}' /></span>
               <span class="fr input-li">邦分</span>
           </view>
           <view class="input-area">
@@ -127,7 +127,7 @@
                   <image src="../../images/icon_caozuo_xia.png" />
               </span>
           </view>
-          <view class="input-buff">
+          <view class="input-buff" bindtap='selectotherbufftype'>
               <span class="fl input-left"><input bindchange='otherbuffevent' value='{{otherbuff}}' placeholder="请输入邦分" /></span>
               <span class="fr input-li">邦分</span>
           </view>
@@ -149,6 +149,8 @@
       </view>
       <i-action-sheet visible="{{ showtype }}" actions="{{ typelist }}" show-cancel bind:cancel="closetype" bind:click="exittype" />
       <i-action-sheet visible="{{ showothertype }}" actions="{{ othertype }}" show-cancel bind:cancel="closeothertype" bind:click="exitothertype" />
+      <i-action-sheet visible="{{ showbufftype }}" actions="{{ typebufflist}}" show-cancel bind:cancel="closebufftype" bind:click="exitbufftype" />
+      <i-action-sheet visible="{{ showotherbufftype }}" actions="{{ typebufflist}}" show-cancel bind:cancel="closeotherbufftype" bind:click="exitotherbufftype" />
       <i-toast id="toast" />
       <i-modal title="{{madoltitle}}" visible="{{ madolshow }}" id="{{actionid+'|'+actionindex+'|'+actiontype}}" bind:ok="finishevent" bind:cancel="cacelevent">
           <view>{{madolinfos}}</view>

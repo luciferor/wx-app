@@ -128,7 +128,7 @@ Page({
     },
     onReady() {
         let _this = this;
-        api.$http(function(res) {
+        api.$httpcom(function(res) {
             _this.data.cities = [];
             let item = res.data.message;
             for (var i = 0; i < res.data.message.length; i++) {
@@ -149,7 +149,16 @@ Page({
             console.log(err)
         }, '/WeChat/Applet/getUserList', {
             session_key: app.apiData.session_key
-        }, 'POST');
+        }, 'POST',function(com){
+          console.log('是否执行')
+          console.log(com)
+          setTimeout(function () {
+            _this.convertdata();
+            _this.setData({
+              isshow: false
+            })
+          },100)
+        });
     },
     onLoad(option) {
         console.log(option);
@@ -159,12 +168,6 @@ Page({
             reasonr: option.reasonr,
         })
         let _this = this;
-        setTimeout(function() {
-            _this.convertdata();
-            _this.setData({
-                isshow: false
-            })
-        }, 3000)
     },
     convertdata() {
         let storeCity = new Array(36);
@@ -216,13 +219,13 @@ Page({
         console.log(_this.data.selecteduser);
         api.$http(function(res) {
             console.log(res);
-            _this.alertsuccess('他人' + _this.data.othertype + '成功');
-            if (res.data.success) {
-                setTimeout(function() {
-                    wx.navigateBack({
-                        data: res.data.success
-                    });
-                }, 1000)
+            _this.alertsuccess(res.data.message);
+            if(res.data.success){
+              setTimeout(function () {
+                wx.navigateBack({
+                  data: res.data.success
+                });
+              }, 1000)
             }
         }, function(err) {
             console.log(err);
