@@ -65,7 +65,7 @@ Page({
         }
         if (this.data.isRead == false) {
             $Toast({
-                content: '请勾选已阅读合同',
+                content: '请勾选已阅读用户协议',
                 type: 'error',
                 duration: 3
             });
