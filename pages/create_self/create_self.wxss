@@ -16,6 +16,7 @@ page {
 }
 
 .tab1-content {
+    width: 100%;
     display: flex;
     padding-top: 100rpx;
     height: 100%;
