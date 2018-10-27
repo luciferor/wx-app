@@ -22,6 +22,7 @@ Page({
             isadmin: 0,
         },
         score: Number(0),
+        reduce:0,//减去
         name: "", //姓名
         targetList: [
               
@@ -48,11 +49,11 @@ Page({
             path: '/pages/mine/mine',
             imageUrl: '../../images/minproShare.jpg',
             success: function(res) {
-                console.log(res)
+              console.log(res)
             },
             fail: function(err) {
-                console.log('失败')
-                console.log(err)
+              console.log('失败')
+              console.log(err)
             }
         }
     },
@@ -113,7 +114,8 @@ Page({
           _this.setData({
             userInfo: data.data.message,
             name: data.data.message.name == "" ? app.apiData.nickName : data.data.message.name,
-            score: Number(data.data.message.score) + Number(data.data.message.total_score)
+            score: Number(data.data.message.score) + Number(data.data.message.total_score),
+            reduce: data.data.message.reduce,
           });
         }
         console.log(data.data.message)

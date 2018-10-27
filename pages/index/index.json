@@ -1,6 +1,7 @@
 {
   "navigationBarBackgroundColor": "#FFFFFF",
   "usingComponents": {
-      "topbar": "/components/topbar/topbar"
+      "i-spin": "../../dist/spin/index",
+      "i-icon": "../../dist/icon/index"
     }
 }
