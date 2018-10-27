@@ -60,7 +60,7 @@ page{
 }
 .ucompany{
   margin-left: 17rpx;
-  color: white;
+  color: #b7d4ff;
   font-size: 24rpx;
 }
 

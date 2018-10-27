@@ -44,6 +44,7 @@ Page({
                   }
                   wx.getUserInfo({
                     success:function(resiswx){
+                      app.apiData.nickName = resiswx.userInfo.nickName;
                       console.log(resiswx);
                       console.log('成功');
                       app.apiData.GetLincesShow = false;//隐藏授权按钮
@@ -96,6 +97,7 @@ Page({
         })
     },
     getUserInfo: function(e) {
+      app.apiData.nickName = e.detail.userInfo.nickName;
       console.log(e.detail.userInfo); 
       console.log(resiswx);
       console.log('成功');
@@ -105,10 +107,14 @@ Page({
       })
       //提交信息到服务器
       api.$http(function (resinfo) {
+       
         console.log(resinfo);
         console.log(resinfo.data.message)
         console.log(resinfo.data.success ? "更新成功的" : "没有更新成功");
         //虽然没有更新成功，但是还是要跳转到个人中心
+        _this.setData({
+          isshow: app.apiData.GetLincesShow
+        })
         wx.switchTab({
           url: '../../pages/mine/mine',
         })
