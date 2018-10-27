@@ -55,13 +55,10 @@ Page({
         return {
             title: '用邦分干了这杯事业，快来使用企汇邦……',
             desc: '邦分管理',
-            path: '/pages//mine/mine',
+            path: '/pages/mine/mine',
             imageUrl: '../../images/minproShare.jpg',
             success: function(res) {
                 console.log(res)
-                wx.switchTab({
-                    url: '../mine/mine',
-                });
             },
             fail: function(err) {
                 console.log('失败')
@@ -346,6 +343,18 @@ Page({
                     content: '编辑成功！',
                     type: 'success'
                 });
+                wx.showToast({
+                    title: '编辑成功！',
+                    icon: 'none',
+                    image: '',
+                    duration: 1500,
+                    mask: false,
+                    success: (result) => {
+
+                    },
+                    fail: () => {},
+                    complete: () => {}
+                });
                 _this.setData({
                     resetZidingyiBehaviorArr: JSON.parse(JSON.stringify(zidingyiArr)), //自定义行为留值用于重置
                     resetHangyeBehaviorArr: JSON.parse(JSON.stringify(hangyeArr)) //行业行为留值用于重置
@@ -354,7 +363,7 @@ Page({
                     wx.redirectTo({
                         url: '../manageorg/manageorg',
                     });
-                }, 2000);
+                }, 5000);
             } else {
                 $Toast({
                     content: '编辑失败！',

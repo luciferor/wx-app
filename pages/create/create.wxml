@@ -2,18 +2,18 @@
 <view class="create-container">
   <view class="setting-area">
     <view class="setting-items">
-      <input class="setting-item organize-name"  maxlength="10" placeholder-class="phcolor" placeholder="请设置组织名称"  bindinput="bindKeyInput"/>
+      <input class="setting-item organize-name" value="{{organizeName}}"  maxlength="10" placeholder-class="phcolor" placeholder="请设置组织名称"  bindinput="bindKeyInput"/>
       <navigator class="setting-item" target="" url="../create_self/create_self" hover-class="navigator-hover" open-type="navigate">
         <view class="left-txt">
           自我管理行为
-          <text class="txt-tips" wx:if="{{showTip}}">(根据行业匹配邦分任务)</text>
+          <text class="txt-tips" wx:if="{{showSelfTip}}">(请根据行业匹配邦分任务)</text>
         </view>
         <image class="right-arrow" src="../../images/icon_caozuo_right.png" />
       </navigator>
       <navigator class="setting-item" target="" url="../create_mutual/create_mutual" hover-class="navigator-hover" open-type="navigate">
         <view class="left-txt">
           相互管理行为
-          <text class="txt-tips" wx:if="{{showTip}}">(根据行业匹配邦分任务)</text>
+          <text class="txt-tips" wx:if="{{showMutualTip}}">(请根据行业匹配邦分任务)</text>
         </view>
         <image class="right-arrow" src="../../images/icon_caozuo_right.png" />
       </navigator>

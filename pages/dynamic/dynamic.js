@@ -22,9 +22,6 @@ Page({
             imageUrl: '../../images/minproShare.jpg',
             success: function(res) {
                 console.log(res)
-                wx.switchTab({
-                    url: '../mine/mine',
-                });
             },
             fail: function(err) {
                 console.log('失败')
