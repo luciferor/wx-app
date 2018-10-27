@@ -35,7 +35,7 @@ Page({
         return {
             title: '用邦分干了这杯事业，快来使用企汇邦……',
             desc: '邦分管理',
-            path: '/pages/mine/mine',
+            path: '/pages/index/index',
             imageUrl: '../../images/minproTranspond.png',
             success: function(res) {
 
@@ -63,7 +63,7 @@ Page({
                 });
                 _this.getNoticeList(1, _this.data.applyPage);
                 _this.getNoticeList(0, _this.data.allPage);
-                _this.getNoticeList(3, _this.data.rejectNotice);
+                _this.getNoticeList(3, _this.data.rejectPage);
             } else {
                 $Toast({
                     content: data.data.message
@@ -90,7 +90,7 @@ Page({
                 });
                 _this.getNoticeList(0, _this.data.allPage);
                 _this.getNoticeList(1, _this.data.applyPage);
-                _this.getNoticeList(2, _this.data.passNotice);
+                _this.getNoticeList(2, _this.data.passPage);
             } else {
                 $Toast({
                     content: data.data.message
@@ -118,7 +118,7 @@ Page({
                 });
                 _this.getNoticeList(0, _this.data.allPage);
                 _this.getNoticeList(1, _this.data.applyPage);
-                _this.getNoticeList(3, _this.data.rejectNotice);
+                _this.getNoticeList(3, _this.data.rejectPage);
             } else {
                 $Toast({
                     content: data.data.message
@@ -145,7 +145,7 @@ Page({
                 });
                 _this.getNoticeList(0, _this.data.allPage);
                 _this.getNoticeList(1, _this.data.applyPage);
-                _this.getNoticeList(2, _this.data.passNotice);
+                _this.getNoticeList(2, _this.data.passPage);
             } else {
                 $Toast({
                     content: data.data.message

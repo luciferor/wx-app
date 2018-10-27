@@ -101,11 +101,15 @@ page{
 .name-input{
   text-align: right;
   color: #666666;
-  font-size: 32rpx;
+  font-size: 30rpx;
   margin-left: 20rpx;
 }
 
 .modal-text{
   font-size: 28rpx;
   color: #333333;
+}
+
+.placeholder {
+  color: #cccccc;
 }

@@ -13,17 +13,17 @@ Page({
             disposable: "", //加分权利
             id: 0,
             name: "",
-            reduce: "", //减分权利
+            reduce: 0, 
             score: 0,
             total_score: 0, //总分
             user_img: "", //用户头像
             isadmin: 0,
+           reduces: 0//减分权利
         },
         score: Number(0),
         reduce:0,//减去
         name: "", //姓名
         targetList: [], //我的目标列表,
-
         session_key: '',
         golding: false,
         infores: '',
@@ -42,7 +42,7 @@ Page({
         return {
             title: '用邦分干了这杯事业，快来使用企汇邦……',
             desc: '邦分管理',
-            path: '/pages/mine/mine',
+            path: '/pages/index/index',
             imageUrl: '../../images/minproTranspond.png',
             success: function(res) {
               console.log(res)
@@ -102,23 +102,22 @@ Page({
     },
     //获取用户信息
     getUserInfos() {
-      let _this = this;
-      api.$https('/appreciate/personalcenter', {
-        session_key: app.apiData.session_key
-      }, 'POST', function (data) {
-        if (data.data.success) {
-          _this.setData({
-            userInfo: data.data.message,
-            name: data.data.message.name == "" ? app.apiData.nickName : data.data.message.name,
-            score: Number(data.data.message.score) + Number(data.data.message.total_score),
-            reduce: data.data.message.reduce,
-          });
-        }
-        console.log(data.data.message)
-      }, function (data) {
-        console.log('请求失败');
-      });
- },
+        let _this = this;
+        api.$https('/appreciate/personalcenter', {
+            session_key: app.apiData.session_key
+        }, 'POST', function(data) {
+            if (data.data.success) {
+                _this.setData({
+                    userInfo: data.data.message,
+                    name: data.data.message.name == "" ? app.apiData.nickName : data.data.message.name,
+                    score: Number(data.data.message.score) + Number(data.data.message.total_score)-Number(data.data.message.reduce)
+                });
+            }
+            console.log(data.data.message)
+        }, function(data) {
+            console.log('请求失败');
+        });
+    },
     //获取我的目标
     getTargetList() {
         let _this = this;
