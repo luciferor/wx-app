@@ -21,6 +21,16 @@ Page({
                 name: '自我减分'
             }
         ],
+        showbufftype:false,
+        buff:'',
+        typebufflist:[
+          { name: '1'},
+          { name: '2'},
+          { name: '3'},
+          { name: '4'},
+          { name: '5'},
+        ],
+        showotherbufftype:false,
         menushow: false,
         menubtnshow: true,
         ownerdatalist: { //自我加减分表单数据
@@ -41,6 +51,44 @@ Page({
         actionindex: '',
         actiontype: '',
         menushowid: 0,
+    },
+    selectotherbufftype(){
+      this.setData({
+        showotherbufftype: true
+      });
+    },
+    closeotherbufftype() {
+      this.setData({
+        showotherbufftype: false
+      });
+    },
+    exitotherbufftype({ detail }) {
+      const index = detail.index;
+      console.log(detail);
+      this.setData({
+        otherbuff: this.data.typebufflist[index].name,
+        showotherbufftype: false
+      })
+      console.log(this.data.buff)
+    }, 
+    selectbufftype(){
+      this.setData({
+        showbufftype:true
+      })
+    },
+    closebufftype() {
+      this.setData({
+        showbufftype: false
+      });
+    },
+    exitbufftype({ detail }) {
+      const index = detail.index;
+      console.log(detail);
+      this.setData({
+        buff: this.data.typebufflist[index].name,
+        showbufftype: false
+      })
+      console.log(this.data.buff)
     },
     finishevent(e) {
         let _this = this;
@@ -184,15 +232,16 @@ Page({
         }
     },
     ownnerplusevent() {
-        console.log(this.data.ownerdatalist.buff);
+      let count=0;
+      console.log(this.data.ownerdatalist.reasonr);
         let _this = this;
         if (_this.data.typename == "") {
             $Toast({
                 content: "请选择加减分类型",
             });
-        } else if (_this.data.ownerdatalist.buff == 0 || _this.data.ownerdatalist.buff == "") {
+        } else if (_this.data.buff == 0 || _this.data.buff == "") {
             $Toast({
-                content: "请输入邦分",
+                content: "请选择邦分",
             });
         } else if (_this.data.ownerdatalist.reasonr == "") {
             $Toast({
@@ -200,9 +249,13 @@ Page({
             });
         } else {
             console.log("自我加减分申请");
+            if(count>1){
+              return;
+            }
             api.$http(function(res) {
                 console.log(res);
                 if (res.data.success) {
+                    count++;
                     //alert('添加成功！')
                     $Toast({
                         content: res.data.message,
@@ -217,7 +270,7 @@ Page({
             }, "/WeChat/Applet/changeGradeApplyBySelf", {
                 session_key: app.apiData.session_key,
                 type: _this.data.typename == '自我加分' ? 'add' : 'reduce',
-                bangfen: _this.data.ownerdatalist.buff,
+                bangfen: _this.data.buff,
                 reason: _this.data.ownerdatalist.reasonr,
             }, "POST");
         }
@@ -232,10 +285,6 @@ Page({
         this.setData({
             otherreasonr: e.detail.value
         })
-    },
-    buffevent(e) {
-        console.log(e.detail.value);
-        this.data.ownerdatalist.buff = e.detail.value;
     },
     reasonevent(e) {
         console.log(e);
@@ -279,7 +328,7 @@ Page({
             });
         } else {
             wx.navigateTo({
-                url: '../../pages/selectuseres/selectuseres?type=' + this.data.othertypename + "&buff=" + this.data.otherbuff + "&reasonr=" + this.data.otherreasonr,
+              url: '../../pages/selectuseres/selectuseres?type=' + this.data.othertypename + "&buff=" + this.data.otherbuff + "&reasonr=" + this.data.otherreasonr,
             })
             this.setData({
                 showother: false,
@@ -441,6 +490,8 @@ Page({
         this.setData({
             ownerlist: this.data.ownerlist
         })
+        console.log('打印自我管理列表');
+        console.log(this.data.ownerlist)
     },
     odofail(err) {
         console.log(err);
@@ -464,6 +515,8 @@ Page({
         this.setData({
             mutullist: this.data.mutullist
         })
+        console.log('打印相互管理');
+        console.log(this.data.mutullist)
     },
     mdofail(err) {
         console.log(err);

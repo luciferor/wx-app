@@ -1,6 +1,6 @@
 {
   "navigationBarBackgroundColor": "#FFFFFF",
-  "navigationBarTitleText": "邦分管理",
+  "navigationBarTitleText": "邦分",
     "usingComponents": {
         "i-modal": "../../dist/modal/index",
         "i-action-sheet": "../../dist/action-sheet/index",

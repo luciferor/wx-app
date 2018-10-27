@@ -125,7 +125,7 @@ Page({
     },
     onReady() {
         let _this = this;
-        api.$http(function(res) {
+        api.$httpcom(function(res) {
             _this.data.cities = [];
             let item = res.data.message;
 
@@ -147,19 +147,20 @@ Page({
             console.log(err)
         }, '/WeChat/Applet/getUserList', {
             session_key: app.apiData.session_key
-        }, 'POST');
+        }, 'POST',function(){
+          setTimeout(function () {
+            _this.convertdata();
+            _this.setData({
+              isshow: false
+            })
+          },100)
+        });
     },
     onLoad(option) {
         this.setData({
             mutuid: option.id,
         })
         let _this = this;
-        setTimeout(function() {
-            _this.convertdata();
-            _this.setData({
-                isshow: false
-            })
-        }, 3000)
     },
     convertdata() {
         let storeCity = new Array(26);
@@ -213,7 +214,7 @@ Page({
             console.log(res);
             _this.alertsuccess(res.data.message);
             if (res.data.success) {
-                setTimeout(function() { wx.navigateBack(); }, 2000)
+                setTimeout(function() { wx.navigateBack(); }, 1000)
             }
         }, function(err) {
             console.log(err);
