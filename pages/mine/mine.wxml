@@ -6,7 +6,10 @@
         <view class='info-container'>
             <view class='left-container'  bindtap='navigateToSetting'>
                 <image src="{{userInfo.avatarurl==null||userInfo.avatarurl==''?'../../images/mine/head_default_icon.png': userInfo.avatarurl}}" class='pic'></image>
-                <text class='uname'>{{name}}</text>
+                <view class='name-company-container'>
+                    <text class='uname'>{{name}}</text>
+                    <text class='ucompany'>{{userInfo.companyname}}</text>                  
+                </view>
             </view>
             <view class='right-container' bindtap='navigateToNotice'>
                 <image src='../../images/mine/icon_wode_tongzhi.png' class='message'></image>

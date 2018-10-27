@@ -46,10 +46,22 @@ page{
   border-radius: 40rpx;
   border: 3rpx solid #ffffff;
 }
+
+.name-company-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+}
 .uname{
   margin-left: 17rpx;
   color: white;
   font-size: 28rpx;
+}
+.ucompany{
+  margin-left: 17rpx;
+  color: white;
+  font-size: 24rpx;
 }
 
 .left-container{
