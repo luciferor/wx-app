@@ -65,7 +65,7 @@
               </view>
               <view class='target-container'>
                   <view class='top-container'>
-                  <input class='target-input' placeholder='请输入目标名称' placeholder-class='placeholder' value="{{targetTitle}}" bindinput="inputValue" maxlength='8'></input>
+                  <input class='target-input' placeholder='请输入目标名称' placeholder-class='placeholder' value="{{targetTitle}}" bindinput="inputValue" maxlength='15'></input>
                   <view class='target-type'>
                       <view class='gray-icon'></view>
                       <text class='type-text' bindtap='handleTypeOpen'>{{newTargetType}}</text>

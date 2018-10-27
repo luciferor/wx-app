@@ -57,7 +57,7 @@
                         <view class='combuff fr'><span class="combuff-span">{{dayitem.total}}</span>邦分</view>
                     </view>
                 </block>
-                <view style='height:30%; background:#FFF; opacity:0.9;'></view>
+                <view style='height:32%; background:#FFF; opacity:0.9;'></view>
             </scroll-view>
         </swiper-item>
         <swiper-item>
@@ -75,7 +75,7 @@
                         <view class='combuff fr'><span class="combuff-span">{{weekitem.total}}</span>邦分</view>
                     </view>
                 </block>
-                <view style='height:30.5%; background:#FFF; opacity:0.9;'></view>
+                <view style='height:32%; background:#FFF; opacity:0.9;'></view>
             </scroll-view>
         </swiper-item>
         <swiper-item>
@@ -93,7 +93,7 @@
                         <view class='combuff fr'><span class="combuff-span">{{monthitem.total}}</span>邦分</view>
                     </view>
                 </block>
-                <view style='height:30%; background:#FFF; opacity:0.9;'></view>
+                <view style='height:32%; background:#FFF; opacity:0.9;'></view>
             </scroll-view>
         </swiper-item>
     </swiper>
