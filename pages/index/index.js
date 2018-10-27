@@ -5,10 +5,11 @@ const app = getApp()
 
 Page({
     data: {
-      
+      isshow:false,
     },
     //事件处理函数
     onLoad: function(option) {
+        let _this = this;
         let company_id = option.id;
         console.log('接收到的公司ID：'+company_id)
         wx.login({
@@ -44,10 +45,18 @@ Page({
                       console.log(resiswx);
                       console.log('成功');
                       app.apiData.GetLincesShow = false;//隐藏授权按钮
+                      _this.setData({
+                        isshow: app.apiData.GetLincesShow
+                      })
                       //提交信息到服务器
                       api.$http(function (resinfo){
                         console.log(resinfo);
                         console.log(resinfo.data.message)
+                        console.log(resinfo.data.success?"更新成功的":"没有更新成功");
+                        //虽然没有更新成功，但是还是要跳转到个人中心
+                        wx.switchTab({
+                          url: '../../pages/mine/mine',
+                        })
                       }, function (errinfo) {
                         console.log(errinfo)
                       },'/appreciate/updateInformation',{
@@ -64,7 +73,14 @@ Page({
                       console.log(erriswx);
                       console.log('失败')
                       app.apiData.GetLincesShow = true;//显示授权按钮
+                      _this.setData({
+                        isshow: app.apiData.GetLincesShow
+                      })
                     }
+                  })
+                }else{//没有组织，就要创建组织
+                  wx.redirectTo({
+                    url: '../../pages/guide/guide',
                   })
                 }
 
@@ -79,7 +95,7 @@ Page({
         })
     },
     getUserInfo: function(e) {
-        
+      console.log(e);  
     },
 
 

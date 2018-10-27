@@ -1,7 +1,7 @@
 //app.js
 App({
     apiData: {
-        GetLincesShow:true,//是否
+        GetLincesShow:false,//是否
         code: '', //登录需要的code
         api: 'https://devqypyp.xiaohuibang.com', //接口根地址
         session_key: '', //response.data.message.session_key

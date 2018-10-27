@@ -68,7 +68,7 @@
               <span class="fr input-li">邦分</span>
           </view>
           <view class="input-area">
-              <textarea fixed="true" bindblur='reasonevent' name="reasonrtext" maxlength='15' style="height: 3em" value='{{ownerdatalist.reasonr}}' placeholder="请填写理由，不超过15个字" />
+              <textarea style='z-index:0;' fixed="true" bindblur='reasonevent' name="reasonrtext" maxlength='15' style="height: 3em" value='{{ownerdatalist.reasonr}}' placeholder="请填写理由，不超过15个字" />
           </view>
           <view class="input-des">
               注：请根据实际情况进行加减分，如发现谎报将受到多倍的惩罚！
@@ -100,7 +100,7 @@
               <span class="fr input-li">邦分</span>
           </view>
           <view class="input-area">
-              <textarea fixed="true" style="height: 3em" placeholder="请填写理由，不超过15个字" />
+              <textarea style='z-index:0;' fixed="true" style="height: 3em" placeholder="请填写理由，不超过15个字" />
           </view>
           <view class="input-des">
               注：请根据实际情况进行加减分，如发现谎报将受到多倍的惩罚！
@@ -132,7 +132,7 @@
               <span class="fr input-li">邦分</span>
           </view>
           <view class="input-area">
-              <textarea fixed="true" bindblur="otherreasonrevent" value='{{otherreasonr}}' style="height: 3em" placeholder="请填写理由，不超过15个字" />
+              <textarea style='z-index:0;' fixed="true" bindblur="otherreasonrevent" value='{{otherreasonr}}' style="height: 3em" placeholder="请填写理由，不超过15个字" />
           </view>
           <view class="input-des">
               注：请根据实际情况进行加减分，如发现谎报将受到多倍的惩罚！

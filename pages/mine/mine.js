@@ -6,8 +6,6 @@ const app = getApp()
 
 Page({
     data: {
-        userInfos: {},
-        hasUserInfo: false,
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         showRemindBox: false,
         userInfo: {
@@ -24,10 +22,7 @@ Page({
         score: Number(0),
         reduce:0,//减去
         name: "", //姓名
-        targetList: [
-              
-            ] //我的目标列表
-            ,
+        targetList: [], //我的目标列表,
         session_key: '',
         golding: false,
         infores: '',
@@ -175,195 +170,8 @@ Page({
         })
     },
     onLoad: function(option) {
-        let _this = this;
-        console.log(app.globalData.userInfo);
-        if (app.globalData.userInfo) {
-            this.setData({
-                userInfos: app.globalData.userInfo,
-                hasUserInfo: true
-            })
-        } else if (this.data.canIUse) {
-            // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-            // 所以此处加入 callback 以防止这种情况
-            app.userInfoReadyCallback = res => {
-                this.setData({
-                    userInfos: res.userInfo,
-                    hasUserInfo: true
-                })
-            }
-        } else {
-              // 在没有 open-type=getUserInfo 版本的兼容处理
-              wx.getUserInfo({
-                success: res => {
-
-                    app.apiData.nickName = e.detail.userInfo.nickName;
-                    wx.request({
-                        url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
-                        data: {
-                            session_key: app.apiData.session_key,
-                            nickname: e.detail.userInfo.nickName,
-                            avatarurl: e.detail.userInfo.avatarUrl,
-                            gender: e.detail.userInfo.gender,
-                            province: e.detail.userInfo.province,
-                            city: e.detail.userInfo.city,
-                            country: e.detail.userInfo.country,
-                        },
-                        header: {
-                            'content-type': 'application/json' //默认值
-                        },
-                        method: 'POST',
-                        success: function(res) {
-                            //执行啥啥啥
-                            _this.getUserInfos()
-                            _this.getTargetList()
-                        },
-                    })
-
-                  //*
-                  //***** */
-                  app.globalData.userInfo = res.userInfo
-                  this.setData({
-                      userInfos: res.userInfo,
-                      hasUserInfo: true
-                  })
-                }
-            })
-        }
-
-        //获取邀请的公司id
-        console.log('查看公司id');
-        console.log(option.company_id);
-        app.apiData.invite_id = option.company_id;
-        // 登录
-        wx.login({
-            success: res => {
-                //发送 res.code 到后台换取 openId, sessionKey, unionId
-                //登录，从后台获取到session_key
-                //发起网络请求
-                wx.request({
-                    url: 'https://devqypyp.xiaohuibang.com/login/miniprogram/Applet', //小程序登录
-                    data: {
-                        code: res.code,
-                        company_id: option.company_id
-                    },
-                    method: "POST",
-                    header: {
-                        'content-type': 'application/json' //默认值
-                    },
-                    success(response) {
-                        console.log('查看信息')
-                        console.log(response)
-                        app.apiData.code = res.code; //登录需要的code
-                        app.apiData.session_key = response.data.message.session_key; //response.message.session_key
-                        app.apiData.Company_Id = response.data.message.company_id;
-                        app.apiData.isAdmin = response.data.message.isadmin;
-
-                        if (response.data.message.company_id == "" || response.data.message.company_id == 0 || response.data.message.company_id == null || response.data.message.company_id == undefined) {
-                            console.log('-------------------------------');
-                            console.log(response.data.message.company_id + "返回回来的id");
-                            console.log(option.company_id + "传过来的id");
-                            console.log('-------------------------------');
-                            wx.redirectTo({
-                                url: '../guide/guide'
-                            })
-                        }
-
-                        if (option.company_id != undefined && option.company_id != null && option.company_id != 0 && option.company_id != '' && response.data.message.company_id == option.company_id) { //必须要是由申请加入的无组织用户才会显示
-                            setTimeout(function() {
-                                wx.showModal({
-                                    title: '提示',
-                                    content: '恭喜！您已成功加入' + response.data.message.company_name + '！',
-                                    showCancel: true,
-                                    cancelText: '取消',
-                                    cancelColor: '#666666',
-                                    confirmText: '知道了',
-                                    confirmColor: '#5398ff'
-                                });
-                            }, 5000)
-                        }
-
-
-                        wx.getUserInfo({
-                            success: res => {
-                                console.log('打印数据啊啊啊 啊啊啊啊 3');
-                                console.log(res);
-                                console.log('打印数据啊啊啊啊啊啊啊啊啊啊啊啊啊??????????');
-                                app.apiData.nickName = res.userInfo.nickName;
-                                wx.request({
-                                    url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
-                                    data: {
-                                        session_key: app.apiData.session_key,
-                                        nickname: res.userInfo.nickName,
-                                        avatarurl: res.userInfo.avatarUrl,
-                                        gender: res.userInfo.gender,
-                                        province: res.userInfo.province,
-                                        city: res.userInfo.city,
-                                        country: res.userInfo.country,
-                                    },
-                                    header: {
-                                        'content-type': 'application/json' //默认值
-                                    },
-                                    method: 'POST',
-                                    success: function(res) {
-                                        //执行啥啥啥
-                                        _this.getUserInfos()
-                                        _this.getTargetList()
-                                       console.log('打印数据啊啊啊啊啊啊啊啊啊啊啊啊啊|||||||||||???????');
-                                    },
-                                    fail:function(res){
-                                      console.log('上传信息失败=========');
-                                      console.log(res)
-                                    }
-                                },)
-
-                                //*
-                                //***** */
-                                app.globalData.userInfo = res.userInfo
-                                _this.setData({
-                                    userInfos: res.userInfo,
-                                    hasUserInfo: true
-                                })
-                            }
-                        })
-
-                    }
-                })
-            },
-        })
+        //执行啥啥啥
+        this.getUserInfos()
+        this.getTargetList()
     },
-    getUserInfo: function(e) {
-        this.setData({
-            userInfos: e.detail.userInfo,
-            hasUserInfo: true
-        })
-        console.log(e.detail);
-        let _this = this;
-        //*****
-        //*
-        app.apiData.nickName = e.detail.userInfo.nickName;
-        wx.request({
-            url: 'https://devqypyp.xiaohuibang.com/appreciate/updateInformation',
-            data: {
-                session_key: app.apiData.session_key,
-                nickname: e.detail.userInfo.nickName,
-                avatarurl: e.detail.userInfo.avatarUrl,
-                gender: e.detail.userInfo.gender,
-                province: e.detail.userInfo.province,
-                city: e.detail.userInfo.city,
-                country: e.detail.userInfo.country,
-            },
-            header: {
-                'content-type': 'application/json' //默认值
-            },
-            method: 'POST',
-            success: function(res) {
-                //执行啥啥啥
-                _this.getUserInfos()
-                _this.getTargetList()
-            },
-        })
-
-        //*
-        //***** */
-    }
 })

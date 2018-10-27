@@ -80,15 +80,6 @@
       <text class='modal-text'>2、相互管理剩余邦分由管理员分配。</text>
     </view>
 </i-modal>
-
-<view class='linces-wx-mask' wx:if="{{!hasUserInfo && canIUse}}"></view>
-<view class='linces-wx-dialog' wx:if="{{!hasUserInfo && canIUse}}">
-  <view class='lincesbox'>
-    <view style='height:80rpx; background:white; line-height:80rpx; font-size:28rpx;'>登录提示</view>
-    <view style='width:calc(100% - 59rpx); height:104rpx; color:#999; background:white; font-size:28rpx; padding:30rpx; text-align:left;'>小程序需要您的授权才能提供更好的服务哦！</view>
-    <button class='linscesbtn' type="default" open-type="getUserInfo" bindgetuserinfo="getUserInfo">好 的</button>
-  </view>
-</view>
 </view>
 <i-toast id="toast" />
 
