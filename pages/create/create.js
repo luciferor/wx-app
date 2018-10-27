@@ -22,6 +22,10 @@ Page({
     },
     //事件处理函数
     onReady: function() {
+
+    },
+    onShow: function() {
+        console.log(app.apiData.creatOrg.showMutualTip)
         this.setData({
             organizeName: app.apiData.creatOrg.createOrgName,
             showMutualTip: app.apiData.creatOrg.showMutualTip,
@@ -65,7 +69,7 @@ Page({
         }
         if (this.data.isRead == false) {
             $Toast({
-                content: '请勾选已阅读合同',
+                content: '请勾选已阅读用户协议',
                 type: 'error',
                 duration: 3
             });

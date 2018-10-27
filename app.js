@@ -10,15 +10,15 @@ App({
         nickName: '',
         invite_id: '',
         creatOrg: {
-        mutualMergeArr: [],
-        selfMergeArr: [],
-        createOrgName: '',
-        showSelfTip: true,
-        showMutualTip: true,
-        mutualHangyeBehaviorArr: [],
-        mutualZidingyiBehaviorArr: [],
-        selfHangyeBehaviorArr: [],
-        selfZidingyiBehaviorArr: []
+            mutualMergeArr: [],
+            selfMergeArr: [],
+            createOrgName: '',
+            showSelfTip: true,
+            showMutualTip: true,
+            mutualHangyeBehaviorArr: [],
+            mutualZidingyiBehaviorArr: [],
+            selfHangyeBehaviorArr: [],
+            selfZidingyiBehaviorArr: []
         }
     },
     onLaunch: function() {

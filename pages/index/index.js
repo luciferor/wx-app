@@ -59,7 +59,7 @@ Page({
             title: '用邦分干了这杯事业，快来使用企汇邦……',
             desc: '邦分管理',
             path: '/pages/mine/mine',
-            imageUrl: '../../images/minproTranspond.png',
+            imageUrl: '../../images/minproShare.jpg',
             success: function(res) {
                 console.log(res)
             },
