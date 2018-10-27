@@ -23,6 +23,7 @@ Page({
         reduce:0,//减去
         name: "", //姓名
         targetList: [], //我的目标列表,
+
         session_key: '',
         golding: false,
         infores: '',
@@ -42,7 +43,7 @@ Page({
             title: '用邦分干了这杯事业，快来使用企汇邦……',
             desc: '邦分管理',
             path: '/pages/mine/mine',
-            imageUrl: '../../images/minproShare.jpg',
+            imageUrl: '../../images/minproTranspond.png',
             success: function(res) {
               console.log(res)
             },
@@ -122,7 +123,8 @@ Page({
     getTargetList() {
         let _this = this;
         api.$https('/targetmy/target', {
-            session_key: app.apiData.session_key
+            session_key: app.apiData.session_key,
+           company_id: app.apiData.Company_Id
         }, 'POST', function(data) {
             if (data.data.success) {
                 _this.setData({

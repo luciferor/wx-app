@@ -68,7 +68,8 @@
               <span class="fr input-li">邦分</span>
           </view>
           <view class="input-area">
-              <textarea style='z-index:0;' fixed="true" bindblur='reasonevent' name="reasonrtext" maxlength='15' style="height: 3em" value='{{ownerdatalist.reasonr}}' placeholder="请填写理由，不超过15个字" />
+              <textarea fixed="true" name="reasonrtext" maxlength='15' style="height: 3em" value='{{ownerdatalist.reasonr}}' placeholder="请填写理由，不超过15个字" bindinput='reasonevent' />
+
           </view>
           <view class="input-des">
               注：请根据实际情况进行加减分，如发现谎报将受到多倍的惩罚！
@@ -78,7 +79,7 @@
                   <button style="width:95%; float:left; background:#dedede;" type="default" size="{{defaultSize}}" plain="{{plain}}"bindtap="go" hover-class="other-button-hover">取消 </button>
               </span>
               <span class="fr" style="width:50%;">
-                  <button form-type='submit' style="width:95%; float:right; background:#5398ff;" type="primary" size="{{defaultSize}}" plain="{{plain}}" bindtap="ownnerplusevent" hover-class="other-button-hover">确定</button>
+                  <button  style="width:95%; float:right; background:#5398ff;" type="primary" size="{{defaultSize}}" plain="{{plain}}" bindtap="ownnerplusevent" hover-class="other-button-hover">确定</button>
               </span>
           </view>
         </form>
@@ -96,11 +97,11 @@
               </span>
           </view>
           <view class="input-buff">
-              <span class="fl input-left"><input placeholder="请输入邦分" /></span>
+              <span class="fl input-left"><input placeholder="请输入邦分"  disabled='true'/></span>
               <span class="fr input-li">邦分</span>
           </view>
           <view class="input-area">
-              <textarea style='z-index:0;' fixed="true" style="height: 3em" placeholder="请填写理由，不超过15个字" />
+              <textarea fixed="true" style="height: 3em" placeholder="请填写理由，不超过15个字"  maxlength='15'/>
           </view>
           <view class="input-des">
               注：请根据实际情况进行加减分，如发现谎报将受到多倍的惩罚！
@@ -128,11 +129,11 @@
               </span>
           </view>
           <view class="input-buff" bindtap='selectotherbufftype'>
-              <span class="fl input-left"><input bindchange='otherbuffevent' value='{{otherbuff}}' placeholder="请输入邦分" /></span>
+              <span class="fl input-left"><input bindchange='otherbuffevent' value='{{otherbuff}}' placeholder="请输入邦分" disabled='true' /></span>
               <span class="fr input-li">邦分</span>
           </view>
           <view class="input-area">
-              <textarea style='z-index:0;' fixed="true" bindblur="otherreasonrevent" value='{{otherreasonr}}' style="height: 3em" placeholder="请填写理由，不超过15个字" />
+              <textarea fixed="true" bindinput="otherreasonrevent" value='{{otherreasonr}}' style="height: 3em" placeholder="请填写理由，不超过15个字"  maxlength='15'/>
           </view>
           <view class="input-des">
               注：请根据实际情况进行加减分，如发现谎报将受到多倍的惩罚！
@@ -147,12 +148,13 @@
           </view>
         </form>
       </view>
-      <i-action-sheet visible="{{ showtype }}" actions="{{ typelist }}" show-cancel bind:cancel="closetype" bind:click="exittype" />
-      <i-action-sheet visible="{{ showothertype }}" actions="{{ othertype }}" show-cancel bind:cancel="closeothertype" bind:click="exitothertype" />
-      <i-action-sheet visible="{{ showbufftype }}" actions="{{ typebufflist}}" show-cancel bind:cancel="closebufftype" bind:click="exitbufftype" />
-      <i-action-sheet visible="{{ showotherbufftype }}" actions="{{ typebufflist}}" show-cancel bind:cancel="closeotherbufftype" bind:click="exitotherbufftype" />
+     
       <i-toast id="toast" />
       <i-modal title="{{madoltitle}}" visible="{{ madolshow }}" id="{{actionid+'|'+actionindex+'|'+actiontype}}" bind:ok="finishevent" bind:cancel="cacelevent">
           <view>{{madolinfos}}</view>
       </i-modal>
 </view>
+ <i-action-sheet visible="{{ showtype }}" actions="{{ typelist }}"  bind:cancel="closetype" bind:click="exittype" />
+      <i-action-sheet visible="{{ showothertype }}" actions="{{ othertype }}"  bind:cancel="closeothertype" bind:click="exitothertype" />
+      <i-action-sheet  visible="{{ showbufftype }}" actions="{{ typebufflist}}"  bind:cancel="closebufftype" bind:click="exitbufftype" />
+      <i-action-sheet visible="{{ showotherbufftype }}" actions="{{ typebufflist}}"  bind:cancel="closeotherbufftype" bind:click="exitotherbufftype" />

@@ -13,7 +13,7 @@
     <view class='top-img-box' id="{{twoitem.user_id+'|'+twoitem.uname}}" bindtap='gotodynamic' wx:if="{{twoindex==1}}">
       <image src="{{twoitem.user_img==null||twoitem.user_img==''?'../../images/img_touxiang_default.png':twoitem.user_img}}"></image>
     </view>
-    <view class='top-name-box' wx:if="{{twoindex==1}}">{{subs.sub(twoitem.uname,4)}}</view>
+    <view class='top-name-box' wx:if="{{twoindex==1}}">{{subs.sub(twoitem.uname==''?twoitem.wechat_name:twoitem.uname,4)}}{{twoitem.wechat_name.length>4?'...':''}}</view>
     <view class='top-name-rank-ionc' wx:if="{{twoindex==1}}"><image src="../../images/dynamic/img_paiming_star.png"></image></view>
     <view class='top-rank-buff' wx:if="{{twoindex==1}}">{{twoitem.total}}</view>
   </view>

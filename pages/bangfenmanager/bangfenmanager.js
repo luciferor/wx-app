@@ -21,16 +21,16 @@ Page({
                 name: '自我减分'
             }
         ],
-        showbufftype:false,
-        buff:'',
-        typebufflist:[
-          { name: '1'},
-          { name: '2'},
-          { name: '3'},
-          { name: '4'},
-          { name: '5'},
+        showbufftype: false,
+        buff: '',
+        typebufflist: [
+            { name: '1' },
+            { name: '2' },
+            { name: '3' },
+            { name: '4' },
+            { name: '5' },
         ],
-        showotherbufftype:false,
+        showotherbufftype: false,
         menushow: false,
         menubtnshow: true,
         ownerdatalist: { //自我加减分表单数据
@@ -52,43 +52,43 @@ Page({
         actiontype: '',
         menushowid: 0,
     },
-    selectotherbufftype(){
-      this.setData({
-        showotherbufftype: true
-      });
+    selectotherbufftype() {
+        this.setData({
+            showotherbufftype: true
+        });
     },
     closeotherbufftype() {
-      this.setData({
-        showotherbufftype: false
-      });
+        this.setData({
+            showotherbufftype: false
+        });
     },
     exitotherbufftype({ detail }) {
-      const index = detail.index;
-      console.log(detail);
-      this.setData({
-        otherbuff: this.data.typebufflist[index].name,
-        showotherbufftype: false
-      })
-      console.log(this.data.buff)
-    }, 
-    selectbufftype(){
-      this.setData({
-        showbufftype:true
-      })
+        const index = detail.index;
+        console.log(detail);
+        this.setData({
+            otherbuff: this.data.typebufflist[index].name,
+            showotherbufftype: false
+        })
+        console.log(this.data.buff)
+    },
+    selectbufftype() {
+        this.setData({
+            showbufftype: true
+        })
     },
     closebufftype() {
-      this.setData({
-        showbufftype: false
-      });
+        this.setData({
+            showbufftype: false
+        });
     },
     exitbufftype({ detail }) {
-      const index = detail.index;
-      console.log(detail);
-      this.setData({
-        buff: this.data.typebufflist[index].name,
-        showbufftype: false
-      })
-      console.log(this.data.buff)
+        const index = detail.index;
+        console.log(detail);
+        this.setData({
+            buff: this.data.typebufflist[index].name,
+            showbufftype: false
+        })
+        console.log(this.data.buff)
     },
     finishevent(e) {
         let _this = this;
@@ -221,7 +221,7 @@ Page({
             title: '用邦分干了这杯事业，快来使用企汇邦……',
             desc: '邦分管理',
             path: '/pages/mine/mine',
-            imageUrl: '../../images/minproShare.jpg',
+            imageUrl: '../../images/minproTranspond.png',
             success: function(res) {
                 console.log(res)
             },
@@ -232,8 +232,8 @@ Page({
         }
     },
     ownnerplusevent() {
-      let count=0;
-      console.log(this.data.ownerdatalist.reasonr);
+        let count = 0;
+        console.log(this.data.ownerdatalist.reasonr);
         let _this = this;
         if (_this.data.typename == "") {
             $Toast({
@@ -247,10 +247,10 @@ Page({
             $Toast({
                 content: "请输入理由",
             });
-        } else {
+        }  else  {
             console.log("自我加减分申请");
-            if(count>1){
-              return;
+            if (count > 1) {
+                return;
             }
             api.$http(function(res) {
                 console.log(res);
@@ -328,7 +328,7 @@ Page({
             });
         } else {
             wx.navigateTo({
-              url: '../../pages/selectuseres/selectuseres?type=' + this.data.othertypename + "&buff=" + this.data.otherbuff + "&reasonr=" + this.data.otherreasonr,
+                url: '../../pages/selectuseres/selectuseres?type=' + this.data.othertypename + "&buff=" + this.data.otherbuff + "&reasonr=" + this.data.otherreasonr,
             })
             this.setData({
                 showother: false,

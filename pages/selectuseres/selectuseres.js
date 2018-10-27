@@ -80,7 +80,7 @@ Page({
             title: '用邦分干了这杯事业，快来使用企汇邦……',
             desc: '邦分管理',
             path: '/pages/mine/mine',
-            imageUrl: '../../images/minproShare.jpg',
+            imageUrl: '../../images/minproTranspond.png',
             success: function(res) {
                 console.log(res)
             },
@@ -149,15 +149,15 @@ Page({
             console.log(err)
         }, '/WeChat/Applet/getUserList', {
             session_key: app.apiData.session_key
-        }, 'POST',function(com){
-          console.log('是否执行')
-          console.log(com)
-          setTimeout(function () {
-            _this.convertdata();
-            _this.setData({
-              isshow: false
-            })
-          },100)
+        }, 'POST', function(com) {
+            console.log('是否执行')
+            console.log(com)
+            setTimeout(function() {
+                _this.convertdata();
+                _this.setData({
+                    isshow: false
+                })
+            }, 100)
         });
     },
     onLoad(option) {
@@ -220,12 +220,12 @@ Page({
         api.$http(function(res) {
             console.log(res);
             _this.alertsuccess(res.data.message);
-            if(res.data.success){
-              setTimeout(function () {
-                wx.navigateBack({
-                  data: res.data.success
-                });
-              }, 1000)
+            if (res.data.success) {
+                setTimeout(function() {
+                    wx.navigateBack({
+                        data: res.data.success
+                    });
+                }, 1000)
             }
         }, function(err) {
             console.log(err);

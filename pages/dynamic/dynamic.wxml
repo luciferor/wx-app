@@ -72,7 +72,7 @@
             <view class="user-li-title-box fl">
                 <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">{{dit.name == "" ? subs.sub(dit.wechat_name,8) :subs.sub(dit.name,8) }}</span><span class="user-li-title-box-listtitle-time">{{dit.created_at
 }}</span></view>
-                <view class="user-li-title-box-listdes">{{subs.sub(dit.content,20)}}</view>
+                <view class="user-li-title-box-listdes">{{subs.sub(dit.content,14)}}</view>
             </view>
             <view class="user-li-right-bf fr">
                 {{dit.status=='add'?'+'+dit.bangfen:''+dit.bangfen}}邦分
