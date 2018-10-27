@@ -47,7 +47,6 @@ page{
   margin-top: 20rpx;
   background: white;
   margin-bottom: 20rpx;
-
 }
 
 .user-container{
@@ -55,6 +54,7 @@ page{
   flex-direction: row; 
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1rpx solid #eeeeee;
 }
 
 .user-left-container{    
@@ -119,7 +119,7 @@ page{
 .horizontal-line{
   background: #eeeeee;
   width: 100%;
-  height: 1rpx;
+  height:1rpx;
 }
 
 .create-and-invite {

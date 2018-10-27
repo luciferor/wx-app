@@ -1,5 +1,6 @@
 {
     "pages": [
+        "pages/index/index",
         "pages/mine/mine",
         "pages/create/create",
         "pages/guide/guide",
@@ -9,7 +10,6 @@
         "pages/edit_mutual/edit_mutual",
         "pages/edit_self/edit_self",
         "pages/notice/notice",
-        "pages/index/index",
         "pages/logs/logs",
         "pages/task/task",
         "pages/dynamic/dynamic",

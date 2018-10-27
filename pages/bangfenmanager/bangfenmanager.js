@@ -220,7 +220,7 @@ Page({
         return {
             title: '用邦分干了这杯事业，快来使用企汇邦……',
             desc: '邦分管理',
-            path: '/pages/mine/mine',
+            path: '/pages/index/index',
             imageUrl: '../../images/minproTranspond.png',
             success: function(res) {
                 console.log(res)
@@ -484,7 +484,8 @@ Page({
                 id: item[i].id,
                 bangfen: item[i].bangfen,
                 name: item[i].name,
-                ischecked: false
+                ischecked: false,
+                type:item[i].type
             })
         }
         this.setData({

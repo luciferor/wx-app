@@ -16,9 +16,9 @@
           wx:for-index="index"  
           wx:for-item="item" data-reply-Type="{{item.id+'|'+index}}" bindtap='selectedeventseach'>
           <view class="{{item.ischecked?'unlistboxbig':'listboxbig'}}">
-            <view class='imgbox fl'><image src='../../images/tabs/icon_tab_wode_selected.png'></image></view>
-            <view class='namebox fl'>{{item.name}}</view>
-            <view class='postbox fl'>({{item.wechat_name}})</view>
+            <view class='imgbox fl'><image src="{{item.user_img==''?'../../images/tabs/icon_tab_wode_selected.png':item.user_img}}"></image></view>
+            <view class='namebox fl'>{{item.name==''?item.wechat_name:item.name}}</view>
+            <view class='postbox fl'>({{item.post}})</view>
             <view class='selectbox fr'><image wx:if="{{item.ischecked}}" src='../../images/icon_xuanze.png'></image></view>
           </view>
       </view>
@@ -37,7 +37,7 @@
                     wx:key="{{in}}" 
                     wx:for-item="it" data-reply-Type="{{it.id+'|'+index+'|'+in}}" bindtap='selectedevent'>
                     <view class="{{it.ischecked?'unlistboxbig':'listboxbig'}}">
-                      <view class='imgbox fl'><image src='../../images/tabs/icon_tab_wode_selected.png'></image></view>
+                      <view class='imgbox fl'><image src="{{it.img==''?'../../images/tabs/icon_tab_wode_selected.png':it.img}}"></image></view>
                       <view class='namebox fl'>{{it.name==''?it.wechat_name:it.name}}</view>
                       <view class='postbox fl'>{{it.post}}</view>
                       <view class='selectbox fr'><image wx:if="{{it.ischecked}}" src='../../images/icon_xuanze.png'></image></view>

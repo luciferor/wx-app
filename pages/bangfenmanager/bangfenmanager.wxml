@@ -1,3 +1,4 @@
+<wxs module="subs" src="../../filter/substres.wxs"></wxs>
 <view style='background:#f7f7f7; height:100%;'>
       <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
         <view class="tab-item {{currentTab==0?'active':''}}"  data-current="0" bindtap="swichNav">自我管理</view>
@@ -10,9 +11,9 @@
                   <block wx:key="*this" wx:for="{{ownerlist}}" wx:for-index="idx" wx:for-item="owner" wx:if="{{owner.name!=''}}">
                       <view class="item-ans">
                           <span>
-                              <radio color="#5398ff" class="radio" id="{{owner.id+'|'+idx+'|'+owner.name}}" bindtap='ownerevents' value="{{owner.id}}" checked="{{owner.ischecked}}"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{owner.name}}</radio>
+                              <radio color="#5398ff" class="radio" id="{{owner.id+'|'+idx+'|'+owner.name}}" bindtap='ownerevents' value="{{owner.id}}" checked="{{owner.ischecked}}"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{subs.sub(owner.name,10)}}</radio>
                           </span>
-                          <span class="bf">+{{owner.bangfen}}邦分</span>
+                          <span class="bf">{{owner.type == 1 ? "+" :"-"}}{{owner.bangfen}}邦分</span>
                       </view>
                   </block>
               </scroll-view>
@@ -22,9 +23,9 @@
                   <block wx:key="*this" wx:for="{{mutullist}}" wx:for-index="mi" wx:for-item="mit">
                       <view class="item-ans">
                           <span>
-                              <radio color="#5398ff" id="{{mit.id+'|'+mi+'|'+mit.behavior}}" bindtap='mutuevents' class="radio" value="{{mit.id}}" checked="{{mit.ischecked}}"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{mit.behavior}}</radio>
+                              <radio color="#5398ff" id="{{mit.id+'|'+mi+'|'+mit.behavior}}" bindtap='mutuevents' class="radio" value="{{mit.id}}" checked="{{mit.ischecked}}"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{subs.sub(mit.behavior,10)}}</radio>
                           </span>
-                          <span class="bf">+{{mit.score}}邦分</span>
+                          <span class="bf">{{mit.type ==1 ? "+" : '-'}}{{mit.score}}邦分</span>
                       </view>
                   </block>
               </scroll-view>
@@ -68,7 +69,8 @@
               <span class="fr input-li">邦分</span>
           </view>
           <view class="input-area">
-              <textarea fixed="true" name="reasonrtext" maxlength='15' style="height: 3em" value='{{ownerdatalist.reasonr}}' placeholder="请填写理由，不超过15个字" bindinput='reasonevent' />
+              <textarea style='z-index=0;' fixed="true" name="reasonrtext" maxlength='15' style="height: 3em" value='{{ownerdatalist.reasonr}}' placeholder="请填写理由，不超过15个字" bindinput='reasonevent' />
+
           </view>
           <view class="input-des">
               注：请根据实际情况进行加减分，如发现谎报将受到多倍的惩罚！
@@ -100,7 +102,7 @@
               <span class="fr input-li">邦分</span>
           </view>
           <view class="input-area">
-              <textarea fixed="true" style="height: 3em" placeholder="请填写理由，不超过15个字"  maxlength='15'/>
+              <textarea style='z-index=0;' fixed="true" style="height: 3em" placeholder="请填写理由，不超过15个字"  maxlength='15'/>
           </view>
           <view class="input-des">
               注：请根据实际情况进行加减分，如发现谎报将受到多倍的惩罚！
@@ -132,7 +134,7 @@
               <span class="fr input-li">邦分</span>
           </view>
           <view class="input-area">
-              <textarea fixed="true" bindinput="otherreasonrevent" value='{{otherreasonr}}' style="height: 3em" placeholder="请填写理由，不超过15个字"  maxlength='15'/>
+              <textarea style='z-index=0;' fixed="true" bindinput="otherreasonrevent" value='{{otherreasonr}}' style="height: 3em" placeholder="请填写理由，不超过15个字"  maxlength='15'/>
           </view>
           <view class="input-des">
               注：请根据实际情况进行加减分，如发现谎报将受到多倍的惩罚！

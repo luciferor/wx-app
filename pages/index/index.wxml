@@ -1,18 +1,16 @@
 <!--index.wxml-->
 <view class="container">
-  <topbar id='topbar' 
-      title='首页' 
-      bind:gotoback="gotoback">
-  </topbar>
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image  class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text bindtap="bindViewTap" class="userinfo-nickname">{{userInfo.nickName}}</text>
-      <navigator url="/pages/create/create" hover-class="navigator-hover">跳转到创建页</navigator>
-    </block>
+  <view style='height:100%; width:100%; text-align:center; line-height:100%;'>
+    <image style='width:100rpx; height:100rpx;' src='../../images/basicprofile.png'></image>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view>程序启动中...</view>
+  <i-spin size="large" fix wx:if="{{ true }}"></i-spin>
+  <view class='linces-wx-mask' wx:if="{{isshow}}"></view>
+  <view class='linces-wx-dialog' wx:if="{{isshow}}">
+    <view class='lincesbox'>
+      <view style='height:80rpx; background:white; line-height:80rpx; font-size:28rpx;'>登录提示</view>
+      <view style='width:calc(100% - 59rpx); height:104rpx; color:#999; background:white; font-size:28rpx; padding:30rpx; text-align:left;'>小程序需要您的授权才能提供更好的服务哦！</view>
+      <button class='linscesbtn' type="default" open-type="getUserInfo" bindgetuserinfo="getUserInfo">好 的</button>
+    </view>
   </view>
 </view>

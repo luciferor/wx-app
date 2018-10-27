@@ -77,7 +77,7 @@ Page({
         return {
             title: '用邦分干了这杯事业，快来使用企汇邦……',
             desc: '邦分管理',
-            path: '/pages/mine/mine',
+            path: '/pages/index/index',
             imageUrl: '../../images/minproTranspond.png',
             success: function(res) {
                 console.log(res)
@@ -142,7 +142,8 @@ Page({
                     })
                 }
             }
-            console.log(_this.data.cities)
+            //console.log(_this.data.cities)
+            //console.log('asdkjfaslkfjasldjfaslkfjas;lkfjaslkfjaslkdfj')
         }, function(err) {
             console.log(err)
         }, '/WeChat/Applet/getUserList', {
@@ -179,7 +180,7 @@ Page({
                 name: item.name,
                 key: firstName,
                 post: item.postname,
-                img: item.user_img,
+                img: item.img,
                 ischecked: false,
                 wechat_name: item.wechat_name
             });
@@ -196,6 +197,7 @@ Page({
             _this.setData({
                 searchuserlist: res.data.message
             })
+            
         }, function(err) {
             console.log(err)
         }, '/WeChat/Applet/getUserByName', {

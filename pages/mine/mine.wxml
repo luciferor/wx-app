@@ -6,7 +6,10 @@
         <view class='info-container'>
             <view class='left-container'  bindtap='navigateToSetting'>
                 <image src="{{userInfo.avatarurl==null||userInfo.avatarurl==''?'../../images/mine/head_default_icon.png': userInfo.avatarurl}}" class='pic'></image>
-                <text class='uname'>{{name}}</text>
+                <view class='name-company-container'>
+                    <text class='uname'>{{name}}</text>
+                    <text class='ucompany'>{{userInfo.companyname}}</text>                  
+                </view>
             </view>
             <view class='right-container' bindtap='navigateToNotice'>
                 <image src='../../images/mine/icon_wode_tongzhi.png' class='message'></image>
@@ -19,7 +22,7 @@
              <!-- <text class=''>{{score|Number}}<span style="font-size:28rpx;">总邦分<span></text> -->
              <view style='padding-top:30rpx;'><span class="total-score fl">{{score|Number}}</span><span style="color:#fff;">邦分</span></view>
              <view class='remind-container' bindtap='handleRemindOpen'>
-                <text class='remind-text'>剩{{userInfo.disposable ==null ?0:userInfo.disposable}}邦分加分权利，{{userInfo.reduce ==null ? 0:userInfo.reduce}}邦分减分权利</text>
+                <text class='remind-text'>剩{{userInfo.disposable ==null ?0:userInfo.disposable}}邦分加分权利，{{userInfo.reduces ==null ? 0:userInfo.reduces}}邦分减分权利</text>
                 <image class='remind-icon' src='../../images/mine/icon_wode_shuoming.png'></image>
              </view>
             </view>
@@ -80,15 +83,6 @@
       <text class='modal-text'>2、相互管理剩余邦分由管理员分配。</text>
     </view>
 </i-modal>
-
-<view class='linces-wx-mask' wx:if="{{!hasUserInfo && canIUse}}"></view>
-<view class='linces-wx-dialog' wx:if="{{!hasUserInfo && canIUse}}">
-  <view class='lincesbox'>
-    <view style='height:80rpx; background:white; line-height:80rpx; font-size:28rpx;'>登录提示</view>
-    <view style='width:calc(100% - 59rpx); height:104rpx; color:#999; background:white; font-size:28rpx; padding:30rpx; text-align:left;'>小程序需要您的授权才能提供更好的服务哦！</view>
-    <button class='linscesbtn' type="default" open-type="getUserInfo" bindgetuserinfo="getUserInfo">好 的</button>
-  </view>
-</view>
 </view>
 <i-toast id="toast" />
 

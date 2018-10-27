@@ -21,7 +21,7 @@
         <view class='wx-info'>
           <view class='info-container'>
               <text class='explain-text'>姓名</text>
-              <input color='#666666' placeholder='{{userInfo.name}}' class='name-input' maxlength='6' bindinput="changeNameInput"></input>
+              <input color='#666666' placeholder='请输入备注名' placeholder-class="placeholder" class='name-input' maxlength='6' bindinput="changeNameInput" value='{{name}}'></input>
           </view>
           <view class='horizontal-line'></view>
           <view class='info-container'> 

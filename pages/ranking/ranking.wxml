@@ -9,29 +9,29 @@
   <image src='../../images/dynamic/img_paiming_guang.png'></image>
 </view>
 <view class='top-three-box'>
-  <view class='top-three-second fl' wx:for="{{topranklist}}" wx:if="{{twoindex==1}}" wx:for-index="twoindex" wx:for-item="twoitem" >
-    <view class='top-img-box' id="{{twoitem.user_id+'|'+twoitem.uname}}" bindtap='gotodynamic'>
+  <view class='top-three-second fl' wx:for="{{topranklist}}"  wx:for-index="twoindex" wx:for-item="twoitem" >
+    <view class='top-img-box' id="{{twoitem.user_id+'|'+twoitem.uname}}" bindtap='gotodynamic' wx:if="{{twoindex==1}}">
       <image src="{{twoitem.user_img==null||twoitem.user_img==''?'../../images/img_touxiang_default.png':twoitem.user_img}}"></image>
     </view>
-    <view class='top-name-box'>{{subs.sub(twoitem.uname,4)}}</view>
-    <view class='top-name-rank-ionc'><image src="../../images/dynamic/img_paiming_star.png"></image></view>
-    <view class='top-rank-buff'>{{twoitem.total}}</view>
+    <view class='top-name-box' wx:if="{{twoindex==1}}">{{subs.sub(twoitem.uname==''?twoitem.wechat_name:twoitem.uname,4)}}{{twoitem.wechat_name.length>4?'...':''}}</view>
+    <view class='top-name-rank-ionc' wx:if="{{twoindex==1}}"><image src="../../images/dynamic/img_paiming_star.png"></image></view>
+    <view class='top-rank-buff' wx:if="{{twoindex==1}}">{{twoitem.total}}</view>
   </view>
-  <view class='top-three-first fl' wx:for="{{topranklist}}" wx:if="{{oneindex==0}}" wx:for-index="oneindex" wx:for-item="oneitem">
-    <view class='top-img-box' id="{{oneitem.user_id+'|'+oneitem.uname}}" bindtap='gotodynamic'>
+  <view class='top-three-first fl' wx:for="{{topranklist}}" wx:for-index="oneindex" wx:for-item="oneitem">
+    <view wx:if="{{oneindex==0}}" class='top-img-box' id="{{oneitem.user_id+'|'+oneitem.uname}}" bindtap='gotodynamic'>
       <image src="{{oneitem.user_img==null||oneitem.user_img==''?'../../images/img_touxiang_default.png':oneitem.user_img}}"></image>
     </view>
-    <view class='top-name-box'>{{subs.sub(oneitem.uname,4)}}</view>
-    <view class='top-name-rank-ionc'><image src='../../images/dynamic/img_paiming_star.png'></image></view>
-    <view class='top-rank-buff'>{{oneitem.total}}</view>
+    <view wx:if="{{oneindex==0}}" class='top-name-box'>{{subs.sub(oneitem.uname,4)}}</view>
+    <view wx:if="{{oneindex==0}}" class='top-name-rank-ionc'><image src='../../images/dynamic/img_paiming_star.png'></image></view>
+    <view wx:if="{{oneindex==0}}" class='top-rank-buff'>{{oneitem.total}}</view>
   </view>
-  <view class='top-three-third fl' wx:for="{{topranklist}}" wx:if="{{threeindex==2}}" wx:for-index="threeindex" wx:for-item="threeitem">
-    <view class='top-img-box' id="{{threeitem.user_id+'|'+threeitem.uname}}" bindtap='gotodynamic'>
+  <view class='top-three-third fl' wx:for="{{topranklist}}" wx:for-index="threeindex" wx:for-item="threeitem">
+    <view wx:if="{{threeindex==2}}" class='top-img-box' id="{{threeitem.user_id+'|'+threeitem.uname}}" bindtap='gotodynamic'>
       <image src="{{threeitem.user_img==null||threeitem.user_img==''?'../../images/img_touxiang_default.png':threeitem.user_img}}"></image>
     </view>
-    <view class='top-name-box'>{{subs.sub(threeitem.uname,4)}}</view>
-    <view class='top-name-rank-ionc'><image src='../../images/dynamic/img_paiming_star.png'></image></view>
-    <view class='top-rank-buff'>{{threeitem.total}}</view>
+    <view wx:if="{{threeindex==2}}" class='top-name-box'>{{subs.sub(threeitem.uname,4)}}</view>
+    <view wx:if="{{threeindex==2}}" class='top-name-rank-ionc'><image src='../../images/dynamic/img_paiming_star.png'></image></view>
+    <view wx:if="{{threeindex==2}}" class='top-rank-buff'>{{threeitem.total}}</view>
   </view>
 </view>
 <view class='content-box'>
@@ -57,7 +57,7 @@
                         <view class='combuff fr'><span class="combuff-span">{{dayitem.total}}</span>邦分</view>
                     </view>
                 </block>
-                <view style='height:30%; background:#FFF; opacity:0.9;'></view>
+                <view style='height:32%; background:#FFF; opacity:0.9;'></view>
             </scroll-view>
         </swiper-item>
         <swiper-item>
@@ -75,7 +75,7 @@
                         <view class='combuff fr'><span class="combuff-span">{{weekitem.total}}</span>邦分</view>
                     </view>
                 </block>
-                <view style='height:30%; background:#FFF; opacity:0.9;'></view>
+                <view style='height:32%; background:#FFF; opacity:0.9;'></view>
             </scroll-view>
         </swiper-item>
         <swiper-item>
@@ -93,7 +93,7 @@
                         <view class='combuff fr'><span class="combuff-span">{{monthitem.total}}</span>邦分</view>
                     </view>
                 </block>
-                <view style='height:30%; background:#FFF; opacity:0.9;'></view>
+                <view style='height:32%; background:#FFF; opacity:0.9;'></view>
             </scroll-view>
         </swiper-item>
     </swiper>
