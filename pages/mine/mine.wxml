@@ -19,7 +19,7 @@
              <!-- <text class=''>{{score|Number}}<span style="font-size:28rpx;">总邦分<span></text> -->
              <view style='padding-top:30rpx;'><span class="total-score fl">{{score|Number}}</span><span style="color:#fff;">邦分</span></view>
              <view class='remind-container' bindtap='handleRemindOpen'>
-                <text class='remind-text'>剩{{userInfo.disposable ==null ?0:userInfo.disposable}}邦分加分权利，{{userInfo.reduce ==null ? 0:userInfo.reduce}}邦分减分权利</text>
+                <text class='remind-text'>剩{{userInfo.disposable ==null ?0:userInfo.disposable}}邦分加分权利，{{userInfo.reduces ==null ? 0:userInfo.reduces}}邦分减分权利</text>
                 <image class='remind-icon' src='../../images/mine/icon_wode_shuoming.png'></image>
              </view>
             </view>

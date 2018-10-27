@@ -63,7 +63,7 @@ Page({
                 });
                 _this.getNoticeList(1, _this.data.applyPage);
                 _this.getNoticeList(0, _this.data.allPage);
-                _this.getNoticeList(3, _this.data.rejectNotice);
+                _this.getNoticeList(3, _this.data.rejectPage);
             } else {
                 $Toast({
                     content: data.data.message
@@ -90,7 +90,7 @@ Page({
                 });
                 _this.getNoticeList(0, _this.data.allPage);
                 _this.getNoticeList(1, _this.data.applyPage);
-                _this.getNoticeList(2, _this.data.passNotice);
+                _this.getNoticeList(2, _this.data.passPage);
             } else {
                 $Toast({
                     content: data.data.message
@@ -118,7 +118,7 @@ Page({
                 });
                 _this.getNoticeList(0, _this.data.allPage);
                 _this.getNoticeList(1, _this.data.applyPage);
-                _this.getNoticeList(3, _this.data.rejectNotice);
+                _this.getNoticeList(3, _this.data.rejectPage);
             } else {
                 $Toast({
                     content: data.data.message
@@ -145,7 +145,7 @@ Page({
                 });
                 _this.getNoticeList(0, _this.data.allPage);
                 _this.getNoticeList(1, _this.data.applyPage);
-                _this.getNoticeList(2, _this.data.passNotice);
+                _this.getNoticeList(2, _this.data.passPage);
             } else {
                 $Toast({
                     content: data.data.message

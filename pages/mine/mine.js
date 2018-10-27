@@ -15,11 +15,12 @@ Page({
             disposable: "", //加分权利
             id: 0,
             name: "",
-            reduce: "", //减分权利
+            reduce: 0, 
             score: 0,
             total_score: 0, //总分
             user_img: "", //用户头像
             isadmin: 0,
+           reduces: 0//减分权利
         },
         score: Number(0),
         name: "", //姓名
@@ -113,7 +114,7 @@ Page({
                 _this.setData({
                     userInfo: data.data.message,
                     name: data.data.message.name == "" ? app.apiData.nickName : data.data.message.name,
-                    score: Number(data.data.message.score) + Number(data.data.message.total_score)
+                    score: Number(data.data.message.score) + Number(data.data.message.total_score)-Number(data.data.message.reduce)
                 });
             }
             console.log(data.data.message)
