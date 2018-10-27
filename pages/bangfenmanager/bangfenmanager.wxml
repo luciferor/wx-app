@@ -12,7 +12,7 @@
                           <span>
                               <radio color="#5398ff" class="radio" id="{{owner.id+'|'+idx+'|'+owner.name}}" bindtap='ownerevents' value="{{owner.id}}" checked="{{owner.ischecked}}"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{owner.name}}</radio>
                           </span>
-                          <span class="bf">+{{owner.bangfen}}邦分</span>
+                          <span class="bf">{{owner.type ==1 ? "+" : "-"}}{{owner.bangfen}}邦分</span>
                       </view>
                   </block>
               </scroll-view>
@@ -24,7 +24,7 @@
                           <span>
                               <radio color="#5398ff" id="{{mit.id+'|'+mi+'|'+mit.behavior}}" bindtap='mutuevents' class="radio" value="{{mit.id}}" checked="{{mit.ischecked}}"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{mit.behavior}}</radio>
                           </span>
-                          <span class="bf">+{{mit.score}}邦分</span>
+                          <span class="bf">{{mit.type ==1 ? "+" : "-"}}{{mit.score}}邦分</span>
                       </view>
                   </block>
               </scroll-view>
