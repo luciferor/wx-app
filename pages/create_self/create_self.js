@@ -117,13 +117,6 @@ Page({
             zidingyiNum: zidingyiArrLength,
             alreadyNum: zidingyiArrLength + hangyeArrArrLength,
         })
-        _this.setData({
-            zidingyiBehaviorArr: JSON.parse(JSON.stringify(zidingyiArr)), //自定义的已编辑行为数组
-            hangyeBehaviorArr: JSON.parse(JSON.stringify(hangyeArr)), //行业对应的已编辑行为数组
-            hangyeNum: hangyeArr.length,
-            zidingyiNum: zidingyiArr.length,
-            alreadyNum: zidingyiArr.length + hangyeArr.length,
-        })
 
         api.$http(function(res) { //获取行业列表
             _this.setData({
@@ -307,8 +300,8 @@ Page({
     },
     handleReset: function() { //重置
 
-        var zidingyiArr = this.data.resetZidingyiBehaviorArr
-        var hangyeArr = this.data.resetHangyeBehaviorArr
+        let zidingyiArr = app.apiData.creatOrg.selfZidingyiBehaviorArr
+        let hangyeArr = app.apiData.creatOrg.selfHangyeBehaviorArr
 
         this.setData({
             zidingyiBehaviorArr: JSON.parse(JSON.stringify(zidingyiArr)), //重置恢复的相互管理的自定义行为
@@ -321,12 +314,16 @@ Page({
 
         var referXingweiArr = this.data.xingweiArr
         for (let i = 0; i < referXingweiArr.length; i++) {
-            for (let m = 0; m < this.data.hangyeBehaviorArr.length; m++) {
-                if (referXingweiArr[i].id == this.data.hangyeBehaviorArr[m].id && this.data.hangyeBehaviorArr[m].state == 1) {
-                    referXingweiArr[i].checked = true;
-                    break;
-                } else {
-                    referXingweiArr[i].checked = false
+            if (this.data.hangyeBehaviorArr.length == 0) {
+                referXingweiArr[i].checked = false
+            } else {
+                for (let m = 0; m < this.data.hangyeBehaviorArr.length; m++) {
+                    if (referXingweiArr[i].id == this.data.hangyeBehaviorArr[m].id && this.data.hangyeBehaviorArr[m].state == 1) {
+                        referXingweiArr[i].checked = true;
+                        break; //得到true则停止当前i 的循环，防止被false覆盖
+                    } else {
+                        referXingweiArr[i].checked = false
+                    }
                 }
             }
         }
