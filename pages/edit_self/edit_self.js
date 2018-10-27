@@ -313,12 +313,16 @@ Page({
 
         var referXingweiArr = this.data.xingweiArr
         for (let i = 0; i < referXingweiArr.length; i++) {
-            for (let m = 0; m < this.data.hangyeBehaviorArr.length; m++) {
-                if (referXingweiArr[i].id == this.data.hangyeBehaviorArr[m].id && this.data.hangyeBehaviorArr[m].state == 1) {
-                    referXingweiArr[i].checked = true;
-                    break;
-                } else {
-                    referXingweiArr[i].checked = false
+            if (this.data.hangyeBehaviorArr.length == 0) {
+                referXingweiArr[i].checked = false
+            } else {
+                for (let m = 0; m < this.data.hangyeBehaviorArr.length; m++) {
+                    if (referXingweiArr[i].id == this.data.hangyeBehaviorArr[m].id && this.data.hangyeBehaviorArr[m].state == 1) {
+                        referXingweiArr[i].checked = true;
+                        break; //得到true则停止当前i 的循环，防止被false覆盖
+                    } else {
+                        referXingweiArr[i].checked = false
+                    }
                 }
             }
         }
