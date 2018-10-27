@@ -85,12 +85,10 @@ Page({
             console.log(res)
             if (res.data.code == 200) {
                 app.apiData.Company_Id = res.data.message
-                wx.showShareMenu();
                 _this.setData({
                     createStatus: 3
                 })
             } else {
-                wx.hideShareMenu();
                 _this.setData({
                     createStatus: 1
                 })
@@ -106,7 +104,7 @@ Page({
             session_key: app.apiData.session_key,
             name: app.apiData.creatOrg.createOrgName,
             selfmanaged: JSON.stringify(app.apiData.creatOrg.selfMergeArr),
-            mutualmanaged: JSON.stringify(app.apiData.creatOrg.selfMergeArr)
+            mutualmanaged: JSON.stringify(app.apiData.creatOrg.mutualMergeArr)
         }, 'POST');
     },
 
