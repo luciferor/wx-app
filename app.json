@@ -1,6 +1,6 @@
 {
     "pages": [
-       "pages/mine/mine",  
+        "pages/mine/mine",
         "pages/create/create",
         "pages/guide/guide",
         "pages/setting/setting",
