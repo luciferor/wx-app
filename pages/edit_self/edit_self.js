@@ -218,7 +218,7 @@ Page({
                     flag++
                 } else {
                     New_hangyeBehaviorArr[i].state = 1;
-                    return
+                    break;
                 }
             }
             if (flag == New_hangyeBehaviorArr.length) {
