@@ -28,10 +28,12 @@
 
 .setting-item.organize-name {
     display: block;
+    font-size: 30rpx;
 }
 
 .phcolor {
     color: #cccccc;
+    font-size: 30rpx;
 }
 
 .setting-item .left-txt {
