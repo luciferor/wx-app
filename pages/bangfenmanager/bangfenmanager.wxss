@@ -77,7 +77,7 @@
     width:0rpx;
     cursor: pointer;
     position:fixed;
-    z-index: 0;
+    z-index:12;
     bottom:40rpx;
     right:190rpx;
     text-align: center;
@@ -246,4 +246,10 @@
     padding:30rpx 25rpx;
     margin-top:30rpx;
     width:92%;
+}
+
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
 }
