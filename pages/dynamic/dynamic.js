@@ -85,9 +85,11 @@ Page({
     },
     adosuccess(data) {
         console.log(data)
-        this.setData({
+        if(data.data.success){
+          this.setData({
             newawardlist: data.data.message
-        })
+          })
+        }
     },
     adofail(err) {
         console.log(err);

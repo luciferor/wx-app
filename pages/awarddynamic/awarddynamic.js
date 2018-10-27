@@ -16,9 +16,11 @@ Page({
         }, 'POST')
     },
     dosuccess(res) {
+      if(res.data.success){
         this.setData({
-            awardlist: res.data.message
+          awardlist: res.data.message
         })
+      }
     },
     dofail(err) {
         console.log(err);
