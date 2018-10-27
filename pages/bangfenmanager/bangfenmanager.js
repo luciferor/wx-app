@@ -247,7 +247,7 @@ Page({
             $Toast({
                 content: "请输入理由",
             });
-        } else {
+        }  else  {
             console.log("自我加减分申请");
             if(count>1){
               return;

@@ -1,7 +1,11 @@
 var subs = {
   sub:function(_str,_num){
     if(_str==null||_str==undefined||!_str) return '';
-    return _str.substring(0,_num);
+    if(_str.length > _num){
+      return (_str.substring(0, _num)+"...");
+    }else{
+      return _str;
+    }
   },
   rank:function(_str){
     _str = _str.substring(0,1);
