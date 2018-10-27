@@ -18,6 +18,12 @@ page {
 .tab1-content {
     display: flex;
     padding-top: 100rpx;
+    height: 100%;
+    position: absolute;
+    padding-bottom: 120rpx;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
 }
 
 .hangye-list {
@@ -26,7 +32,6 @@ page {
     text-align: center;
     color: #999999;
     font-size: 28rpx;
-    max-height: 985rpx;
     overflow: auto;
     flex: 0 0 auto;
 }
@@ -58,7 +63,6 @@ page {
     color: #666666;
     font-size: 26rpx;
     flex: 1 1 auto;
-    height: 985rpx;
     overflow: auto;
     background-color: #ffffff;
 }
