@@ -24,29 +24,7 @@ Page({
         score: Number(0),
         name: "", //姓名
         targetList: [
-                // {
-                //   "id": 1,
-                //   "type": 1,
-                //   "ranktitle": "休假三天",
-                //   "gift_type": 3,
-                //   "rank": 1,
-                //   "scoretitle": null,
-                //   "gift_score": null,
-                //   "todayrank":1,
-                //   "weekrank":2,
-                //   "monthrank":3
-                // },
-                // {
-                //   "id": 2,
-                //   "type": 2,
-                //   "ranktitle": null,
-                //   "gift_type": null,
-                //   "rank": null,
-                //   "scoretitle": "成都一日游",
-                //   "gift_score": 2000, "todayrank": 1,
-                //   "weekrank": 2,
-                //   "monthrank": 3
-                // }
+              
             ] //我的目标列表
             ,
         session_key: '',
