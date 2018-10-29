@@ -2,13 +2,13 @@
 <wxs module="subs" src="../../filter/substres.wxs"></wxs>
 <view class='bigbox'>
 </view>
-<view class='columnbox'>
+<view class='columnbox' animation="{{animationData}}">
   <image src='../../images/dynamic/img_paiming_taizi.png'></image>
 </view>
-<view class='guangshu'>
+<view class='guangshu' animation="{{animationData}}">
   <image src='../../images/dynamic/img_paiming_guang.png'></image>
 </view>
-<view class='top-three-box'>
+<view class='top-three-box' animation="{{animationopacityData}}">
   <view class='top-three-second fl'>
     <view class='top-img-box' id="{{topranklist[1].user_id+'|'+topranklist[1].uname}}" bindtap='gotodynamic'>
       <image src="{{topranklist[1].user_img==null||topranklist[1].user_img==''?'../../images/img_touxiang_default.png':topranklist[1].user_img}}"></image>
@@ -18,6 +18,9 @@
     <view class='top-rank-buff' >{{topranklist[1].total}}</view>
   </view>
   <view class='top-three-first fl'>
+    <view wx:if="{{currentTab==1?true:false}}" class='king-img0'><image src='../../images/dynamic/icon_huanguang.png'></image></view>
+    <view wx:if="{{currentTab==2?true:false}}" class='king-img1'><image src='../../images/dynamic/icon_huanguang.png'></image></view>
+    <view wx:if="{{currentTab==0?true:false}}" class='king-img2'><image src='../../images/dynamic/icon_huanguang.png'></image></view>
     <view class='top-img-box' id="{{topranklist[0].user_id+'|'+topranklist[0].uname}}" bindtap='gotodynamic'>
       <image src="{{topranklist[0].user_img==null||topranklist[0].user_img==''?'../../images/img_touxiang_default.png':topranklist[0].user_img}}"></image>
     </view>
@@ -44,10 +47,14 @@
     style="height:{{winHeight}}rpx">
         <swiper-item>
             <scroll-view scroll-y="true" class="scoll-h">
-                <view style='height:64.5%; z-index:-1;'></view>
+                <view style='height:64.5%; z-index:-1;'>
+                  <view style='width:33.3%; height: 100%;' bindtap='gotodynamic' class='fl' id="{{topranklist[1].user_id+'|'+(topranklist[1].uname==''?topranklist[1].wechat_name:topranklist[1].uname)}}" ></view>
+                  <view style='width:33.3%; height: 100%;' bindtap='gotodynamic' class='fl' id="{{topranklist[0].user_id+'|'+(topranklist[0].uname==''?topranklist[0].wechat_name:topranklist[0].uname)}}"></view>
+                  <view style='width:33.3%; height: 100%;' bindtap='gotodynamic' class='fl' id="{{topranklist[2].user_id+'|'+(topranklist[2].uname==''?topranklist[2].wechat_name:topranklist[2].uname)}}"></view>
+                </view>
                 <view style='height:30rpx; background:#FFF; opacity:0.9;'></view>
                 <block wx:for="{{dayranklist}}" wx:if="{{dayindex>=3}}" wx:for-index="dayindex" wx:for-item="dayitem" wx:key="*this" >
-                    <view class="item-ans" id="{{dayitem.user_id+'|'+dayitem.uname}}" bindtap='gotodynamic'>
+                    <view class="item-ans" id="{{dayitem.user_id+'|'+(dayitem.uname==''?dayitem.wechat_name:dayitem.uname)}}" bindtap='gotodynamic'>
                         <view class='placenum fl'>{{dayindex}}</view>
                         <view class='nameimgbox fl'><image src="{{dayitem.user_img==null||dayitem.user_img==''?'../../images/img_touxiang_default.png':dayitem.user_img}}"></image></view>
                         <view class='nameandpost fl'>
@@ -62,10 +69,14 @@
         </swiper-item>
         <swiper-item>
             <scroll-view scroll-y="true" class="scoll-h">
-                <view style='height:64.5%;'></view>
+                <view style='height:64.5%; z-index:-1;'>
+                  <view style='width:33.3%; height: 100%;' bindtap='gotodynamic' class='fl' id="{{topranklist[1].user_id+'|'+(topranklist[1].uname==''?topranklist[1].wechat_name:topranklist[1].uname)}}" ></view>
+                  <view style='width:33.3%; height: 100%;' bindtap='gotodynamic' class='fl' id="{{topranklist[0].user_id+'|'+(topranklist[0].uname==''?topranklist[0].wechat_name:topranklist[0].uname)}}"></view>
+                  <view style='width:33.3%; height: 100%;' bindtap='gotodynamic' class='fl' id="{{topranklist[2].user_id+'|'+(topranklist[2].uname==''?topranklist[2].wechat_name:topranklist[2].uname)}}"></view>
+                </view>
                 <view style='height:30rpx; background:#FFF; opacity:0.9;'></view>
                 <block wx:for="{{weekranklist}}" wx:if="{{weekindex>=3}}"  wx:for-index="weekindex" wx:for-item="weekitem" wx:key="*this">
-                    <view class="item-ans" id="{{weekitem.user_id+'|'+weekitem.uname}}" bindtap='gotodynamic'>
+                    <view class="item-ans" id="{{weekitem.user_id+'|'+(weekitem.uname==''?weekitem.wechat_name:weekitem.uname)}}" bindtap='gotodynamic'>
                         <view class='placenum fl'>{{weekindex}}</view>
                         <view class='nameimgbox fl'><image src="{{weekitem.user_img==null||weekitem.user_img==''?'../../images/img_touxiang_default.png':weekitem.user_img}}"></image></view>
                         <view class='nameandpost fl'>
@@ -80,10 +91,14 @@
         </swiper-item>
         <swiper-item>
             <scroll-view scroll-y="true" class="scoll-h">
-                <view style='height:64.5%;'></view>
+                <view style='height:64.5%; z-index:-1;'>
+                  <view style='width:33.3%; height: 100%;' bindtap='gotodynamic' class='fl' id="{{topranklist[1].user_id+'|'+(topranklist[1].uname==''?topranklist[1].wechat_name:topranklist[1].uname)}}" ></view>
+                  <view style='width:33.3%; height: 100%;' bindtap='gotodynamic' class='fl' id="{{topranklist[0].user_id+'|'+(topranklist[0].uname==''?topranklist[0].wechat_name:topranklist[0].uname)}}"></view>
+                  <view style='width:33.3%; height: 100%;' bindtap='gotodynamic' class='fl' id="{{topranklist[2].user_id+'|'+(topranklist[2].uname==''?topranklist[2].wechat_name:topranklist[2].uname)}}"></view>
+                </view>
                 <view style='height:30rpx; background:#FFF; opacity:0.9;'></view>
                 <block wx:for="{{monthranklist}}" wx:if="{{monthindex>=3}}"  wx:for-index="monthindex" wx:for-item="monthitem" wx:key="*this">
-                    <view class="item-ans" id="{{monthitem.user_id+'|'+monthitem.uname}}" bindtap='gotodynamic'>
+                    <view class="item-ans" id="{{monthitem.user_id+'|'+(monthitem.uname==''?monthitem.wechat_name:monthitem.uname)}}" bindtap='gotodynamic'>
                         <view class='placenum fl'>{{monthindex}}</view>
                         <view class='nameimgbox fl'><image src="{{monthitem.user_img==null||monthitem.user_img==''?'../../images/img_touxiang_default.png':monthitem.user_img}}"></image></view>
                         <view class='nameandpost fl'>

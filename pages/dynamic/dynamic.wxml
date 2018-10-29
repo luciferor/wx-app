@@ -17,7 +17,7 @@
                                 {{brit.title}}
                             </view>
                             <view class="toptext-content-time">
-                                <span style="opacity:0.8;">{{brit.name==''?brit.wechat_name:brit.name}}</span><span style="opacity:0.5;"> {{brit.created_at}}</span>
+                                <span style="opacity:0.8;">{{brit.name==''?subs.sub(brit.wechat_name,8):subs.sub(brit.name,8)}}</span><span style="opacity:0.5;"> {{brit.created_at}}</span>
                             </view>
                         </view>
                     </view>

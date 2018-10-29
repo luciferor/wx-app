@@ -15,7 +15,6 @@
           </view>
           <text class='user-right' id="{{idx}}" bindtap='handleRemindOpen'  wx:if="{{isAdmin==1 || member.isadmin == 1 }}">{{member.isadmin == 1 ? "创建者" :"删除"}}</text>
       </view>
-    
   </view>
 
    <view class='bottom-container'>

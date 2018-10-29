@@ -6,7 +6,7 @@
         </view>
         <view class="user-li-title-box fl">
             <view class="user-li-title-box-listdes">{{item.title}}</view>
-            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">{{item.name == "" ? subs.sub(item.wechat_name,4):subs.sub(item.name,8) }}</span><span class="user-li-title-box-listtitle-time">{{subs.rank(item.name)}}</span></view>
+            <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">{{item.name == "" ? subs.sub(item.wechat_name,8):subs.sub(item.name,8) }}</span><span class="user-li-title-box-listtitle-time">{{subs.rank(item.name)}}</span></view>
         </view>
         <view class="user-li-right-bf fr">
             {{item.created_at}}

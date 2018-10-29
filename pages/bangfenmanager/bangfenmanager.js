@@ -51,6 +51,89 @@ Page({
         actionindex: '',
         actiontype: '',
         menushowid: 0,
+        animationData:{},//动画
+        ownerlistselected:[],//已选择的自我加分管理项
+        //useranimation:{},
+    },
+    // showuserani(){
+    //   let animation = wx.createAnimation({
+    //     duration: 1000,
+    //     timingFunction: 'ease',
+    //   })
+    //   this.animation = animation
+    //   animation.opacity(1).step()
+    //   this.setData({
+    //     useranimation: animation.export()
+    //   })
+    // },
+    // hiddenuserani(){
+    //   let animation = wx.createAnimation({
+    //     duration: 1000,
+    //     timingFunction: 'ease',
+    //   })
+    //   this.animation = animation
+    //   animation.opacity(0).step()
+    //   this.setData({
+    //     useranimation: animation.export()
+    //   })
+    // },
+    showorhidden(){
+      this.setData({
+        ownerlistselected: []
+      })
+      if (this.data.ownerlistselected == 0){
+        this.closeanimation();
+      } else {
+        this.buttonanimation();
+      }
+    },
+    saveownerlistbuff(){
+      let _this = this;
+      let ids = '';
+      for(let i=0;i<this.data.ownerlistselected.length;i++){
+        ids += ';'+this.data.ownerlistselected[i].id;
+      }
+      api.$http(function (res) {
+        console.log(res)
+        if (res.data.success) {
+          if (res.data.success) {
+            _this.handleSuccess("操作成功");
+            _this.showorhidden();
+            _this.onShow();
+          } else {
+            _this.handleSuccess("操作失败："+res.data.message);
+          }
+        }
+      }, function (err) {}, '/WeChat/Applet/finishSelfManaged', {
+          session_key: app.apiData.session_key,
+          ids: ids.substr(1)
+        },'POST')
+      this.data.ownerlist[index].ischecked = false;
+      this.setData({
+        ownerlist: this.data.ownerlist
+      });
+    },
+    buttonanimation(){//按钮动画
+      let animation = wx.createAnimation({
+        duration: 500,
+        timingFunction: 'ease',
+      })
+      this.animation = animation
+      animation.width(80+'%').opacity(1).step()
+      this.setData({
+        animationData: animation.export()
+      })
+    }, 
+    closeanimation(){
+      let animation = wx.createAnimation({
+        duration: 500,
+        timingFunction: 'ease',
+      })
+      this.animation = animation
+      animation.width(0 + '%').opacity(0).step()
+      this.setData({
+        animationData: animation.export()
+      })
     },
     selectotherbufftype() {
         this.setData({
@@ -176,15 +259,40 @@ Page({
         let info = '提交后不可取消，您确认任务完成了么？'; //arr[2];
         this.data.ownerlist[index].ischecked = !this.data.ownerlist[index].ischecked;
         this.setData({
-            ownerlist: this.data.ownerlist,
-            madoltitle: '自我管理',
-            madolshow: true,
-            madolinfos: info,
-            actionid: id,
-            actionindex: index,
-            actiontype: 'owner'
+          ownerlist: this.data.ownerlist,
+            // madoltitle: '自我管理',
+            // madolshow: true,
+            // madolinfos: info,
+            // actionid: id,
+            // actionindex: index,
+            // actiontype: 'owner'
         });
-
+        // this.data.ownerlistselected.push({
+        //   id: arr[0],
+        // });
+      //★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+      if (this.data.ownerlist[index].ischecked) {
+        this.data.ownerlistselected.push({
+          id: arr[0],
+        });
+      } else {
+        for (let i = 0; i < this.data.ownerlistselected.length; i++) {
+          if (this.data.ownerlistselected[i].id == arr[0]) {
+            this.data.ownerlistselected.splice(i, 1);
+          }
+        }
+      }
+      //★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+      this.setData({
+        ownerlistselected: this.data.ownerlistselected
+      })
+      
+      if (this.data.ownerlistselected.length==0){
+        this.closeanimation();
+      }
+      if(this.data.ownerlistselected.length>0){
+        this.buttonanimation();
+      }
     },
     mutuevents(e) {
         let arr = e.currentTarget.id.split('|');
@@ -420,12 +528,15 @@ Page({
             menushow: true,
             menubtnshow: false
         })
+        this.showuserani();
+   
     },
     closemenuwin() {
         this.setData({
             menushow: false,
             menubtnshow: true
         })
+        this.hiddenuserani();
     },
     ownnerplusandrem() {
         this.setData({
@@ -465,6 +576,7 @@ Page({
         }, 'POST');
     },
     onShow: function() {
+        this.showorhidden();
         //自我管理
         api.$http(this.odosuccess, this.odofail, '/WeChat/Applet/getSelfManagedList', {
             type: 1,

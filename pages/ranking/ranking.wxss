@@ -212,3 +212,44 @@
   height: 100%;
   padding-top:180rpx;
 }
+
+.top-three-first{
+  position: relative;
+}
+
+.king-img0{
+  width:40rpx;
+  height: 33rpx;
+  margin:auto;
+  position: absolute;
+  top:-30rpx;
+  left:calc(50% - 20rpx);
+}
+.king-img1{
+  width:40rpx;
+  height: 33rpx;
+  margin:auto;
+  position: absolute;
+  transform:rotate(45deg);
+  right:0;
+
+}
+.king-img2{
+  width:40rpx;
+  height: 33rpx;
+  margin:auto;
+  position: absolute;
+  transform:rotate(-45deg);
+  left:0;
+}
+
+.king-img0 image{
+  width:40rpx;
+  height: 33rpx;
+}.king-img1 image{
+  width:40rpx;
+  height: 33rpx;
+}.king-img2 image{
+  width:40rpx;
+  height: 33rpx;
+}
