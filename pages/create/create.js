@@ -81,6 +81,12 @@ Page({
             console.log(res)
             if (res.data.code == 200) {
                 app.apiData.Company_Id = res.data.message
+                $Toast({
+                    content: '创建[' + app.apiData.creatOrg.createOrgName + ']成功',
+                    type: 'success',
+                    duration: 3
+                });
+                app.apiData.isAdmin = 1;
                 _this.setData({
                     createStatus: 3
                 })
