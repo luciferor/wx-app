@@ -203,6 +203,7 @@ Page({
         this.setData({
             dayranklist: data.data.message.desc
         })
+        console.log(this.data.dayranklist)
         if (this.data.thenid == 0) {
             this.setData({
                 topranklist: data.data.message.desc
@@ -213,6 +214,7 @@ Page({
         this.setData({
             weekranklist: data.data.message.desc
         })
+        console.log(this.data.weekranklist)
         if (this.data.thenid == 1) {
             this.setData({
                 topranklist: data.data.message.desc
@@ -223,6 +225,7 @@ Page({
         this.setData({
             monthranklist: data.data.message.desc
         })
+        console.log(this.data.monthranklist)
         if (this.data.thenid == 2) {
             this.setData({
                 topranklist: data.data.message.desc

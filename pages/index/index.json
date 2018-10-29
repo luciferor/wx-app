@@ -2,6 +2,7 @@
   "navigationBarBackgroundColor": "#FFFFFF",
   "usingComponents": {
       "i-spin": "../../dist/spin/index",
-      "i-icon": "../../dist/icon/index"
+      "i-icon": "../../dist/icon/index",
+      "i-toast": "../../dist/toast/index"
     }
 }

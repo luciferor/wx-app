@@ -45,11 +45,11 @@ Page({
             path: '/pages/index/index',
             imageUrl: '../../images/minproTranspond.png',
             success: function(res) {
-              console.log(res)
+              // console.log(res)
             },
             fail: function(err) {
-              console.log('失败')
-              console.log(err)
+              // console.log('失败')
+              // console.log(err)
             }
         }
     },
@@ -115,7 +115,7 @@ Page({
             }
             console.log(data.data.message)
         }, function(data) {
-            console.log('请求失败');
+            // console.log('请求失败');
         });
     },
     //获取我的目标
@@ -131,7 +131,7 @@ Page({
                 });
             }
         }, function(data) {
-            console.log('请求失败');
+            // console.log('请求失败');
         });
     },
 
