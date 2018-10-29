@@ -108,7 +108,7 @@ Page({
           session_key: app.apiData.session_key,
           ids: ids.substr(1)
         },'POST')
-      this.data.ownerlist[index].ischecked = false;
+      this.data.ownerlist.ischecked = false;
       this.setData({
         ownerlist: this.data.ownerlist
       });
@@ -119,7 +119,7 @@ Page({
         timingFunction: 'ease',
       })
       this.animation = animation
-      animation.width(80+'%').opacity(1).step()
+      animation.width(85+'%').opacity(1).step()
       this.setData({
         animationData: animation.export()
       })
@@ -474,9 +474,11 @@ Page({
     //============================================================================================================  选项卡js
     // 滚动切换标签样式
     switchTab: function(e) {
+        console.log(e);
         this.setData({
-            currentTab: e.detail.current
+          currentTab: e.detail.current
         });
+        console.log(this.data.currentTab);
         this.checkCor();
     },
     // 点击标题切换当前页时改变样式
@@ -484,7 +486,7 @@ Page({
         this.setData({
             menushowid: e.target.dataset.current
         })
-        console.log(e.target.dataset.current);
+        console.log(e.target.dataset.current+'此选项卡是');
         var cur = e.target.dataset.current;
         if (this.data.currentTaB == cur) { return false; } else {
             this.setData({
@@ -528,7 +530,7 @@ Page({
             menushow: true,
             menubtnshow: false
         })
-        this.showuserani();
+        //this.showuserani();
    
     },
     closemenuwin() {
@@ -536,7 +538,7 @@ Page({
             menushow: false,
             menubtnshow: true
         })
-        this.hiddenuserani();
+        //this.hiddenuserani();
     },
     ownnerplusandrem() {
         this.setData({

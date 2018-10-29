@@ -1,17 +1,20 @@
 /*mine*/
 page{
-  height: 100%;/*生效*/
+  min-height: 100%;/*生效*/
   width: 100%;
   background: white
 }
 .view-container{
-  display:-webkit-box;
-  display:-webkit-flex;
-  display:-ms-flexbox;
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  min-height: 100%;/*生效*/
+  min-height: 100%;
+  direction:column;
+}
+.top-container{
+  flex-direction: column;
+  position: fixed;
+  top: 0rpx;
+  z-index: 100;
+  width: 100%;
 }
 .bgimg{
   width: 100%;
@@ -24,8 +27,10 @@ page{
     display:-webkit-flex;
     display:-ms-flexbox;
     display: flex;
-    top: 0px;
+    left: 0rpx;
+    top: 0rpx;
     height: auto;
+    z-index: 100;
     flex-direction: column;
     min-height: 300rpx;
 }
@@ -172,6 +177,7 @@ page{
   align-items: center;
   flex-direction: row;
   line-height: 100rpx;
+  background: white
 }
 .add-text-container{
   display:-webkit-box;
@@ -457,7 +463,6 @@ page{
 .info-content-win{
   height: 60rpx;
   line-height: 0rpx;
-  font-size:32rpx;
   text-align: center;
   font-size: 36rpx;
 	color: #5398ff;
@@ -477,4 +482,14 @@ page{
   position: absolute;
   right:0rpx;
   top:100rpx;
+}
+
+.target-scroll{
+  margin-top: 360rpx;
+}
+
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
 }

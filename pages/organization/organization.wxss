@@ -45,8 +45,9 @@ page{
 
 .content-container{
   margin-top: 20rpx;
-  background:white;
-  padding-bottom: 166rpx !important;
+  background: white;
+  padding-bottom: 140rpx;
+
 }
 
 .user-container{
@@ -91,6 +92,7 @@ page{
   position: fixed;
   bottom: 0rpx;
   width: 100%;
+  z-index: 100;
 }
 
 .button{

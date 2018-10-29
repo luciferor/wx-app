@@ -13,7 +13,7 @@
             <image  src="{{member.avatarurl==null||member.avatarurl==''?'../../images/mine/head_default_icon.png': member.avatarurl}}" class='upic'></image>
             <text class='uname'>{{member.name}}</text>
           </view>
-          <text class='user-right' id="{{idx}}" bindtap='handleRemindOpen'  wx:if="{{isAdmin==1 || member.isadmin == 1 }}">{{member.isadmin == 1 ? "创建者" :"删除"}}</text>
+          <text class='user-right' id="{{idx}}" bindtap='handleRemindOpen' wx:if="{{isAdmin==1 || member.isadmin == 1 }}">{{member.isadmin == 1 ? "创建者" :"删除"}}</text>
       </view>
   </view>
 
