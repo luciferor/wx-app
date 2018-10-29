@@ -46,7 +46,7 @@ page{
 .content-container{
   margin-top: 20rpx;
   background: white;
-  margin-bottom: 20rpx;
+  margin-bottom: 140rpx;
 }
 
 .user-container{

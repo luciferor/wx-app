@@ -102,7 +102,11 @@ Page({
                 api.$http(function(res) {
                     console.log(res)
                     if (res.data.success) {
+                      if(Number(res.data.message) > 0){
                         _this.handleSuccess("自我管理加分成功");
+                      }else{
+                        _this.handleSuccess("自我管理减分成功");
+                      }
                     }
                 }, function(err) {}, '/WeChat/Applet/finishSelfManaged', {
                     session_key: app.apiData.session_key,
@@ -484,7 +488,8 @@ Page({
                 id: item[i].id,
                 bangfen: item[i].bangfen,
                 name: item[i].name,
-                ischecked: false
+                ischecked: false,
+                type:item[i].type
             })
         }
         this.setData({

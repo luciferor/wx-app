@@ -1,5 +1,6 @@
 {
     "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "企汇邦-创建组织",
     "usingComponents": {
         "i-icon": "../../dist/icon/index",
         "i-radio-group": "../../dist/radio-group/index",
