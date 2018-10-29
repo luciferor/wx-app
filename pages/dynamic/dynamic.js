@@ -87,7 +87,7 @@ Page({
         if(data.data.success){
           this.setData({
             newawardlist: data.data.message
-          })
+          });
         }
     },
     adofail(err) {

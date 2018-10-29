@@ -119,7 +119,7 @@
 
 .under-list-box{
     width:100%;
-    height:800rpx;
+    height:100%;
     overflow: scroll;
 }
 
