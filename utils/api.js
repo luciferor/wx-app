@@ -72,27 +72,6 @@ function $httpcom(_dosuccess, _dofail, _url, _params, _method,_comlete) { //参�
 }
 
 
-function $httpget(_dosuccess, _dofail, _url, _params, _method, _comlete) { //参数说明，成功回调函数dosuccess(res)，接口地址"/xxxx"，参数({,,,})，请求类型（post/get）
-  wx.request({
-    url: "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx416b34cf4f1994cf&secret=2001552fd687f182c191cabb4e32f2cb" + _url, //仅为示例，并非真实的接口地址
-    method: _method,
-    header: {
-      'content-type': 'application/json' // 默认值
-    },
-    success: function (res) {
-      _dosuccess(res);
-    },
-    fail: function (err) {
-      _dofail(err);
-    },
-    complete: function (com) {
-      _comlete(com);
-    }
-  })
-}
-
-
-
 //将模块接口暴露出来
 module.exports = {
   $http: $http,

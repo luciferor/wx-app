@@ -28,20 +28,6 @@ Page({
                         console.log(resreg)
                         console.log('打印sessionkey[' + resreg.data.message.session_key + ']');
                         console.log('公司id' + resreg.data.message.Company_Id)
-                            //进行判断
-                            // if(app.apiData.Company_Id==0){//最新用户
-                            //   //获取微信的信息
-                            //   wx.getUserInfo({
-                            //     success:function(reswx){
-                            //       console.log(reswx);
-                            //       console.log('获取成功')
-                            //     },
-                            //     fail:function(errwx){
-                            //       console.log(errwx);
-                            //       console.log('获取失败')
-                            //     }
-                            //   })
-                            // }
                         if (app.apiData.Company_Id != 0) { //已经有公司了，就直接跳转到个人中心
                             wx.getUserInfo({
                                 success: function(resiswx) {
@@ -57,6 +43,8 @@ Page({
                                         console.log(resinfo);
                                         console.log(resinfo.data.message)
                                         console.log(resinfo.data.success ? "更新成功的" : "没有更新成功");
+
+                                      console.log(app.apiData.Company_Id + "|||||||||||" + option.company_id);
                                         //虽然没有更新成功，但是还是要跳转到个人中心
                                         if (app.apiData.Company_Id == option.company_id) {
                                           console.log('恭喜您成功加入：' + resreg.data.message.company_name);
@@ -84,7 +72,6 @@ Page({
                                         city: resiswx.userInfo.city,
                                         country: resiswx.userInfo.country,
                                     }, 'POST')
-
                                 },
                                 fail: function(erriswx) {
                                     console.log(erriswx);
@@ -142,48 +129,49 @@ Page({
             country: e.detail.userInfo.country,
         }, 'POST')
     },
-  getUserInfos: function (e) {
-    let _this = this;
-    wx.getUserInfo({
-      success: function (resiswx) {
-        app.apiData.nickName = resiswx.userInfo.nickName;
-        console.log(resiswx);
-        console.log('成功');
-        app.apiData.GetLincesShow = false; //隐藏授权按钮
-        _this.setData({
-          isshow: app.apiData.GetLincesShow
-        })
-        //提交信息到服务器
-        api.$http(function (resinfo) {
-          console.log(resinfo);
-          console.log(resinfo.data.message)
-          console.log(resinfo.data.success ? "更新成功的" : "没有更新成功");
-          //虽然没有更新成功，但是还是要跳转到个人中心
-          wx.redirectTo({
-            url: '../../pages/guide/guide',
+
+    getUserInfos: function (e) {
+      let _this = this;
+      wx.getUserInfo({
+        success: function (resiswx) {
+          app.apiData.nickName = resiswx.userInfo.nickName;
+          console.log(resiswx);
+          console.log('成功');
+          app.apiData.GetLincesShow = false; //隐藏授权按钮
+          _this.setData({
+            isshow: app.apiData.GetLincesShow
           })
-        }, function (errinfo) {
-          console.log(errinfo)
-        }, '/appreciate/updateInformation', {
-            session_key: app.apiData.session_key,
-            nickname: resiswx.userInfo.nickName,
-            avatarurl: resiswx.userInfo.avatarUrl,
-            gender: resiswx.userInfo.gender,
-            province: resiswx.userInfo.province,
-            city: resiswx.userInfo.city,
-            country: resiswx.userInfo.country,
-          }, 'POST')
-      },
-      fail: function (erriswx) {
-        console.log(erriswx);
-        console.log('失败')
-        app.apiData.GetLincesShow = true; //显示授权按钮
-        _this.setData({
-          isshow: app.apiData.GetLincesShow
-        })
-      }
-    })
-  },
+          //提交信息到服务器
+          api.$http(function (resinfo) {
+            console.log(resinfo);
+            console.log(resinfo.data.message)
+            console.log(resinfo.data.success ? "更新成功的" : "没有更新成功");
+            //虽然没有更新成功，但是还是要跳转到个人中心
+            wx.redirectTo({
+              url: '../../pages/guide/guide',
+            })
+          }, function (errinfo) {
+            console.log(errinfo)
+          }, '/appreciate/updateInformation', {
+              session_key: app.apiData.session_key,
+              nickname: resiswx.userInfo.nickName,
+              avatarurl: resiswx.userInfo.avatarUrl,
+              gender: resiswx.userInfo.gender,
+              province: resiswx.userInfo.province,
+              city: resiswx.userInfo.city,
+              country: resiswx.userInfo.country,
+            }, 'POST')
+        },
+        fail: function (erriswx) {
+          console.log(erriswx);
+          console.log('失败')
+          app.apiData.GetLincesShow = true; //显示授权按钮
+          _this.setData({
+            isshow: app.apiData.GetLincesShow
+          })
+        }
+      })
+    },
 
     onShareAppMessage: function() {
         return {
