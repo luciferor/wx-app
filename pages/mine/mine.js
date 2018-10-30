@@ -6,6 +6,7 @@ const app = getApp()
 
 Page({
     data: {
+        apiUrl: "https://devqypyp.xiaohuibang.com",
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         showRemindBox: false,
         userInfo: {
@@ -110,7 +111,7 @@ Page({
                 _this.setData({
                     userInfo: data.data.message,
                     name: data.data.message.name == "" ? app.apiData.nickName : data.data.message.name,
-                  score: parseFloat(data.data.message.score) + parseFloat(data.data.message.total_score) - parseFloat(data.data.message.reduce)
+                    score: parseFloat(data.data.message.score) + parseFloat(data.data.message.total_score) - parseFloat(data.data.message.reduce)
                 });
             }
             console.log(data.data.message)

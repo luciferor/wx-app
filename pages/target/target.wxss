@@ -81,7 +81,7 @@ color: transparent;
   width:100%;
   flex:1;
   overflow:scroll;
-  padding:24rpx 0;
+  padding:24rpx 0 0 0 ;
   box-sizing: border-box;
   background:#f7f7f7;
   height: 100%;
@@ -97,16 +97,15 @@ color: transparent;
 .list-box{
   background:white;
   overflow: hidden;
-  margin:0rpx 24rpx;
-  border:1px solid #eeeeee;
   border-radius: 4rpx;
 }
 
 .listcontent{
-  height:80rpx;
-  border-bottom: 1px solid #eeeeee;
-  line-height: 80rpx;
-  padding:30rpx;
+  display: flex;
+  flex-direction: row;
+  padding: 30rpx 24rpx;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .colorpar{
@@ -118,8 +117,6 @@ color: transparent;
   font-size: 36rpx;
   color: #333;
 }
-
-
 
 .add-container{
   background: white;
@@ -293,7 +290,6 @@ color: transparent;
 .listcontent-custom{
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
    height:80rpx;
   border-bottom: 1px solid #eeeeee;
@@ -340,4 +336,82 @@ color: transparent;
 
 .hight-color{
   color: #5398ff;
+}
+.left-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.target-img{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 4rpx;
+}
+
+.left-text-container{
+  display: flex;
+  flex-direction: column;
+  margin-left: 26rpx;
+}
+
+.target-title{
+  font-size: 34rpx;
+  color: #333;
+}
+
+.target-condition{
+  font-size: 28rpx;
+  color: #666;
+  margin-top: 20rpx;
+}
+
+.target-containers{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.radio-container{
+  width: 160rpx;
+  height: 60rpx;
+  border-radius: 4rpx;
+  background: white;
+  border: 1rpx solid #5398ff;
+  text-align: center;
+  align-content: center;
+}
+
+.target-status{
+  font-size: 28rpx;
+  color: #5398ff;
+  text-align: center;
+}
+
+radio {
+  text-align: center
+}
+
+/* radio未选中时样式 */ 
+
+radio .wx-radio-input{ 
+  /* 自定义样式.... */
+    border-radius: 28rpx; 
+    height: 28rpx; 
+    width: 28rpx;
+    border: 1rpx solid #5398ff; 
+ }
+
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+radio .wx-radio-input.wx-radio-input-checked::before{
+   border-radius: 28rpx;/* 圆角 */
+   width: 26rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+   height: 26rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+   line-height: 26rpx;
+   text-align: center;
+   font-size:18rpx; /* 对勾大小 30rpx */
+   color:#fff; /* 对勾颜色 白色 */
+   background: transparent;
+   transform:translate(-50%, -50%) scale(1);
+   -webkit-transform:translate(-50%, -50%) scale(1);
 }

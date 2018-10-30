@@ -20,14 +20,18 @@ Page({
             session_key: app.apiData.session_key,
         }, 'POST', function(res) {
             console.log(res)
+            res.data.message[0].picked = true
+            res.data.message[1].picked = true
+            res.data.message[2].picked = true
             _this.setData({
                 targetArr: res.data.message
             })
-
         }, function() {
             console.log(请求失败);
         });
+
     },
+
     pickTarget: function(e) {
         let idx = e.currentTarget.dataset.num
         let curritem = e.currentTarget.dataset.item

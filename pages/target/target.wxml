@@ -29,8 +29,20 @@
         <scroll-view class='scroll-view' scroll-y>
          <view class='list-box'>
           <view class='listcontent' wx:for="{{rankTargetList}}" wx:for-index="rankindex" wx:for-item="rankitem" wx:if="{{rankTargetList.length>0}}">
-              <span class="fl colorradio" ><radio color="#5398ff" value="不二家棒棒糖" checked="{{rankitem.ischecked}}" id="{{rankitem.id+'|'+rankindex}}" bindtap="rankevents"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{subs.sub(rankitem.name,10)}}</radio></span>
-              <span class="fr colorpar">{{subs.targetType(rankitem.gift_type)}}{{subs.targetRank(rankitem.rank)}}</span>
+               <view class='left-container'>
+               <image  src="{{rankitem.img==null||rankitem.img==''?'../../images/mine/icon_wode_rijiang.png': apiUrl+rankitem.img}}"  class='target-img' wx:if="{{target.gift_type ==1}}"></image>
+                      <image  src="{{rankitem.img==null||rankitem.img==''?'../../images/mine/icon_wode_yuejiang.png': apiUrl+rankitem.img}}"  class='target-img' wx:elif="{{target.gift_type ==2}}"></image>
+                      <image  src="{{rankitem.img==null||rankitem.img==''?'../../images/mine/icon_wode_zhoujiang.png': apiUrl+rankitem.img}}" class='target-img' wx:else></image>
+                <view class='left-text-container'>
+                  <span class='target-title'>{{subs.sub(rankitem.name,10)}}</span>
+                  <span class='target-condition'>{{subs.targetType(rankitem.gift_type)}}{{subs.targetRank(rankitem.rank)}}</span>
+                </view>
+             </view>
+             <view class='radio-container' id="{{rankitem.id+'|'+rankindex}}" bindtap="rankevents" >
+                <radio color="#5398ff" value="已添加" checked="{{rankitem.ischecked}}" class='radio'>
+                </radio>
+                 <span class="target-status">{{rankitem.ischecked ? '已添加' : '添加'}}</span>
+             </view>
           </view>
         </view>
          <view class='empty-container' wx:if="{{rankTargetList.length==0}}">
@@ -45,9 +57,18 @@
          <scroll-view class='scroll-view' scroll-y>
              <view class='list-box'>
                 <view class='listcontent' wx:for="{{scoreTargetList}}"  wx:for-index="scoreindex" wx:for-item="scoreitem" wx:if="{{scoreTargetList.length>0}}">
-                      <span class="fl"></span>
-                      <span class="fl colorradio"><radio color="#5398ff" value="不二家棒棒糖" checked="{{scoreitem.ischecked}}"  id="{{scoreitem.id+'|'+scoreindex}}" bindtap="scoreevents"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{subs.sub(scoreitem.name,10)}}</radio></span>
-                      <span class="fr colorpar">{{scoreitem.gift_score}}邦分</span>
+                      <view class='left-container'>
+                      <image src="{{scoreitem.img==null||scoreitem.img==''?'../../images/mine/img_wode_bangfen.png': apiUrl+scoreitem.img}}" class='target-img'></image>
+                      <view class='left-text-container'>
+                        <span class='target-title'>{{subs.sub(scoreitem.name,12)}}</span>
+                        <span class='target-condition'>累积{{scoreitem.gift_score}}邦分</span>
+                      </view>
+                  </view>
+                  <view class='radio-container' id="{{scoreitem.id+'|'+scoreindex}}" bindtap="scoreevents">
+                      <radio color="#5398ff" value="不二家棒棒糖" checked="{{scoreitem.ischecked}}" class='radio' >
+                      </radio>
+                      <span class="target-status">{{scoreitem.ischecked ? '已添加' : '添加'}}</span>
+                  </view>
                  </view>
               </view>
               <view class='empty-container' wx:if="{{scoreTargetList.length==0}}">

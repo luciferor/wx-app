@@ -28,7 +28,7 @@ Page({
                         console.log(resreg)
                         console.log('打印sessionkey[' + resreg.data.message.session_key + ']');
                         console.log('公司id' + resreg.data.message.Company_Id)
-                      
+
                         if (app.apiData.Company_Id != 0) { //已经有公司了，就直接跳转到个人中心
                             wx.getUserInfo({
                                 success: function(resiswx) {
@@ -84,7 +84,7 @@ Page({
                                 }
                             })
                         } else { //没有组织，就要创建组织
-                            _this.getUserInfos();
+                          _this.getUserInfos();
                         }
                     }, function(err) {
                         console.log(err);
@@ -131,10 +131,7 @@ Page({
         }, 'POST')
     },
 
-
-
-
-    getUserInfos:function(){
+    getUserInfos: function (e) {
       let _this = this;
       wx.getUserInfo({
         success: function (resiswx) {
@@ -176,39 +173,6 @@ Page({
         }
       })
     },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     onShareAppMessage: function() {
         return {
