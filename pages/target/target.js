@@ -6,7 +6,6 @@ const app = getApp()
 
 Page({
     data: {
-        apiUrl: "https://devqypyp.xiaohuibang.com",
         current: 'tab1',
         currentIndex: 0,
         rankTargetNum: 0, //排名目标
