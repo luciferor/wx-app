@@ -10,6 +10,7 @@ App({
         isAdmin: 0,
         nickName: '',
         invite_id: '',
+        company_name: '',
         creatOrg: {
             mutualMergeArr: [],
             selfMergeArr: [],
@@ -29,6 +30,9 @@ App({
         var logs = wx.getStorageSync('logs') || []
         logs.unshift(Date.now())
         wx.setStorageSync('logs', logs)
+
+        //获取access_key
+        
     },
     globalData: {
         userInfo: null,

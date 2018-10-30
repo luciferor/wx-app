@@ -8,6 +8,7 @@ Page({
         dynamiclist: []
     },
     onLoad: function(option) {
+      console.log(option)
         let arr = option.uid.split('|');
         wx.setNavigationBarTitle({
             title: arr[1] + "的个人动态"

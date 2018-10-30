@@ -1,6 +1,6 @@
 <view style='background:#f7f7f7; height:100%;'>
       <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
-        <view class="tab-item {{currentTab==0?'active':''}}"  data-current="0" bindtap="swichNav">自我管理</view>
+        <view class="tab-item {{currentTab==0?'active':''}}" current="{{currentTab}}"  data-current="0" bindtap="swichNav">自我管理</view>
         <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">相互管理</view>
       </scroll-view>
       <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
@@ -30,7 +30,8 @@
               </scroll-view>
           </swiper-item>
       </swiper>
-      <view class='fagsbox' wx:if="{{true}}">
+      <view wx:if="{{currentTab!=1}}" class='ownersubmitbtn' bindtap='saveownerlistbuff' animation="{{animationData}}">确认加分</view>
+      <view class='fagsbox' wx:if="{{ownerlistselected.length>0?false:true}}">
         <view wx:if="{{menushow}}" style='padding-left:10rpx;'>
           <view class='ownerdes'>自我加减分</view>
           <image bindtap='ownnerplusandrem' class="fabplusred" src="../../images/fabs/icon_xuanfu_ziwo.png" />
@@ -46,6 +47,7 @@
             <image class="fabimg" src="../../images/fabs/icon_xuanfu_selected.png" />
         </view>
       </view>
+
 
       <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
       <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showselectbuff}}"></view>
