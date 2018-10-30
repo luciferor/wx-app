@@ -13,15 +13,15 @@ Page({
             disposable: "", //加分权利
             id: 0,
             name: "",
-            reduce: 0, 
+            reduce: 0,
             score: 0,
             total_score: 0, //总分
             user_img: "", //用户头像
             isadmin: 0,
-           reduces: 0//减分权利
+            reduces: 0 //减分权利
         },
         score: Number(0),
-        reduce:0,//减去
+        reduce: 0, //减去
         name: "", //姓名
         targetList: [], //我的目标列表,
         session_key: '',
@@ -45,11 +45,11 @@ Page({
             path: '/pages/index/index',
             imageUrl: '../../images/minproTranspond.png',
             success: function(res) {
-              // console.log(res)
+                // console.log(res)
             },
             fail: function(err) {
-              // console.log('失败')
-              // console.log(err)
+                // console.log('失败')
+                // console.log(err)
             }
         }
     },
@@ -131,7 +131,7 @@ Page({
                     score: parseFloat(data.data.message.score) + parseFloat(data.data.message.total_score) - parseFloat(data.data.message.reduce)
                 });
             }
-            console.log(data.data.message)
+            // console.log(data.data.message)
         }, function(data) {
             // console.log('请求失败');
         });
@@ -141,7 +141,7 @@ Page({
         let _this = this;
         api.$https('/targetmy/target', {
             session_key: app.apiData.session_key,
-           company_id: app.apiData.Company_Id
+            company_id: app.apiData.Company_Id
         }, 'POST', function(data) {
             if (data.data.success) {
                 _this.setData({

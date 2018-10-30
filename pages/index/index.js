@@ -37,29 +37,45 @@ Page({
                                     app.apiData.GetLincesShow = false; //隐藏授权按钮
                                     _this.setData({
                                             isshow: app.apiData.GetLincesShow
-                                    })
+                                        })
                                         //提交信息到服务器
                                     api.$http(function(resinfo) {
                                         console.log(resinfo);
                                         console.log(resinfo.data.message)
                                         console.log(resinfo.data.success ? "更新成功的" : "没有更新成功");
 
-                                      console.log(app.apiData.Company_Id + "|||||||||||" + option.company_id);
+                                        console.log(app.apiData.Company_Id + "|||||||||||" + option.company_id);
                                         //虽然没有更新成功，但是还是要跳转到个人中心
                                         if (app.apiData.Company_Id == option.company_id) {
-                                          console.log('恭喜您成功加入：' + resreg.data.message.company_name);
-                                          $Toast({
-                                            content: '恭喜您成功加入：[' + resreg.data.message.company_name + ']',
-                                            type: 'success',
-                                            duration: 3
-                                          });
-                                          wx.redirectTo({
-                                            url: '../../pages/invite_target/invite_target',
-                                          })
-                                        }else{
-                                          wx.switchTab({
-                                            url: '../../pages/mine/mine',
-                                          })
+                                            console.log('恭喜您成功加入：' + resreg.data.message.company_name);
+                                            $Toast({
+                                                content: '恭喜您成功加入：[' + resreg.data.message.company_name + ']',
+                                                type: 'success',
+                                                duration: 3
+                                            });
+                                            api.$https('/targetmy/target', {
+                                                session_key: app.apiData.session_key,
+                                                company_id: app.apiData.Company_Id
+                                            }, 'POST', function(data) {
+                                                if (data.data.success) {
+                                                    console.log(data.data.message)
+                                                    if (data.data.message.length > 0) {
+                                                        wx.switchTab({
+                                                            url: '../mine/mine',
+                                                        });
+                                                    } else {
+                                                        wx.redirectTo({
+                                                            url: '../../pages/invite_target/invite_target',
+                                                        })
+                                                    }
+                                                }
+                                            }, function(data) {
+                                                console.log('请求失败');
+                                            });
+                                        } else {
+                                            wx.switchTab({
+                                                url: '../../pages/mine/mine',
+                                            })
                                         }
                                     }, function(errinfo) {
                                         console.log(errinfo)
@@ -83,7 +99,7 @@ Page({
                                 }
                             })
                         } else { //没有组织，就要创建组织
-                          _this.getUserInfos();
+                            _this.getUserInfos();
                         }
                     }, function(err) {
                         console.log(err);
@@ -130,47 +146,47 @@ Page({
         }, 'POST')
     },
 
-    getUserInfos: function (e) {
-      let _this = this;
-      wx.getUserInfo({
-        success: function (resiswx) {
-          app.apiData.nickName = resiswx.userInfo.nickName;
-          console.log(resiswx);
-          console.log('成功');
-          app.apiData.GetLincesShow = false; //隐藏授权按钮
-          _this.setData({
-            isshow: app.apiData.GetLincesShow
-          })
-          //提交信息到服务器
-          api.$http(function (resinfo) {
-            console.log(resinfo);
-            console.log(resinfo.data.message)
-            console.log(resinfo.data.success ? "更新成功的" : "没有更新成功");
-            //虽然没有更新成功，但是还是要跳转到个人中心
-            wx.redirectTo({
-              url: '../../pages/guide/guide',
-            })
-          }, function (errinfo) {
-            console.log(errinfo)
-          }, '/appreciate/updateInformation', {
-              session_key: app.apiData.session_key,
-              nickname: resiswx.userInfo.nickName,
-              avatarurl: resiswx.userInfo.avatarUrl,
-              gender: resiswx.userInfo.gender,
-              province: resiswx.userInfo.province,
-              city: resiswx.userInfo.city,
-              country: resiswx.userInfo.country,
-            }, 'POST')
-        },
-        fail: function (erriswx) {
-          console.log(erriswx);
-          console.log('失败')
-          app.apiData.GetLincesShow = true; //显示授权按钮
-          _this.setData({
-            isshow: app.apiData.GetLincesShow
-          })
-        }
-      })
+    getUserInfos: function(e) {
+        let _this = this;
+        wx.getUserInfo({
+            success: function(resiswx) {
+                app.apiData.nickName = resiswx.userInfo.nickName;
+                console.log(resiswx);
+                console.log('成功');
+                app.apiData.GetLincesShow = false; //隐藏授权按钮
+                _this.setData({
+                        isshow: app.apiData.GetLincesShow
+                    })
+                    //提交信息到服务器
+                api.$http(function(resinfo) {
+                    console.log(resinfo);
+                    console.log(resinfo.data.message)
+                    console.log(resinfo.data.success ? "更新成功的" : "没有更新成功");
+                    //虽然没有更新成功，但是还是要跳转到个人中心
+                    wx.redirectTo({
+                        url: '../../pages/guide/guide',
+                    })
+                }, function(errinfo) {
+                    console.log(errinfo)
+                }, '/appreciate/updateInformation', {
+                    session_key: app.apiData.session_key,
+                    nickname: resiswx.userInfo.nickName,
+                    avatarurl: resiswx.userInfo.avatarUrl,
+                    gender: resiswx.userInfo.gender,
+                    province: resiswx.userInfo.province,
+                    city: resiswx.userInfo.city,
+                    country: resiswx.userInfo.country,
+                }, 'POST')
+            },
+            fail: function(erriswx) {
+                console.log(erriswx);
+                console.log('失败')
+                app.apiData.GetLincesShow = true; //显示授权按钮
+                _this.setData({
+                    isshow: app.apiData.GetLincesShow
+                })
+            }
+        })
     },
 
     onShareAppMessage: function() {
