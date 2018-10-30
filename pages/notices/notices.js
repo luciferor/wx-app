@@ -46,6 +46,7 @@ Page({
             }
         }
     },
+
     //不通过
     handleReject(e) {
         let _this = this;

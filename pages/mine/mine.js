@@ -54,7 +54,6 @@ Page({
         }
     },
     onShow: function() {
-        console.log("------------" + "onShow");
         this.getUserInfos();
         this.getTargetList();
     },
@@ -109,6 +108,7 @@ Page({
 
                 //重新获取数据
                 _this.getTargetList();
+                _this.getUserInfos();
             }
         }, function(err) {
             console.log(err)
