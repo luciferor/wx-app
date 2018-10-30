@@ -156,8 +156,8 @@ page{
    line-height: 60rpx;
    text-align: center;
    font-size: 26rpx;
-   padding-left: 40rpx;
-   padding-right: 24rpx;
+   padding-left: 20rpx;
+   padding-right: 14rpx;
    background: linear-gradient(to right, #ffbf7a , #ff986b);
    border-radius: 30rpx;
    display: flex;

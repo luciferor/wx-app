@@ -30,13 +30,12 @@
               </scroll-view>
           </swiper-item>
       </swiper>
-      <view wx:if="{{currentTab!=1}}" class='ownersubmitbtn' bindtap='saveownerlistbuff' animation="{{animationData}}">确认加分</view>
-      <view class='fagsbox' wx:if="{{ownerlistselected.length>0?false:true}}">
-        <view wx:if="{{menushow}}" style='padding-left:10rpx; opacity:0;' animation="{{useranimation}}">
+      <view class='fagsbox'>
+        <view wx:if="{{menushow}}" style='padding-left:10rpx;'>
           <view class='ownerdes'>自我加减分</view>
           <image bindtap='ownnerplusandrem' class="fabplusred" src="../../images/fabs/icon_xuanfu_ziwo.png" />
         </view>
-        <view wx:if="{{menushow}}" style='padding-left:10rpx; opacity:0;' animation="{{useranimation}}">
+        <view wx:if="{{menushow}}" style='padding-left:10rpx;'>
           <view class='mutudes'>他人加减分</view>
           <image bindtap="otherplusandrem" class="fabotherplus" src="../../images/fabs/icon_xuanfu_taren.png" />
         </view>
@@ -47,6 +46,9 @@
             <image class="fabimg" src="../../images/fabs/icon_xuanfu_selected.png" />
         </view>
       </view>
+
+      <view wx:if="{{currentTab!=1}}" class='ownersubmitbtn' bindtap='saveownerlistbuff' animation="{{animationData}}">确认加分</view>
+
 
 
       <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>

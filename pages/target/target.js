@@ -7,7 +7,7 @@ const app = getApp()
 Page({
     data: {
         current: 'tab1',
-        currentIndex: 0,
+        currentIndex: 1,
         rankTargetNum: 0, //排名目标
         scoreTargetNum: 0, //邦分目标
         customTargetNum: 0, //自定义目标
@@ -59,7 +59,7 @@ Page({
     },
     onReady: function() {
         this.setData({
-                currentIndex: 0
+                currentIndex: 1
             })
             //加载初始数据
         this.getNoticeList(1, 10);

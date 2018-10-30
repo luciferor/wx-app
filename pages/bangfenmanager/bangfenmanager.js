@@ -108,7 +108,7 @@ Page({
       let _this = this;
       api.$http(function (restarget) {
         for (let i = 0; i < restarget.data.message.length; i++) {
-          if (restarget.data.message[i].progressbar == '100') {
+          if (restarget.data.message[i].progressbar == '100' && restarget.data.message[i].isreceive == '1') {
             _this.setData({
               golding: true,
               infores: restarget.data.message[i].scoretitle,
@@ -559,7 +559,7 @@ Page({
                 var calc = clientHeight * rpxR - 120;
                 console.log(calc)
                 that.setData({
-                    winHeight: calc
+                  winHeight: calc
                 });
             }
         });
@@ -573,18 +573,18 @@ Page({
             menushow: true,
             menubtnshow: false
         })
-        this.showuserani();
+        //this.showuserani();
    
     },
     closemenuwin() {
         let _this = this;
-        setTimeout(function(){
+
           _this.setData({
             menushow: false,
             menubtnshow: true
           })
-        },1000)
-        this.hiddenuserani();
+
+        //this.hiddenuserani();
     },
     ownnerplusandrem() {
         this.setData({
