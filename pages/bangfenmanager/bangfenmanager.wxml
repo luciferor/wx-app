@@ -1,6 +1,6 @@
 <view style='background:#f7f7f7; height:100%;'>
       <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
-        <view class="tab-item {{currentTab==0?'active':''}}" current="{{currentTab}}"  data-current="0" bindtap="swichNav">自我管理</view>
+        <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">自我管理</view>
         <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">相互管理</view>
       </scroll-view>
       <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"

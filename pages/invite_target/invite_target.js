@@ -16,7 +16,7 @@ Page({
         this.setData({
             company_name: app.apiData.company_name
         })
-        api.$https('/targetlist/index ', {
+        api.$https('/targetlist/index', {
             session_key: app.apiData.session_key,
         }, 'POST', function(res) {
             console.log(res)

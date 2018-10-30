@@ -17,11 +17,8 @@ Page({
         showBtn: false,
     },
     onReady() {},
-    onLoad: function(option) {
+    onLoad: function() {
         let _this = this;
-        this.setData({
-            company_id: option.company_id
-        })
         if (_this.data.company_id != '' && _this.data.company_id == response.data.message.company_id) { //必须要是由申请加入的无组织用户才会显示
             wx.showModal({
                 title: '提示',
