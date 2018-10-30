@@ -7,7 +7,7 @@
     <view class="target-list">
         <view class="target-item" wx:for="{{targetArr}}" wx:for-index="idx" bindtap="pickTarget" data-item="{{item}}"  data-num="{{idx}}">
             <image wx:if="{{item.picked}}" class="picked-logo" src="../../images/icon_picked.png" />
-            <image class="target-image " src="../../images/dynamic/img_paiming_star.png" />
+            <image class="target-image " src="{{item.img}}" />
             <text class="target-name">{{item.title}}</text>
         </view>
     </view>
