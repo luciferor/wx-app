@@ -28,20 +28,6 @@ Page({
                         console.log(resreg)
                         console.log('打印sessionkey[' + resreg.data.message.session_key + ']');
                         console.log('公司id' + resreg.data.message.Company_Id)
-                            //进行判断
-                            // if(app.apiData.Company_Id==0){//最新用户
-                            //   //获取微信的信息
-                            //   wx.getUserInfo({
-                            //     success:function(reswx){
-                            //       console.log(reswx);
-                            //       console.log('获取成功')
-                            //     },
-                            //     fail:function(errwx){
-                            //       console.log(errwx);
-                            //       console.log('获取失败')
-                            //     }
-                            //   })
-                            // }
                         if (app.apiData.Company_Id != 0) { //已经有公司了，就直接跳转到个人中心
                             wx.getUserInfo({
                                 success: function(resiswx) {
@@ -57,6 +43,8 @@ Page({
                                         console.log(resinfo);
                                         console.log(resinfo.data.message)
                                         console.log(resinfo.data.success ? "更新成功的" : "没有更新成功");
+
+                                        console.log(app.apiData.Company_Id + "|||||||||||" + option.company_id);
                                         //虽然没有更新成功，但是还是要跳转到个人中心
                                         if (app.apiData.Company_Id == option.company_id) {
                                             console.log('恭喜您成功加入：' + resreg.data.message.company_name);
@@ -100,7 +88,6 @@ Page({
                                         city: resiswx.userInfo.city,
                                         country: resiswx.userInfo.country,
                                     }, 'POST')
-
                                 },
                                 fail: function(erriswx) {
                                     console.log(erriswx);
@@ -158,6 +145,7 @@ Page({
             country: e.detail.userInfo.country,
         }, 'POST')
     },
+
     getUserInfos: function(e) {
         let _this = this;
         wx.getUserInfo({

@@ -32,7 +32,7 @@
                <view class='left-container'>
                <image  src="{{rankitem.img==null||rankitem.img==''?'../../images/mine/icon_wode_rijiang.png': rankitem.img}}"  class='target-img' wx:if="{{target.gift_type ==1}}"></image>
                       <image  src="{{rankitem.img==null||rankitem.img==''?'../../images/mine/icon_wode_yuejiang.png': rankitem.img}}"  class='target-img' wx:elif="{{target.gift_type ==2}}"></image>
-                      <image  src="{{rankitem.img==null||rankitem.img==''?'../../images/mine/icon_wode_zhoujiang.png': rankitem.img}}" class='target-img' wx:else></image>
+                      <image  src="{{rankitem.img==null||rankitem.img==''?'../../images/mine/icon_wode_zhoujiang.png':rankitem.img}}" class='target-img' wx:else></image>
                 <view class='left-text-container'>
                   <span class='target-title'>{{subs.sub(rankitem.name,10)}}</span>
                   <span class='target-condition'>{{subs.targetType(rankitem.gift_type)}}{{subs.targetRank(rankitem.rank)}}</span>

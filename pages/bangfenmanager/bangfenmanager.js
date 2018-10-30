@@ -256,7 +256,7 @@ Page({
         let arr = e.currentTarget.id.split('|');
         let id = arr[0];
         let index = arr[1];
-        let info = '您确认选择该项吗？确认请点击选择对象！'; //arr[2];
+        let info = '提交后不可取消，您确认任务完成了么？'; //arr[2];
         this.data.ownerlist[index].ischecked = !this.data.ownerlist[index].ischecked;
         this.setData({
           ownerlist: this.data.ownerlist,
@@ -298,7 +298,7 @@ Page({
         let arr = e.currentTarget.id.split('|');
         let id = arr[0];
         let index = arr[1];
-        let info = '提交后不可取消，您确认任务完成了么' //arr[2];
+        let info = '即将跳转到选择对象，继续请点击确认！' //arr[2];
         this.data.mutullist[index].ischecked = !this.data.mutullist[index].ischecked;
         this.setData({
             mutullist: this.data.mutullist,
