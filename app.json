@@ -1,8 +1,7 @@
 {
     "pages": [
-        "pages/create/create",
         "pages/index/index",
-
+        "pages/create/create",
         "pages/invite_target/invite_target",
         "pages/mine/mine",
         "pages/guide/guide",
