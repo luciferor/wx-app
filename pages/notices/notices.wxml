@@ -187,5 +187,4 @@
       </swiper-item>
     </swiper>
   </view>
-
 <i-toast id="toast" />
