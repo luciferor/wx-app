@@ -64,7 +64,7 @@ Page({
       let type = arr[0];
       let index = arr[1];
       if(type==1){
-        _this.data.targetList[index].rankimg="../../images/mine/default.png";
+        _this.data.targetList[index].rankimg ="../../images/mine/icon_zidingyi.png";
         _this.setData({
           targetList: _this.data.targetList
         })
