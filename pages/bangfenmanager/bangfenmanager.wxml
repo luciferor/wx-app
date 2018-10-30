@@ -43,7 +43,7 @@
         <view wx:if="{{menubtnshow}}" class="fabs" hover-class="none" bindtap="showownerwin">
             <image class="fabimg" src="../../images/fabs/icon_xuanfu.png" />
         </view>
-        <view wx:if="{{menushow}}" class="fabs" hover-class="none" bindtap="closemenuwin" animation="{{useranimation}}">
+        <view wx:if="{{menushow}}" class="fabs" hover-class="none" bindtap="closemenuwin">
             <image class="fabimg" src="../../images/fabs/icon_xuanfu_selected.png" />
         </view>
       </view>

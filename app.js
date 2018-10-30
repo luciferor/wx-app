@@ -31,23 +31,23 @@ App({
             // 展示本地存储能力
         var logs = wx.getStorageSync('logs') || []
         logs.unshift(Date.now())
-        wx.setStorageSync('logs', logs)
+        //wx.setStorageSync('logs', logs)
 
         //获取access_key
-      wx.request({
-        url: "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx416b34cf4f1994cf&secret=2001552fd687f182c191cabb4e32f2cb", //接口地址
-        method: "GET",
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        success: function (res) {
-          console.log('此处access_key赋值');
-          _this.apiData.ACCESSKEY = res.data.access_token;
-        },
-        fail: function (err) {
-          console.log(err);
-        },
-      })
+      // wx.request({
+      //   url: "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx416b34cf4f1994cf&secret=2001552fd687f182c191cabb4e32f2cb", //接口地址
+      //   method: "GET",
+      //   header: {
+      //     'content-type': 'application/json' // 默认值
+      //   },
+      //   success: function (res) {
+      //     console.log('此处access_key赋值');
+      //     _this.apiData.ACCESSKEY = res.data.access_token;
+      //   },
+      //   fail: function (err) {
+      //     console.log(err);
+      //   },
+      // })
     },
     globalData: {
         userInfo: null,
