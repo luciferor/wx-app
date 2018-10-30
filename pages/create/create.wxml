@@ -36,7 +36,9 @@
   </view>
   <view class="bottom-operation">
     <view class="agreement-reading">
-      <i-radio checked="{{isRead}}" bindchange="handleAgreementChange"></i-radio>
+      <checkbox-group bindchange="handleAgreementChange">
+          <checkbox class="" value="阅读协议" checked="{{isRead}}" ></checkbox>
+      </checkbox-group>
       <text style="margin-left:-20rpx;z-index:10;">我已阅读并同意</text>
       <text class="to-read" bindtap="openAgreement">《企汇邦用户协议》</text>
     </view>

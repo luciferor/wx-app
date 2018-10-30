@@ -374,14 +374,16 @@ color: transparent;
 }
 .radio-container{
   width: 160rpx;
-  height: 60rpx;
-  line-height: 60rpx;
+  height: 67rpx;
+  line-height: 67rpx;
   border-radius: 4rpx;
   background: white;
   border: 1rpx solid #5398ff;
   text-align: center;
   align-items: center;
   justify-content: center;
+  display: flex;
+  flex-direction: row;
 }
 
 .target-status{
@@ -401,19 +403,19 @@ radio .wx-radio-input{
     border-radius: 28rpx; 
     height: 28rpx; 
     width: 28rpx;
+    text-align: center;
     border: 1rpx solid #5398ff; 
+    margin-bottom: 10rpx;
  }
 
 /* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
 radio .wx-radio-input.wx-radio-input-checked::before{
    border-radius: 28rpx;/* 圆角 */
-   width: 26rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
-   height: 26rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
-   line-height: 26rpx;
    text-align: center;
    font-size:18rpx; /* 对勾大小 30rpx */
    color:#fff; /* 对勾颜色 白色 */
    background: transparent;
    transform:translate(-50%, -50%) scale(1);
    -webkit-transform:translate(-50%, -50%) scale(1);
+   margin-bottom: 10rpx;
 }

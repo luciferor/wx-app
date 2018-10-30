@@ -1,9 +1,9 @@
 {
     "pages": [
         "pages/index/index",
+        "pages/create/create",
         "pages/invite_target/invite_target",
         "pages/mine/mine",
-        "pages/create/create",
         "pages/guide/guide",
         "pages/setting/setting",
         "pages/create_mutual/create_mutual",
