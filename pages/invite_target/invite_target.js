@@ -9,8 +9,12 @@ Page({
     data: {
         company_name: '新组织',
         targetArr: [],
+        mytargetList: []
     },
     //事件处理函数
+    onReady: function() {
+
+    },
     onLoad: function() {
         var _this = this
         this.setData({
@@ -29,7 +33,6 @@ Page({
         }, function() {
             console.log(请求失败);
         });
-
     },
 
     pickTarget: function(e) {
