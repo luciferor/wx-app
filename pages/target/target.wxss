@@ -374,8 +374,8 @@ color: transparent;
 }
 .radio-container{
   width: 160rpx;
-  height: 60rpx;
-  line-height: 60rpx;
+  height: 67rpx;
+  line-height: 67rpx;
   border-radius: 4rpx;
   background: white;
   border: 1rpx solid #5398ff;
