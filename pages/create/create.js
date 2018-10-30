@@ -109,15 +109,16 @@ Page({
             mutualmanaged: JSON.stringify(app.apiData.creatOrg.mutualMergeArr)
         }, 'POST');
     },
-
-
-    handleAgreementChange({
-        detail = {}
-    }) {
-
-        this.setData({
-            isRead: detail.current
-        });
+    handleAgreementChange: function(e) {
+        if (e.detail.value.length == 0) {
+            this.setData({
+                isRead: false
+            });
+        } else {
+            this.setData({
+                isRead: true
+            });
+        }
     },
     toggleRule: function(e) {
 
