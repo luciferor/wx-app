@@ -48,11 +48,11 @@
               <view class='target-container' wx:key="*this" wx:for="{{targetList}}" wx:for-index="idx" wx:for-item="target">
               <view class='target-left'>
                   <view wx:if="{{target.type ==1}}">
-                      <image  src="{{target.rankimg==null||target.rankimg==''?'../../images/mine/icon_wode_rijiang.png': target.rankimg}}"  class='target-pic' wx:if="{{target.gift_type ==1}}"></image>
-                      <image  src="{{target.rankimg==null||target.rankimg==''?'../../images/mine/icon_wode_yuejiang.png': target.rankimg}}"  class='target-pic' wx:elif="{{target.gift_type ==2}}"></image>
-                      <image  src="{{target.rankimg==null||target.rankimg==''?'../../images/mine/icon_wode_zhoujiang.png': target.rankimg}}" class='target-pic' wx:else></image>
+                      <image  src="{{target.rankimg==null||target.rankimg==''?'../../images/mine/icon_zidingyi.png': target.rankimg}}"  class='target-pic'  binderror="errorFunction" id="{{target.type+'|'+idx}}"></image>
+                      <!-- <image  src="{{target.rankimg==null||target.rankimg==''?'../../images/mine/icon_wode_yuejiang.png': target.rankimg}}"  class='target-pic' wx:elif="{{target.gift_type ==2}}" binderror="errorFunction" id="{{target.type+'|'+idx}}"></image>
+                      <image  src="{{target.rankimg==null||target.rankimg==''?'../../images/mine/icon_wode_zhoujiang.png': target.rankimg}}" class='target-pic' wx:else binderror="errorFunction" id="{{target.type+'|'+idx}}"></image> -->
                   </view>
-                  <image src="{{target.scoreimg==null||target.scoreimg==''?'../../images/mine/img_wode_bangfen.png': target.scoreimg}}"   class='target-pic' wx:else></image>
+                  <image src="{{target.scoreimg==null||target.scoreimg==''?'../../images/mine/img_wode_bangfen.png': target.scoreimg}}"   class='target-pic' wx:else binderror="errorFunction" id="{{target.type+'|'+idx}}"></image>
                   <view class='target-info'>
                       <text class='target-name'>{{target.type ==1 ? target.ranktitle:target.scoretitle}}</text>
                       <view wx:if="{{target.type ==1}}">

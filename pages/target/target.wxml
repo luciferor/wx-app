@@ -30,9 +30,9 @@
          <view class='list-box'>
           <view class='listcontent' wx:for="{{rankTargetList}}" wx:for-index="rankindex" wx:for-item="rankitem" wx:if="{{rankTargetList.length>0}}">
                <view class='left-container'>
-               <image  src="{{rankitem.img==null||rankitem.img==''?'../../images/mine/icon_wode_rijiang.png': rankitem.img}}"  class='target-img' wx:if="{{target.gift_type ==1}}"></image>
-                      <image  src="{{rankitem.img==null||rankitem.img==''?'../../images/mine/icon_wode_yuejiang.png': rankitem.img}}"  class='target-img' wx:elif="{{target.gift_type ==2}}"></image>
-                      <image  src="{{rankitem.img==null||rankitem.img==''?'../../images/mine/icon_wode_zhoujiang.png':rankitem.img}}" class='target-img' wx:else></image>
+               <image  src="{{rankitem.img==null||rankitem.img==''?'../../images/mine/icon_zidingyi.png': rankitem.img}}"  class='target-img'></image>
+                      <!-- <image  src="{{rankitem.img==null||rankitem.img==''?'../../images/mine/icon_wode_yuejiang.png': rankitem.img}}"  class='target-img' wx:elif="{{target.gift_type ==2}}"></image>
+                      <image  src="{{rankitem.img==null||rankitem.img==''?'../../images/mine/icon_wode_zhoujiang.png':rankitem.img}}" class='target-img' wx:else></image> -->
                 <view class='left-text-container'>
                   <span class='target-title'>{{subs.sub(rankitem.name,10)}}</span>
                   <span class='target-condition'>{{subs.targetType(rankitem.gift_type)}}{{subs.targetRank(rankitem.rank)}}</span>
@@ -58,7 +58,7 @@
              <view class='list-box'>
                 <view class='listcontent' wx:for="{{scoreTargetList}}"  wx:for-index="scoreindex" wx:for-item="scoreitem" wx:if="{{scoreTargetList.length>0}}">
                       <view class='left-container'>
-                      <image src="{{scoreitem.img==null||scoreitem.img==''?'../../images/mine/img_wode_bangfen.png': scoreitem.img}}" class='target-img'></image>
+                      <image src="{{scoreitem.img==null||scoreitem.img==''?'../../images/mine/default.png': scoreitem.img}}" class='target-img'></image>
                       <view class='left-text-container'>
                         <span class='target-title'>{{subs.sub(scoreitem.name,12)}}</span>
                         <span class='target-condition'>累积{{scoreitem.gift_score}}邦分</span>

@@ -59,6 +59,24 @@ Page({
         this.getTargetList();
     },
 
+    errorFunction: function (e) {
+      let _this = this;
+      let arr = e.currentTarget.id.split('|');
+      let type = arr[0];
+      let index = arr[1];
+      if(type==1){
+        _this.data.targetList[index].rankimg="../../images/mine/default.png";
+        _this.setData({
+          targetList: _this.data.targetList
+        })
+      }else if(type ==2){
+        _this.data.targetList[index].scoreimg = "../../images/mine/icon_zidingyi.png";
+        _this.setData({
+          targetList: _this.data.targetList
+        })
+      }
+    },
+
     handleReceive(e) {
         let arr = (e.currentTarget.id).split('|');
         if (arr[2] == 1) {
