@@ -9,13 +9,13 @@ page{
   min-height: 100%;
   direction:column;
 }
-.top-container{
+/* .top-container{
   flex-direction: column;
   position: fixed;
   top: 0rpx;
   z-index: 100;
   width: 100%;
-}
+} */
 .bgimg{
   width: 100%;
   z-index: -100;
@@ -159,11 +159,12 @@ page{
    padding-left: 40rpx;
    padding-right: 24rpx;
    background: linear-gradient(to right, #ffbf7a , #ff986b);
-   border-top-left-radius: 30rpx;
-   border-bottom-left-radius: 30rpx;
+   border-radius: 30rpx;
    display: flex;
    flex-direction: row;
    align-items: center;
+   margin-right: 24rpx;
+   margin-top: 10rpx;
 }
 
 .add-target-container{
@@ -233,6 +234,7 @@ page{
 .target-pic{
   width: 120rpx;
   height: 120rpx;
+  border-radius: 4rpx;
 }
 .target-info{
   display:-webkit-box;
@@ -273,7 +275,7 @@ page{
 .target-button{
     color: white;
     background-color: #5398ff;
-    border-radius: 30rpx;
+    border-radius: 4rpx;
     width: 150rpx;
     height: 60rpx;
     text-align: center;
@@ -349,7 +351,7 @@ page{
 .target-un-button{
     color: white;
     background-color: #5398ff;
-    border-radius: 30rpx;
+    border-radius: 4rpx;
     width: 150rpx;
     height: 60rpx;
     text-align: center;
@@ -484,9 +486,7 @@ page{
   top:100rpx;
 }
 
-.target-scroll{
-  margin-top: 360rpx;
-}
+
 
 ::-webkit-scrollbar{
 width: 0;
