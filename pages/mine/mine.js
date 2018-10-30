@@ -6,7 +6,6 @@ const app = getApp()
 
 Page({
     data: {
-        apiUrl: "https://devqypyp.xiaohuibang.com",
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         showRemindBox: false,
         userInfo: {
