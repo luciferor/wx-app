@@ -217,6 +217,32 @@ Page({
             _this.alertsuccess(res.data.message);
             if (res.data.success) {
                 setTimeout(function() { wx.navigateBack(); }, 1000)
+
+                //█████████████████████████████████████████████████████████将信息发送到公众号
+                console.log('这里将发送信息到公众号');
+                wx.request({
+                  url:'https://api.weixin.qq.com/cgi-bin/message/wxopen/template/uniform_send?access_token=' + app.apiData.ACCESSKEY,
+                  method:'POST',
+                  data:{
+
+                    "touser": "OPENID",
+                    "template_id": "TEMPLATE_ID",
+                    "page": "index",
+                    "form_id": "FORMID",
+                    "data": {
+                      "keyword": {
+                        "value": "339208499"
+                      },
+                    },
+                    "emphasis_keyword": "keyword1.DATA"
+                  },
+                  success:function(res){
+                    //发送信息到微信
+                    console.log('发送信息到微信');
+                    console.log(res);
+                  }
+                })
+                //█████████████████████████████████████████████████████████将信息发送到公众号
             }
         }, function(err) {
             console.log(err);
