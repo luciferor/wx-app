@@ -4,13 +4,12 @@
     height: 100%;
     display: flex;
     background-color: #f7f7f7;
-    margin-bottom: 250rpx;
     flex-direction: column;
 }
 
 .setting-area {
     width: 700rpx;
-    margin: 20rpx auto 0;
+    margin: 20rpx auto 270rpx;
     font-size: 30rpx;
 }
 
