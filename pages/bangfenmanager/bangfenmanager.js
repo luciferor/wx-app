@@ -97,7 +97,7 @@ Page({
         console.log(res)
         if (res.data.success) {
           if (res.data.success) {
-            _this.handleSuccess("操作成功");
+            _this.handleSuccess("提交成功");
             _this.showorhidden();
             _this.onShow();
           } else {
@@ -256,7 +256,7 @@ Page({
         let arr = e.currentTarget.id.split('|');
         let id = arr[0];
         let index = arr[1];
-        let info = '提交后不可取消，您确认任务完成了么？'; //arr[2];
+        let info = '您确认选择该项吗？确认请点击选择对象！'; //arr[2];
         this.data.ownerlist[index].ischecked = !this.data.ownerlist[index].ischecked;
         this.setData({
           ownerlist: this.data.ownerlist,

@@ -1,7 +1,7 @@
 <!--mine.wxml-->
 <wxs module="subs" src="../../filter/substres.wxs"></wxs>
 <view class="view-container">
-    <view class='top-container'>
+    <view >
          <image src='../../images/mine/img_wode_beijing.png' class='bgimg'></image>
      <view class="top">
         <view class='info-container'>
@@ -42,18 +42,17 @@
      </view>
      <view class='horizontal-line'></view>
     </view>
-  font-size:32rpx;
     <view style='height:100%' class='target-scroll'>
         <scroll-view class='scroll-view' scroll-y>
         <view wx:if="{{targetList.length >= 1}}" class="content-container">
               <view class='target-container' wx:key="*this" wx:for="{{targetList}}" wx:for-index="idx" wx:for-item="target">
               <view class='target-left'>
                   <view wx:if="{{target.type ==1}}">
-                      <image src='../../images/mine/icon_wode_rijiang.png' class='target-pic' wx:if="{{target.gift_type ==1}}"></image>
-                      <image src='../../images/mine/icon_wode_yuejiang.png' class='target-pic' wx:elif="{{target.gift_type ==2}}"></image>
-                      <image src='../../images/mine/icon_wode_zhoujiang.png' class='target-pic' wx:else></image>
+                      <image  src="{{target.rankimg==null||target.rankimg==''?'../../images/mine/icon_wode_rijiang.png': apiUrl+target.rankimg}}"  class='target-pic' wx:if="{{target.gift_type ==1}}"></image>
+                      <image  src="{{target.rankimg==null||target.rankimg==''?'../../images/mine/icon_wode_yuejiang.png': apiUrl+target.rankimg}}"  class='target-pic' wx:elif="{{target.gift_type ==2}}"></image>
+                      <image  src="{{target.rankimg==null||target.rankimg==''?'../../images/mine/icon_wode_zhoujiang.png': apiUrl+target.rankimg}}" class='target-pic' wx:else></image>
                   </view>
-                  <image src='../../images/mine/img_wode_bangfen.png' class='target-pic' wx:else></image>
+                  <image src="{{target.scoreimg==null||target.scoreimg==''?'../../images/mine/img_wode_bangfen.png': apiUrl+target.scoreimg}}"   class='target-pic' wx:else></image>
                   <view class='target-info'>
                       <text class='target-name'>{{target.type ==1 ? target.ranktitle:target.scoretitle}}</text>
                       <view wx:if="{{target.type ==1}}">
@@ -66,7 +65,7 @@
                   </view>
               </view>
               <view class='target-right' bindtap='handleReceive' id="{{target.id+'|'+(target.type ==1 ? target.ranktitle:target.scoretitle)+'|'+target.isreceive}}">
-                  <button class="{{target.isreceive == 1 ? 'target-button' : 'target-un-button'}}">{{target.isreceive ==1 ?'领取':'未达成'}}</button>
+                  <button class="{{target.isreceive == 1 ? 'target-button' : 'target-un-button'}}">{{subs.targetStatus(target.isreceive,target.progressbar)}}</button>
               </view>
           </view>
        </view>

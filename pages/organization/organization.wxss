@@ -45,7 +45,6 @@ page{
 
 .content-container{
   margin-top: 20rpx;
-  background: white;
   padding-bottom: 140rpx;
 
 }
@@ -56,6 +55,7 @@ page{
   align-items: center;
   justify-content: space-between;
   border-bottom: 1rpx solid #eeeeee;
+ background: white;
 }
 
 .user-left-container{    

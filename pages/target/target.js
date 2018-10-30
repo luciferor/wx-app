@@ -6,6 +6,7 @@ const app = getApp()
 
 Page({
     data: {
+        apiUrl: "https://devqypyp.xiaohuibang.com",
         current: 'tab1',
         currentIndex: 0,
         rankTargetNum: 0, //排名目标
@@ -284,7 +285,8 @@ Page({
                     ranktitle: data[i].ranktitle,
                     type: data[i].type,
                     gift_type: data[i].gift_type,
-                    gift_score: data[i].gift_score
+                    gift_score: data[i].gift_score,
+                    img: data[i].img
                 })
             }
             this.setData({
@@ -305,7 +307,8 @@ Page({
                     ranktitle: data[i].ranktitle,
                     type: data[i].type,
                     gift_type: data[i].gift_type,
-                    gift_score: data[i].gift_score
+                    gift_score: data[i].gift_score,
+                    img: data[i].img
                 })
             }
             this.setData({
