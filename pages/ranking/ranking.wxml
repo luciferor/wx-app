@@ -39,7 +39,7 @@
 </view>
 <view class='content-box'>
     <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
-        <view class="tab-item {{currentTab==0?'active':''}}"  data-current="0" bindtap="swichNav">今日排名</view>
+        <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">今日排名</view>
         <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">本周排名</view>
         <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">本月排名</view>
     </scroll-view>

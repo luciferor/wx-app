@@ -6,7 +6,6 @@ const app = getApp()
 
 Page({
     data: {
-        apiUrl: "https://devqypyp.xiaohuibang.com",
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         showRemindBox: false,
         userInfo: {
@@ -130,6 +129,15 @@ Page({
                 _this.setData({
                     targetList: data.data.message
                 });
+              for (let i = 0; i < data.data.message.length; i++) {
+                  if (data.data.message[i].progressbar == '100') {
+                    _this.setData({
+                      golding: true,
+                      infores: data.data.message[i].scoretitle,
+                      getid: data.data.message[i].id
+                    })
+                  }
+                }
             }
         }, function(data) {
             // console.log('请求失败');

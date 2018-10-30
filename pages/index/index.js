@@ -28,7 +28,6 @@ Page({
                         console.log(resreg)
                         console.log('打印sessionkey[' + resreg.data.message.session_key + ']');
                         console.log('公司id' + resreg.data.message.Company_Id)
-
                         if (app.apiData.Company_Id != 0) { //已经有公司了，就直接跳转到个人中心
                             wx.getUserInfo({
                                 success: function(resiswx) {

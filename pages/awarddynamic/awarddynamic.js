@@ -5,7 +5,12 @@ const app = getApp()
 
 Page({
     data: {
-        awardlist: []
+        awardlist: [],
+        isHideLoadMore: false,
+        info: '没有数据了',
+        page: 1,
+        id: 0,
+
     },
     onLoad: function() {
 
@@ -39,5 +44,32 @@ Page({
                 console.log(err)
             }
         }
+    },
+    onReachBottom() {//下拉刷新
+      let _this = this;
+      console.log('拉到了底部了');
+      this.data.page++;
+      this.setData({
+        isHideLoadMore: true
+      })
+      console.log(this.data.page);
+
+      api.$http(function (res) {
+        if (res.data.message.length == 1) {
+          info: '没有更多数据了'
+        }
+        let content = _this.data.awardlist.concat(res.data.message);
+        _this.setData({
+          awardlist: content,
+          isHideLoadMore: false,
+        })
+        //concat()//将两个数组连接起来，并不会改变数组的结构
+      }, function (err) {
+
+        }, '/WeChat/Applet/getAwardList', {
+          session_key: app.apiData.session_key,
+          page: _this.data.page,
+          pagesSize: 10
+        }, 'POST')
     },
 })

@@ -11,6 +11,7 @@ Page({
         showselectbuff: false, //选择加减分窗口
         showother: false, //他人加减分窗口
         showtype: false,
+        todaylist:[],//今日任务
         ownerlist: [], //自我管理
         mutullist: [], //相互管理
         session_key: '', //session_key
@@ -53,30 +54,46 @@ Page({
         menushowid: 0,
         animationData:{},//动画
         ownerlistselected:[],//已选择的自我加分管理项
-        //useranimation:{},
+        useranimation:{},
+        golding:false,
+        infores:'任务达成',
+        getid:0
     },
-    // showuserani(){
-    //   let animation = wx.createAnimation({
-    //     duration: 1000,
-    //     timingFunction: 'ease',
-    //   })
-    //   this.animation = animation
-    //   animation.opacity(1).step()
-    //   this.setData({
-    //     useranimation: animation.export()
-    //   })
-    // },
-    // hiddenuserani(){
-    //   let animation = wx.createAnimation({
-    //     duration: 1000,
-    //     timingFunction: 'ease',
-    //   })
-    //   this.animation = animation
-    //   animation.opacity(0).step()
-    //   this.setData({
-    //     useranimation: animation.export()
-    //   })
-    // },
+    nowingget(){
+      this.setData({
+        golding:false
+      })
+      wx.switchTab({
+        url: '../../pages/mine/mine',
+      })
+    },
+    closegetwin(){
+      this.setData({
+        golding:false
+      })
+    },
+    showuserani(){
+      let animation = wx.createAnimation({
+        duration: 1000,
+        timingFunction: 'ease',
+      })
+      this.animation = animation
+      animation.opacity(1).step()
+      this.setData({
+        useranimation: animation.export()
+      })
+    },
+    hiddenuserani(){
+      let animation = wx.createAnimation({
+        duration: 1000,
+        timingFunction: 'ease',
+      })
+      this.animation = animation
+      animation.opacity(0).step()
+      this.setData({
+        useranimation: animation.export()
+      })
+    },
     showorhidden(){
       this.setData({
         ownerlistselected: []
@@ -86,6 +103,25 @@ Page({
       } else {
         this.buttonanimation();
       }
+    },
+    isgeting(){
+      let _this = this;
+      api.$http(function (restarget) {
+        for (let i = 0; i < restarget.data.message.length; i++) {
+          if (restarget.data.message[i].progressbar == '100') {
+            _this.setData({
+              golding: true,
+              infores: restarget.data.message[i].scoretitle,
+              getid: restarget.data.message[i].id
+            })
+          }
+        }
+      }, function (errtarget) {
+        console.log(restarget);
+      }, '/targetmy/target', {
+          session_key: app.apiData.session_key,
+          company_id: app.apiData.Company_Id
+        }, 'POST');
     },
     saveownerlistbuff(){
       let _this = this;
@@ -100,8 +136,11 @@ Page({
             _this.handleSuccess("提交成功");
             _this.showorhidden();
             _this.onShow();
+
+            //判断是否因为加分，从而增加可以领取的任务
+            _this.isgeting();
           } else {
-            _this.handleSuccess("操作失败："+res.data.message);
+            _this.handleSuccess("提交失败："+res.data.message);
           }
         }
       }, function (err) {}, '/WeChat/Applet/finishSelfManaged', {
@@ -376,6 +415,9 @@ Page({
                     _this.setData({
                         showModal: false
                     })
+
+                  //判断是否因为加分，从而增加可以领取的任务
+                  _this.isgeting();
                 }
             }, function(err) {
                 console.log(err)
@@ -526,19 +568,23 @@ Page({
     //============================================================================================================  选项卡js
     //点击按钮痰喘指定的hiddenmodalput弹出框========================================================================  开始
     showownerwin: function() {
-        this.setData({
+        let _this = this;
+        _this.setData({
             menushow: true,
             menubtnshow: false
         })
-        //this.showuserani();
+        this.showuserani();
    
     },
     closemenuwin() {
-        this.setData({
+        let _this = this;
+        setTimeout(function(){
+          _this.setData({
             menushow: false,
             menubtnshow: true
-        })
-        //this.hiddenuserani();
+          })
+        },1000)
+        this.hiddenuserani();
     },
     ownnerplusandrem() {
         this.setData({

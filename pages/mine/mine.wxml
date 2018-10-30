@@ -65,7 +65,7 @@
                   </view>
               </view>
               <view class='target-right' bindtap='handleReceive' id="{{target.id+'|'+(target.type ==1 ? target.ranktitle:target.scoretitle)+'|'+target.isreceive}}">
-                  <button class="{{target.isreceive == 1 ? 'target-button' : 'target-un-button'}}">{{subs.targetStatus(target.isreceive,target.progressbar)}}</button>
+                  <button disabled="{{target.progressbar<100}}" class="{{target.isreceive == 1 ? 'target-button' : 'target-un-button'}}">{{subs.targetStatus(target.isreceive,target.progressbar)}}</button>
               </view>
           </view>
        </view>
