@@ -72,9 +72,10 @@ function $httpcom(_dosuccess, _dofail, _url, _params, _method,_comlete) { //参�
 }
 
 
+
 //将模块接口暴露出来
 module.exports = {
-    $http: $http,
-    $https: $https,
-    $httpcom: $httpcom
+  $http: $http,
+  $https: $https,
+  $httpcom: $httpcom,
 }

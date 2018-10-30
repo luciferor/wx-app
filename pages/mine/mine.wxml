@@ -1,7 +1,8 @@
 <!--mine.wxml-->
 <wxs module="subs" src="../../filter/substres.wxs"></wxs>
 <view class="view-container">
-     <image src='../../images/mine/img_wode_beijing.png' class='bgimg'></image>
+    <view class='top-container'>
+         <image src='../../images/mine/img_wode_beijing.png' class='bgimg'></image>
      <view class="top">
         <view class='info-container'>
             <view class='left-container'  bindtap='navigateToSetting'>
@@ -40,7 +41,9 @@
         <image src='../../images/mine/icon_wode_tianjia.png' class='add' bindtap='navigateToTarget'></image>
      </view>
      <view class='horizontal-line'></view>
-    <view style='height:100%'>
+    </view>
+  font-size:32rpx;
+    <view style='height:100%' class='target-scroll'>
         <scroll-view class='scroll-view' scroll-y>
         <view wx:if="{{targetList.length >= 1}}" class="content-container">
               <view class='target-container' wx:key="*this" wx:for="{{targetList}}" wx:for-index="idx" wx:for-item="target">

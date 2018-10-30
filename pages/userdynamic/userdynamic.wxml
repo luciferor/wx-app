@@ -5,7 +5,7 @@
           <image src="{{item.user_img==null||item.user_img==''?'../../images/img_touxiang_default.png':item.user_img}}"></image>
       </view>
       <view class="user-li-title-box fl">
-          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">{{item.name == "" ? subs.sub(item.wechat_name,4):subs.sub(item.name,8) }}</span><span class="user-li-title-box-listtitle-time">{{item.created_at}}</span></view>
+          <view class="user-li-title-box-listtitle"><span class="user-li-title-box-listtitle-name">{{item.name == "" ? subs.sub(item.wechat_name,6):subs.sub(item.name,6) }}</span><span class="user-li-title-box-listtitle-time">{{item.created_at}}</span></view>
           <view class="user-li-title-box-listdes">{{subs.sub(item.content,14)}}</view>
       </view>
       <view class="user-li-right-bf fr">

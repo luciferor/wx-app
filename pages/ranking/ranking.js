@@ -3,7 +3,7 @@ var app = getApp();
 Page({
     data: {
         winHeight: "", //窗口高度
-        currentTab: 0, //预设当前项的值
+        currentTab:0, //预设当前项的值
         scrollLeft: 0, //tab标题的滚动条位置
         typename: '', //加减分类型
         showModal: false,
@@ -20,6 +20,8 @@ Page({
         monthranklist: [], //月排名
         topranklist: [], //顶部排名
         thenid: 0,
+        animationData:{},
+        animationopacityData:{}
     },
     //===========================================================================================================选择加减分类型
     applyevent() {
@@ -82,18 +84,66 @@ Page({
     },
     // 点击标题切换当前页时改变样式
     swichNav: function(e) {
-        var cur = e.target.dataset.current;
+        let cur = e.target.dataset.current;
         if (this.data.currentTaB == cur) { return false; } else {
             this.setData({
                 currentTab: cur
             })
         }
+        //摇晃动画
+        this.$shacking();
+        //谈出动画
+        this.$opacitiing();
+    },
+    //摇晃动画
+    $shacking(){//摇晃动画
+      let animation = wx.createAnimation({
+        duration: 200,
+        timingFunction: 'ease',
+      })
+
+      this.animation = animation
+
+      animation.rotate(-15).step()
+
+      this.setData({
+        animationData: animation.export()
+      })
+
+      setTimeout(function() {
+        animation.rotate(0).step()
+        this.setData({
+          animationData: animation.export()
+        })
+      }.bind(this), 200)
+    },
+    //透明度
+    $opacitiing() {//摇晃动画
+      let animation = wx.createAnimation({
+        duration: 300,
+        timingFunction: 'ease',
+      })
+
+      this.animation = animation
+
+      animation.opacity(0).step()
+
+      this.setData({
+        animationopacityData: animation.export()
+      })
+
+      setTimeout(function () {
+        animation.opacity(1).step()
+        this.setData({
+          animationopacityData: animation.export()
+        })
+      }.bind(this), 300)
     },
     //判断当前滚动超过一屏时，设置tab标题滚动条。
     checkCor: function() {
         if (this.data.currentTab > 4) {
             this.setData({
-                scrollLeft: 300
+              scrollLeft: 300
             })
         } else {
             this.setData({
