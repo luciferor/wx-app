@@ -1,0 +1,7 @@
+{
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "添加目标",
+    "usingComponents": {
+        "i-toast": "../../dist/toast/index"
+    }
+}

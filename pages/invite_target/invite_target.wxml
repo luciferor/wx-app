@@ -1,0 +1,17 @@
+<!--index.wxml-->
+<view class="target-container">
+    <view class="welcome-tip">欢迎加入<text class="company-name">{{company_name}}</text></view>
+    <view class="encourage-tip">努力成为更好的自己</view>
+
+    <view class="target-tip">给自己定个小目标</view>
+    <view class="target-list">
+        <view class="target-item" wx:for="{{targetArr}}" wx:for-index="idx" bindtap="pickTarget" data-item="{{item}}"  data-num="{{idx}}">
+            <image wx:if="{{item.picked}}" class="picked-logo" src="../../images/icon_picked.png" />
+            <image class="target-image " src="../../images/dynamic/img_paiming_star.png" />
+            <text class="target-name">{{item.title}}</text>
+        </view>
+    </view>
+
+    <button bindtap="addAndMove" class="start-btn">开始行动</button>
+    <i-toast id="toast" />
+</view>

@@ -10,6 +10,7 @@ App({
         isAdmin: 0,
         nickName: '',
         invite_id: '',
+        company_name: '',
         creatOrg: {
             mutualMergeArr: [],
             selfMergeArr: [],

@@ -1,0 +1,82 @@
+/**invite_target.wxss**/
+
+.target-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.welcome-tip {
+    font-size: 26rpx;
+    color: #999999;
+    margin: 50rpx 0 15rpx 0;
+}
+
+.company-name {
+    color: #5398ff;
+}
+
+.encourage-tip {
+    font-size: 54rpx;
+    color: #333333;
+    margin: 0 0 15rpx 0;
+}
+
+.target-tip {
+    font-size: 30rpx;
+    color: #999999;
+}
+
+.target-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 50rpx 50rpx 0rpx;
+}
+
+.target-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 33.3%;
+    flex: 1 1 auto;
+    margin-bottom: 30rpx;
+    position: relative;
+}
+
+.target-item .target-image {
+    width: 130rpx;
+    height: 130rpx;
+    border-radius: 50%;
+}
+
+.target-item .picked-logo {
+    width: 36rpx;
+    height: 36rpx;
+    position: absolute;
+    z-index: 9;
+    left: 63%;
+    top: 2%;
+}
+
+.target-item .target-name {
+    font-size: 28rpx;
+    color: #333333;
+    margin-top: 10rpx;
+    width: 80%;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.start-btn {
+    position: fixed;
+    bottom: 20rpx;
+    width: 702rpx;
+    height: 110rpx;
+    line-height: 110rpx;
+    background-color: #5398ff;
+    border-radius: 4rpx;
+    color: #ffffff;
+    font-size: 36rpx;
+}
