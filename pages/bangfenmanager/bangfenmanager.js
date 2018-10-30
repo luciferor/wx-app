@@ -256,7 +256,7 @@ Page({
         let arr = e.currentTarget.id.split('|');
         let id = arr[0];
         let index = arr[1];
-        let info = '即将跳转到人员选择中，选择完成即可提交！'; //arr[2];
+        let info = '您确认选择该项吗？确认请点击选择对象！'; //arr[2];
         this.data.ownerlist[index].ischecked = !this.data.ownerlist[index].ischecked;
         this.setData({
           ownerlist: this.data.ownerlist,

@@ -1,7 +1,9 @@
 //index.js
 //获取应用实例
 var api = require('../../utils/api.js');
-const { $Toast } = require('../../dist/base/index');
+const {
+    $Toast
+} = require('../../dist/base/index');
 const app = getApp()
 
 Page({
@@ -22,6 +24,7 @@ Page({
                         app.apiData.session_key = resreg.data.message.session_key;
                         app.apiData.Company_Id = resreg.data.message.company_id;
                         app.apiData.isAdmin = resreg.data.message.isadmin;
+                        app.apiData.company_name = resreg.data.message.company_name;
                         console.log(resreg)
                         console.log('打印sessionkey[' + resreg.data.message.session_key + ']');
                         console.log('公司id' + resreg.data.message.Company_Id)
@@ -81,6 +84,7 @@ Page({
                                         city: resiswx.userInfo.city,
                                         country: resiswx.userInfo.country,
                                     }, 'POST')
+
                                 },
                                 fail: function(erriswx) {
                                     console.log(erriswx);
@@ -110,22 +114,22 @@ Page({
         console.log(e.detail.userInfo);
         console.log('成功');
         app.apiData.GetLincesShow = false; //隐藏授权按钮
-          _this.setData({
-                  isshow: app.apiData.GetLincesShow
-              })
-              //提交信息到服务器
-          api.$http(function(resinfo) {
+        _this.setData({
+                isshow: app.apiData.GetLincesShow
+            })
+            //提交信息到服务器
+        api.$http(function(resinfo) {
 
-          console.log(resinfo);
-          console.log(resinfo.data.message)
-          console.log(resinfo.data.success ? "更新成功的" : "没有更新成功");
-          //虽然没有更新成功，但是还是要跳转到个人中心
-          _this.setData({
-              isshow: app.apiData.GetLincesShow
-          })
-          wx.switchTab({
-              url: '../../pages/mine/mine',
-          })
+            console.log(resinfo);
+            console.log(resinfo.data.message)
+            console.log(resinfo.data.success ? "更新成功的" : "没有更新成功");
+            //虽然没有更新成功，但是还是要跳转到个人中心
+            _this.setData({
+                isshow: app.apiData.GetLincesShow
+            })
+            wx.switchTab({
+                url: '../../pages/mine/mine',
+            })
         }, function(errinfo) {
             console.log(errinfo)
         }, '/appreciate/updateInformation', {
