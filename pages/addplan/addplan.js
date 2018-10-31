@@ -89,7 +89,7 @@ Page({
           content: '添加失败'
         });
       });
-    }, 3000),
+    }, 5000),
 
     timeToTimestamp(date) {
         return Date.parse(date) / 1000;

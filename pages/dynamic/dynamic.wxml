@@ -49,5 +49,9 @@
             </view>
           </view>
       </view>
+      <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">{{info}}</view>
+      </view>
   </view>
 </view>

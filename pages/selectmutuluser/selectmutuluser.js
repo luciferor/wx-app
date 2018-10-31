@@ -226,11 +226,45 @@ Page({
           id: this.data.mutuid,
           user_ids: selused.substr(1)
         }, "POST")
-    }, 3000),
+    }, 5000),
     alertsuccess(_str) {
         $Toast({
             content: _str,
             type: 'success'
         });
+    },
+    sendmsg(){
+      //█████████████████████████████████████████████████████████将信息发送到公众号
+      console.log('这里将发送信息到公众号');
+      wx.request({
+        url: 'https://api.weixin.qq.com/cgi-bin/message/wxopen/template/uniform_send?access_token=' + app.apiData.ACCESSKEY,
+        method: 'POST',
+        data: {
+          'touser': 'ooOuZ5QAmmGSoc41FoIEXvcNwzLY',
+          'template_id': '_abIgESCPWfj7o-5DEsWgUUN8tvVXZmg9Z3zWLbJahU',
+          'page': 'index',
+          'form_id': 'FORMID',
+          'data': {
+            'keyword1': {
+              'value': '信息提示',
+              'color': '操作成功！'
+            },
+            'keyword2': {
+              'value': '信息提示',
+              'color': '有人给您加分了'
+            },
+            
+            'emphasis_keyword': 'keyword1.DATA',
+            'emphasis_keyword': 'keyword2.DATA' 
+          }
+        },
+        success: function (res) {
+          //发送信息到微信
+          console.log('发送信息到微信');
+          console.log(res);
+        }
+      })
+      //█████████████████████████████████████████████████████████将信息发送到公众号
+
     }
 });

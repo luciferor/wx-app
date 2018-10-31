@@ -34,12 +34,12 @@
             </view>
         </view>
      </view>
-     <view class='add-target-container'>
+     <view class='add-target-container' bindtap='navigateToTarget'>
         <view class='add-text-container'>
             <view class='add-icon'></view>
             <text class='add-text'>我的目标</text>
         </view>
-        <image src='../../images/mine/icon_wode_tianjia.png' class='add' bindtap='navigateToTarget'></image>
+        <image src='../../images/mine/icon_wode_tianjia.png' class='add'></image>
      </view>
      <view class='horizontal-line'></view>
     </view>

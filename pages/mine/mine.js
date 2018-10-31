@@ -118,7 +118,7 @@ Page({
         id: _id
       }, 'POST')
 
-  }, 1000),
+  }, 3000),
     //获取用户信息
     getUserInfos() {
         let _this = this;
@@ -148,6 +148,23 @@ Page({
                 _this.setData({
                     targetList: data.data.message
                 });
+              for (let i = 0; i < data.data.message.length; i++) {
+                if (data.data.message[i].progressbar == '100' && data.data.message[i].isreceive=='1') {
+                    if (data.data.message[i].type==2){
+                      _this.setData({
+                        golding: true,
+                        infores: data.data.message[i].scoretitle,
+                        getid: data.data.message[i].id
+                      })
+                    }else{
+                      _this.setData({
+                        golding: true,
+                        infores: data.data.message[i].ranktitle,
+                        getid: data.data.message[i].id
+                      })
+                    }              
+                  }
+                }
             }
         }, function(data) {
             // console.log('请求失败');

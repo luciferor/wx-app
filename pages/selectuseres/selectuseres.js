@@ -237,7 +237,7 @@ Page({
           type: _this.data.othertype == '加分' ? 'add' : 'reduce',
           user_ids: selused.substr(1)
         }, "POST")
-    }, 2000),
+    }, 5000),
     alertsuccess(_str) {
         $Toast({
             content: _str,

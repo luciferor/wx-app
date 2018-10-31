@@ -81,6 +81,11 @@ Page({
                 break;
         }
         this.checkCor();
+
+        //摇晃动画
+        this.$shacking();
+        //谈出动画
+        this.$opacitiing();
     },
     // 点击标题切换当前页时改变样式
     swichNav: function(e) {
@@ -191,7 +196,7 @@ Page({
         })
     },
     preventTouchMove: function() {
-
+      
     },
     go: function() {
         this.setData({

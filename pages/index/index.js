@@ -26,8 +26,8 @@ Page({
                         app.apiData.isAdmin = resreg.data.message.isadmin;
                         app.apiData.company_name = resreg.data.message.company_name;
                         console.log(resreg)
-                        console.log('打印sessionkey[' + resreg.data.message.session_key + ']');
-                        console.log('公司id' + resreg.data.message.Company_Id)
+                        //console.log('打印sessionkey[' + resreg.data.message.session_key + ']');
+                        //console.log('公司id' + resreg.data.message.Company_Id)
                         if (app.apiData.Company_Id != 0) { //已经有公司了，就直接跳转到个人中心
                             wx.getUserInfo({
                                 success: function(resiswx) {
@@ -47,7 +47,7 @@ Page({
                                         console.log(app.apiData.Company_Id + "|||||||||||" + option.company_id);
                                         //虽然没有更新成功，但是还是要跳转到个人中心
                                         if (app.apiData.Company_Id == option.company_id) {
-                                            console.log('恭喜您成功加入：' + resreg.data.message.company_name);
+                                            //console.log('恭喜您成功加入：' + resreg.data.message.company_name);
                                             $Toast({
                                                 content: '恭喜您成功加入：[' + resreg.data.message.company_name + ']',
                                                 type: 'success',
@@ -58,7 +58,7 @@ Page({
                                                 company_id: app.apiData.Company_Id
                                             }, 'POST', function(data) {
                                                 if (data.data.success) {
-                                                    console.log(data.data.message)
+                                                    //console.log(data.data.message)
                                                     if (data.data.message.length > 0) {
                                                         wx.switchTab({
                                                             url: '../mine/mine',
@@ -70,7 +70,7 @@ Page({
                                                     }
                                                 }
                                             }, function(data) {
-                                                console.log('请求失败');
+                                                //console.log('请求失败');
                                             });
                                         } else {
                                             wx.switchTab({
@@ -78,7 +78,7 @@ Page({
                                             })
                                         }
                                     }, function(errinfo) {
-                                        console.log(errinfo)
+                                        //console.log(errinfo)
                                     }, '/appreciate/updateInformation', {
                                         session_key: app.apiData.session_key,
                                         nickname: resiswx.userInfo.nickName,
@@ -115,7 +115,7 @@ Page({
         let _this = this;
         app.apiData.nickName = e.detail.userInfo.nickName;
         console.log(e.detail.userInfo);
-        console.log('成功');
+        //console.log('成功');
         app.apiData.GetLincesShow = false; //隐藏授权按钮
         _this.setData({
                 isshow: app.apiData.GetLincesShow
@@ -123,9 +123,9 @@ Page({
             //提交信息到服务器
         api.$http(function(resinfo) {
 
-            console.log(resinfo);
-            console.log(resinfo.data.message)
-            console.log(resinfo.data.success ? "更新成功的" : "没有更新成功");
+            //console.log(resinfo);
+            //console.log(resinfo.data.message)
+            //console.log(resinfo.data.success ? "更新成功的" : "没有更新成功");
             //虽然没有更新成功，但是还是要跳转到个人中心
             _this.setData({
                 isshow: app.apiData.GetLincesShow
@@ -134,7 +134,7 @@ Page({
                 url: '../../pages/mine/mine',
             })
         }, function(errinfo) {
-            console.log(errinfo)
+            //console.log(errinfo)
         }, '/appreciate/updateInformation', {
             session_key: app.apiData.session_key,
             nickname: e.detail.userInfo.nickName,
@@ -151,8 +151,8 @@ Page({
         wx.getUserInfo({
             success: function(resiswx) {
                 app.apiData.nickName = resiswx.userInfo.nickName;
-                console.log(resiswx);
-                console.log('成功');
+                //console.log(resiswx);
+                //console.log('成功');
                 app.apiData.GetLincesShow = false; //隐藏授权按钮
                 _this.setData({
                         isshow: app.apiData.GetLincesShow
