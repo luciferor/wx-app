@@ -17,18 +17,19 @@
                 <view class='badge' wx:if="{{userInfo.ecount >0}}"></view>
             </view>
         </view>
+
         <view class='score-org-container'>
             <view class='score-container'>
              <text class='total-text'></text>
              <!-- <text class=''>{{score|Number}}<span style="font-size:28rpx;">总邦分<span></text> -->
-             <view style='padding-top:30rpx;'><span class="total-score fl">{{score}}</span><span style="color:#fff;">邦分</span></view>
+             <view style='padding-top:30rpx;'><span class="total-score fl">{{score}}</span><span style="color:#fff;margin-left:15rpx">邦分</span></view>
              <view class='remind-container' bindtap='handleRemindOpen'>
                 <text class='remind-text'>剩{{userInfo.disposable ==null ?0:userInfo.disposable}}邦分加分权利，{{userInfo.reduces ==null ? 0:userInfo.reduces}}邦分减分权利</text>
                 <image class='remind-icon' src='../../images/mine/icon_wode_shuoming.png'></image>
              </view>
             </view>
-            <view class='org'  bindtap='navigateToOrg'>
-                 <text >我的组织</text>
+            <view class='org'  bindtap='navigateToOrg' >
+                 <text class='org-text'>我的组织</text>
                  <image class='org-icon' src='../../images/mine/icon_wode_you.png'></image>
             </view>
         </view>
@@ -55,12 +56,14 @@
                   <image src="{{target.scoreimg==null||target.scoreimg==''?'../../images/mine/img_wode_bangfen.png': target.scoreimg}}"   class='target-pic' wx:else binderror="errorFunction" id="{{target.type+'|'+idx}}"></image>
                   <view class='target-info'>
                       <text class='target-name'>{{target.type ==1 ? target.ranktitle:target.scoretitle}}</text>
+                      <view style='height:20rpx'></view>
                       <view wx:if="{{target.type ==1}}">
                     <view class='target-condition'>当前第<span class="hight-color">{{target.myrank}}</span>名/{{subs.targetType(target.gift_type)}}{{subs.targetRank(target.rank)}}</view>
                     <!-- <view class='target-condition' wx:elif="{{target.gift_type ==2}}">当前第<span class="hight-color">{{target.weekrank}}</span>名/{{subs.targetType(target.gift_type)}}{{subs.targetRank(target.rank)}}</view>
                     <view class='target-condition' wx:else>当前第<span class="hight-color">{{target.monthrank}}</span>名/{{subs.targetType(target.gift_type)}}{{subs.targetRank(target.rank)}}</view> -->
                       </view>
                       <view class='target-condition' wx:else><span class="hight-color">{{target.score}}</span>邦分/{{target.gift_score}}邦分</view>
+                      <view style='height:15rpx'></view>
                       <progress class='target-status' percent="{{target.progressbar|Number}}" activeColor="{{target.progressbar==100?'#02e69a':'#5398ff'}}" backgroundColor="#f7f7f7"></progress>
                   </view>
               </view>

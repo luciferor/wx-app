@@ -115,7 +115,6 @@ page{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-top: 25rpx;
 }
 .score-container{
    display:-webkit-box;
@@ -133,7 +132,7 @@ page{
 .total-score{
   color: white;
   font-weight: bold;
-  margin-top:-10rpx;
+  padding-top:-20rpx;
   font-size:72rpx;
 }
 
@@ -144,11 +143,13 @@ page{
    display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 10rpx;
+  padding-top: 10rpx;
 }
 .remind-text{
   color: #b7d4ff;
   font-size: 24rpx;
+  word-break:keep-all;      /* 不换行 */
+  white-space:nowrap; 
 }
 .org{
    color: white;
@@ -156,8 +157,8 @@ page{
    line-height: 60rpx;
    text-align: center;
    font-size: 26rpx;
-   padding-left: 40rpx;
-   padding-right: 24rpx;
+   padding-left: 30rpx;
+   padding-right: 30rpx;
    background: linear-gradient(to right, #ffbf7a , #ff986b);
    border-radius: 30rpx;
    display: flex;
@@ -243,7 +244,7 @@ page{
   display: flex;
   flex-direction: column;
   margin-left: 20rpx;
-  justify-content: space-around
+
 }
 .target-name{
   color: #333333;
@@ -252,12 +253,10 @@ page{
 .target-condition{
   color: #666666;
   font-size: 24rpx;
-  margin-top: 10rpx;
 }
 .target-status{
   width: 340rpx;
   height: 10rpx;
-  margin-top: 20rpx;
   border-radius:100px;
   overflow:hidden;
 }
@@ -297,7 +296,7 @@ page{
 }
 
 .org-icon{
-   width: 24rpx;
+  width: 24rpx;
   height: 20rpx;
   margin-left: 10rpx;
 }
@@ -486,10 +485,13 @@ page{
   top:100rpx;
 }
 
-
-
 ::-webkit-scrollbar{
 width: 0;
 height: 0;
 color: transparent;
+}
+
+.org-text{
+  word-break:keep-all;      /* 不换行 */
+  white-space:nowrap; 
 }

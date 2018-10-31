@@ -20,9 +20,9 @@ Page({
     },
     onLoad: function() {
         this.setData({
-                currentIndex: 0
-            })
-            //加载初始数据
+            currentIndex: 0
+        })
+        //加载初始数据
         this.getNoticeList(0, this.data.allPage);
         this.getNoticeList(1, this.data.allPage);
         this.getNoticeList(2, this.data.allPage);
@@ -32,35 +32,35 @@ Page({
         })
     },
 
-      onReachBottom() {//下拉刷新
-        switch(this.data.currentIndex){
-          case 0:
-            this.setData({
-              allPage:this.data.allPage++
-            })
-            this.getNoticeList(0, this.data.allPage);
-          break
-          case 1:
-            this.setData({
-              applyPage: this.data.applyPage++
-            })
-            this.getNoticeList(1, this.data.applyPage);
-          break
-          case 2:
-            this.setData({
-              passPage: this.data.passPage++
-            })
-            this.getNoticeList(2, this.data.passPage);
-          break;
-          case 3:
-            this.setData({
-              rejectPage: this.data.rejectPage++
-            })
-            this.getNoticeList(3, this.data.rejectPage);
-          break;
-        }
-      },
-
+  searchScrollLower:function(){
+    console.log("======拉到了底部" + this.data.currentIndex)
+    switch (this.data.currentIndex) {
+      case 0:
+        this.setData({
+          allPage: this.data.allPage+1
+        })
+        this.getNoticeList(0, this.data.allPage);
+        break
+      case 1:
+        this.setData({
+          applyPage: this.data.applyPage+1
+        })
+        this.getNoticeList(1, this.data.applyPage);
+        break
+      case 2:
+        this.setData({
+          passPage: this.data.passPage+1
+        })
+        this.getNoticeList(2, this.data.passPage);
+        break;
+      case 3:
+        this.setData({
+          rejectPage: this.data.rejectPage+1
+        })
+        this.getNoticeList(3, this.data.rejectPage);
+        break;
+    }
+  },
   
     onShareAppMessage: function() {
         return {
