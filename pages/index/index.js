@@ -9,7 +9,6 @@ const app = getApp()
 Page({
     data: {
         isshow: false,
-        company_name:''
     },
     //事件处理函数
     onLoad: function(option) {
@@ -36,7 +35,6 @@ Page({
                               app.apiData.GetLincesShow = false; //隐藏授权按钮
                               _this.setData({
                                 isshow: app.apiData.GetLincesShow,
-                                company_name: resreg.data.message.company_name
                               })
                               //提交信息到服务器
                               
@@ -182,8 +180,8 @@ Page({
             _this.setData({
                 isshow: app.apiData.GetLincesShow
             })
-
-            if (_this.data.company_name!=''){
+            console.log(app.apiData.company_name);
+            if (app.apiData.company_name!=''){
               wx.switchTab({
                 url: '../../pages/mine/mine',
               })
@@ -208,43 +206,66 @@ Page({
 
     getUserInfos: function() {
         let _this = this;
-        wx.getUserInfo({
-            success: function(resiswx) {
-                app.apiData.nickName = wx, wx.getStorageSync('userInfo').nickName;
-                app.apiData.GetLincesShow = false; //隐藏授权按钮
-                _this.setData({
-                        isshow: app.apiData.GetLincesShow
-                    })
-                    //提交信息到服务器
-                api.$http(function(resinfo) {
-                    console.log(resinfo);
-                    console.log(resinfo.data.message)
-                    console.log(resinfo.data.success ? "更新成功的" : "没有更新成功");
-                    //虽然没有更新成功，但是还是要跳转到个人中心
-                    wx.redirectTo({
-                        url: '../../pages/guide/guide',
-                    })
-                }, function(errinfo) {
-                    console.log(errinfo)
-                }, '/appreciate/updateInformation', {
-                    session_key: app.apiData.session_key,
-                    nickname: resiswx.userInfo.nickName,
-                    avatarurl: resiswx.userInfo.avatarUrl,
-                    gender: resiswx.userInfo.gender,
-                    province: resiswx.userInfo.province,
-                    city: resiswx.userInfo.city,
-                    country: resiswx.userInfo.country,
+        if(wx.getStorageSync('userInfo').length>0){
+          //提交信息到服务器
+          api.$http(function (resinfo) {
+            console.log(resinfo);
+            console.log(resinfo.data.message)
+            console.log(resinfo.data.success ? "更新成功的" : "没有更新成功");
+            //虽然没有更新成功，但是还是要跳转到个人中心
+            wx.redirectTo({
+              url: '../../pages/guide/guide',
+            })
+          }, function (errinfo) {
+            console.log(errinfo)
+          }, '/appreciate/updateInformation', {
+              session_key: app.apiData.session_key,
+              nickname: wx.getStorageSync('userInfo').nickName,
+              avatarurl: wx.getStorageSync('userInfo').avatarUrl,
+              gender: wx.getStorageSync('userInfo').gender,
+              province: wx.getStorageSync('userInfo').province,
+              city: wx.getStorageSync('userInfo').city,
+              country: wx.getStorageSync('userInfo').country,
+            }, 'POST')
+        }else{
+          wx.getUserInfo({
+            success: function (resiswx) {
+              app.apiData.nickName = wx, wx.getStorageSync('userInfo').nickName;
+              app.apiData.GetLincesShow = false; //隐藏授权按钮
+              _this.setData({
+                isshow: app.apiData.GetLincesShow
+              })
+              //提交信息到服务器
+              api.$http(function (resinfo) {
+                console.log(resinfo);
+                console.log(resinfo.data.message)
+                console.log(resinfo.data.success ? "更新成功的" : "没有更新成功");
+                //虽然没有更新成功，但是还是要跳转到个人中心
+                wx.redirectTo({
+                  url: '../../pages/guide/guide',
+                })
+              }, function (errinfo) {
+                console.log(errinfo)
+              }, '/appreciate/updateInformation', {
+                  session_key: app.apiData.session_key,
+                  nickname: resiswx.userInfo.nickName,
+                  avatarurl: resiswx.userInfo.avatarUrl,
+                  gender: resiswx.userInfo.gender,
+                  province: resiswx.userInfo.province,
+                  city: resiswx.userInfo.city,
+                  country: resiswx.userInfo.country,
                 }, 'POST')
             },
-            fail: function(erriswx) {
-                console.log(erriswx);
-                console.log('失败')
-                app.apiData.GetLincesShow = true; //显示授权按钮
-                _this.setData({
-                    isshow: app.apiData.GetLincesShow
-                })
+            fail: function (erriswx) {
+              console.log(erriswx);
+              console.log('失败')
+              app.apiData.GetLincesShow = true; //显示授权按钮
+              _this.setData({
+                isshow: app.apiData.GetLincesShow
+              })
             }
-        })
+          })
+        }
     },
 
     onShareAppMessage: function() {

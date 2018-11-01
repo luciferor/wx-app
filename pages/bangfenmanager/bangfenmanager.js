@@ -1,5 +1,6 @@
 var api = require('../../utils/api.js');
 const { $Toast } = require('../../dist/base/index');
+const util = require('../../utils/util.js')
 var app = getApp();
 Page({
     data: {
@@ -104,54 +105,54 @@ Page({
         this.buttonanimation();
       }
     },
-    isgeting(){
-      let _this = this;
-      api.$http(function (restarget) {
-        for (let i = 0; i < restarget.data.message.length; i++) {
-          if (restarget.data.message[i].progressbar == '100' && restarget.data.message[i].isreceive == '1') {
-            _this.setData({
-              golding: true,
-              infores: restarget.data.message[i].scoretitle,
-              getid: restarget.data.message[i].id
-            })
-          }
-        }
-      }, function (errtarget) {
-        console.log(restarget);
-      }, '/targetmy/target', {
-          session_key: app.apiData.session_key,
-          company_id: app.apiData.Company_Id
-        }, 'POST');
-    },
-    saveownerlistbuff(){
-      let _this = this;
-      let ids = '';
-      for(let i=0;i<this.data.ownerlistselected.length;i++){
-        ids += ';'+this.data.ownerlistselected[i].id;
-      }
-      api.$http(function (res) {
-        console.log(res)
-        if (res.data.success) {
-          if (res.data.success) {
-            _this.handleSuccess("提交成功");
-            _this.showorhidden();
-            _this.onShow();
 
-            //判断是否因为加分，从而增加可以领取的任务
-            _this.isgeting();
-          } else {
-            _this.handleSuccess("提交失败："+res.data.message);
-          }
+  isgeting(){
+    let _this = this;
+    api.$http(function (restarget) {
+      for (let i = 0; i < restarget.data.message.length; i++) {
+        if (restarget.data.message[i].progressbar == '100' && restarget.data.message[i].isreceive == '1') {
+          _this.setData({
+            golding: true,
+            infores: restarget.data.message[i].scoretitle,
+            getid: restarget.data.message[i].id
+          })
         }
-      }, function (err) {}, '/WeChat/Applet/finishSelfManaged', {
-          session_key: app.apiData.session_key,
-          ids: ids.substr(1)
-        },'POST')
-      this.data.ownerlist.ischecked = false;
-      this.setData({
-        ownerlist: this.data.ownerlist
-      });
-    },
+      }
+    }, function (errtarget) {
+      console.log(restarget);
+    }, '/targetmy/target', {
+        session_key: app.apiData.session_key,
+        company_id: app.apiData.Company_Id
+      }, 'POST');
+  },
+  saveownerlistbuff: util.throttle(function (e) {
+    console.log("执行了saveownerlistbuff");
+    let _this = this;
+    let ids = '';
+    for (let i = 0; i < this.data.ownerlistselected.length; i++) {
+      ids += ';' + this.data.ownerlistselected[i].id;
+    }
+    api.$http(function (res) {
+      console.log(res)
+      if (res.data.success) {
+        if (res.data.success) {
+          _this.handleSuccess("提交成功");
+          _this.showorhidden();
+          _this.onShow();
+        } else {
+          _this.handleSuccess("操作失败：" + res.data.message);
+        }
+      }
+    }, function (err) { }, '/WeChat/Applet/finishSelfManaged', {
+        session_key: app.apiData.session_key,
+        ids: ids.substr(1)
+      }, 'POST')
+    this.data.ownerlist.ischecked = false;
+    this.setData({
+      ownerlist: this.data.ownerlist
+    });
+  }, 3000),
+
     buttonanimation(){//按钮动画
       let animation = wx.createAnimation({
         duration: 500,
@@ -382,53 +383,50 @@ Page({
             }
         }
     },
-    ownnerplusevent() {
-        let count = 0;
-        console.log(this.data.ownerdatalist.reasonr);
-        let _this = this;
-        if (_this.data.typename == "") {
-            $Toast({
-                content: "请选择加减分类型",
-            });
-        } else if (_this.data.buff == 0 || _this.data.buff == "") {
-            $Toast({
-                content: "请选择邦分",
-            });
-        } else if (_this.data.ownerdatalist.reasonr == "") {
-            $Toast({
-                content: "请输入理由",
-            });
-        }  else  {
-            console.log("自我加减分申请");
-            if (count > 1) {
-                return;
-            }
-            api.$http(function(res) {
-                console.log(res);
-                if (res.data.success) {
-                    count++;
-                    //alert('添加成功！')
-                    $Toast({
-                        content: res.data.message,
-                    });
-                    _this.handleSuccess(_this.data.typename + '成功')
-                    _this.setData({
-                        showModal: false
-                    })
-
-                  //判断是否因为加分，从而增加可以领取的任务
-                  _this.isgeting();
-                }
-            }, function(err) {
-                console.log(err)
-            }, "/WeChat/Applet/changeGradeApplyBySelf", {
-                session_key: app.apiData.session_key,
-                type: _this.data.typename == '自我加分' ? 'add' : 'reduce',
-                bangfen: _this.data.buff,
-                reason: _this.data.ownerdatalist.reasonr,
-            }, "POST");
+    ownnerplusevent: util.throttle(function (e) {
+      let count = 0;
+      console.log(this.data.ownerdatalist.reasonr);
+      let _this = this;
+      if (_this.data.typename == "") {
+        $Toast({
+          content: "请选择加减分类型",
+        });
+      } else if (_this.data.buff == 0 || _this.data.buff == "") {
+        $Toast({
+          content: "请选择邦分",
+        });
+      } else if (_this.data.ownerdatalist.reasonr == "") {
+        $Toast({
+          content: "请输入理由",
+        });
+      } else {
+        console.log("自我加减分申请");
+        if (count > 1) {
+          return;
         }
-    },
+        api.$http(function (res) {
+          console.log(res);
+          if (res.data.success) {
+            count++;
+            //alert('添加成功！')
+            $Toast({
+              content: res.data.message,
+            });
+            _this.handleSuccess(_this.data.typename + '成功')
+            _this.setData({
+              showModal: false
+            })
+          }
+        }, function (err) {
+          console.log(err)
+        }, "/WeChat/Applet/changeGradeApplyBySelf", {
+            session_key: app.apiData.session_key,
+            type: _this.data.typename == '自我加分' ? 'add' : 'reduce',
+            bangfen: _this.data.buff,
+            reason: _this.data.ownerdatalist.reasonr,
+          }, "POST");
+      }
+    }, 5000),
     otherbuffevent(e) {
         console.log(e.detail.value);
         this.setData({

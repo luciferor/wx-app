@@ -1,6 +1,7 @@
 //mine.js
 var api = require('../../utils/api.js');
 const { $Toast } = require('../../dist/base/index');
+const util = require('../../utils/util.js');
 //获取应用实例
 const app = getApp()
 
@@ -90,34 +91,34 @@ Page({
             });
         }
     },
-    nowingget(e) {
-        let _id = 0;
-        _id = e.currentTarget.id;
-        let _this = this;
-        api.$http(function(res) {
-            console.log(res);
-            _this.setData({
-                golding: false,
-                infores: ''
-            })
-            if (res.data.success) {
-                $Toast({
-                    content: res.data.message,
-                    type: 'success'
-                });
+  nowingget: util.throttle(function (e) {
+    let _id = 0;
+    _id = e.currentTarget.id;
+    let _this = this;
+    api.$http(function (res) {
+      console.log(res);
+      _this.setData({
+        golding: false,
+        infores: ''
+      })
+      if (res.data.success) {
+        $Toast({
+          content: res.data.message,
+          type: 'success'
+        });
 
-                //重新获取数据
-                _this.getTargetList();
-                _this.getUserInfos();
-            }
-        }, function(err) {
-            console.log(err)
-        }, '/receive/target', {
-            session_key: app.apiData.session_key,
-            id: _id
-        }, 'POST')
+        //重新获取数据
+        _this.getTargetList();
+        _this.getUserInfos();
+      }
+    }, function (err) {
+      console.log(err)
+    }, '/receive/target', {
+        session_key: app.apiData.session_key,
+        id: _id
+      }, 'POST')
 
-    },
+  }, 3000),
     //获取用户信息
     getUserInfos() {
         let _this = this;
@@ -210,4 +211,5 @@ Page({
         this.getUserInfos()
         this.getTargetList()
     },
+
 })

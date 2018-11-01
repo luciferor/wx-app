@@ -1,6 +1,7 @@
 //获取应用实例
 var api = require('../../utils/api.js');
 const { $Toast } = require('../../dist/base/index');
+const util = require('../../utils/util.js');
 const app = getApp()
 
 Page({
@@ -63,28 +64,32 @@ Page({
                 content: "请选择时间"
             });
         } else {
-            api.$https('/WeChat/appreciate/allocation', {
-                session_key: app.apiData.session_key,
-                score: this.data.addScoreNum,
-                rescore: this.data.reduceScoreNum,
-                range_max: this.data.maxScoreNum,
-                range_min: this.data.maxScoreNum,
-                effective_time: this.timeToTimestamp(this.data.date)
-            }, 'POST', function(data) {
-                console.log(data.data.message);
-                $Toast({
-                    content: data.data.message
-                });
-                if (data.data.success) {
-                    wx.navigateBack()
-                }
-            }, function(data) {
-                $Toast({
-                    content: '添加失败'
-                });
-            });
+            this.addPlans();
         }
     },
+
+    addPlans: util.throttle(function (e) {
+      api.$https('/WeChat/appreciate/allocation', {
+        session_key: app.apiData.session_key,
+        score: this.data.addScoreNum,
+        rescore: this.data.reduceScoreNum,
+        range_max: this.data.maxScoreNum,
+        range_min: this.data.maxScoreNum,
+        effective_time: this.timeToTimestamp(this.data.date)
+      }, 'POST', function (data) {
+        console.log(data.data.message);
+        $Toast({
+          content: data.data.message
+        });
+        if (data.data.success) {
+          wx.navigateBack()
+        }
+      }, function (data) {
+        $Toast({
+          content: '添加失败'
+        });
+      });
+    }, 5000),
 
     timeToTimestamp(date) {
         return Date.parse(date) / 1000;

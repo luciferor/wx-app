@@ -1,5 +1,6 @@
 var api = require('../../utils/api.js')
 const { $Toast } = require('../../dist/base/index');
+const util = require('../../utils/util.js');
 var app = getApp();
 Page({
     data: {
@@ -205,31 +206,27 @@ Page({
             name: e.detail.value
         }, 'POST')
     },
-    otherevents() {
-        let _this = this;
-        let selused = '';
-        for (let i = 0; i < _this.data.selecteduser.length; i++) {
-            selused += ";" + _this.data.selecteduser[i].id;
+    otherevents: util.throttle(function (e) {
+      let _this = this;
+      let selused = '';
+      for (let i = 0; i < _this.data.selecteduser.length; i++) {
+        selused += ";" + _this.data.selecteduser[i].id;
+      }
+      console.log(_this.data.selecteduser);
+      api.$http(function (res) {
+        console.log(res);
+        _this.alertsuccess(res.data.message);
+        if (res.data.success) {
+          setTimeout(function () { wx.navigateBack(); }, 1000)
         }
-        console.log(_this.data.selecteduser);
-        api.$http(function(res) {
-            console.log(res);
-            _this.alertsuccess(res.data.message);
-            if (res.data.success) {
-                setTimeout(function() { wx.navigateBack(); }, 1000)
-
-                //█████████████████████████████████████████████████████████将信息发送到公众号
-                //_this.sendmsg();
-                //█████████████████████████████████████████████████████████将信息发送到公众号
-            }
-        }, function(err) {
-            console.log(err);
-        }, '/WeChat/Applet/finishMutualManaged', {
-            session_key: app.apiData.session_key,
-            id: this.data.mutuid,
-            user_ids: selused.substr(1)
+      }, function (err) {
+        console.log(err);
+      }, '/WeChat/Applet/finishMutualManaged', {
+          session_key: app.apiData.session_key,
+          id: this.data.mutuid,
+          user_ids: selused.substr(1)
         }, "POST")
-    },
+    }, 5000),
     alertsuccess(_str) {
         $Toast({
             content: _str,
