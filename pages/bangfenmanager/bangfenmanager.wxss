@@ -81,6 +81,10 @@
     bottom:40rpx;
     right:190rpx;
     text-align: center;
+    opacity: 0.5;
+}
+.fagsboxhover{
+  opacity: 1;
 }
 .fabs{
     width:150rpx;
@@ -358,4 +362,24 @@ color: transparent;
   position: absolute;
   right:0rpx;
   top:100rpx;
+}
+
+
+.radioclass{
+  width:40rpx;
+  height: 60rpx;
+  padding-top:20rpx;
+}
+
+.radioclass image{
+  width:40rpx;
+  height: 40rpx;
+}
+
+.radiotext{
+  font-family: PingFang-SC-Medium;
+	font-size: 32rpx;
+	color: #333333;
+  text-indent: 20rpx;
+  line-height: 75rpx;
 }

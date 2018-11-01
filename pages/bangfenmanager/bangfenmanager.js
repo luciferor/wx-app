@@ -16,11 +16,11 @@ Page({
         mutullist: [], //相互管理
         session_key: '', //session_key
         typelist: [{
-                name: '自我加分',
-            },
-            {
-                name: '自我减分'
-            }
+          name: '自我加分',
+        },
+        {
+          name: '自我减分'
+        }
         ],
         showbufftype: false,
         buff: '',
@@ -78,7 +78,7 @@ Page({
         timingFunction: 'ease',
       })
       this.animation = animation
-      animation.opacity(1).step()
+      animation.opacity(0.8).step()
       this.setData({
         useranimation: animation.export()
       })
@@ -573,7 +573,7 @@ Page({
             menushow: true,
             menubtnshow: false
         })
-        //this.showuserani();
+        this.showuserani();
    
     },
     closemenuwin() {
@@ -584,7 +584,7 @@ Page({
             menubtnshow: true
           })
 
-        //this.hiddenuserani();
+        this.hiddenuserani();
     },
     ownnerplusandrem() {
         this.setData({

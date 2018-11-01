@@ -10,11 +10,13 @@
                   <block wx:key="*this" wx:for="{{ownerlist}}" wx:for-index="idx" wx:for-item="owner" wx:if="{{owner.name!=''}}">
                       <view class="item-ans" id="{{owner.id+'|'+idx+'|'+owner.name}}" bindtap='ownerevents'>
                           <span>
-                              <radio color="#5398ff" class="radio"  value="{{owner.id}}" checked="{{owner.ischecked}}"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{owner.name}}</radio>
+                              <view class='radioclass fl'><image wx:if="{{!owner.ischecked}}" src='../../images/bangfen/icon_tijiao_default.png'></image><image wx:if="{{owner.ischecked}}" src='../../images/bangfen/icon_tijiao_selected.png'></image></view>
+                              <view class='radiotext fl'>{{owner.name}}</view>
                           </span>
-                          <span class="bf">{{owner.type ==1 ? "+" : "-"}}{{owner.bangfen}}邦分</span>
+                          <span style="{{owner.type!=1?'color:#F08080;':'#999999'}}" class="bf">{{owner.type ==1 ? "+" : "-"}}{{owner.bangfen}}邦分</span>
                       </view>
                   </block>
+                  <view style='height:200rpx; width:100%;'></view>
               </scroll-view>
           </swiper-item>
           <swiper-item>
@@ -22,7 +24,8 @@
                   <block wx:key="*this" wx:for="{{mutullist}}" wx:for-index="mi" wx:for-item="mit">
                       <view class="item-ans"  id="{{mit.id+'|'+mi+'|'+mit.behavior}}" bindtap='mutuevents'>
                           <span>
-                              <radio color="#5398ff" class="radio" value="{{mit.id}}" checked="{{mit.ischecked}}"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{mit.behavior}}</radio>
+                              <view class='radioclass fl'><image wx:if="{{!mit.ischecked}}" src='../../images/bangfen/icon_tijiao_default.png'></image><image wx:if="{{mit.ischecked}}" src='../../images/bangfen/icon_tijiao_selected.png'></image></view>
+                              <view class='radiotext fl'>{{mit.behavior}}</view>
                           </span>
                           <span class="bf">{{mit.type ==1 ? "+" : "-"}}{{mit.score}}邦分</span>
                       </view>
@@ -30,15 +33,17 @@
               </scroll-view>
           </swiper-item>
       </swiper>
-      <view class='fagsbox'>
-        <view wx:if="{{menushow}}" style='padding-left:10rpx;'>
+      <view class='fagsbox' style='bottom:190rpx; opacity:0;' hover-class='fagsboxhover' animation="{{useranimation}}">
+        <view wx:if="{{menushow}}" style='padding-left:11.5rpx;'>
           <view class='ownerdes'>自我加减分</view>
           <image bindtap='ownnerplusandrem' class="fabplusred" src="../../images/fabs/icon_xuanfu_ziwo.png" />
         </view>
-        <view wx:if="{{menushow}}" style='padding-left:10rpx;'>
+        <view wx:if="{{menushow}}" style='padding-left:11.5rpx;'>
           <view class='mutudes'>他人加减分</view>
           <image bindtap="otherplusandrem" class="fabotherplus" src="../../images/fabs/icon_xuanfu_taren.png" />
         </view>
+      </view>
+      <view class='fagsbox'>
         <view wx:if="{{menubtnshow}}" class="fabs" hover-class="none" bindtap="showownerwin">
             <image class="fabimg" src="../../images/fabs/icon_xuanfu.png" />
         </view>

@@ -20,7 +20,6 @@
         "pages/userdynamic/userdynamic",
         "pages/awarddynamic/awarddynamic",
         "pages/ranking/ranking",
-        "components/receiveTip/receiveTip",
         "pages/addplan/addplan",
         "pages/allocationscore/allocationscore",
         "pages/manageorg/manageorg",

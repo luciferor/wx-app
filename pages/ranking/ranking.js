@@ -21,7 +21,7 @@ Page({
         topranklist: [], //顶部排名
         thenid: 0,
         animationData:{},
-        animationopacityData:{}
+        animationopacityData:{},
     },
     //===========================================================================================================选择加减分类型
     applyevent() {
@@ -295,5 +295,5 @@ Page({
         wx.navigateTo({
             url: '../../pages/userdynamic/userdynamic?uid=' + e.currentTarget.id,
         })
-    }
+    },
 })
