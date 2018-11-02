@@ -55,9 +55,8 @@
     <i-toast id="toast" />
     <i-grid-item i-class="item" wx:if="{{isshow}}">
         <i-spin custom>
-            <i-icon type="refresh" size="20" i-class="icon-load"></i-icon>
+            <view style='height:100rpx; width:100rpx; margin:auto; text-align:center;'><image  style='height:100rpx; width:100rpx;' src='../../images/timg.gif'></image></view>
             <view>数据加载中，请稍后...</view>
         </i-spin>
     </i-grid-item>
-
 </view>

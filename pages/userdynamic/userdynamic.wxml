@@ -12,4 +12,7 @@
           {{item.status=='add'?'+':''}}{{item.bangfen}}邦分
       </view>
     </view>
+    <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+    <view class="weui-loadmore__tips">{{info}}</view>
+  </view>
 </view>

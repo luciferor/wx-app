@@ -20,9 +20,9 @@ Page({
     },
     onLoad: function() {
         this.setData({
-                currentIndex: 0
-            })
-            //加载初始数据
+            currentIndex: 0
+        })
+        //加载初始数据
         this.getNoticeList(0, this.data.allPage);
         this.getNoticeList(1, this.data.allPage);
         this.getNoticeList(2, this.data.allPage);
@@ -31,6 +31,37 @@ Page({
             isAdmin: app.apiData.isAdmin
         })
     },
+
+  searchScrollLower:function(){
+    console.log("======拉到了底部" + this.data.currentIndex)
+    switch (this.data.currentIndex) {
+      case 0:
+        this.setData({
+          allPage: this.data.allPage+1
+        })
+        this.getNoticeList(0, this.data.allPage);
+        break
+      case 1:
+        this.setData({
+          applyPage: this.data.applyPage+1
+        })
+        this.getNoticeList(1, this.data.applyPage);
+        break
+      case 2:
+        this.setData({
+          passPage: this.data.passPage+1
+        })
+        this.getNoticeList(2, this.data.passPage);
+        break;
+      case 3:
+        this.setData({
+          rejectPage: this.data.rejectPage+1
+        })
+        this.getNoticeList(3, this.data.rejectPage);
+        break;
+    }
+  },
+  
     onShareAppMessage: function() {
         return {
             title: '用邦分干了这杯事业，快来使用企汇邦……',
@@ -46,6 +77,7 @@ Page({
             }
         }
     },
+
     //不通过
     handleReject(e) {
         let _this = this;
@@ -60,6 +92,11 @@ Page({
             if (data.data.success) {
                 $Toast({
                     content: data.data.message
+                });
+                _this.setData({
+                  applyPage:1,
+                  allPage:1,
+                  rejectPage:1
                 });
                 _this.getNoticeList(1, _this.data.applyPage);
                 _this.getNoticeList(0, _this.data.allPage);
@@ -88,6 +125,11 @@ Page({
                 $Toast({
                     content: data.data.message
                 });
+              _this.setData({
+                applyPage: 1,
+                allPage: 1,
+                passPage: 1
+              });
                 _this.getNoticeList(0, _this.data.allPage);
                 _this.getNoticeList(1, _this.data.applyPage);
                 _this.getNoticeList(2, _this.data.passPage);
@@ -116,6 +158,11 @@ Page({
                 $Toast({
                     content: data.data.message
                 });
+              _this.setData({
+                applyPage: 1,
+                allPage: 1,
+                rejectPage: 1
+              });
                 _this.getNoticeList(0, _this.data.allPage);
                 _this.getNoticeList(1, _this.data.applyPage);
                 _this.getNoticeList(3, _this.data.rejectPage);
@@ -143,6 +190,11 @@ Page({
                 $Toast({
                     content: data.data.message
                 });
+              _this.setData({
+                applyPage: 1,
+                allPage: 1,
+                passPage: 1
+              });
                 _this.getNoticeList(0, _this.data.allPage);
                 _this.getNoticeList(1, _this.data.applyPage);
                 _this.getNoticeList(2, _this.data.passPage);
@@ -245,9 +297,6 @@ Page({
             _this.setData({
                 rejectNotice: _this.data.rejectNotice.concat(data)
             })
-            console.log("全部拒绝数据开始=========");
-            console.log(_this.data.rejectNotice);
-            console.log("全部拒绝的数据结束============");
         }
     },
 

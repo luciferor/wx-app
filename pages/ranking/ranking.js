@@ -21,7 +21,7 @@ Page({
         topranklist: [], //顶部排名
         thenid: 0,
         animationData:{},
-        animationopacityData:{}
+        animationopacityData:{},
     },
     //===========================================================================================================选择加减分类型
     applyevent() {
@@ -81,6 +81,11 @@ Page({
                 break;
         }
         this.checkCor();
+
+        //摇晃动画
+        this.$shacking();
+        //谈出动画
+        this.$opacitiing();
     },
     // 点击标题切换当前页时改变样式
     swichNav: function(e) {
@@ -191,7 +196,7 @@ Page({
         })
     },
     preventTouchMove: function() {
-
+      
     },
     go: function() {
         this.setData({
@@ -290,5 +295,5 @@ Page({
         wx.navigateTo({
             url: '../../pages/userdynamic/userdynamic?uid=' + e.currentTarget.id,
         })
-    }
+    },
 })

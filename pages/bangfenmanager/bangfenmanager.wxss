@@ -81,6 +81,10 @@
     bottom:40rpx;
     right:190rpx;
     text-align: center;
+    opacity: 0.5;
+}
+.fagsboxhover{
+  opacity: 1;
 }
 .fabs{
     width:150rpx;
@@ -270,4 +274,112 @@ color: transparent;
     color:white;
     opacity: 0;
     font-size: 32rpx;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.maskwin{
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+.win-dialog{
+  position: fixed;
+  z-index: 5000;
+  width: 70%;
+  max-width: 600rpx;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.win-dialog image{
+  width:100%;
+  height: 700rpx;
+}
+
+.win-content{
+  position: fixed;
+  z-index: 5000;
+  width: 70%;
+  max-width: 600rpx;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.topwin{
+  height: 400rpx;
+}
+
+.descontent{
+  height: 100rpx;
+  line-height: 120rpx;
+  font-size: 26rpx;
+	color: #999999;
+}
+
+.info-content-win{
+  height: 60rpx;
+  line-height: 0rpx;
+  text-align: center;
+  font-size: 36rpx;
+	color: #5398ff;
+  font-weight: bold;
+}
+
+.info-under{
+  height: 100rpx;
+  line-height: 60rpx;
+  color:#ffffff;
+  font-size: 30rpx;
+}
+
+.closebtn{
+  width:80rpx;
+  height:80rpx;
+  position: absolute;
+  right:0rpx;
+  top:100rpx;
+}
+
+
+.radioclass{
+  width:40rpx;
+  height: 60rpx;
+  padding-top:20rpx;
+}
+
+.radioclass image{
+  width:40rpx;
+  height: 40rpx;
+}
+
+.radiotext{
+  font-family: PingFang-SC-Medium;
+	font-size: 32rpx;
+	color: #333333;
+  text-indent: 20rpx;
+  line-height: 75rpx;
 }

@@ -31,10 +31,9 @@
       <view class="top-title" style="line-height:100rpx; border-bottom:1px solid #eeeeee; padding:0rpx 30rpx;" >
           <span class="titlespan fl" style="margin-top:35rpx;"></span>
           <span class="titletext fl">最新动态</span>
-          <span class="fr" style="margin:15rpx 26rpx;"><image style="width:52rpx; height:52rpx;" src="../../images/dynamic/icon_dongtai_paiming.png" bindtap="rankingevents" /></span>
+          <span class="fr" style="margin:15rpx 0rpx;"><image style="width:52rpx; height:52rpx;" src="../../images/dynamic/icon_dongtai_paiming.png" bindtap="rankingevents" /></span>
       </view>
       <view class="under-list-box">
-
           <view class="user-list-content" bindtap="gotouserdynamicdes" id="{{dit.user_id+'|'+(dit.name == '' ?dit.wechat_name:dit.name)}}" name="{{dit.name}}" wx:for="{{newdynamic}}" wx:for-index="did" wx:for-item="dit">
             <view class="under-list-img-box fl">
                 <image src="{{dit.user_img==null||dit.user_img==''?'../../images/img_touxiang_default.png':dit.user_img}}"></image>
@@ -48,6 +47,9 @@
                 {{dit.status=='add'?'+'+dit.bangfen:''+dit.bangfen}}邦分
             </view>
           </view>
+      </view>
+      <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+        <view class="weui-loadmore__tips">{{info}}</view>
       </view>
   </view>
 </view>

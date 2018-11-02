@@ -1,5 +1,6 @@
 var api = require('../../utils/api.js')
 const { $Toast } = require('../../dist/base/index');
+const util = require('../../utils/util.js');
 var app = getApp();
 Page({
     data: {
@@ -205,31 +206,65 @@ Page({
             name: e.detail.value
         }, 'POST')
     },
-    otherevents() {
-        let _this = this;
-        let selused = '';
-        for (let i = 0; i < _this.data.selecteduser.length; i++) {
-            selused += ";" + _this.data.selecteduser[i].id;
+    otherevents: util.throttle(function (e) {
+      let _this = this;
+      let selused = '';
+      for (let i = 0; i < _this.data.selecteduser.length; i++) {
+        selused += ";" + _this.data.selecteduser[i].id;
+      }
+      console.log(_this.data.selecteduser);
+      api.$http(function (res) {
+        console.log(res);
+        _this.alertsuccess(res.data.message);
+        if (res.data.success) {
+          setTimeout(function () { wx.navigateBack(); }, 1000)
         }
-        console.log(_this.data.selecteduser);
-        api.$http(function(res) {
-            console.log(res);
-            _this.alertsuccess(res.data.message);
-            if (res.data.success) {
-                setTimeout(function() { wx.navigateBack(); }, 1000)
-            }
-        }, function(err) {
-            console.log(err);
-        }, '/WeChat/Applet/finishMutualManaged', {
-            session_key: app.apiData.session_key,
-            id: this.data.mutuid,
-            user_ids: selused.substr(1)
+      }, function (err) {
+        console.log(err);
+      }, '/WeChat/Applet/finishMutualManaged', {
+          session_key: app.apiData.session_key,
+          id: this.data.mutuid,
+          user_ids: selused.substr(1)
         }, "POST")
-    },
+    }, 5000),
     alertsuccess(_str) {
         $Toast({
             content: _str,
             type: 'success'
         });
+    },
+    sendmsg(){
+      //█████████████████████████████████████████████████████████将信息发送到公众号
+      console.log('这里将发送信息到公众号');
+      wx.request({
+        url: 'https://api.weixin.qq.com/cgi-bin/message/wxopen/template/uniform_send?access_token=' + app.apiData.ACCESSKEY,
+        method: 'POST',
+        data: {
+          'touser': 'ooOuZ5QAmmGSoc41FoIEXvcNwzLY',
+          'template_id': '_abIgESCPWfj7o-5DEsWgUUN8tvVXZmg9Z3zWLbJahU',
+          'page': 'index',
+          'form_id': 'FORMID',
+          'data': {
+            'keyword1': {
+              'value': '信息提示',
+              'color': '操作成功！'
+            },
+            'keyword2': {
+              'value': '信息提示',
+              'color': '有人给您加分了'
+            },
+            
+            'emphasis_keyword': 'keyword1.DATA',
+            'emphasis_keyword': 'keyword2.DATA' 
+          }
+        },
+        success: function (res) {
+          //发送信息到微信
+          console.log('发送信息到微信');
+          console.log(res);
+        }
+      })
+      //█████████████████████████████████████████████████████████将信息发送到公众号
+
     }
 });

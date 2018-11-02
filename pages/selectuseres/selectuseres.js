@@ -1,5 +1,6 @@
 var api = require('../../utils/api.js')
 const { $Toast } = require('../../dist/base/index');
+const util = require('../../utils/util.js');
 var app = getApp();
 Page({
     data: {
@@ -210,33 +211,33 @@ Page({
             name: e.detail.value
         }, 'POST')
     },
-    otherevents() {
-        let _this = this;
-        let selused = '';
-        for (let i = 0; i < _this.data.selecteduser.length; i++) {
-            selused += ";" + _this.data.selecteduser[i].id;
+  otherevents:util.throttle(function (e) {
+      let _this = this;
+      let selused = '';
+      for (let i = 0; i < _this.data.selecteduser.length; i++) {
+        selused += ";" + _this.data.selecteduser[i].id;
+      }
+      console.log(_this.data.selecteduser);
+      api.$http(function (res) {
+        console.log(res);
+        _this.alertsuccess(res.data.message);
+        if (res.data.success) {
+          setTimeout(function () {
+            wx.navigateBack({
+              data: res.data.success
+            });
+          }, 3000)
         }
-        console.log(_this.data.selecteduser);
-        api.$http(function(res) {
-            console.log(res);
-            _this.alertsuccess(res.data.message);
-            if (res.data.success) {
-                setTimeout(function() {
-                    wx.navigateBack({
-                        data: res.data.success
-                    });
-                }, 1000)
-            }
-        }, function(err) {
-            console.log(err);
-        }, '/WeChat/Applet/changeGradeApplyByOther', {
-            session_key: app.apiData.session_key,
-            bangfen: _this.data.buff,
-            reason: _this.data.reasonr,
-            type: _this.data.othertype == '加分' ? 'add' : 'reduce',
-            user_ids: selused.substr(1)
+      }, function (err) {
+        console.log(err);
+      }, '/WeChat/Applet/changeGradeApplyByOther', {
+          session_key: app.apiData.session_key,
+          bangfen: _this.data.buff,
+          reason: _this.data.reasonr,
+          type: _this.data.othertype == '加分' ? 'add' : 'reduce',
+          user_ids: selused.substr(1)
         }, "POST")
-    },
+    }, 5000),
     alertsuccess(_str) {
         $Toast({
             content: _str,

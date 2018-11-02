@@ -7,6 +7,9 @@ Page({
         duration: 1000,
         newawardlist: [], //最新获奖
         newdynamic: [], //最新动态
+        isHideLoadMore: false,
+        info: '没有更多了',
+        page: 1,
 
     },
     awardevent() {
@@ -102,6 +105,33 @@ Page({
     },
     ddofail(err) {
         console.log(err);
-    }
+    },
     //000000000000000000000=======0========000000000000000000000000000000
+    onReachBottom() {//下拉刷新
+    let _this = this;
+    console.log('拉到了底部了');
+    this.data.page++;
+    this.setData({
+      isHideLoadMore: true
+    })
+    console.log(this.data.page);
+
+    api.$http(function (res) {
+      if (res.data.message.length == 1) {
+        info: '没有更多数据了'
+      }
+      let content = _this.data.newdynamic.concat(res.data.message);
+      _this.setData({
+        newdynamic: content,
+        isHideLoadMore: false,
+      })
+      //concat()//将两个数组连接起来，并不会改变数组的结构
+    }, function (err) {
+
+      }, '/WeChat/Applet/getNoticeEveryOne', {
+        session_key: app.apiData.session_key,
+        page: _this.data.page,
+        pagesSize: 10
+      }, 'POST')
+  },
 })

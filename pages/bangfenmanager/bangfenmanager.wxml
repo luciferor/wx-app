@@ -8,21 +8,24 @@
           <swiper-item>
               <scroll-view scroll-y="true" class="scoll-h" >
                   <block wx:key="*this" wx:for="{{ownerlist}}" wx:for-index="idx" wx:for-item="owner" wx:if="{{owner.name!=''}}">
-                      <view class="item-ans">
+                      <view class="item-ans" id="{{owner.id+'|'+idx+'|'+owner.name}}" bindtap='ownerevents'>
                           <span>
-                              <radio color="#5398ff" class="radio" id="{{owner.id+'|'+idx+'|'+owner.name}}" bindtap='ownerevents' value="{{owner.id}}" checked="{{owner.ischecked}}"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{owner.name}}</radio>
+                              <view class='radioclass fl'><image wx:if="{{!owner.ischecked}}" src='../../images/bangfen/icon_tijiao_default.png'></image><image wx:if="{{owner.ischecked}}" src='../../images/bangfen/icon_tijiao_selected.png'></image></view>
+                              <view class='radiotext fl'>{{owner.name}}</view>
                           </span>
-                          <span class="bf">{{owner.type ==1 ? "+" : "-"}}{{owner.bangfen}}邦分</span>
+                          <span style="{{owner.type!=1?'color:#F08080;':'#999999'}}" class="bf">{{owner.type ==1 ? "+" : "-"}}{{owner.bangfen}}邦分</span>
                       </view>
                   </block>
+                  <view style='height:200rpx; width:100%;'></view>
               </scroll-view>
           </swiper-item>
           <swiper-item>
               <scroll-view scroll-y="true" class="scoll-h" >
                   <block wx:key="*this" wx:for="{{mutullist}}" wx:for-index="mi" wx:for-item="mit">
-                      <view class="item-ans">
+                      <view class="item-ans"  id="{{mit.id+'|'+mi+'|'+mit.behavior}}" bindtap='mutuevents'>
                           <span>
-                              <radio color="#5398ff" id="{{mit.id+'|'+mi+'|'+mit.behavior}}" bindtap='mutuevents' class="radio" value="{{mit.id}}" checked="{{mit.ischecked}}"><text decode="{{true}}" space="{{true}}">&nbsp;</text>{{mit.behavior}}</radio>
+                              <view class='radioclass fl'><image wx:if="{{!mit.ischecked}}" src='../../images/bangfen/icon_tijiao_default.png'></image><image wx:if="{{mit.ischecked}}" src='../../images/bangfen/icon_tijiao_selected.png'></image></view>
+                              <view class='radiotext fl'>{{mit.behavior}}</view>
                           </span>
                           <span class="bf">{{mit.type ==1 ? "+" : "-"}}{{mit.score}}邦分</span>
                       </view>
@@ -30,16 +33,17 @@
               </scroll-view>
           </swiper-item>
       </swiper>
-      <view wx:if="{{currentTab!=1}}" class='ownersubmitbtn' bindtap='saveownerlistbuff' animation="{{animationData}}">确认加分</view>
-      <view class='fagsbox' wx:if="{{ownerlistselected.length>0?false:true}}">
-        <view wx:if="{{menushow}}" style='padding-left:10rpx;'>
+      <view class='fagsbox' style='bottom:190rpx; opacity:0;' hover-class='fagsboxhover' animation="{{useranimation}}">
+        <view wx:if="{{menushow}}" style='padding-left:11.5rpx;'>
           <view class='ownerdes'>自我加减分</view>
           <image bindtap='ownnerplusandrem' class="fabplusred" src="../../images/fabs/icon_xuanfu_ziwo.png" />
         </view>
-        <view wx:if="{{menushow}}" style='padding-left:10rpx;'>
+        <view wx:if="{{menushow}}" style='padding-left:11.5rpx;'>
           <view class='mutudes'>他人加减分</view>
           <image bindtap="otherplusandrem" class="fabotherplus" src="../../images/fabs/icon_xuanfu_taren.png" />
         </view>
+      </view>
+      <view class='fagsbox'>
         <view wx:if="{{menubtnshow}}" class="fabs" hover-class="none" bindtap="showownerwin">
             <image class="fabimg" src="../../images/fabs/icon_xuanfu.png" />
         </view>
@@ -47,6 +51,9 @@
             <image class="fabimg" src="../../images/fabs/icon_xuanfu_selected.png" />
         </view>
       </view>
+
+      <view wx:if="{{currentTab!=1}}" class='ownersubmitbtn' bindtap='saveownerlistbuff' animation="{{animationData}}">确认加分</view>
+
 
 
       <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
@@ -160,3 +167,18 @@
       <i-action-sheet visible="{{ showothertype }}" actions="{{ othertype }}"  bind:cancel="closeothertype" bind:click="exitothertype" />
       <i-action-sheet  visible="{{ showbufftype }}" actions="{{ typebufflist}}"  bind:cancel="closebufftype" bind:click="exitbufftype" />
       <i-action-sheet visible="{{ showotherbufftype }}" actions="{{ typebufflist}}"  bind:cancel="closeotherbufftype" bind:click="exitotherbufftype" />
+
+
+<view class='maskwin' wx:if="{{golding}}">
+ <view class='win-dialog'>
+    <image src='../../images/img_lingqu.png'></image>
+ </view>
+ <view class='win-content'>
+  <view class='topwin'>
+    <view class='closebtn' bindtap='closegetwin'></view>
+  </view>
+  <view class='descontent'>恭喜您达成目标</view>
+  <view class='info-content-win'>{{infores}}</view>
+  <view class='info-under' bindtap='nowingget' id="{{getid}}">去领取</view>
+ </view>
+</view>
