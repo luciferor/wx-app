@@ -494,6 +494,7 @@ Page({
                 content: "请输入理由",
             });
         } else {
+            api.$showtoolbar();
             wx.navigateTo({
                 url: '../../pages/selectuseres/selectuseres?type=' + this.data.othertypename + "&buff=" + this.data.otherbuff + "&reasonr=" + this.data.otherreasonr,
             })
@@ -501,7 +502,7 @@ Page({
                 showother: false,
                 othertypename: '', //他人加减分类型
                 otherbuff: 0,
-                otherreasonr: '',
+                otherreasonr: '',    
             })
         }
     },

@@ -127,17 +127,40 @@ Page({
       console.log('到这里了嘛？');
       console.log(this.data.cities);
       console.log(this.data.selecteduser);
-      for(let i=0;i<this.data.cities.length;i++){
-        for(let j=0;j<this.data.cities[i].list.length;j++){
-          for(let k=0;k<this.data.selecteduser.length;k++){
-            if (this.data.cities[i].list[j].id == this.data.selecteduser[k].id){
-              this.data.cities[i].list[j].ischecked = true;
-            }else{
+      // for(let i=0;i<this.data.cities.length;i++){
+      //   for(let j=0;j<this.data.cities[i].list.length;j++){
+      //     for(let k=0;k<this.data.selecteduser.length;k++){
+      //       console.log(this.data.cities[i].list[j].id);
+      //       console.log(this.data.selecteduser[k].id);
+      //       if (this.data.cities[i].list[j].id == this.data.selecteduser[k].id){
+      //         this.data.cities[i].list[j].ischecked = true;
+      //       }else{
+      //         this.data.cities[i].list[j].ischecked = false;
+      //       }
+      //     }
+      //   }
+      // }
+      for (let k = 0; k < this.data.selecteduser.length; k++){
+        for (let i = 0; i < this.data.cities.length; i++){
+          for (let j = 0; j < this.data.cities[i].list.length; j++) {
+            console.log(this.data.cities[i].list);
+            if (this.data.cities[i].list[j].id != this.data.selecteduser[k].id) {
               this.data.cities[i].list[j].ischecked = false;
+            } else {
+              this.data.cities[i].list[j].ischecked = true;
             }
           }
         }
       }
+      
+      if (this.data.selecteduser.length == '0'){
+        for(let i=0;i<this.data.cities.length;i++){
+          for(let j=0;j<this.data.cities[i].list.length;j++){
+            this.data.cities[i].list[j].ischecked = false;
+          }
+        }
+      }
+      
       this.setData({
         cities:this.data.cities
       })
@@ -188,8 +211,7 @@ Page({
     //         console.log(res);
     //         _this.setData({
     //             searchuserlist: res.data.message
-    //         })
-            
+    //         })        
     //     }, function(err) {
     //         console.log(err)
     //     }, '/WeChat/Applet/getUserByName', {

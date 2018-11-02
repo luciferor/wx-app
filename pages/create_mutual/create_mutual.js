@@ -155,7 +155,8 @@ Page({
             console.log(err)
         }, '/appreciate/behavior', {
             session_key: app.apiData.session_key,
-            industry_id: e.currentTarget.dataset.industryid
+            industry_id: e.currentTarget.dataset.industryid,
+            type: 2
         }, 'POST');
     },
     pickXingwei: function(e) { //勾选中行业对应的行为

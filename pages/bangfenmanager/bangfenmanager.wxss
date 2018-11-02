@@ -157,7 +157,7 @@
     width: 580rpx;
     height: 770rpx;
     position: fixed;
-    top: 50%;
+    top: 45%;
     left: 0;
     z-index: 1;
     margin: -365rpx 50rpx;
