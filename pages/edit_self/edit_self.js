@@ -160,7 +160,8 @@ Page({
             console.log(err)
         }, '/appreciate/behavior', {
             session_key: app.apiData.session_key,
-            industry_id: e.currentTarget.dataset.industryid
+            industry_id: e.currentTarget.dataset.industryid,
+            type: 1
         }, 'POST');
     },
     pickXingwei: function(e) {
