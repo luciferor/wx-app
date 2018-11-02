@@ -4,6 +4,7 @@ const util = require('../../utils/util.js')
 var app = getApp();
 Page({
     data: {
+        textareashow:true,
         winHeight: "", //窗口高度
         currentTab: 0, //预设当前项的值
         scrollLeft: 0, //tab标题的滚动条位置
@@ -110,6 +111,7 @@ Page({
     let _this = this;
     api.$http(function (restarget) {
       for (let i = 0; i < restarget.data.message.length; i++) {
+        console.log(restarget.data.message[i].progressbar + "|" + restarget.data.message[i].isreceive);
         if (restarget.data.message[i].progressbar == '100' && restarget.data.message[i].isreceive == '1') {
           _this.setData({
             golding: true,
@@ -139,6 +141,7 @@ Page({
           _this.handleSuccess("提交成功");
           _this.showorhidden();
           _this.onShow();
+          _this.isgeting();
         } else {
           _this.handleSuccess("操作失败：" + res.data.message);
         }
@@ -177,12 +180,14 @@ Page({
     },
     selectotherbufftype() {
         this.setData({
-            showotherbufftype: true
+            showotherbufftype: true,
+            textareashow:false
         });
     },
     closeotherbufftype() {
         this.setData({
-            showotherbufftype: false
+            showotherbufftype: false,
+            textareashow: true
         });
     },
     exitotherbufftype({ detail }) {
@@ -190,18 +195,21 @@ Page({
         console.log(detail);
         this.setData({
             otherbuff: this.data.typebufflist[index].name,
-            showotherbufftype: false
+            showotherbufftype: false,
+            textareashow: true
         })
         console.log(this.data.buff)
     },
     selectbufftype() {
         this.setData({
-            showbufftype: true
+            showbufftype: true,
+            textareashow:false
         })
     },
     closebufftype() {
         this.setData({
-            showbufftype: false
+            showbufftype: false,
+            textareashow: true
         });
     },
     exitbufftype({ detail }) {
@@ -209,7 +217,8 @@ Page({
         console.log(detail);
         this.setData({
             buff: this.data.typebufflist[index].name,
-            showbufftype: false
+            showbufftype: false,
+            textareashow: true
         })
         console.log(this.data.buff)
     },
@@ -352,20 +361,23 @@ Page({
     },
     closeothertype() {
         this.setData({
-            showothertype: false
+            showothertype: false,
+            textareashow: true
         });
     },
     exitothertype({ detail }) {
         const index = detail.index;
         this.setData({
             othertypename: this.data.othertype[index].name,
-            showothertype: false
+            showothertype: false,
+            textareashow: true
         })
     },
     selecotherttype() {
         console.log('他人加减分');
         this.setData({
-            showothertype: true
+            showothertype: true,
+            textareashow:false
         })
     },
     onShareAppMessage: function() {
@@ -413,6 +425,7 @@ Page({
               content: res.data.message,
             });
             _this.handleSuccess(_this.data.typename + '成功')
+            _this.isgeting();
             _this.setData({
               showModal: false
             })
@@ -446,11 +459,13 @@ Page({
         console.log("申请选择加减分");
     },
     closeotherwin() {
+      api.$showtoolbar();
         this.setData({
             showother: false
         })
     },
     otherplusandrem() { //他人加减分窗口
+        api.$hiddentoolbar();
         this.setData({
             showother: true,
             showModal: false,
@@ -492,21 +507,24 @@ Page({
     },
     closetype() {
         this.setData({
-            showtype: false
+            showtype: false,
+            textareashow:true
         });
     },
     exittype({ detail }) {
         const index = detail.index;
         this.setData({
             typename: this.data.typelist[index].name,
-            showtype: false
+            showtype: false,
+            textareashow: true
         })
 
     },
     selecttype() {
         console.log('运行了');
         this.setData({
-            showtype: true
+            showtype: true,
+            textareashow:false
         });
         console.log(this.data.showtype)
     },
@@ -585,6 +603,7 @@ Page({
         this.hiddenuserani();
     },
     ownnerplusandrem() {
+        api.$hiddentoolbar();
         this.setData({
             showModal: true,
             showselectbuff: false,
@@ -595,6 +614,7 @@ Page({
 
     },
     go: function() {
+        api.$showtoolbar();
         this.setData({
             showModal: false
         })

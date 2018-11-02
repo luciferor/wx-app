@@ -2,10 +2,10 @@
     <view class="topbox">
         <view class="searchbox">
             <span class="fl inputimg">
-                <image src="../../images/icon_sousuo.png" />
+              <image src="../../images/icon_sousuo.png" />
             </span>
             <span class="fr inputtxt">
-                <input bindinput='changeSearch' placeholder="搜索对象" />
+              <input bindinput='changeSearch' placeholder="搜索对象" />
             </span>
         </view>
     </view>
@@ -16,7 +16,7 @@
           wx:for-index="index"  
           wx:for-item="item" data-reply-Type="{{item.id+'|'+index}}" bindtap='selectedeventseach'>
           <view class="{{item.ischecked?'unlistboxbig':'listboxbig'}}">
-            <view class='imgbox fl'><image src="{{item.user_img==''?'../../images/tabs/icon_tab_wode_selected.png':item.user_img}}"></image></view>
+            <view class='imgbox fl'><image src="{{item.img==''?'../../images/tabs/icon_tab_wode_selected.png':item.img}}"></image></view>
             <view class='namebox fl'>{{item.name==''?item.wechat_name:item.name}}</view>
             <view class='postbox fl'>{{item.post}}</view>
             <view class='selectbox fr'><image wx:if="{{item.ischecked}}" src='../../images/icon_xuanze.png'></image></view>
