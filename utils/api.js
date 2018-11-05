@@ -71,10 +71,24 @@ function $httpcom(_dosuccess, _dofail, _url, _params, _method,_comlete) { //参�
   })
 }
 
+function $hiddentoolbar(){
+  wx.hideTabBar({
+    aniamtion:true,
+  })
+}
+
+function $showtoolbar(){
+  wx.showTabBar({
+    aniamtion:true
+  })
+}
+
 
 //将模块接口暴露出来
 module.exports = {
   $http: $http,
   $https: $https,
   $httpcom: $httpcom,
+  $hiddentoolbar: $hiddentoolbar,
+  $showtoolbar: $showtoolbar
 }

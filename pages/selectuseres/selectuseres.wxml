@@ -16,7 +16,7 @@
           wx:for-index="indexs"  
           wx:for-item="items" >
           <view class="{{items.ischecked?'unlistboxbig':'listboxbig'}}" data-reply-Type="{{items.id+'|'+indexs}}" bindtap='selectedeventseach'>
-            <view class='imgbox fl'><image src="{{items.user_img==''?'../../images/tabs/icon_tab_wode_selected.png':items.user_img}}"></image></view>
+            <view class='imgbox fl'><image src="{{items.img==''?'../../images/tabs/icon_tab_wode_selected.png':items.img}}"></image></view>
             <view class='namebox fl'>{{items.name==''?items.wechat_name:items.name}}</view>
             <view class='postbox fl'>{{items.post}}</view>
             <view class='selectbox fr'><image wx:if="{{items.ischecked}}" src='../../images/icon_xuanze.png'></image></view>
@@ -55,7 +55,7 @@
     <i-toast id="toast" />
     <i-grid-item i-class="item" wx:if="{{isshow}}">
         <i-spin custom>
-            <i-icon type="refresh" size="20" i-class="icon-load"></i-icon>
+            <view style='height:100rpx; width:100rpx; margin:auto; text-align:center;'><image  style='height:100rpx; width:100rpx;' src='../../images/timg.gif'></image></view>
             <view>数据加载中，请稍后...</view>
         </i-spin>
     </i-grid-item>

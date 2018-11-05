@@ -101,11 +101,12 @@ Page({
         api.$http(function(res) { //获取公司相互管理的所有行为
             console.log(res)
             let zidingyiArr = res.data.message.mutualmanaged
-            for (var i = 0; i < zidingyiArr.length; i++) { //数据加工，别问我为什么
+            for (var i = 0; i < zidingyiArr.length; i++) { //数据加工，别问我为什么;另外后端传来经过过滤的列表的state只有为1的。
                 zidingyiArr[i].managedid = zidingyiArr[i].id
                 zidingyiArr[i].id = ""
             }
             let hangyeArr = res.data.message.mutualmanagedtem
+            console.log(hangyeArr)
 
             _this.setData({ //行为留值用于重置
                 resetZidingyiBehaviorArr: JSON.parse(JSON.stringify(zidingyiArr)),
@@ -116,7 +117,7 @@ Page({
                 hangyeBehaviorArr: hangyeArr, //行业对应的已有行为数组
                 hangyeNum: hangyeArr.length,
                 zidingyiNum: zidingyiArr.length,
-                alreadyNum: zidingyiArr.length + hangyeArr.length,
+                alreadyNum: hangyeArr.length + zidingyiArr.length,
             })
 
         }, function(err) {
@@ -161,7 +162,8 @@ Page({
             console.log(err)
         }, '/appreciate/behavior', {
             session_key: app.apiData.session_key,
-            industry_id: e.currentTarget.dataset.industryid
+            industry_id: e.currentTarget.dataset.industryid,
+            type: 2
         }, 'POST');
     },
     pickXingwei: function(e) { //勾选中行业对应的行为

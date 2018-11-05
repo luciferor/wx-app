@@ -2,7 +2,7 @@
 <view class="create-container">
   <view class="setting-area">
     <view class="setting-items">
-      <input class="setting-item organize-name" value="{{organizeName}}"  maxlength="10" placeholder-class="phcolor" placeholder="请设置组织名称"  bindinput="bindKeyInput"/>
+      <input class="setting-item organize-name" value="{{organizeName}}"  maxlength="80" placeholder-class="phcolor" placeholder="请设置组织名称"  bindinput="bindKeyInput"/>
       <navigator class="setting-item" target="" url="../create_self/create_self" hover-class="navigator-hover" open-type="navigate">
         <view class="left-txt">
           自我管理行为

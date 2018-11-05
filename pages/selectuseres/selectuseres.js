@@ -123,43 +123,56 @@ Page({
             count: this.data.selecteduser.length
         })
         console.log(this.data.selecteduser);
+        //判断列表中是否符合选中和不选中的状态
+        this.updateallliststatus();
     },
+    updateallliststatus() {
+      console.log('到这里了嘛？');
+      console.log(this.data.cities);
+      console.log(this.data.selecteduser);
+      // for(let i=0;i<this.data.cities.length;i++){
+      //   for(let j=0;j<this.data.cities[i].list.length;j++){
+      //     for(let k=0;k<this.data.selecteduser.length;k++){
+      //       console.log(this.data.cities[i].list[j].id);
+      //       console.log(this.data.selecteduser[k].id);
+      //       if (this.data.cities[i].list[j].id == this.data.selecteduser[k].id){
+      //         this.data.cities[i].list[j].ischecked = true;
+      //       }else{
+      //         this.data.cities[i].list[j].ischecked = false;
+      //       }
+      //     }
+      //   }
+      // }
+      for (let k = 0; k < this.data.selecteduser.length; k++) {
+        for (let i = 0; i < this.data.cities.length; i++) {
+          for (let j = 0; j < this.data.cities[i].list.length; j++) {
+            console.log(this.data.cities[i].list);
+            if (this.data.cities[i].list[j].id != this.data.selecteduser[k].id) {
+              this.data.cities[i].list[j].ischecked = false;
+            } else {
+              this.data.cities[i].list[j].ischecked = true;
+            }
+          }
+        }
+      }
+      if (this.data.selecteduser.length == '0') {
+        for (let i = 0; i < this.data.cities.length; i++) {
+          for (let j = 0; j < this.data.cities[i].list.length; j++) {
+            this.data.cities[i].list[j].ischecked = false;
+          }
+        }
+      }
+
+      this.setData({
+        cities: this.data.cities
+      })
+    },
+
     onChange(event) {
         console.log(event.detail, '点击右侧菜单回调日期')
     },
     onReady() {
-        let _this = this;
-        api.$httpcom(function(res) {
-            _this.data.cities = [];
-            let item = res.data.message;
-            for (var i = 0; i < res.data.message.length; i++) {
-                if (item[i].wechat_name) {
-                    _this.data.cities.push({
-                        id: item[i].id,
-                        name: item[i].name,
-                        pinyin: item[i].letter,
-                        post: item.postname,
-                        img: item[i].user_img,
-                        ischecked: false,
-                        wechat_name: item[i].wechat_name
-                    })
-                }
-            }
-            console.log(_this.data.cities)
-        }, function(err) {
-            console.log(err)
-        }, '/WeChat/Applet/getUserList', {
-            session_key: app.apiData.session_key
-        }, 'POST', function(com) {
-            console.log('是否执行')
-            console.log(com)
-            setTimeout(function() {
-                _this.convertdata();
-                _this.setData({
-                    isshow: false
-                })
-            }, 100)
-        });
+      this.getinformations();
     },
     onLoad(option) {
         console.log(option);
@@ -198,20 +211,23 @@ Page({
             cities: this.data.cities
         })
     },
+    // changeSearch(e) {
+    //     let _this = this;
+    //     api.$http(function(res) {
+    //         _this.setData({
+    //             searchuserlist: res.data.message
+    //         })
+    //     }, function(err) {
+    //         console.log(err)
+    //     }, '/WeChat/Applet/getUserByName', {
+    //         session_key: app.apiData.session_key,
+    //         name: e.detail.value
+    //     }, 'POST')
+    // },
     changeSearch(e) {
-        let _this = this;
-        api.$http(function(res) {
-            _this.setData({
-                searchuserlist: res.data.message
-            })
-        }, function(err) {
-            console.log(err)
-        }, '/WeChat/Applet/getUserByName', {
-            session_key: app.apiData.session_key,
-            name: e.detail.value
-        }, 'POST')
+      this.searchgetinformations(e.detail.value);
     },
-  otherevents:util.throttle(function (e) {
+    otherevents:util.throttle(function (e) {
       let _this = this;
       let selused = '';
       for (let i = 0; i < _this.data.selecteduser.length; i++) {
@@ -226,7 +242,7 @@ Page({
             wx.navigateBack({
               data: res.data.success
             });
-          }, 3000)
+          }, 1000)
         }
       }, function (err) {
         console.log(err);
@@ -243,5 +259,85 @@ Page({
             content: _str,
             type: 'success'
         });
+    },
+  getinformations() {
+    let _this = this;
+    api.$httpcom(function (res) {
+      _this.data.cities = [];
+      let item = res.data.message;
+
+      for (var i = 0; i < res.data.message.length; i++) {
+        if (item[i].wechat_name) {
+          _this.data.cities.push({
+            id: item[i].id,
+            name: item[i].name,
+            pinyin: item[i].letter,
+            post: item.postname,
+            img: item[i].user_img,
+            ischecked: false,
+            wechat_name: item[i].wechat_name
+          })
+        }
+      }
+      //console.log(_this.data.cities)
+      //console.log('asdkjfaslkfjasldjfaslkfjas;lkfjaslkfjaslkdfj')
+    }, function (err) {
+      console.log(err)
+    }, '/WeChat/Applet/getUserList', {
+        session_key: app.apiData.session_key
+      }, 'POST', function () {
+        setTimeout(function () {
+          _this.convertdata();
+          _this.setData({
+            isshow: false
+          })
+        }, 100)
+      });
+  },
+  searchgetinformations(_str) {
+    console.log();
+    if (_str == '') {
+      this.setData({
+        searchuserlist: []
+      })
+      return;
     }
+    let _this = this;
+    _this.setData({
+      searchuserlist: []
+    })
+    api.$http(function (res) {
+      console.log(res);
+      for (let i = 0; i < res.data.message.length; i++) {
+        _this.data.searchuserlist.push({
+          id: res.data.message[i].id,
+          name: res.data.message[i].name,
+          pinyin: res.data.message[i].letter,
+          post: res.data.message.postname,
+          img: res.data.message[i].user_img,
+          ischecked: false,
+          wechat_name: res.data.message[i].wechat_name
+        })
+        _this.setData({
+          searchuserlist: _this.data.searchuserlist
+        })
+      }
+      for (let i = 0; i < _this.data.searchuserlist.length; i++) {
+        for (let j = 0; j < _this.data.selecteduser.length; j++) {
+          if (_this.data.searchuserlist[i].id == _this.data.selecteduser[j].id) {
+            _this.data.searchuserlist[i].ischecked = true;
+          }
+        }
+      }
+      _this.setData({
+        searchuserlist: _this.data.searchuserlist
+      })
+    }, function (err) {
+      console.log(err)
+    }, '/WeChat/Applet/getUserByName', {
+        session_key: app.apiData.session_key,
+        name: _str
+      }, 'POST')
+  }
+
 });
