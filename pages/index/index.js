@@ -230,7 +230,7 @@ Page({
         }else{
           wx.getUserInfo({
             success: function (resiswx) {
-              app.apiData.nickName = wx, wx.getStorageSync('userInfo').nickName;
+              app.apiData.nickName = wx.getStorageSync('userInfo').nickName;
               app.apiData.GetLincesShow = false; //隐藏授权按钮
               _this.setData({
                 isshow: app.apiData.GetLincesShow
