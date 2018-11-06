@@ -24,7 +24,7 @@
         <view class="zidingyi-area">
             <view class="xingwei-name-wrap">
                 <icon class="add-item-btn" bindtap="addXingwei" />
-                <input class="xingwei-name" value="{{addName}}" maxlength="8" placeholder="请输入行为名称" bindinput="bindKeyInput" />
+                <input class="xingwei-name" value="{{addName}}" maxlength="20" placeholder="请输入行为名称" bindinput="bindKeyInput" />
             </view>
             <view class="set-scores-wrap">
                 <text class="score-type-tip">行为类型</text>
