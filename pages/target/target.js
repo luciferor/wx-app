@@ -21,10 +21,10 @@ Page({
         showTypeBox: false,
         showRankBox: false,
         showNumBox: false,
-        newTargetType: '目标类型',
+        newTargetType: '邦分目标',
         newTargetRank: '日排名',
         newTargetNum: '第一名',
-        targetType: 0, //申请类型
+        targetType: 2, //申请类型
         giftType: 1, //礼品类型
         rank: 1, //排名
         targetTitle: '', //目标名称
