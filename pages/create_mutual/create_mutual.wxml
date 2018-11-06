@@ -2,7 +2,7 @@
 <view class="mutual-container">
     <i-tabs class="top-tab-wrap" current="{{ current }}" color="#5398ff" bindchange="handleChange">
         <i-tab key="tab1" title="行业行为({{hangyeNum}})"></i-tab>
-        <!-- <i-tab key="tab2" title="自定义({{zidingyiNum}})"></i-tab> -->
+        <i-tab key="tab2" title="自定义({{zidingyiNum}})"></i-tab>
     </i-tabs>
     <view wx:if="{{showContent=='tab1'}}" class="tab1-content">
         <view class="hangye-list">

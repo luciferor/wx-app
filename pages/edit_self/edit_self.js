@@ -100,10 +100,6 @@ Page({
         api.$http(function(res) { //获取公司相互管理的所有行为
             console.log(res)
             let zidingyiArr = res.data.message.selfmanaged
-            for (var i = 0; i < zidingyiArr.length; i++) { //数据加工，别问我为什么
-                zidingyiArr[i].selfid = zidingyiArr[i].id
-                zidingyiArr[i].id = ""
-            }
             let hangyeArr = res.data.message.selfmanagedtem
 
             _this.setData({ //行为留值用于重置
@@ -283,7 +279,7 @@ Page({
         var zidingyiArr = this.data.zidingyiBehaviorArr
         var zidingyiLength = 0
         for (var i = 0; i < zidingyiArr.length; i++) {
-            if (zidingyiArr[i].selfid == this.data.zidingyiCurrItem.selfid) {
+            if (zidingyiArr[i].id == this.data.zidingyiCurrItem.id && zidingyiArr[i].behavior == this.data.zidingyiCurrItem.behavior) {
                 zidingyiArr[i].state = 0
             }
             if (zidingyiArr[i].state == 1) {

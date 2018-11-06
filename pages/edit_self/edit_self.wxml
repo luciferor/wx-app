@@ -2,7 +2,7 @@
 <view class="self-container">
     <i-tabs class="top-tab-wrap" current="{{ current }}" color="#5398ff" bindchange="handleChange">
         <i-tab key="tab1" title="行业行为({{hangyeNum}})"></i-tab>
-        <!-- <i-tab key="tab2" title="自定义({{zidingyiNum}})"></i-tab> -->
+        <i-tab key="tab2" title="自定义({{zidingyiNum}})"></i-tab>
     </i-tabs>
     <view wx:if="{{showContent=='tab1'}}" class="tab1-content">
         <view class="hangye-list">
@@ -23,7 +23,7 @@
     <view wx:if="{{showContent=='tab2'}}">
         <view class="zidingyi-area">
             <icon class="add-item-btn" bindtap="addXingwei" />
-            <input class="xingwei-name"  maxlength="8" value="{{addName}}" placeholder="请输入行为名称"  bindinput="bindKeyInput" />
+            <input class="xingwei-name"  maxlength="20" value="{{addName}}" placeholder="请输入行为名称"  bindinput="bindKeyInput" />
             <text class="set-scores" bindtap="scoreToggle">{{scoreStatus}}邦分</text>
             <view class="select-score-modal" wx:if="{{isShowScore}}" bindtap="scoreToggle">
                 <view class="modal-score-wrap">
