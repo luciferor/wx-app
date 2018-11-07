@@ -2,9 +2,16 @@
   <view class='title-container'>
       <view class='title-left-container'>
             <view class='blue-icon'></view>
-            <text class='title-text'>所有成员({{memberList.length}}人)</text>
+            <view class='title-text'><span>所有成员(</span><span style="color:#5398ff;">{{memberList.length}}</span><span>人)</span></view>
       </view>
       <text class='org-text' bindtap='navigateToManageOrg' wx:if='{{isAdmin == 1}}'>组织管理</text>
+  </view>
+
+  <view class='usebuff'>
+    <view class='usebuff-box'>
+      <span class='fl'>可分配邦分<span style='color:#5398ff;'>100000</span>邦分</span>
+      <span class='fr'><button style="width:200rpx; height:80rpx; background:#5398ff; line-height:80rpx;" type="primary" plain="{{plain}}" hover-class="other-button-hover">充邦分</button></span>
+    </view>
   </view>
   
   <view class='content-container'>
@@ -19,9 +26,7 @@
 
    <view class='bottom-container'>
       <view  >
-          <button class="create-and-invite" open-type='share'>
-            <i-icon type="share" size="28"/>邀请成员</button>
-      
+          <button class="create-and-invite" open-type='share'><i-icon type="share" size="28"/>邀请成员</button>
       </view>
    </view>
 </view>

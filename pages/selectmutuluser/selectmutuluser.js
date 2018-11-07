@@ -41,7 +41,13 @@ Page({
         isshow: true,
     },
     selectedevent(e) {
+        
         let arr = e.currentTarget.dataset.replyType.split('|');
+        if (this.data.selecteduser.length == 1 && Number(this.data.selecteduser[0].id) != Number(arr[0])) {
+            this.alertsuccess('只能选择一个用户');
+            return;
+        }
+
         let index = arr[1];
         let lindex = arr[2];
         this.data.cities[index].list[lindex].ischecked = !this.data.cities[index].list[lindex].ischecked;
@@ -52,6 +58,7 @@ Page({
         this.setData({
             selectid: arr[0],
         })
+
         //console.log(e.currentTarget.dataset.replyType);
         //临时变量
         //★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
@@ -68,7 +75,6 @@ Page({
             }
         }
         //★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-
         this.setData({
           count: this.data.selecteduser.length
         })
@@ -91,6 +97,10 @@ Page({
     },
     selectedeventseach(e) {
         let arr = e.currentTarget.dataset.replyType.split('|');
+        if (this.data.selecteduser.length == 1 && Number(this.data.selecteduser[0].id) != Number(arr[0])) {
+          this.alertsuccess('只能选择一个用户');
+          return;
+        }
         let index = arr[1];
         this.data.searchuserlist[index].ischecked = !this.data.searchuserlist[index].ischecked;
         this.setData({
@@ -140,18 +150,16 @@ Page({
       //     }
       //   }
       // }
-      for (let k = 0; k < this.data.selecteduser.length; k++){
-        for (let i = 0; i < this.data.cities.length; i++){
-          for (let j = 0; j < this.data.cities[i].list.length; j++) {
-            console.log(this.data.cities[i].list);
-            if (this.data.cities[i].list[j].id != this.data.selecteduser[k].id) {
-              this.data.cities[i].list[j].ischecked = false;
-            } else {
-              this.data.cities[i].list[j].ischecked = true;
-            }
+      
+      for (let i = 0; i < this.data.cities.length; i++){
+        for (let j = 0; j < this.data.cities[i].list.length; j++) {
+          for (let k = 0; k < this.data.selecteduser.length; k++) {
+            console.log(this.data.cities[i].list[j].id + '=' + this.data.selecteduser[k].id + '吗?' + (this.data.cities[i].list[j].id == this.data.selecteduser[k].id));
+            this.data.cities[i].list[j].ischecked = (this.data.cities[i].list[j].id == this.data.selecteduser[k].id);
           }
         }
       }
+      
       
       if (this.data.selecteduser.length == '0'){
         for(let i=0;i<this.data.cities.length;i++){

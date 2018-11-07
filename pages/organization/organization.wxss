@@ -133,3 +133,24 @@ page{
     margin: 15rpx auto 0;
     font-size: 36rpx;
 }
+
+.usebuff{
+  padding-top:20rpx;
+  overflow: hidden;
+}
+
+.usebuff-box{
+  background:white;
+  padding:20rpx;
+  font-size: 32rpx;
+  color:#666666;
+  overflow: hidden;
+  line-height: 90rpx;
+}
+
+.fl{
+  float:left;
+}
+.fr{
+  float:right;
+}

@@ -33,6 +33,8 @@ page{
   color: #666666;
   font-size: 30rpx;
   margin-left:15rpx;
+  line-height: 80rpx;
+  align-items: right;
 }
 
 .score-container{
@@ -136,4 +138,12 @@ page{
   height: 110rpx;
   line-height: 110rpx;
   font-size: 36rpx;
+}
+
+.fl{
+  float:left;
+}
+
+.fr{
+  float:right;
 }

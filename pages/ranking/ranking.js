@@ -51,41 +51,43 @@ Page({
     //============================================================================================================  选项卡js
     // 滚动切换标签样式
     switchTab: function(e) {
-        this.setData({
-            currentTab: e.detail.current
+        let _this = this;
+        _this.setData({
+            currentTab: e.detail.current,
+            topranklist:[]
         });
-        console.log(this.data.currentTab);
+      console.log(_this.data.currentTab);
         //重新给排名团赋值
-        switch (this.data.currentTab) {
-            case 0:
-                this.setData({
-                    thenid: 0,
-                    topranklist: this.data.dayranklist
+      switch (_this.data.currentTab) {
+          case 0:
+                _this.setData({
+                  thenid: 0,
+                  topranklist: _this.data.dayranklist
                 });
-                console.log(this.data.topranklist)
+                console.log(_this.data.topranklist)
                 break;
-            case 1:
-                this.setData({
+          case 1:
+                _this.setData({
                     thenid: 1,
-                    topranklist: this.data.weekranklist
+                    topranklist: _this.data.weekranklist
                 });
-                console.log(this.data.topranklist)
+                console.log(_this.data.topranklist)
                 break;
             case 2:
-                this.setData({
+                _this.setData({
                     thenid: 2,
-                    topranklist: this.data.monthranklist
+                    topranklist: _this.data.monthranklist
                 });
                 break;
             default:
                 break;
         }
-        this.checkCor();
+        _this.checkCor();
 
         //摇晃动画
-        this.$shacking();
+        _this.$shacking();
         //谈出动画
-        this.$opacitiing();
+        _this.$opacitiing();
     },
     // 点击标题切换当前页时改变样式
     swichNav: function(e) {
