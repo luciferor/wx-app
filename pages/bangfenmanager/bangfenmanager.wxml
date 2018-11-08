@@ -8,10 +8,10 @@
               <scroll-view scroll-y="true" class="scoll-h" >
                   <block wx:key="*this" wx:for="{{ownerlist}}" wx:for-index="idx" wx:for-item="owner" wx:if="{{owner.name!=''}}">
                       <view class="item-ans" id="{{owner.id+'|'+idx+'|'+owner.name}}" bindtap='ownerevents'>
-                          <span>
+                          <view class='item-left'>
                               <view class='radioclass fl'><image wx:if="{{!owner.ischecked}}" src='../../images/bangfen/icon_tijiao_default.png'></image><image wx:if="{{owner.ischecked}}" src='../../images/bangfen/icon_tijiao_selected.png'></image></view>
                               <view class='radiotext fl'>{{owner.name}}</view>
-                          </span>
+                          </view>
                           <span style="{{owner.type!=1?'color:#F08080;':'#999999'}}" class="bf">{{owner.type ==1 ? "+" : "-"}}{{owner.bangfen}}邦分</span>
                       </view>
                   </block>
@@ -22,10 +22,10 @@
               <scroll-view scroll-y="true" class="scoll-h" >
                   <block wx:key="*this" wx:for="{{mutullist}}" wx:for-index="mi" wx:for-item="mit">
                       <view class="item-ans"  id="{{mit.id+'|'+mi+'|'+mit.behavior}}" bindtap='mutuevents'>
-                          <span>
+                           <view class='item-left'>
                               <view class='radioclass fl'><image wx:if="{{!mit.ischecked}}" src='../../images/bangfen/icon_tijiao_default.png'></image><image wx:if="{{mit.ischecked}}" src='../../images/bangfen/icon_tijiao_selected.png'></image></view>
                               <view class='radiotext fl'>{{mit.behavior}}</view>
-                          </span>
+                          </view>
                           <span class="bf">{{mit.type ==1 ? "+" : "-"}}{{mit.score}}邦分</span>
                       </view>
                   </block>

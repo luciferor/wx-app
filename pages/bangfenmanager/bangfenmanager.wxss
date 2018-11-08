@@ -50,10 +50,17 @@
     justify-content: space-between;
     padding:30rpx;
     box-sizing: border-box;
-    height: 120rpx;
     align-items: center;
     border-bottom: 1px solid #F2F2F2;
     background:white;
+    flex-direction: row;
+}
+.item-left{
+    display: flex;
+    flex-grow: row no-wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
 }
 .tab-content{
     margin-top:100rpx;
@@ -72,6 +79,8 @@
 .bf{
     font-size: 32rpx;
     color:#999999;
+    word-break:keep-all;      /* 不换行 */
+    white-space:nowrap; 
 }
 .fagsbox{
     width:0rpx;
@@ -380,6 +389,6 @@ color: transparent;
   font-family: PingFang-SC-Medium;
 	font-size: 32rpx;
 	color: #333333;
-  text-indent: 20rpx;
-  line-height: 75rpx;
+  padding-left: 20rpx;
+  padding-right: 10rpx
 }
