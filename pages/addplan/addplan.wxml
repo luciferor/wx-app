@@ -68,3 +68,6 @@
 <i-modal title="{{istitle}}" visible="{{ isshow }}" actions="{{ actions3 }}" bind:click="isrecharge">
     <view>{{isdes}}</view>
 </i-modal>
+<i-modal title="分配失败" visible="{{ isshowshow }}" actions="{{ actions4 }}" bind:click="isgotrecharge">
+    <view>{{ismmessage}}</view>
+</i-modal>

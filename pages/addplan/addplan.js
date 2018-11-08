@@ -25,6 +25,33 @@ Page({
             color: '#5398ff'
           }
         ],
+        isshowshow:false,
+        ismmessage:'',
+        actions4: [
+          {
+            name: '取消',
+            color: '#666666',
+          },
+          {
+            name: '充值',
+            color: '#5398ff'
+          }
+        ],
+
+    },
+    isgotrecharge(detail){
+      const index = detail.index;
+      if (index === 0) {
+        
+      } else if (index === 1) {
+        wx.navigateTo({
+          url: '/pages/recharge/recharge',
+        })
+      }
+
+      this.setData({
+        visible3: false
+      });
     },
     gotorecharge(){
       wx.navigateTo({
@@ -91,6 +118,7 @@ Page({
     },
     //添加邦分分配计划
     addPlan() {
+      console.log(wx.getStorageSync('selectusersbuff'));
         if (this.data.addScoreNum == 0) {
             $Toast({
                 content: "请输入正确的加分邦分数量"
@@ -113,20 +141,27 @@ Page({
     },
 
     addPlans: util.throttle(function (e) {
+      let _this = this;
       api.$https('/WeChat/appreciate/allocation', {
         session_key: app.apiData.session_key,
-        score: this.data.addScoreNum,
-        rescore: this.data.reduceScoreNum,
-        range_max: this.data.maxScoreNum,
-        range_min: this.data.maxScoreNum,
-        effective_time: this.timeToTimestamp(this.data.date)
+        score: _this.data.addScoreNum,
+        rescore: _this.data.reduceScoreNum,
+        range_max: _this.data.maxScoreNum,
+        range_min: _this.data.maxScoreNum,
+        effective_time: _this.timeToTimestamp(_this.data.date)
       }, 'POST', function (data) {
         console.log(data.data.message);
-        $Toast({
-          content: data.data.message
-        });
+        
         if (data.data.success) {
+          $Toast({
+            content: data.data.message
+          });
           wx.navigateBack()
+        }else{
+          _this.setData({
+            isshowshow:true,
+            ismmessage:data.data.message
+          })
         }
       }, function (data) {
         $Toast({

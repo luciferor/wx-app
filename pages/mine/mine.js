@@ -33,7 +33,7 @@ Page({
         inforess: '',
         getids: 0,
         isaddress: 0,//是否添加地址 0 没有1有
-        ishowget:true,
+        ishowget:false,
         getsmotihinsmenu:[
           {
             name: '取消',
@@ -45,6 +45,38 @@ Page({
           }
         ],
         imgbgs:'../../images/img_lingqu.png'
+    },
+    closegetsomething(){
+      this.setData({
+        goldings:false,
+        inforess:'',
+        getids:0
+      })
+    },
+    gotogetsomething(e){//领取奖励
+      this.setData({
+        goldings: false//这里是接口出问题，明天再解决了
+      }) 
+      return;
+      let _this = this;
+      console.log(e);
+      api.$http(function (res) {
+        console.log(res);
+        if(res.data.success){
+          $Toast({
+            content: res.data.message,
+            type: 'success'
+          });
+          _this.setData({
+            ishowget:false
+          })
+        }
+      }, function (err) {
+         console.log(err)
+      },'/WeChat/Applet/toreceive',{
+         session_key:app.apiData.session_key,
+          id: e.currentTarget.id
+      },'POST')
     },
     closegetwin() {
         this.setData({
@@ -95,34 +127,25 @@ Page({
     handleReceive(e) {
         let arr = (e.currentTarget.id).split('|');
         console.log(arr);
-        if(arr[3]==1){//如果是奖品商品
-          //检查有没有地址
-          if (isaddress==1){//有地址
-            //提交审核领取
+        if(arr[3]==1){
+          //先去设置地址
+          if (_this.data.isaddress==0){
+            _this.setData({
+              ishowget:true
+            })
+          }else{
             this.setData({
               goldings: true,
               inforess: arr[1],
               getids: arr[0],
-              imgbgss: '../../images/img_lingqul.png'
-            })
-          }else{
-            wx.navigateTo({
-              url: '../../pages/addaddress/addaddress',
             })
           }
         }else{
-          if (arr[2] == 1) {
-            this.setData({
-              imgbgs: '../../images/img_lingqul.png',
-              golding: true,
-              infores: arr[1],
-              getid: arr[0]
-            })
-          } else {
-            $Toast({
-              content: "暂未达成，无法领取"
-            });
-          }
+          this.setData({
+            goldings: true,
+            inforess: arr[1],
+            getids: arr[0],
+          })
         }
     },
   getsomething(detail){
@@ -130,7 +153,9 @@ Page({
     if (index === 0) {
       console.log('取消');
     } else if (index === 1) {
-      console.log('要去设置地址了');
+      wx.navigateTo({
+        url: '../../pages/addaddress/addaddress',
+      })
     }
 
     this.setData({
@@ -138,14 +163,19 @@ Page({
     });
   },
   nowingget: util.throttle(function (e) {
+    _this.setData({
+      golding: false,
+      infores: ''
+    })
+    return;
     let _id = 0;
     _id = e.currentTarget.id;
     let _this = this;
     api.$http(function (res) {
       console.log(res);
       _this.setData({
-        golding: false,
-        infores: ''
+        golding:false,
+        infores:''
       })
       if (res.data.success) {
         $Toast({
@@ -172,6 +202,7 @@ Page({
             session_key: app.apiData.session_key
         }, 'POST', function(data) {
             if (data.data.success) {
+                app.apiData.rate = data.data.message.multiple;
                 _this.setData({
                     userInfo: data.data.message,
                     name: data.data.message.name == "" ? app.apiData.nickName : data.data.message.name,
@@ -195,23 +226,25 @@ Page({
                 _this.setData({
                     targetList: data.data.message
                 });
-              for (let i = 0; i < data.data.message.length; i++) {
-                if (data.data.message[i].progressbar == '100' && data.data.message[i].isreceive=='1') {
-                    if (data.data.message[i].type==2){
-                      _this.setData({
-                        golding: true,
-                        infores: data.data.message[i].scoretitle,
-                        getid: data.data.message[i].id
-                      })
-                    }else{
-                      _this.setData({
-                        golding: true,
-                        infores: data.data.message[i].ranktitle,
-                        getid: data.data.message[i].id
-                      })
-                    }              
-                  }
-                }
+                // for (let i = 0; i < data.data.message.length; i++) {
+                //    if (data.data.message[i].progressbar == '100' && data.data.message[i].isreceive=='1') {
+                //     if (data.data.message[i].type==2){
+                //       _this.setData({
+                //         imgbgs: '../../images/img_lingqu.png',
+                //         golding: true,
+                //         infores: data.data.message[i].scoretitle,
+                //         getid: data.data.message[i].id
+                //       })
+                //     }else{
+                //       _this.setData({
+                //         imgbgs: '../../images/img_lingqu.png',
+                //         golding: true,
+                //         infores: data.data.message[i].ranktitle,
+                //         getid: data.data.message[i].id
+                //       })
+                //     }              
+                //   }
+                // }
             }
         }, function(data) {
             // console.log('请求失败');

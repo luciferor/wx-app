@@ -13,6 +13,7 @@ App({
         nickName: '',
         invite_id: '',
         company_name: '',
+        share_commid: '',
         creatOrg: {
             mutualMergeArr: [],
             selfMergeArr: [],
@@ -26,7 +27,7 @@ App({
         },
         OPENID: '',
         ACCESSKEY: '',
-        commid:''
+        rate:0
     },
     onLaunch: function() {
         console.log('onlaunch')
