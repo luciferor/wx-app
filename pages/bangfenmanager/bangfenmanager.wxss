@@ -390,4 +390,5 @@ color: transparent;
 	font-size: 32rpx;
 	color: #333333;
   padding-left: 20rpx;
+  padding-right: 10rpx
 }
