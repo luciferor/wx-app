@@ -13,13 +13,10 @@ Page({
         alreadyNum: 0,
         hangyeNum: 0,
         zidingyiNum: 0,
-        userInfo: {},
-        hasUserInfo: false,
-        canIUse: wx.canIUse('button.open-type.getUserInfo'),
         RomoveMoadal: false,
         hangyeArr: [], //后台设置的行业列表
         xingweiArr: [], //后台设置的行业对应的行为列表
-        currHangye: null,
+        currHangye: 0,
         addName: '',
         scoresArr: [{
             score: 1
@@ -68,32 +65,7 @@ Page({
         }
     },
     onLoad: function() {
-        if (app.globalData.userInfo) {
-            this.setData({
-                userInfo: app.globalData.userInfo,
-                hasUserInfo: true
-            })
-        } else if (this.data.canIUse) {
-            // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-            // 所以此处加入 callback 以防止这种情况
-            app.userInfoReadyCallback = res => {
-                this.setData({
-                    userInfo: res.userInfo,
-                    hasUserInfo: true
-                })
-            }
-        } else {
-            // 在没有 open-type=getUserInfo 版本的兼容处理
-            wx.getUserInfo({
-                success: res => {
-                    app.globalData.userInfo = res.userInfo
-                    this.setData({
-                        userInfo: res.userInfo,
-                        hasUserInfo: true
-                    })
-                }
-            })
-        }
+
     },
     onReady: function() {
         var _this = this
@@ -131,6 +103,29 @@ Page({
             console.log(err)
         }, '/appreciate/industry', {
             session_key: app.apiData.session_key
+        }, 'POST');
+
+        api.$http(function(res) {
+            for (let i = 0; i < res.data.message.length; i++) { //将"行业对应的行为列表[]" 循环去和"行业已选行为[]"进行对应查询，存在的则赋值checked属性为checked,否则为false
+                for (let m = 0; m < _this.data.hangyeBehaviorArr.length; m++) {
+                    if (res.data.message[i].id == _this.data.hangyeBehaviorArr[m].id && _this.data.hangyeBehaviorArr[m].state == 1) {
+                        res.data.message[i].checked = true;
+                        break;
+                    } else {
+                        res.data.message[i].checked = false
+                    }
+                }
+            }
+            _this.setData({
+                xingweiArr: res.data.message
+            })
+            console.log(res.data.message)
+        }, function(err) {
+            console.log(err)
+        }, '/appreciate/behavior', {
+            session_key: app.apiData.session_key,
+            industry_id: 1,
+            type: 2
         }, 'POST');
     },
     selectHangye: function(e) {

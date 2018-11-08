@@ -11,6 +11,7 @@ App({
         nickName: '',
         invite_id: '',
         company_name: '',
+        share_commid: '',
         creatOrg: {
             mutualMergeArr: [],
             selfMergeArr: [],
