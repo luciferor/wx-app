@@ -28,6 +28,17 @@
               <text class='explain-text'>性别</text>
               <text class='value-text'>{{userInfo.gender == 1 ? "男" : "女"}}</text>
           </view>
+          
+      </view>
+
+      <view class='wx-info'>
+        <view class='info-container' bindtap='addandedit'> 
+            <text class='explain-text'>我的地址</text>
+            <view class='value-text' style='padding-left:20rpx;'>
+              <span style='color:#cccccc; padding-right:10rpx;'>{{isaddress==0?'未设置':'已设置'}}</span>
+              <span style="position: relative; padding-right:20rpx;"><image style='width:32rpx; height:32rpx; position: absolute; bottom:3rpx;' src='../../images/icon_caozuo_right.png'></image></span>
+            </view>
+        </view>
       </view>
     </view>
 

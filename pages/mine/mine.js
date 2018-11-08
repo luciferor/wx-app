@@ -19,7 +19,7 @@ Page({
             total_score: 0, //总分
             user_img: "", //用户头像
             isadmin: 0,
-            reduces: 0 //减分权利
+            reduces: 0, //减分权利
         },
         score: Number(0),
         reduce: 0, //减去
@@ -29,6 +29,22 @@ Page({
         golding: false,
         infores: '',
         getid: 0,
+        goldings: false,
+        inforess: '',
+        getids: 0,
+        isaddress: 0,//是否添加地址 0 没有1有
+        ishowget:true,
+        getsmotihinsmenu:[
+          {
+            name: '取消',
+            color: '#666666',
+          },
+          {
+            name: '设置地址',
+            color: '#5398ff'
+          }
+        ],
+        imgbgs:'../../images/img_lingqu.png'
     },
     closegetwin() {
         this.setData({
@@ -76,21 +92,51 @@ Page({
         })
       }
     },
-
     handleReceive(e) {
         let arr = (e.currentTarget.id).split('|');
-        if (arr[2] == 1) {
+        console.log(arr);
+        if(arr[3]==1){//如果是奖品商品
+          //检查有没有地址
+          if (isaddress==1){//有地址
+            //提交审核领取
             this.setData({
-                golding: true,
-                infores: arr[1],
-                getid: arr[0]
+              goldings: true,
+              inforess: arr[1],
+              getids: arr[0],
+              imgbgss: '../../images/img_lingqul.png'
             })
-        } else {
+          }else{
+            wx.navigateTo({
+              url: '../../pages/addaddress/addaddress',
+            })
+          }
+        }else{
+          if (arr[2] == 1) {
+            this.setData({
+              imgbgs: '../../images/img_lingqul.png',
+              golding: true,
+              infores: arr[1],
+              getid: arr[0]
+            })
+          } else {
             $Toast({
-                content: "暂未达成，无法领取"
+              content: "暂未达成，无法领取"
             });
+          }
         }
     },
+  getsomething(detail){
+    const index = detail.index;
+    if (index === 0) {
+      console.log('取消');
+    } else if (index === 1) {
+      console.log('要去设置地址了');
+    }
+
+    this.setData({
+      ishowget: false
+    });
+  },
   nowingget: util.throttle(function (e) {
     let _id = 0;
     _id = e.currentTarget.id;
@@ -129,7 +175,8 @@ Page({
                 _this.setData({
                     userInfo: data.data.message,
                     name: data.data.message.name == "" ? app.apiData.nickName : data.data.message.name,
-                    score: parseFloat(data.data.message.score) + parseFloat(data.data.message.total_score) - parseFloat(data.data.message.reduce)
+                    score: parseFloat(data.data.message.score) + parseFloat(data.data.message.total_score) - parseFloat(data.data.message.reduce),
+                    isaddress: data.data.message.is_address
                 });
             }
             // console.log(data.data.message)
@@ -190,8 +237,9 @@ Page({
     },
     //跳转到设置界面
     navigateToSetting() {
+        let _this = this;
         wx.navigateTo({
-            url: '../setting/setting'
+          url: '../setting/setting?isaddress=' + _this.data.isaddress,
         })
     },
     //跳转到组织

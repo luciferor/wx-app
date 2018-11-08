@@ -3,6 +3,7 @@ var api = require('../../utils/api.js');
 const { $Toast } = require('../../dist/base/index');
 const util = require('../../utils/util.js');
 const app = getApp()
+const { $Message } = require('../../dist/base/index');
 
 Page({
     data: {
@@ -11,8 +12,45 @@ Page({
         reduceScoreNum: 0, //减分权利
         maxScoreNum: 0, //加减分最大值
         count: 0, //可分配邦分
+        isshow:false,
+        istitle:'邦分不足',
+        isdes:'邦分可能不够本次分配了',
+        actions3: [
+          {
+            name: '继续',
+            color: '#666666',
+          },
+          {
+            name: '充值',
+            color: '#5398ff'
+          }
+        ],
     },
+    gotorecharge(){
+      wx.navigateTo({
+        url: '/pages/recharge/recharge',
+      })
+    },
+    scoreuser(){
+      wx.navigateTo({
+        url: '/pages/selectplanuser/selectplanuser',
+      })
+    },
+    isrecharge({ detail }) {
+      const index = detail.index;
+      console.log(index);
+      if (index === 0) {
+        
+      } else if (index === 1) {
+        wx.navigateTo({
+          url: '/pages/recharge/recharge',
+        })
+      }
 
+      this.setData({
+        isshow: false
+      });
+    },
     onLoad: function() {
         this.getCount();
     },
@@ -24,7 +62,7 @@ Page({
             path: '/pages/index/index',
             imageUrl: '../../images/minproTranspond.png',
             success: function(res) {
-                console.log(res)
+              console.log(res)
             },
             fail: function(err) {
                 console.log('失败')
@@ -39,8 +77,14 @@ Page({
             session_key: app.apiData.session_key,
         }, 'POST', function(data) {
             _this.setData({
-                count: data.data.message
+                count: data.data.message.coin
             });
+            if (Number(data.data.message)<5000){
+              //弹出提示，主要是为了让用户充值
+              _this.setData({
+                isshow:true
+              })
+            }
         }, function(data) {
             console.log('请求失败');
         });

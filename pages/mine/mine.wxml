@@ -53,22 +53,22 @@
                       <!-- <image  src="{{target.rankimg==null||target.rankimg==''?'../../images/mine/icon_wode_yuejiang.png': target.rankimg}}"  class='target-pic' wx:elif="{{target.gift_type ==2}}" binderror="errorFunction" id="{{target.type+'|'+idx}}"></image>
                       <image  src="{{target.rankimg==null||target.rankimg==''?'../../images/mine/icon_wode_zhoujiang.png': target.rankimg}}" class='target-pic' wx:else binderror="errorFunction" id="{{target.type+'|'+idx}}"></image> -->
                   </view>
-                  <image src="{{target.scoreimg==null||target.scoreimg==''?'../../images/mine/img_wode_bangfen.png': target.scoreimg}}"   class='target-pic' wx:else binderror="errorFunction" id="{{target.type+'|'+idx}}"></image>
+                  <image src="{{subs.convertimgsrc(target.scoreimg==null||target.scoreimg==''?'../../images/mine/img_wode_bangfen.png': target.scoreimg)}}"   class='target-pic' wx:else binderror="errorFunction" id="{{target.type+'|'+idx}}"></image>
                   <view class='target-info'>
                       <text class='target-name'>{{target.type ==1 ? target.ranktitle:target.scoretitle}}</text>
                       <view style='height:20rpx'></view>
                       <view wx:if="{{target.type ==1}}">
-                    <view class='target-condition'>当前第<span class="hight-color">{{target.myrank}}</span>名/{{subs.targetType(target.gift_type)}}{{subs.targetRank(target.rank)}}</view>
+                    <view class='target-condition'>当前第<span class="{{subs.targcolor(target.type==1?target.rreceive_type:sreceive_type)}}">{{target.myrank}}</span>名/{{subs.targetType(target.gift_type)}}{{subs.targetRank(target.rank)}}</view>
                     <!-- <view class='target-condition' wx:elif="{{target.gift_type ==2}}">当前第<span class="hight-color">{{target.weekrank}}</span>名/{{subs.targetType(target.gift_type)}}{{subs.targetRank(target.rank)}}</view>
                     <view class='target-condition' wx:else>当前第<span class="hight-color">{{target.monthrank}}</span>名/{{subs.targetType(target.gift_type)}}{{subs.targetRank(target.rank)}}</view> -->
                       </view>
-                      <view class='target-condition' wx:else><span class="hight-color">{{target.score}}</span>邦分/{{target.gift_score}}邦分</view>
+                      <view class='target-condition' wx:else><span class="{{subs.targcolor(target.type==1?target.rreceive_type:sreceive_type)}}">{{target.score}}</span>邦分/{{target.gift_score}}邦分</view>
                       <view style='height:15rpx'></view>
-                      <progress class='target-status' percent="{{target.progressbar|Number}}" activeColor="{{target.progressbar==100?'#02e69a':'#5398ff'}}" backgroundColor="#f7f7f7"></progress>
+                      <progress class='target-status' percent="{{target.progressbar|Number}}" activeColor="{{target.progressbar==100?'#02e69a':(subs.colorsss(target.type==1?target.rreceive_type:sreceive_type))}}" backgroundColor="#f7f7f7"></progress>
                   </view>
               </view>
-              <view class='target-right' bindtap='handleReceive' id="{{target.id+'|'+(target.type ==1 ? target.ranktitle:target.scoretitle)+'|'+target.isreceive}}">
-                  <button class="{{target.isreceive == 1 ? 'target-button' : 'target-un-button'}}">{{subs.targetStatus(target.isreceive,target.progressbar)}}</button>
+              <view class='target-right' bindtap='handleReceive' id="{{target.id+'|'+(target.type ==1 ? target.ranktitle:target.scoretitle)+'|'+target.isreceive+'|'+(target.type==1?target.rreceive_type:target.sreceive_type)}}">
+                  <button class="{{subs.targetclass(target.type==1?target.rreceive_type:sreceive_type,target.isreceive)}}">{{subs.targetStatus(target.isreceive,target.progressbar)}}</button>
               </view>
           </view>
        </view>
@@ -94,7 +94,7 @@
 
 <view class='maskwin' wx:if="{{golding}}">
  <view class='win-dialog'>
-    <image src='../../images/img_lingqu.png'></image>
+    <image src="{{imgbgs}}"></image>
  </view>
  <view class='win-content'>
   <view class='topwin'>
@@ -105,3 +105,22 @@
   <view class='info-under' bindtap='nowingget' id="{{getid}}">立即领取</view>
  </view>
 </view>
+
+<view class='maskwin' wx:if="{{goldings}}">
+ <view class='win-dialog'>
+    <image src="{{imgbgss}}"></image>
+ </view>
+ <view class='win-content'>
+  <view class='topwin'>
+    <view class='closebtn' bindtap='closegetwin'></view>
+  </view>
+  <view class='descontent'>立即领取</view>
+  <view class='info-content-win'>{{inforess}}</view>
+  <view class='info-under' bindtap='nowingget' id="{{getids}}">确认领取</view>
+ </view>
+</view>
+
+
+<i-modal title="领取提示" visible="{{ ishowget }}" actions="{{ getsmotihinsmenu }}" bind:click="getsomething">
+    <view>恭喜您达成目标，该目标需要设置地址后可领取</view>
+</i-modal>

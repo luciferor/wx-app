@@ -218,18 +218,21 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
     background-size: contain;
     background-repeat: no-repeat;
     margin-right: 20rpx;
+    flex: 0 0 auto;
 }
 
 .zidingyi-list .list-item .item-score {
     font-size: 32rpx;
     color: #999999;
-    flex: 1 1 auto;
+    flex: 0 0 auto;
     text-align: right;
 }
 
 .zidingyi-list .list-item .item-txt {
     color: #333333;
     font-size: 32rpx;
+    flex: 1 1 auto;
+    padding-right: 20rpx;
 }
 
 .select-score-modal {

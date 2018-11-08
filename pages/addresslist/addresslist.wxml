@@ -1,0 +1,18 @@
+<!--pages/addresslist/addresslist.wxml-->
+<view class='mainer'>
+  <view class='listbox'>
+    <view class='selectbox'></view>
+    <view class='editbox' bindtap='editaddress'>
+      <image class='fl' src='../../images/img_dizhi_bianji.png'></image>
+      <view class='btntext fl' id='{{addlist.id}}' bindtap='editaddress'>编辑</view>
+    </view>
+    <view>
+      <view class='userbox'>
+        <view bindtap='selectevent' class='username fl'>{{addlist.name}}</view>
+        <view bindtap='selectevent' class='userphone fl'>{{addlist.mobile}}</view>
+      </view>
+      <view bindtap='selectevent' class='addressbox'>{{province}}{{city}}{{country}}{{addlist.address}}</view>
+    </view>
+  </view>
+</view>
+<i-toast id="toast" />

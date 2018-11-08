@@ -9,8 +9,8 @@
 
   <view class='usebuff'>
     <view class='usebuff-box'>
-      <span class='fl'>可分配邦分<span style='color:#5398ff;'>100000</span>邦分</span>
-      <span class='fr'><button style="width:200rpx; height:80rpx; background:#5398ff; line-height:80rpx;" type="primary" plain="{{plain}}" hover-class="other-button-hover">充邦分</button></span>
+      <span class='fl'>可分配邦分<span style='color:#5398ff;'>{{buff}}</span>邦分</span>
+      <span class='fr'><button  bindtap='gotorecharge' style="width:200rpx; height:80rpx; background:#5398ff; line-height:80rpx;" type="primary" plain="{{plain}}" hover-class="other-button-hover">充邦分</button></span>
     </view>
   </view>
   

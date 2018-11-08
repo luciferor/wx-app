@@ -30,7 +30,7 @@
          <view class='list-box'>
           <view class='listcontent' wx:for="{{rankTargetList}}" wx:for-index="rankindex" wx:for-item="rankitem" wx:if="{{rankTargetList.length>0}}">
                <view class='left-container'>
-               <image  src="{{rankitem.img==null||rankitem.img==''?'../../images/mine/icon_zidingyi.png': rankitem.img}}"  class='target-img'></image>
+               <image  src="{{subs.convertimgsrc(rankitem.img==null||rankitem.img==''?'../../images/mine/icon_zidingyi.png': rankitem.img)}}"  class='target-img'></image>
                       <!-- <image  src="{{rankitem.img==null||rankitem.img==''?'../../images/mine/icon_wode_yuejiang.png': rankitem.img}}"  class='target-img' wx:elif="{{target.gift_type ==2}}"></image>
                       <image  src="{{rankitem.img==null||rankitem.img==''?'../../images/mine/icon_wode_zhoujiang.png':rankitem.img}}" class='target-img' wx:else></image> -->
                 <view class='left-text-container'>
@@ -38,10 +38,10 @@
                   <span class='target-condition'>{{subs.targetType(rankitem.gift_type)}}{{subs.targetRank(rankitem.rank)}}</span>
                 </view>
              </view>
-             <view class='radio-container' id="{{rankitem.id+'|'+rankindex}}" bindtap="rankevents" >
-                <radio color="#5398ff" value="已添加" checked="{{rankitem.ischecked}}" class='radio'>
+             <view class="{{rankitem.receive_type==1?'radio-container-orange':'radio-container'}}" id="{{rankitem.id+'|'+rankindex}}" bindtap="rankevents" >
+                <radio color="{{rankitem.receive_type==1?'#ff7e28':'#5398ff'}}" value="已添加" checked="{{rankitem.ischecked}}" class='radio'>
                 </radio>
-                 <span class="target-status">{{rankitem.ischecked ? '已添加' : '添加'}}</span>
+                 <span class="{{rankitem.receive_type==1?'target-status-orange':'target-status'}}">{{rankitem.ischecked ? '已添加' : '添加'}}</span>
              </view>
           </view>
         </view>
@@ -58,16 +58,16 @@
              <view class='list-box'>
                 <view class='listcontent' wx:for="{{scoreTargetList}}"  wx:for-index="scoreindex" wx:for-item="scoreitem" wx:if="{{scoreTargetList.length>0}}">
                       <view class='left-container'>
-                      <image src="{{scoreitem.img==null||scoreitem.img==''?'../../images/mine/icon_zidingyi.png': scoreitem.img}}" class='target-img'></image>
+                      <image src="{{subs.convertimgsrc(scoreitem.img==null||scoreitem.img==''?'../../images/mine/icon_zidingyi.png': scoreitem.img)}}" class='target-img'></image>
                       <view class='left-text-container'>
                         <span class='target-title'>{{subs.sub(scoreitem.name,12)}}</span>
                         <span class='target-condition'>累积{{scoreitem.gift_score}}邦分</span>
                       </view>
                   </view>
-                  <view class='radio-container' id="{{scoreitem.id+'|'+scoreindex}}" bindtap="scoreevents">
-                      <radio color="#5398ff" value="不二家棒棒糖" checked="{{scoreitem.ischecked}}" class='radio' >
+                  <view class="{{scoreitem.receive_type==1?'radio-container-orange':'radio-container'}}" id="{{scoreitem.id+'|'+scoreindex}}" bindtap="scoreevents">
+                      <radio color="{{scoreitem.receive_type==1?'#ff7e28':'#5398ff'}}" value="不二家棒棒糖" checked="{{scoreitem.ischecked}}" class='radio' >
                       </radio>
-                      <span class="target-status">{{scoreitem.ischecked ? '已添加' : '添加'}}</span>
+                      <span class="{{scoreitem.receive_type==1?'target-status-orange':'target-status'}}">{{scoreitem.ischecked ? '已添加' : '添加'}}</span>
                   </view>
                  </view>
               </view>

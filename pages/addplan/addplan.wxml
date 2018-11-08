@@ -2,11 +2,13 @@
   <view>
     <view class='title-container'>
       <view class='blue-icon'></view>
-      <view class='title-text'>
-        <span class='fl'>可分配邦分</span>
-        <span class='fl' style="color:#5398ff;">{{count}}</span>
-        <span class='fl'>邦分</span>
-        <span class='fr'><button style="width:200rpx; height:80rpx; background:#5398ff; line-height:80rpx;" type="primary" plain="{{plain}}" hover-class="other-button-hover">充邦分</button></span>
+      <view class='top-title'>
+        <view  class='title-text'>
+          <span class='fl'>可分配邦分</span>
+          <span class='fl' style="color:#5398ff;">{{count}}</span>
+          <span class='fl'>邦分</span>
+        </view>
+        <span class='fr' style='padding-top:8rpx;'><button style="width:180rpx; height:70rpx; font-size:28rpx; background:#5398ff; line-height:70rpx;margin-right:20rpx" type="primary" plain="{{plain}}" bindtap='gotorecharge' hover-class="other-button-hover">充邦分</button></span>
       </view>
    </view>
 
@@ -40,8 +42,17 @@
             <image src='../../images/mine/icon_zuji_date.png' class='date-icon'></image>
         </view>
       </picker>
-     
    </view>
+
+   <view class='max-container' bindtap="scoreuser">
+      <text class='operate-text'>分配成员</text>
+      <picker mode="date" value="{{date}}" fields="month">
+        <view class='date-container'>
+            <image src='../../images/icon_caozuo_right.png' class='date-icon'></image>
+        </view>
+      </picker>
+   </view>
+   
   </view>
 
    
@@ -53,3 +64,7 @@
 </view>
 
 <i-toast id="toast" />
+
+<i-modal title="{{istitle}}" visible="{{ isshow }}" actions="{{ actions3 }}" bind:click="isrecharge">
+    <view>{{isdes}}</view>
+</i-modal>

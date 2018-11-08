@@ -28,6 +28,12 @@ page{
   background-color: #5398ff;
   border-radius: 10rpx;
 }
+.top-title{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
 
 .title-text{
   color: #666666;

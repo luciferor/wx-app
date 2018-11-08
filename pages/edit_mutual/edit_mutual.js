@@ -101,10 +101,6 @@ Page({
         api.$http(function(res) { //获取公司相互管理的所有行为
             console.log(res)
             let zidingyiArr = res.data.message.mutualmanaged
-            for (var i = 0; i < zidingyiArr.length; i++) { //数据加工，别问我为什么;另外后端传来经过过滤的列表的state只有为1的。
-                zidingyiArr[i].managedid = zidingyiArr[i].id
-                zidingyiArr[i].id = ""
-            }
             let hangyeArr = res.data.message.mutualmanagedtem
             console.log(hangyeArr)
 
@@ -285,7 +281,7 @@ Page({
         var zidingyiArr = this.data.zidingyiBehaviorArr
         var zidingyiLength = 0
         for (var i = 0; i < zidingyiArr.length; i++) {
-            if (zidingyiArr[i].managedid == this.data.zidingyiCurrItem.managedid) {
+            if (zidingyiArr[i].id == this.data.zidingyiCurrItem.id && zidingyiArr[i].behavior == this.data.zidingyiCurrItem.behavior) {
                 zidingyiArr[i].state = 0
             }
             if (zidingyiArr[i].state == 1) {
@@ -311,9 +307,7 @@ Page({
             alreadyNum: zidingyiArr.length + hangyeArr.length,
             zidingyiNum: zidingyiArr.length,
             hangyeNum: hangyeArr.length,
-
         })
-
         var referXingweiArr = this.data.xingweiArr
         for (let i = 0; i < referXingweiArr.length; i++) {
             if (this.data.hangyeBehaviorArr.length == 0) {
