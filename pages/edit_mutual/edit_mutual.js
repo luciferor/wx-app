@@ -99,33 +99,32 @@ Page({
             _this.setData({
                 hangyeArr: res.data.message
             })
+            api.$http(function(ress) {
+                for (let i = 0; i < ress.data.message.length; i++) { //将"行业对应的行为列表[]" 循环去和"行业已选行为[]"进行对应查询，存在的则赋值checked属性为checked,否则为false
+                    for (let m = 0; m < _this.data.hangyeBehaviorArr.length; m++) {
+                        if (ress.data.message[i].id == _this.data.hangyeBehaviorArr[m].id && _this.data.hangyeBehaviorArr[m].state == 1) {
+                            ress.data.message[i].checked = true;
+                            break;
+                        } else {
+                            ress.data.message[i].checked = false
+                        }
+                    }
+                }
+                _this.setData({
+                    xingweiArr: ress.data.message
+                })
+                console.log(ress.data.message)
+            }, function(err) {
+                console.log(err)
+            }, '/appreciate/behavior', {
+                session_key: app.apiData.session_key,
+                industry_id: res.data.message[0].industry_id,
+                type: 2
+            }, 'POST');
         }, function(err) {
             console.log(err)
         }, '/appreciate/industry', {
             session_key: app.apiData.session_key
-        }, 'POST');
-
-        api.$http(function(res) {
-            for (let i = 0; i < res.data.message.length; i++) { //将"行业对应的行为列表[]" 循环去和"行业已选行为[]"进行对应查询，存在的则赋值checked属性为checked,否则为false
-                for (let m = 0; m < _this.data.hangyeBehaviorArr.length; m++) {
-                    if (res.data.message[i].id == _this.data.hangyeBehaviorArr[m].id && _this.data.hangyeBehaviorArr[m].state == 1) {
-                        res.data.message[i].checked = true;
-                        break;
-                    } else {
-                        res.data.message[i].checked = false
-                    }
-                }
-            }
-            _this.setData({
-                xingweiArr: res.data.message
-            })
-            console.log(res.data.message)
-        }, function(err) {
-            console.log(err)
-        }, '/appreciate/behavior', {
-            session_key: app.apiData.session_key,
-            industry_id: 1,
-            type: 2
         }, 'POST');
     },
     selectHangye: function(e) {
