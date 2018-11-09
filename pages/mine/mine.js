@@ -54,10 +54,6 @@ Page({
       })
     },
     gotogetsomething(e){//领取奖励
-      this.setData({
-        goldings: false//这里是接口出问题，明天再解决了
-      }) 
-      return;
       let _this = this;
       console.log(e);
       api.$http(function (res) {
@@ -125,27 +121,35 @@ Page({
       }
     },
     handleReceive(e) {
+      let _this = this;
         let arr = (e.currentTarget.id).split('|');
         console.log(arr);
-        if(arr[3]==1){
-          //先去设置地址
-          if (_this.data.isaddress==0){
+        if(arr[2]==1){
+          if (arr[3] == 1) {
+            //先去设置地址
+            if (_this.data.isaddress == 0) {
+              _this.setData({
+                ishowget: true
+              })
+            } else {
+              _this.setData({
+                goldings: true,
+                inforess: arr[1],
+                getids: arr[0],
+              })
+            }
+          } else {
             _this.setData({
-              ishowget:true
-            })
-          }else{
-            this.setData({
               goldings: true,
               inforess: arr[1],
               getids: arr[0],
             })
           }
         }else{
-          this.setData({
-            goldings: true,
-            inforess: arr[1],
-            getids: arr[0],
-          })
+          $Toast({
+            content:"还无法领取",
+            type: 'success'
+          });
         }
     },
   getsomething(detail){

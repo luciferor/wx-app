@@ -484,19 +484,20 @@ page{
 }
 
 .descontent{
-  height: 100rpx;
-  line-height: 120rpx;
+  height: 60rpx;
+  line-height: 60rpx;
   font-size: 26rpx;
 	color: #999999;
 }
 
 .info-content-win{
-  height: 60rpx;
-  line-height: 0rpx;
+  height: 100rpx;
+  line-height:40rpx;
   text-align: center;
-  font-size: 36rpx;
+  font-size: 28rpx;
 	color: #5398ff;
   font-weight: bold;
+  padding:0 40rpx;
 }
 
 .info-under{

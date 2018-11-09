@@ -78,6 +78,15 @@ Page({
         });
         //返回到个人资料页面设置页
         wx.navigateBack();
+        var pages = getCurrentPages();
+        var currPage = pages[pages.length - 1]; // 当前页面
+        var prevPage = pages[pages.length - 2]; // 上一级页面
+
+        // 直接调用上一级页面Page对象，存储数据到上一级页面中
+        prevPage.setData({
+          isaddress: 1,
+        }); 
+
       }
     },function(err){
       console.log(err);

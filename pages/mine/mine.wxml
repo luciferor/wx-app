@@ -115,11 +115,10 @@
     <view class='closebtn' bindtap='closegetsomething'></view>
   </view>
   <view class='descontent'>恭喜您获得</view>
-  <view class='info-content-win'>{{inforess}}</view>
+  <view class='info-content-win'>{{subs.sub(inforess,30)}}</view>
   <view class='info-under' bindtap='gotogetsomething' id="{{getids}}">确认领取</view>
  </view>
 </view>
-
 
 <i-modal title="领取提示" visible="{{ ishowget }}" actions="{{ getsmotihinsmenu }}" bind:click="getsomething">
     <view>恭喜您达成目标，该目标需要设置地址后可领取</view>

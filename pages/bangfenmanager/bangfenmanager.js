@@ -115,7 +115,7 @@ Page({
         if (restarget.data.message[i].progressbar == '100' && restarget.data.message[i].isreceive == '1') {
           _this.setData({
             golding: true,
-            infores: restarget.data.message[i].scoretitle,
+            infores: restarget.data.message[i].type == 1 ? restarget.data.message[i].ranktitle : restarget.data.message[i].scoretitle,
             getid: restarget.data.message[i].id
           })
         }
