@@ -151,7 +151,7 @@ Page({
           });
         }
     },
-  getsomething(detail){
+  getsomething({detail}){
     const index = detail.index;
     if (index === 0) {
       console.log('取消');
