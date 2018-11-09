@@ -47,16 +47,16 @@
                           <view class='name-container'>
                           <text class='uname'>{{allItem.name}}</text>
                           <block>
-                          <text class='pass-text' wx:if="{{allItem.state == 1}}">{{subs.status(allItem.state)}}</text>
-                          <text class='apply-text' wx:elif="{{allItem.state == 2}}">{{subs.status(allItem.state)}}</text>
+                          <text class='apply-text' wx:if="{{allItem.state == 1}}">{{subs.status(allItem.state)}}</text>
+                          <text class='pass-text' wx:elif="{{allItem.state == 2}}">{{subs.status(allItem.state)}}</text>
                           <text class='reject-text' wx:else>{{subs.status(allItem.state)}}</text>
                         </block>
                       </view>
                       <view class='info-container'>
-                            <text class='notice_title'>{{allItem.type == 1?'排名目标':'邦分目标'}}</text>
+                            <text class='notice_title'>{{allItem.goal_id!=0?'领取申请':(allItem.type == 1?'排名目标':'邦分目标')}}</text>
                             <text class='content'>{{allItem.title}}</text>
                       </view>
-                      <view class='dot-container' id="{{allIndex}}" bindtap="showAllCheckBox" wx:if="{{allItem.state ==2}}">
+                      <view class='dot-container' id="{{allIndex}}" bindtap="showAllCheckBox" wx:if="{{allItem.state ==1}}">
                          <view class='check-container' hidden='{{allItem.check_hidden}}'>
                               <text class="reject-btn" id="{{allIndex}}" bindtap='handleAllReject'>不通过</text>
                               <text class="pass-btn" id="{{allIndex}}" bindtap='handleAllPass'>通过</text>
@@ -95,7 +95,7 @@
                           <text class='status apply-text'>待审核</text>
                       </view>
                       <view class='info-container'>
-                            <text class='notice_title'>{{applyItem.type == 1?'排名目标':'邦分目标'}}</text>
+                            <text class='notice_title'>{{applyItem.goal_id!=0?'领取申请':(allItem.type == 1?'排名目标':'邦分目标')}}</text>
                             <text class='content'>{{applyItem.title}}</text>
                       </view>
                       <view class='dot-container' id="{{applyIndex}}" bindtap="showCheckBox">
@@ -136,7 +136,7 @@
                           <text class='status pass-text'>已通过</text>
                       </view>
                       <view class='info-container'>
-                            <text class='notice_title'>{{passItem.type == 1?'排名目标':'邦分目标'}}</text>
+                            <text class='notice_title'>{{passItem.goal_id!=0?'领取申请':(allItem.type == 1?'排名目标':'邦分目标')}}</text>
                             <text class='content'>{{passItem.title}}</text>
                       </view>
                       </view>
@@ -170,7 +170,7 @@
                           <text class='status reject-text'>未通过</text>
                       </view>
                       <view class='info-container'>
-                            <text class='notice_title'>{{rejectItem.type == 1?'排名目标':'邦分目标'}}</text>
+                            <text class='notice_title'>{{rejectItem.goal_id!=0?'领取申请':(allItem.type == 1?'排名目标':'邦分目标')}}</text>
                             <text class='content'>{{rejectItem.title}}</text>
                       </view>
                       </view>

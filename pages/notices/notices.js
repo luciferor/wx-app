@@ -83,12 +83,23 @@ Page({
         let _this = this;
         let index = e.currentTarget.id;
         let notice = _this.data.applyNotice[index];
-        api.$https('/toexamine/target', {
+       let url = notice.goal_id != 0 ? '/WeChat/Applet/receiveExamine' : '/toexamine/target';
+        let param = {};
+        if (notice.goal_id != 0){
+          param = {
+            session_key: app.apiData.session_key,
+            id: notice.id,
+            status: '0'
+          }
+       }else{
+          param = {
             session_key: app.apiData.session_key,
             type: notice.type,
             id: notice.id,
             status: '0'
-        }, 'POST', function(data) {
+          }
+       }
+        api.$https(url, param, 'POST', function(data) {
             if (data.data.success) {
                 $Toast({
                     content: data.data.message
@@ -115,12 +126,23 @@ Page({
         let _this = this;
         let index = e.currentTarget.id;
         let notice = _this.data.applyNotice[index];
-        api.$https('/toexamine/target', {
+      let url = notice.goal_id != 0 ? '/WeChat/Applet/receiveExamine' : '/toexamine/target';
+        let param = {};
+        if (notice.goal_id != 0) {
+          param = {
+            session_key: app.apiData.session_key,
+            id: notice.id,
+            status: '1'
+          }
+        } else {
+          param = {
             session_key: app.apiData.session_key,
             type: notice.type,
             id: notice.id,
             status: '1'
-        }, 'POST', function(data) {
+          }
+        }
+        api.$https(url, param, 'POST', function(data) {
             if (data.data.success) {
                 $Toast({
                     content: data.data.message
@@ -148,12 +170,23 @@ Page({
         let _this = this;
         let index = e.currentTarget.id;
         let notice = _this.data.allNotice[index];
-        api.$https('/toexamine/target', {
+        let url = notice.goal_id != 0 ? '/WeChat/Applet/receiveExamine' : '/toexamine/target';
+        let param = {};
+        if (notice.goal_id != 0) {
+          param = {
+            session_key: app.apiData.session_key,
+            id: notice.id,
+            status: '0'
+          }
+        } else {
+          param = {
             session_key: app.apiData.session_key,
             type: notice.type,
             id: notice.id,
             status: '0'
-        }, 'POST', function(data) {
+          }
+        };
+        api.$https(url, param, 'POST', function(data) {
             if (data.data.success) {
                 $Toast({
                     content: data.data.message
@@ -180,12 +213,23 @@ Page({
         let _this = this;
         let index = e.currentTarget.id;
         let notice = _this.data.allNotice[index];
-        api.$https('/toexamine/target', {
+        let url = notice.goal_id != 0 ? '/WeChat/Applet/receiveExamine' : '/toexamine/target';
+        let param = {};
+        if (notice.goal_id != 0) {
+          param = {
+            session_key: app.apiData.session_key,
+            id: notice.id,
+            status: '1'
+          }
+        } else {
+          param = {
             session_key: app.apiData.session_key,
             type: notice.type,
             id: notice.id,
-            status: '1'
-        }, 'POST', function(data) {
+            status: '1',
+          }
+        };
+        api.$https(url, param, 'POST', function(data) {
             if (data.data.success) {
                 $Toast({
                     content: data.data.message
@@ -237,12 +281,13 @@ Page({
                 list.push({
                     id: data[index].id,
                     name: data[index].name,
-                    state: data[index].state,
+                    state: data[index].status,
                     created_at: data[index].created_at,
                     title: data[index].title,
                     type: data[index].type,
                     user_img: data[index].user_img,
-                    check_hidden: true
+                    check_hidden: true,
+                    goal_id: data[index].goal_id
                 });
             }
             _this.setData({
@@ -262,7 +307,7 @@ Page({
                 list.push({
                     id: data[index].id,
                     name: data[index].name,
-                    state: data[index].state,
+                   state: data[index].status,
                     created_at: data[index].created_at,
                     title: data[index].title,
                     type: data[index].type,

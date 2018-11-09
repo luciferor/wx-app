@@ -26,10 +26,10 @@ var subs = {
   status:function(_str){
     switch (_str) {
       case 1:
-        return '已通过';
+        return '待审核';
         break;
       case 2:
-        return '待审核';
+        return '已通过';
         break;
       case 3:
         return '未通过';
