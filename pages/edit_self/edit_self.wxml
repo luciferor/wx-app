@@ -12,7 +12,7 @@
         </view>
         <view class="xingwei-list">
             <view wx:for="{{xingweiArr}}" wx:for-index="idx1" data-num="{{idx1}}"  data-item="{{item}}" class="list-item  {{currXingwei==idx1?'picked':''}}" bindtap="pickXingwei">
-                <label>
+                <label class="{{item.checked==true?'active':''}}">
                     <text class="item-txt">{{item.behavior}}</text>
                     <text class="item-score">(<text wx:if="{{item.operation==0}}">-</text><text wx:if="{{item.operation==1}}">+</text>{{item.score}}邦分)</text>
                     <checkbox class="xingwei-picked" checked="{{item.checked}}"></checkbox>
