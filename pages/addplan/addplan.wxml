@@ -47,7 +47,7 @@
    <view class='max-container' bindtap="scoreuser">
       <text class='operate-text'>分配成员</text>
         <view class='date-container'>
-            <span style='font-size:32rpx; color:#666666; padding-right:20rpx;'>{{planusers.length==0?'':planusers.length}}</span>
+            <span style='font-size:32rpx; color:#666666; padding-right:20rpx;'>{{planusers.length==0?'全员':planusers.length}}</span>
             <image src='../../images/icon_caozuo_right.png' class='date-icon'></image>
         </view>
    </view>
