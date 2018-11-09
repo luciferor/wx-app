@@ -1,8 +1,9 @@
 <!--pages/recharge/recharge.wxml-->
+<wxs module="subs" src="../../filter/substres.wxs"></wxs>
 <view class='mainer'>
   <view style='height:0.1rpx;'></view>
   <view class='buff-com'>
-    <span class='fl'>{{comname}}</span>
+    <span class='fl'>{{subs.sub(comname,8)}}</span>
     <span class='fr'><span>剩余</span><span style='color:#5398ff;'>{{buff}}</span><span>邦分</span></span>
   </view>
   <view class='buff-com-input' style='border-top:none;'>

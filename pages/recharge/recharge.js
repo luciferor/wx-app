@@ -12,7 +12,7 @@ Page({
     rechar:0,//邦分
     moneyes:0,//金额
     buff:0,
-    comname: app.apiData.company_name
+    comname: ''
   },
   calcbuff(e){
     this.setData({
@@ -71,7 +71,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    
+    this.setData({
+      comname: app.apiData.company_name
+    })
   },
   getbuff(){
     let _this = this;

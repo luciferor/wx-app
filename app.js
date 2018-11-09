@@ -3,7 +3,7 @@ App({
     apiData: {
         GetLincesShow: false, //是否
         code: '', //登录需要的code
-        api: 'https://devqypyp.xiaohuibang.com', //接口根地址
+        api: 'https://qypyp.xiaohuibang.com', //接口根地址
         session_key: '', //response.data.message.session_key
         open_id:'',
         app_id:'wx416b34cf4f1994cf',

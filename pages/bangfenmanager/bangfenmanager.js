@@ -418,6 +418,7 @@ Page({
           console.log(res);
           if (res.data.success) {
             count++;
+            api.$showtoolbar();
             //alert('添加成功！')
             $Toast({
               content: res.data.message,
