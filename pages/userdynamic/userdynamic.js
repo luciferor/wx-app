@@ -14,8 +14,9 @@ Page({
     onLoad: function(option) {
         console.log(option)
         let arr = option.uid.split('|');
+        let name = arr[1].length > 5 ? arr[1].substring(0, 4)+'...':arr[1];
         wx.setNavigationBarTitle({
-            title: arr[1] + "的个人动态"
+          title: name + "的个人动态"
         });
         this.setData({
           id:arr[0]
