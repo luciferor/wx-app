@@ -19,7 +19,7 @@ Page({
             session_key: app.apiData.session_key,
         }, 'POST', function(data) {
             _this.setData({
-                count: data.data.message
+              count: data.data.message.coin
             });
         }, function(data) {
             console.log('请求失败');

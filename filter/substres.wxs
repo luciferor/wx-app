@@ -110,9 +110,13 @@ var subs = {
     }
   },
   convertimgsrc:function(_str){
-    console.log(_str);
-    if (_str.indexOf("https://m.360buyimg.com") != -1){
+    console.log(_str+'这里是接收到的地址');
+    if (_str.indexOf("360buyimg") != -1){
       return _str.replace("https://devqypyp.xiaohuibang.com","");
+    } else if (_str.indexOf('bangxuan.oss-cn-shenzhen.aliyuncs.com')!=-1){
+      return _str.replace("https://devqypyp.xiaohuibang.com", "");
+    } else if (_str.indexOf('img.alicdn.com') != -1){
+      return _str.replace("https://devqypyp.xiaohuibang.com", "");
     }else{
       return _str;
     }

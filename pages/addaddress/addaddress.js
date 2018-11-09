@@ -151,6 +151,7 @@ Page({
         })
         console.log(this.data)
 
+
     },
     // 日志选择
     bindDateChange: function(e) {
