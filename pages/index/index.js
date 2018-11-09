@@ -31,7 +31,6 @@ Page({
                         //console.log('打印sessionkey[' + resreg.data.message.session_key + ']');
                         //console.log('公司id' + resreg.data.message.Company_Id)
                         if (app.apiData.Company_Id != 0) { //已经有公司了，就直接跳转到个人中心
-                            console.log(wx.getStorageSync('userInfo').length) //   第一次的新用户的length为0
                             if (wx.getStorageSync('userInfo').length != 0) {
                                 app.apiData.nickName = wx.getStorageSync('userInfo').nickName;
                                 app.apiData.GetLincesShow = false; //隐藏授权按钮
