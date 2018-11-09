@@ -4,7 +4,7 @@
     <view class='selectbox'></view>
     <view class='editbox' bindtap='editaddress'>
       <image class='fl' src='../../images/img_dizhi_bianji.png'></image>
-      <view class='btntext fl' id='{{addlist.id}}' bindtap='editaddress'>编辑</view>
+      <view class='btntext fl' id='{{addlist.id}}'>编辑</view>
     </view>
     <view>
       <view class='userbox'>

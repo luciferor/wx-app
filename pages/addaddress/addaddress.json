@@ -1,7 +1,7 @@
 {
-  "navigationBarBackgroundColor": "#FFFFFF",
-  "usingComponents": {
-    "i-toast": "../../dist/toast/index"
-  },
-  "navigationBarTitleText": "我的地址"
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "usingComponents": {
+        "i-toast": "../../dist/toast/index"
+    },
+    "navigationBarTitleText": "我的地址"
 }
