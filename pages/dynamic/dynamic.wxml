@@ -14,10 +14,10 @@
                         <view class="topimg-box fl"><image src="{{brit.avatarurl==null||brit.avatarurl==''?'../../images/img_touxiang_default.png':brit.avatarurl}}"></image></view>
                         <view class="toptext-box fl">
                             <view class="toptext-title">
-                                {{subs.sub(brit.title,8)}}
+                                {{subs.sub(brit.title,6)}}
                             </view>
                             <view class="toptext-content-time">
-                                <span style="opacity:0.8;">{{brit.name==''?subs.sub(brit.wechat_name,8):subs.sub(brit.name,8)}}</span><span style="opacity:0.5;"> {{brit.created_at}}</span>
+                                <span style="opacity:0.8;">{{brit.name==''?subs.sub(brit.wechat_name,6):subs.sub(brit.name,6)}}</span><span style="opacity:0.5;"> {{brit.created_at}}</span>
                             </view>
                         </view>
                     </view>
