@@ -285,7 +285,8 @@ Page({
                     type: data[i].type,
                     gift_type: data[i].gift_type,
                     gift_score: data[i].gift_score,
-                    img: data[i].img
+                    img: data[i].img,
+                    receive_type: data[i].receive_type
                 })
             }
             this.setData({
@@ -307,7 +308,8 @@ Page({
                     type: data[i].type,
                     gift_type: data[i].gift_type,
                     gift_score: data[i].gift_score,
-                    img: data[i].img
+                    img: data[i].img,
+                    receive_type: data[i].receive_type
                 })
             }
             this.setData({

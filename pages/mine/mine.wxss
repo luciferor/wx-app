@@ -281,6 +281,31 @@ page{
     line-height: 60rpx;
     font-size: 24rpx;
 }
+
+.target-orange{
+    color: white;
+    background-color: #ff7e28;
+    border-radius: 4rpx;
+    width: 150rpx;
+    height: 60rpx;
+    text-align: center;
+    line-height: 60rpx;
+    font-size: 24rpx;
+}
+
+.target-un-orange{
+    color: white;
+    background-color: #ff8745;
+    border-radius: 4rpx;
+    width: 150rpx;
+    height: 60rpx;
+    text-align: center;
+    line-height: 60rpx;
+    font-size: 24rpx;
+    opacity: 0.3;
+}
+
+
 .target-price{
   font-size: 24rpx;
   color: #999999;
@@ -361,6 +386,10 @@ page{
 
 .hight-color{
   color: #5398ff;
+}
+
+.orange-color{
+  color: #ff7e28;
 }
 
 .scroll-view{

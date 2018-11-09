@@ -9,9 +9,16 @@ Page({
         memberList: [],
         isAdmin: app.apiData.isAdmin,
         showRemindBox: false,
-        delId: ""
+        delId: "",
+        buff:0
     },
-
+    gotorecharge(){
+      let _this = this;
+      console.log(_this.buff);
+      wx.navigateTo({
+        url: '/pages/recharge/recharge'
+      })
+    },
     //事件处理函数
     onShareAppMessage: function() {
         return {
@@ -31,12 +38,13 @@ Page({
     onLoad: function(options) {
         wx.hideShareMenu()
         wx.updateShareMenu({
-                withShareTicket: true,
-                success() {}
-            }),
-            this.setData({
-                isAdmin: app.apiData.isAdmin,
-            });
+            withShareTicket: true,
+            success() {}
+        }),
+        this.setData({
+            isAdmin: app.apiData.isAdmin,
+        });
+        
     },
     //跳转到组织管理
     navigateToManageOrg() {
@@ -46,7 +54,20 @@ Page({
     },
 
     onReady: function() {
-        this.getMemberList();
+        let _this = this;
+        _this.getMemberList();
+        //获取公司邦分
+        api.$http(function (res) {
+          console.log(res);
+          _this.setData({
+            buff:res.data.message.coin
+          })
+        }, function(err){
+          console.log(err);
+        }, '/appreciate/companycoin', {
+          session_key: app.apiData.session_key
+        }, 'POST')
+        
     },
 
     //获取成员列表

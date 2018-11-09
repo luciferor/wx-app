@@ -15,7 +15,6 @@ Page({
     onLoad: function(option) {
         let _this = this;
         app.apiData.share_commid = option.company_id
-
         wx.login({
             success: (reslogin) => {
                 if (reslogin.errMsg == 'login:ok') {
@@ -23,13 +22,17 @@ Page({
                     api.$http(function(resreg) {
                         //保存sessionkey
                         console.log(resreg)
+                        console.log('看看是否收到，上面');
                         app.apiData.session_key = resreg.data.message.session_key;
+                        app.apiData.open_id = resreg.data.message.openid;
                         app.apiData.Company_Id = resreg.data.message.company_id;
                         app.apiData.isAdmin = resreg.data.message.isadmin;
                         app.apiData.company_name = resreg.data.message.company_name;
-
-                        //console.log('打印sessionkey[' + resreg.data.message.session_key + ']');
-                        //console.log('公司id' + resreg.data.message.Company_Id)
+                        wx.redirectTo({
+                                url: '../../pages/invite_target/invite_target',
+                            })
+                            //console.log('打印sessionkey[' + resreg.data.message.session_key + ']');
+                            //console.log('公司id' + resreg.data.message.Company_Id)
                         if (app.apiData.Company_Id != 0) { //已经有公司了，就直接跳转到个人中心
                             console.log(wx.getStorageSync('userInfo').length) //   第一次的新用户的length为0
                             if (wx.getStorageSync('userInfo').length != 0) {
@@ -219,7 +222,6 @@ Page({
                     url: '../../pages/guide/guide',
                 })
             }
-
         }, function(errinfo) {
             //console.log(errinfo)
         }, '/appreciate/updateInformation', {

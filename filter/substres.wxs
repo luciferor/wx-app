@@ -77,7 +77,46 @@ var subs = {
         return "未完成";
       }
   },
-
+  targetclass:function(_is,_isres){
+    console.log('啊啊啊啊啊啊啊啊啊啊啊啊啊');
+    console.log(_is);
+    console.log(_isres);
+    if (_is == 1){
+      if(_isres==1){
+        return 'target-orange';
+      }else{
+        return 'target-un-orange';
+      }
+    }else{
+      if (_isres == 1) {
+        return 'target-button';
+      } else {
+        return 'target-un-button';
+      }
+    }
+  },
+  targcolor:function(color){
+    if(color==1){
+      return 'orange-color';
+    }else{
+      return 'hight-color'
+    }
+  },
+  colorsss:function(color){
+    if (color == 1) {
+      return '#ff7e28';
+    } else {
+      return '#5398ff'
+    }
+  },
+  convertimgsrc:function(_str){
+    console.log(_str);
+    if (_str.indexOf("https://m.360buyimg.com") != -1){
+      return _str.replace("https://devqypyp.xiaohuibang.com","");
+    }else{
+      return _str;
+    }
+  }
 }
 
 module.exports={
@@ -86,5 +125,9 @@ module.exports={
   status:subs.status,
   targetType: subs.targetType,
   targetRank: subs.targetRank,
-  targetStatus: subs.targetStatus
+  targetStatus: subs.targetStatus,
+  targetclass: subs.targetclass,
+  targcolor: subs.targcolor,
+  colorsss: subs.colorsss,
+  convertimgsrc: subs.convertimgsrc
 }

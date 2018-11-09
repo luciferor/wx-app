@@ -47,6 +47,7 @@
     width: 130rpx;
     height: 130rpx;
     border-radius: 50%;
+    border: 1px solid #cccccc;
 }
 
 .target-item .picked-logo {

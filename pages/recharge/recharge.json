@@ -1,0 +1,7 @@
+{
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "navigationBarTitleText": "邦分充值",
+  "usingComponents": {
+    "i-toast": "../../dist/toast/index"
+  }
+}

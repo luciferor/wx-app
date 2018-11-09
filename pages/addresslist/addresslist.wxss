@@ -1,0 +1,72 @@
+/* pages/addresslist/addresslist.wxss */
+.fl{
+  float:left;
+}
+.fr{
+  float:right;
+}
+.mainer{
+  padding:20rpx;
+  background:#f7f7f7;
+  height: 100%;
+}
+
+.listbox{
+  background:white;
+  border-radius: 8rpx;
+  border:1px solid #eeeeee;
+  position: relative;
+  padding:20rpx;
+}
+
+.editbox{
+  position: absolute;
+  right:0;
+  top:0;
+  text-align: center;
+  line-height: 80rpx;
+  height: 80rpx;
+  width:200rpx;
+}
+
+.editbox image{
+  width:200rpx;
+  height: 80rpx;
+}
+
+.btntext{
+  width:200rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #6680ff;
+  font-size: 35rpx;
+  position: absolute;
+  right:0rpx;
+  height: 40rpx;
+}
+
+.userbox{
+  padding:20rpx;
+  width:100%;
+  overflow: hidden;
+}
+
+.username{
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+}
+
+.userphone{
+  padding-left:80rpx;
+  font-size: 32rpx;
+  color: #333333;
+}
+
+.addressbox{
+  padding:20rpx;
+  font-size: 28rpx;
+	color: #333333;
+  overflow: hidden;
+}

@@ -1,0 +1,91 @@
+/* pages/recharge/recharge.wxss */
+.fl{
+  float:left;
+}
+.fr{
+  float:right;
+}
+.mainer{
+  background:#f7f7f7;
+  width:100%;
+  height: 100vh;
+}
+
+.buff-com{
+  height:100rpx;
+  line-height: 100rpx;
+  border:1px solid #eeeeee;
+  background:white;
+  padding:20rpx;
+  font-size: 32rpx;
+	color: #333333;
+  margin:20rpx 20rpx 0rpx 20rpx;
+}
+
+.buff-com-input{
+  height:100rpx;
+  line-height: 100rpx;
+  border:1px solid #eeeeee;
+  background:white;
+  padding:20rpx;
+  margin:0rpx 20rpx 0rpx 20rpx;
+  font-size: 32rpx;
+	color: #333333;
+}
+
+.buff-recharge-des{
+  font-size: 30rpx;
+	color: #cccccc;
+  margin:0 20rpx 0 20rpx;
+  padding:10rpx;
+}
+
+.bottom-container{
+  background: white;
+  padding: 20rpx 0rpx;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.button{
+  background: #6680ff;
+  margin-left: 24rpx;
+  margin-right: 24rpx;
+  border-radius: 4rpx;
+  color: white;
+  height: 110rpx;
+  line-height: 110rpx;
+}
+
+.buff-com-input-area{
+  line-height: 100rpx;
+  border:1px solid #eeeeee;
+  background:white;
+  padding:20rpx;
+  margin:0rpx 20rpx 0rpx 20rpx;
+  font-size: 32rpx;
+	color: #333333;
+  overflow:hidden;
+}
+
+.picker-view {
+  width: 100%;
+  display: flex;
+  z-index:12;
+  background-color: #fff;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  height: 40vh;
+}
+
+.picker-item {
+  line-height: 70rpx;
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+  text-align: center;
+}

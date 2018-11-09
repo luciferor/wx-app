@@ -1,0 +1,51 @@
+<!--pages/editaddress/editaddress.wxml-->
+<view class='mainer'>
+  <view style='height:0.1rpx;'></view>
+  <view class='buff-com'>
+    <span class='fl'>收货人</span>
+    <span class='fl' style="max-width:60%"><input bindinput="nameevent" placeholder='请输入姓名' value='{{uname}}' style='height:100rpx; line-height:100rpx; padding-left:30rpx;'></input></span>
+    <span style='padding-top:10rpx;' class='fr'><image bindtap='clearevent' src='../../images/icon_dizhi_qingkong.png' style='width:40rpx; height:40rpx;'></image></span>
+  </view>
+  <view class='buff-com-input' style='border-top:none;'>
+    <span class='fl'>手机号</span>
+    <span class='fl' style="max-width:60%"><input bindinput="phpneevent" placeholder='请输入手机号' value='{{uphone}}' style='height:100rpx; line-height:100rpx; padding-left:30rpx;'></input></span>
+  </view>
+  <view style='height:20rpx;'></view>
+  <view class='buff-com-input' bindtap="selectDistrict">
+    <span class='fl'>{{areaInfo}}</span>
+  </view>
+
+  <view style='height:20rpx;'></view>
+  <view class='buff-com-input-area' style='overflow:hidden;'>
+    <view>详细地址</view>
+    <view><input bindinput="addrevent" placeholder='请输入详细地址' value='{{udesaddr}}' style='height:100rpx; line-height:100rpx;'></input></view>
+  </view>
+
+  <view class='bottom-container'>
+    <button class='button' bindtap='submitevent'>保存</button>
+   </view>
+
+</view>
+
+<view class="picker-view" animation="{{animationAddressMenu}}" style="visibility:{{addressMenuIsShow ? 'visible':'hidden'}}">
+  <view style="height:10% ;width:95%;margin-top:10rpx">
+    <text catchtap="cityCancel">取消</text>
+    <text style="float: right" catchtap="citySure">确定</text>
+  </view>
+  <!--"可以显示默认的城市，使用后级联选择城市反应很慢就不使用了-->
+  <picker-view style="width: 100%; height: 300px;" bindchange="cityChange" value="{{value}}" wx:key="">
+    <picker-view-column>
+      <view wx:for="{{provinces}}" class="picker-item">
+        {{item.name}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{citys}}" class="picker-item" wx:key="">
+        {{item.name}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{areas}}" class="picker-item" wx:key="">
+        {{item.name}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>
+<i-toast id="toast" />
