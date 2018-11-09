@@ -14,7 +14,7 @@ Page({
         count: 0, //可分配邦分
         isshow:false,
         istitle:'邦分不足',
-        isdes:'邦分可能不够本次分配了',
+        isdes:'账户剩余邦分不足5000邦分，可能会导致分配失败哦~',
         actions3: [
           {
             name: '继续',
@@ -37,21 +37,20 @@ Page({
             color: '#5398ff'
           }
         ],
-
+        planusers:[],//选择的用户
     },
-    isgotrecharge(detail){
+    isgotrecharge({ detail }){
       const index = detail.index;
       if (index === 0) {
-        
+
       } else if (index === 1) {
         wx.navigateTo({
           url: '/pages/recharge/recharge',
         })
       }
-
       this.setData({
-        visible3: false
-      });
+        isshowshow: false
+      })
     },
     gotorecharge(){
       wx.navigateTo({
@@ -81,6 +80,9 @@ Page({
     onLoad: function() {
         this.getCount();
     },
+    onShow:function(){
+        this.getCount();
+    },
     onShareAppMessage: function() {
         console.log(app.apiData.Company_Id)
         return {
@@ -106,7 +108,7 @@ Page({
             _this.setData({
                 count: data.data.message.coin
             });
-            if (Number(data.data.message)<5000){
+            if (Number(data.data.message.coin)<5000){
               //弹出提示，主要是为了让用户充值
               _this.setData({
                 isshow:true
@@ -135,12 +137,20 @@ Page({
             $Toast({
                 content: "请选择时间"
             });
+        } else if(this.data.planusers.length==0){
+          $Toast({
+            content: "请选择要分配的人员"
+          });
         } else {
             this.addPlans();
         }
     },
 
     addPlans: util.throttle(function (e) {
+      let ids = '';
+      for (let i = 0; i < this.data.planusers.length;i++){
+        ids += ';'+this.data.planusers[i].id;
+      }
       let _this = this;
       api.$https('/WeChat/appreciate/allocation', {
         session_key: app.apiData.session_key,
@@ -148,7 +158,8 @@ Page({
         rescore: _this.data.reduceScoreNum,
         range_max: _this.data.maxScoreNum,
         range_min: _this.data.maxScoreNum,
-        effective_time: _this.timeToTimestamp(_this.data.date)
+        effective_time: _this.timeToTimestamp(_this.data.date),
+        user_ids:ids.substr(1)//去掉第一个冒号
       }, 'POST', function (data) {
         console.log(data.data.message);
         

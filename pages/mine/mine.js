@@ -54,28 +54,23 @@ Page({
       })
     },
     gotogetsomething(e){//领取奖励
-      this.setData({
-        goldings: false//这里是接口出问题，明天再解决了
-      }) 
-      return;
       let _this = this;
       console.log(e);
       api.$http(function (res) {
         console.log(res);
-        if(res.data.success){
-          $Toast({
-            content: res.data.message,
-            type: 'success'
-          });
-          _this.setData({
-            ishowget:false
-          })
-        }
+        $Toast({
+          content: res.data.message,
+          type: 'success'
+        });
+        _this.setData({
+          goldings: false
+        })
+        _this.getTargetList();
       }, function (err) {
          console.log(err)
       },'/WeChat/Applet/toreceive',{
          session_key:app.apiData.session_key,
-          id: e.currentTarget.id
+        id: e.currentTarget.id
       },'POST')
     },
     closegetwin() {
@@ -125,27 +120,35 @@ Page({
       }
     },
     handleReceive(e) {
+      let _this = this;
         let arr = (e.currentTarget.id).split('|');
         console.log(arr);
-        if(arr[3]==1){
-          //先去设置地址
-          if (_this.data.isaddress==0){
+        if(arr[2]==1){
+          if (arr[3] == 1) {
+            //先去设置地址
+            if (_this.data.isaddress == 0) {
+              _this.setData({
+                ishowget: true
+              })
+            } else {
+              _this.setData({
+                goldings: true,
+                inforess: arr[1],
+                getids: arr[0],
+              })
+            }
+          } else {
             _this.setData({
-              ishowget:true
-            })
-          }else{
-            this.setData({
               goldings: true,
               inforess: arr[1],
               getids: arr[0],
             })
           }
         }else{
-          this.setData({
-            goldings: true,
-            inforess: arr[1],
-            getids: arr[0],
-          })
+          $Toast({
+            content:"还无法领取",
+            type: 'success'
+          });
         }
     },
   getsomething(detail){
