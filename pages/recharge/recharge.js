@@ -11,7 +11,8 @@ Page({
   data: {
     rechar:0,//邦分
     moneyes:0,//金额
-    buff:0
+    buff:0,
+    comname: app.apiData.company_name
   },
   calcbuff(e){
     this.setData({

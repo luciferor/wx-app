@@ -33,6 +33,7 @@ page {
     text-align: center;
     color: #999999;
     font-size: 28rpx;
+    height: 100%;
     overflow: auto;
     flex: 0 0 auto;
 }
