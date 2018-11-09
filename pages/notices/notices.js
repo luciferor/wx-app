@@ -83,7 +83,7 @@ Page({
         let _this = this;
         let index = e.currentTarget.id;
         let notice = _this.data.applyNotice[index];
-       let url = notice.goal_id != 0 ? '/WeChat/Applet/receiveExamine' : '/toexamine/target';
+        let url = notice.goal_id != 0 ? '/WeChat/Applet/receiveExamine' : '/toexamine/target';
         let param = {};
         if (notice.goal_id != 0){
           param = {

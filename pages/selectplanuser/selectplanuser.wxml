@@ -1,4 +1,4 @@
-<view>
+
     <view class="topbox">
         <view class="searchbox">
             <span class="fl inputimg">
@@ -24,7 +24,7 @@
       </view>
     </view>
     <view wx:if="{{searchuserlist.length==0}}" class="i-index-demo" style="padding-bottom:180rpx;">
-      <i-index height="100%" bind:change="onChange">
+      <i-index height="900rpx" bind:change="onChange">
           <i-index-item 
               wx:for="{{ cities }}" 
               wx:for-index="index" 
@@ -59,4 +59,3 @@
             <view>数据加载中，请稍后...</view>
         </i-spin>
     </i-grid-item>
-</view>

@@ -71,7 +71,7 @@ var subs = {
   targetStatus:function(isReceive,progress){
     if (isReceive ==1){
         return "领取";
-    } else if (isReceive == 0 && progress == 100){
+    } else if (isReceive == 0 && progress >= 100){
         return "待领取";
       }else{
         return "未完成";

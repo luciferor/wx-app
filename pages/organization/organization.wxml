@@ -18,7 +18,7 @@
       <view class='user-container' wx:key="*this" wx:for="{{memberList}}" wx:for-index="idx" wx:for-item="member">
           <view class='user-left-container' bindtap="gotouserdynamicdes" id="{{member.id+'|'+member.name}}">
             <image  src="{{member.avatarurl==null||member.avatarurl==''?'../../images/mine/head_default_icon.png': member.avatarurl}}" class='upic'></image>
-            <text class='uname'>{{member.name}}</text>
+            <text class='uname'>{{member.user_name==''?member.name:member.user_name}}</text>
           </view>
           <text class='user-right' id="{{idx}}" bindtap='handleRemindOpen' wx:if="{{isAdmin==1 || member.isadmin == 1 }}">{{member.isadmin == 1 ? "创建者" :"删除"}}</text>
       </view>

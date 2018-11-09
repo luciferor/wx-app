@@ -10,7 +10,7 @@
 }
 .searchbox{
     height:80rpx;
-	background-color: #ededed;
+	  background-color: #ededed;
     border-radius: 4px;
     overflow: hidden;
     padding:10rpx;
@@ -100,6 +100,7 @@
 
 .i-index-demo{
   margin-bottom: 125rpx;
+  overflow: hidden;
 }
 .under-btn{
   width: 100%;
