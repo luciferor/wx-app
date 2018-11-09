@@ -14,18 +14,9 @@ Page({
     buff:0
   },
   calcbuff(e){
-    console.log(e);
-    if (e.detail.value<0){
-      $Toast({
-        content: '邦分不允许填写负数',
-        type: 'warning'
-      });
-      return;
-    }
-    console.log(e.detail.value);
     this.setData({
-      rachar:e.detail.value,
-      moneyes:(e.detail.value)/app.apiData.rate
+      rachar: e.detail.value,
+      moneyes: (e.detail.value) / app.apiData.rate
     })
   },
   rechargeing(){

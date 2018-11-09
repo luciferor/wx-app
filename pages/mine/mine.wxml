@@ -55,7 +55,7 @@
                   </view>
                   <image src="{{subs.convertimgsrc(target.scoreimg==null||target.scoreimg==''?'../../images/mine/img_wode_bangfen.png': target.scoreimg)}}"   class='target-pic' wx:else binderror="errorFunction" id="{{target.type+'|'+idx}}"></image>
                   <view class='target-info'>
-                      <text class='target-name'>{{subs.sub(target.type ==1 ? target.ranktitle:target.scoretitle,13)}}</text>
+                      <text class='target-name'>{{subs.sub(target.type ==1 ? target.ranktitle:target.scoretitle,12)}}</text>
                       <view style='height:20rpx'></view>
                       <view wx:if="{{target.type ==1}}">
                     <view class='target-condition'>当前第<span class="{{subs.targcolor(target.type==1?target.rreceive_type:sreceive_type)}}">{{target.myrank}}</span>名/{{subs.targetType(target.gift_type)}}{{subs.targetRank(target.rank)}}</view>

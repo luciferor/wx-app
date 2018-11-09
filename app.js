@@ -30,7 +30,6 @@ App({
         rate:0
     },
     onLaunch: function() {
-        console.log('onlaunch')
         var _this = this
             // 展示本地存储能力
         var logs = wx.getStorageSync('logs') || []

@@ -78,7 +78,6 @@ var subs = {
       }
   },
   targetclass:function(_is,_isres){
-    console.log('啊啊啊啊啊啊啊啊啊啊啊啊啊');
     console.log(_is);
     console.log(_isres);
     if (_is == 1){

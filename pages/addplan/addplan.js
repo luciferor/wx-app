@@ -135,12 +135,8 @@ Page({
             });
         } else if (this.data.date == "") {
             $Toast({
-                content: "请选择时间"
+              content: "请选择时间"
             });
-        } else if(this.data.planusers.length==0){
-          $Toast({
-            content: "请选择要分配的人员"
-          });
         } else {
             this.addPlans();
         }

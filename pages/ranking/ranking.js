@@ -293,7 +293,10 @@ Page({
         console.log(err);
     },
     gotodynamic(e) {
-        console.log(e.currentTarget.id)
+        let arr = e.currentTarget.id.split('|');
+        if (arr[0] == '' || arr[0] == null || arr[0]==undefined||arr[0]=='undefined'){
+          return;
+        }
         wx.navigateTo({
             url: '../../pages/userdynamic/userdynamic?uid=' + e.currentTarget.id,
         })

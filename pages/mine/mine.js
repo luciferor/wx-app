@@ -66,6 +66,7 @@ Page({
           goldings: false
         })
         _this.getTargetList();
+        _this.getUserInfos();
       }, function (err) {
          console.log(err)
       },'/WeChat/Applet/toreceive',{
@@ -151,7 +152,7 @@ Page({
           });
         }
     },
-  getsomething(detail){
+  getsomething({detail}){
     const index = detail.index;
     if (index === 0) {
       console.log('取消');

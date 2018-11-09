@@ -7,7 +7,7 @@
   </view>
   <view class='buff-com-input' style='border-top:none;'>
     <span class='fl' >充值数量</span>
-    <span class='fl' style='width:60%;'><input bindinput="calcbuff" placeholder='请输入充值数量' value='{{rechar}}' style='height:100rpx;  line-height:100rpx; padding-left:30rpx;'></input></span>
+    <span class='fl' style='width:60%;'><input type="number" bindinput="calcbuff" placeholder='请输入充值数量' value='{{rechar}}' style='height:100rpx;  line-height:100rpx; padding-left:30rpx;'></input></span>
     <span class='fr'>邦分</span>
   </view>
   <view class='buff-recharge-des'>充值后不可退还</view>
