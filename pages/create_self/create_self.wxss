@@ -236,7 +236,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
     display: flex;
     align-items: center;
     padding: 0 30rpx;
-    height: 120rpx;
+    height: 160rpx;
     border: solid 1px #eeeeee;
     border-top: none;
 }
@@ -253,7 +253,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 }
 
 .zidingyi-list .list-item .item-score {
-    font-size: 32rpx;
+    font-size: 30rpx;
     color: #999999;
     flex: 0 0 auto;
     text-align: right;
@@ -261,7 +261,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 
 .zidingyi-list .list-item .item-txt {
     color: #333333;
-    font-size: 32rpx;
+    font-size: 30rpx;
     flex: 1 1 auto;
     padding-right: 20rpx;
 }
