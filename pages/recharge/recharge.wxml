@@ -1,0 +1,24 @@
+<!--pages/recharge/recharge.wxml-->
+<view class='mainer'>
+  <view style='height:0.1rpx;'></view>
+  <view class='buff-com'>
+    <span class='fl'>消汇邦集团</span>
+    <span class='fr'><span>剩余</span><span style='color:#5398ff;'>{{buff}}</span><span>邦分</span></span>
+  </view>
+  <view class='buff-com-input' style='border-top:none;'>
+    <span class='fl'>充值数量</span>
+    <span class='fl'><input bindinput="calcbuff" placeholder='请输入充值数量' value='{{rechar}}' style='height:100rpx; line-height:100rpx; padding-left:30rpx;'></input></span>
+    <span class='fr'>邦分</span>
+  </view>
+  <view class='buff-recharge-des'>充值后不可退还</view>
+  <view class='buff-com-input'>
+    <span class='fl'>支付金额</span>
+    <span class='fr'><span style='color:#5398ff;'>{{moneyes}}</span><span>元</span></span>
+  </view>
+  <view style='height:30rpx;'></view>
+  <view class='isimg' bindtap='rechargeing'>
+    <span class='imageb'><image style='width:50rpx; height:50rpx;' src='../../images/pay.png'></image></span>
+    <span style='padding-bottom:40rpx;'>微信支付</span>
+  </view>
+</view>
+<i-toast id="toast" />

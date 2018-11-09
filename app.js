@@ -5,12 +5,15 @@ App({
         code: '', //登录需要的code
         api: 'https://devqypyp.xiaohuibang.com', //接口根地址
         session_key: '', //response.data.message.session_key
+        open_id:'',
+        app_id:'wx416b34cf4f1994cf',
         userstatus: true,
         Company_Id: '', //response.data.message.company_id
         isAdmin: 0,
         nickName: '',
         invite_id: '',
         company_name: '',
+        share_commid: '',
         creatOrg: {
             mutualMergeArr: [],
             selfMergeArr: [],
@@ -24,6 +27,7 @@ App({
         },
         OPENID: '',
         ACCESSKEY: '',
+        rate:0
     },
     onLaunch: function() {
         console.log('onlaunch')

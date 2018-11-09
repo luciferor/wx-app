@@ -392,13 +392,39 @@ color: transparent;
   text-align: center;
 }
 
+.target-containers-orange{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.radio-container-orange{
+  width: 160rpx;
+  height: 67rpx;
+  line-height: 67rpx;
+  border-radius: 4rpx;
+  background: white;
+  border: 1rpx solid #ff7e28;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.target-status-orange{
+  font-size: 28rpx;
+  color: #ff7e28;
+  text-align: center;
+}
+
 radio {
   text-align: center
 }
 
 /* radio未选中时样式 */ 
 
-radio .wx-radio-input{ 
+.radio-container radio .wx-radio-input{ 
   /* 自定义样式.... */
     border-radius: 28rpx; 
     height: 28rpx; 
@@ -409,7 +435,7 @@ radio .wx-radio-input{
  }
 
 /* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
-radio .wx-radio-input.wx-radio-input-checked::before{
+.radio-container radio .wx-radio-input.wx-radio-input-checked::before{
    border-radius: 28rpx;/* 圆角 */
    text-align: center;
    font-size:18rpx; /* 对勾大小 30rpx */
@@ -419,3 +445,26 @@ radio .wx-radio-input.wx-radio-input-checked::before{
    -webkit-transform:translate(-50%, -50%) scale(1);
    margin-bottom: 10rpx;
 }
+
+.radio-container-orange radio .wx-radio-input{ 
+  /* 自定义样式.... */
+    border-radius: 28rpx; 
+    height: 28rpx; 
+    width: 28rpx;
+    text-align: center;
+    border: 1rpx solid #ff7e28; 
+    margin-bottom: 10rpx;
+ }
+
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+.radio-container-orange radio .wx-radio-input.wx-radio-input-checked::before{
+   border-radius: 28rpx;/* 圆角 */
+   text-align: center;
+   font-size:18rpx; /* 对勾大小 30rpx */
+   color:#fff; /* 对勾颜色 白色 */
+   background: transparent;
+   transform:translate(-50%, -50%) scale(1);
+   -webkit-transform:translate(-50%, -50%) scale(1);
+   margin-bottom: 10rpx;
+}
+

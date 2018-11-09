@@ -2,6 +2,7 @@
   "navigationBarBackgroundColor": "#FFFFFF",
   "navigationBarTitleText": "添加分配计划",
   "usingComponents": {
-    "i-toast": "../../dist/toast/index"
+    "i-toast": "../../dist/toast/index",
+    "i-modal": "../../dist/modal/index"
   }
 }

@@ -55,7 +55,7 @@
                 <view style='height:30rpx; background:#FFF; opacity:0.9;'></view>
                 <block wx:for="{{dayranklist}}" wx:if="{{dayindex>=3}}" wx:for-index="dayindex" wx:for-item="dayitem" wx:key="*this" >
                     <view class="item-ans" id="{{dayitem.user_id+'|'+(dayitem.uname==''?dayitem.wechat_name:dayitem.uname)}}" bindtap='gotodynamic'>
-                        <view class='placenum fl'>{{dayindex}}</view>
+                        <view class='placenum fl'>{{dayindex+1}}</view>
                         <view class='nameimgbox fl'><image src="{{dayitem.user_img==null||dayitem.user_img==''?'../../images/img_touxiang_default.png':dayitem.user_img}}"></image></view>
                         <view class='nameandpost fl'>
                           <view class='name-title'>{{subs.sub(dayitem.uname==''?dayitem.wechat_name:dayitem.uname,6)}}</view>
@@ -77,7 +77,7 @@
                 <view style='height:30rpx; background:#FFF; opacity:0.9;'></view>
                 <block wx:for="{{weekranklist}}" wx:if="{{weekindex>=3}}"  wx:for-index="weekindex" wx:for-item="weekitem" wx:key="*this">
                     <view class="item-ans" id="{{weekitem.user_id+'|'+(weekitem.uname==''?weekitem.wechat_name:weekitem.uname)}}" bindtap='gotodynamic'>
-                        <view class='placenum fl'>{{weekindex}}</view>
+                        <view class='placenum fl'>{{weekindex+1}}</view>
                         <view class='nameimgbox fl'><image src="{{weekitem.user_img==null||weekitem.user_img==''?'../../images/img_touxiang_default.png':weekitem.user_img}}"></image></view>
                         <view class='nameandpost fl'>
                           <view class='name-title'>{{subs.sub(weekitem.uname==''?weekitem.wechat_name:weekitem.uname,6)}}</view>
@@ -99,7 +99,7 @@
                 <view style='height:30rpx; background:#FFF; opacity:0.9;'></view>
                 <block wx:for="{{monthranklist}}" wx:if="{{monthindex>=3}}"  wx:for-index="monthindex" wx:for-item="monthitem" wx:key="*this">
                     <view class="item-ans" id="{{monthitem.user_id+'|'+(monthitem.uname==''?monthitem.wechat_name:monthitem.uname)}}" bindtap='gotodynamic'>
-                        <view class='placenum fl'>{{monthindex}}</view>
+                        <view class='placenum fl'>{{monthindex+1}}</view>
                         <view class='nameimgbox fl'><image src="{{monthitem.user_img==null||monthitem.user_img==''?'../../images/img_touxiang_default.png':monthitem.user_img}}"></image></view>
                         <view class='nameandpost fl'>
                           <view class='name-title'>{{subs.sub(monthitem.uname==''?monthitem.wechat_name:monthitem.uname,4)}}</view>

@@ -9,12 +9,12 @@ const app = getApp()
 Page({
     data: {
         isshow: false,
+
     },
     //事件处理函数
     onLoad: function(option) {
         let _this = this;
-        let company_id = option.id;
-        console.log('接收到的公司ID：' + company_id)
+        app.apiData.share_commid = option.company_id
         wx.login({
             success: (reslogin) => {
                 if (reslogin.errMsg == 'login:ok') {
@@ -22,18 +22,17 @@ Page({
                     api.$http(function(resreg) {
                         //保存sessionkey
                         console.log(resreg)
+                        console.log('看看是否收到，上面');
                         app.apiData.session_key = resreg.data.message.session_key;
+                        app.apiData.open_id = resreg.data.message.openid;
                         app.apiData.Company_Id = resreg.data.message.company_id;
                         app.apiData.isAdmin = resreg.data.message.isadmin;
                         app.apiData.company_name = resreg.data.message.company_name;
-                        // wx.redirectTo({
-                        //     url: '../../pages/create/create',
-                        // })
-                        // return
 
                         //console.log('打印sessionkey[' + resreg.data.message.session_key + ']');
                         //console.log('公司id' + resreg.data.message.Company_Id)
                         if (app.apiData.Company_Id != 0) { //已经有公司了，就直接跳转到个人中心
+                            console.log(wx.getStorageSync('userInfo').length) //   第一次的新用户的length为0
                             if (wx.getStorageSync('userInfo').length != 0) {
                                 app.apiData.nickName = wx.getStorageSync('userInfo').nickName;
                                 app.apiData.GetLincesShow = false; //隐藏授权按钮
@@ -41,11 +40,8 @@ Page({
                                         isshow: app.apiData.GetLincesShow,
                                     })
                                     //提交信息到服务器
-
-
-                                //虽然没有更新成功，但是还是要跳转到个人中心
+                                    //虽然没有更新成功，但是还是要跳转到个人中心
                                 if (app.apiData.Company_Id == option.company_id) {
-                                    //console.log('恭喜您成功加入：' + resreg.data.message.company_name);
                                     $Toast({
                                         content: '恭喜您成功加入：[' + resreg.data.message.company_name + ']',
                                         type: 'success',
@@ -55,9 +51,11 @@ Page({
                                         session_key: app.apiData.session_key,
                                         company_id: app.apiData.Company_Id
                                     }, 'POST', function(data) {
+                                        console.log("++++++++++++++++")
+                                        console.log(data)
                                         if (data.data.success) {
-                                            //console.log(data.data.message)
-                                            if (data.data.message.length > 0) {
+                                            console.log(data.data.message)
+                                            if (data.data.message instanceof Array && data.data.message.length > 0) {
                                                 wx.switchTab({
                                                     url: '../mine/mine',
                                                 });
@@ -112,7 +110,7 @@ Page({
                                                 }, 'POST', function(data) {
                                                     if (data.data.success) {
                                                         //console.log(data.data.message)
-                                                        if (data.data.message.length > 0) {
+                                                        if (data.data.message instanceof Array && data.data.message.length > 0) {
                                                             wx.switchTab({
                                                                 url: '../mine/mine',
                                                             });
@@ -144,7 +142,7 @@ Page({
                                     },
                                     fail: function(erriswx) {
                                         console.log(erriswx);
-                                        console.log('失败')
+                                        console.log('失败01')
                                         app.apiData.GetLincesShow = true; //显示授权按钮
                                         _this.setData({
                                             isshow: app.apiData.GetLincesShow
@@ -186,15 +184,42 @@ Page({
             })
             console.log(app.apiData.company_name);
             if (app.apiData.company_name != '') {
-                wx.switchTab({
-                    url: '../../pages/mine/mine',
-                })
+                if (app.apiData.Company_Id == app.apiData.share_commid) {
+                    $Toast({
+                        content: '恭喜您成功加入：[' + app.apiData.company_name + ']',
+                        type: 'success',
+                        duration: 3
+                    });
+                    api.$https('/targetmy/target', {
+                        session_key: app.apiData.session_key,
+                        company_id: app.apiData.Company_Id
+                    }, 'POST', function(data) {
+                        console.log("++++++++++++++++")
+                        console.log(data)
+                        if (data.data.success) {
+                            if (data.data.message instanceof Array && data.data.message.length > 0) {
+                                wx.switchTab({
+                                    url: '../mine/mine',
+                                });
+                            } else {
+                                wx.redirectTo({
+                                    url: '../../pages/invite_target/invite_target',
+                                })
+                            }
+                        }
+                    }, function(data) {
+                        //console.log('请求失败');
+                    });
+                } else {
+                    wx.switchTab({
+                        url: '../../pages/mine/mine',
+                    })
+                }
             } else {
                 wx.redirectTo({
                     url: '../../pages/guide/guide',
                 })
             }
-
         }, function(errinfo) {
             //console.log(errinfo)
         }, '/appreciate/updateInformation', {
@@ -262,7 +287,7 @@ Page({
                 },
                 fail: function(erriswx) {
                     console.log(erriswx);
-                    console.log('失败')
+                    console.log('失败02')
                     app.apiData.GetLincesShow = true; //显示授权按钮
                     _this.setData({
                         isshow: app.apiData.GetLincesShow
@@ -282,7 +307,7 @@ Page({
                 console.log(res)
             },
             fail: function(err) {
-                console.log('失败')
+                console.log('失败03')
                 console.log(err)
             }
         }

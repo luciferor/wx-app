@@ -22,9 +22,20 @@ Page({
             id: 0,
             name: "",
             wechat_name: ""
-        }
+        },
+        isaddress:0,
     },
-
+    addandedit(){
+      if (this.data.isaddress==0){
+        wx.navigateTo({
+          url: '/pages/addaddress/addaddress',
+        })
+      }else{
+        wx.navigateTo({
+          url: '/pages/addresslist/addresslist',
+        })
+      }
+    },
     //用户输入的改变
     changeNameInput(e) {
         this.setData({
@@ -71,12 +82,15 @@ Page({
         });
     },
 
-    onLoad: function() {
+    onLoad: function(option) {
         let _this = this;
         //获取用户信息
         api.$http(_this.dosuccess, _this.dofail, '/appreciate/wechatuser', {
             session_key: app.apiData.session_key
         }, 'POST');
+        _this.setData({
+          isaddress: option.isaddress
+        })
     },
     dosuccess(data) {
         if (data.data.success) {

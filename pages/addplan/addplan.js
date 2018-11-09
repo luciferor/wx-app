@@ -3,6 +3,7 @@ var api = require('../../utils/api.js');
 const { $Toast } = require('../../dist/base/index');
 const util = require('../../utils/util.js');
 const app = getApp()
+const { $Message } = require('../../dist/base/index');
 
 Page({
     data: {
@@ -11,8 +12,72 @@ Page({
         reduceScoreNum: 0, //减分权利
         maxScoreNum: 0, //加减分最大值
         count: 0, //可分配邦分
-    },
+        isshow:false,
+        istitle:'邦分不足',
+        isdes:'邦分可能不够本次分配了',
+        actions3: [
+          {
+            name: '继续',
+            color: '#666666',
+          },
+          {
+            name: '充值',
+            color: '#5398ff'
+          }
+        ],
+        isshowshow:false,
+        ismmessage:'',
+        actions4: [
+          {
+            name: '取消',
+            color: '#666666',
+          },
+          {
+            name: '充值',
+            color: '#5398ff'
+          }
+        ],
 
+    },
+    isgotrecharge(detail){
+      const index = detail.index;
+      if (index === 0) {
+        
+      } else if (index === 1) {
+        wx.navigateTo({
+          url: '/pages/recharge/recharge',
+        })
+      }
+
+      this.setData({
+        visible3: false
+      });
+    },
+    gotorecharge(){
+      wx.navigateTo({
+        url: '/pages/recharge/recharge',
+      })
+    },
+    scoreuser(){
+      wx.navigateTo({
+        url: '/pages/selectplanuser/selectplanuser',
+      })
+    },
+    isrecharge({ detail }) {
+      const index = detail.index;
+      console.log(index);
+      if (index === 0) {
+        
+      } else if (index === 1) {
+        wx.navigateTo({
+          url: '/pages/recharge/recharge',
+        })
+      }
+
+      this.setData({
+        isshow: false
+      });
+    },
     onLoad: function() {
         this.getCount();
     },
@@ -24,7 +89,7 @@ Page({
             path: '/pages/index/index',
             imageUrl: '../../images/minproTranspond.png',
             success: function(res) {
-                console.log(res)
+              console.log(res)
             },
             fail: function(err) {
                 console.log('失败')
@@ -39,14 +104,21 @@ Page({
             session_key: app.apiData.session_key,
         }, 'POST', function(data) {
             _this.setData({
-                count: data.data.message
+                count: data.data.message.coin
             });
+            if (Number(data.data.message)<5000){
+              //弹出提示，主要是为了让用户充值
+              _this.setData({
+                isshow:true
+              })
+            }
         }, function(data) {
             console.log('请求失败');
         });
     },
     //添加邦分分配计划
     addPlan() {
+      console.log(wx.getStorageSync('selectusersbuff'));
         if (this.data.addScoreNum == 0) {
             $Toast({
                 content: "请输入正确的加分邦分数量"
@@ -69,20 +141,27 @@ Page({
     },
 
     addPlans: util.throttle(function (e) {
+      let _this = this;
       api.$https('/WeChat/appreciate/allocation', {
         session_key: app.apiData.session_key,
-        score: this.data.addScoreNum,
-        rescore: this.data.reduceScoreNum,
-        range_max: this.data.maxScoreNum,
-        range_min: this.data.maxScoreNum,
-        effective_time: this.timeToTimestamp(this.data.date)
+        score: _this.data.addScoreNum,
+        rescore: _this.data.reduceScoreNum,
+        range_max: _this.data.maxScoreNum,
+        range_min: _this.data.maxScoreNum,
+        effective_time: _this.timeToTimestamp(_this.data.date)
       }, 'POST', function (data) {
         console.log(data.data.message);
-        $Toast({
-          content: data.data.message
-        });
+        
         if (data.data.success) {
+          $Toast({
+            content: data.data.message
+          });
           wx.navigateBack()
+        }else{
+          _this.setData({
+            isshowshow:true,
+            ismmessage:data.data.message
+          })
         }
       }, function (data) {
         $Toast({
