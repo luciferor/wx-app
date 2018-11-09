@@ -28,11 +28,8 @@ Page({
                         app.apiData.Company_Id = resreg.data.message.company_id;
                         app.apiData.isAdmin = resreg.data.message.isadmin;
                         app.apiData.company_name = resreg.data.message.company_name;
-                        wx.redirectTo({
-                                url: '../../pages/invite_target/invite_target',
-                            })
-                            //console.log('打印sessionkey[' + resreg.data.message.session_key + ']');
-                            //console.log('公司id' + resreg.data.message.Company_Id)
+                        //console.log('打印sessionkey[' + resreg.data.message.session_key + ']');
+                        //console.log('公司id' + resreg.data.message.Company_Id)
                         if (app.apiData.Company_Id != 0) { //已经有公司了，就直接跳转到个人中心
                             console.log(wx.getStorageSync('userInfo').length) //   第一次的新用户的length为0
                             if (wx.getStorageSync('userInfo').length != 0) {
