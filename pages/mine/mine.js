@@ -58,20 +58,19 @@ Page({
       console.log(e);
       api.$http(function (res) {
         console.log(res);
-        if(res.data.success){
-          $Toast({
-            content: res.data.message,
-            type: 'success'
-          });
-          _this.setData({
-            ishowget:false
-          })
-        }
+        $Toast({
+          content: res.data.message,
+          type: 'success'
+        });
+        _this.setData({
+          goldings: false
+        })
+        _this.getTargetList();
       }, function (err) {
          console.log(err)
       },'/WeChat/Applet/toreceive',{
          session_key:app.apiData.session_key,
-          id: e.currentTarget.id
+        id: e.currentTarget.id
       },'POST')
     },
     closegetwin() {

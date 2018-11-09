@@ -235,7 +235,9 @@ page{
 .target-pic{
   width: 120rpx;
   height: 120rpx;
-  border-radius: 4rpx;
+  border-radius: 8rpx;
+  box-shadow: 0px 0px 20px 0px 
+		rgba(0, 0, 0, 0.2);
 }
 .target-info{
   display:-webkit-box;
