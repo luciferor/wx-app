@@ -8,7 +8,7 @@
   </view>
   <view class='buff-com-input' style='border-top:none;'>
     <span class='fl'>手机号</span>
-    <span class='fl' style="max-width:60%"><input bindinput="phpneevent" placeholder='请输入手机号' value='{{uphone}}' style='height:100rpx; line-height:100rpx; padding-left:30rpx;'></input></span>
+    <span class='fl' style="max-width:60%"><input type="number" bindinput="phpneevent" placeholder='请输入手机号' value='{{uphone}}' style='height:100rpx; line-height:100rpx; padding-left:30rpx;'></input></span>
   </view>
   <view style='height:20rpx;'></view>
   <view class='buff-com-input' bindtap="selectDistrict">

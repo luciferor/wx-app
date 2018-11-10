@@ -14,7 +14,6 @@ Page({
     },
     gotorecharge(){
       let _this = this;
-      console.log(_this.buff);
       wx.navigateTo({
         url: '/pages/recharge/recharge'
       })

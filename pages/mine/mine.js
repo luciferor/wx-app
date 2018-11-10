@@ -66,6 +66,7 @@ Page({
           goldings: false
         })
         _this.getTargetList();
+        _this.getUserInfos();
       }, function (err) {
          console.log(err)
       },'/WeChat/Applet/toreceive',{
@@ -206,6 +207,7 @@ Page({
         }, 'POST', function(data) {
             if (data.data.success) {
                 app.apiData.rate = data.data.message.multiple;
+                app.apiData.company_name = data.data.message.companyname;
                 _this.setData({
                     userInfo: data.data.message,
                     name: data.data.message.name == "" ? app.apiData.nickName : data.data.message.name,

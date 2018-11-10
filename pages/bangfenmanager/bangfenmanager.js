@@ -137,14 +137,12 @@ Page({
     api.$http(function (res) {
       console.log(res)
       if (res.data.success) {
-        if (res.data.success) {
-          _this.handleSuccess("提交成功");
-          _this.showorhidden();
-          _this.onShow();
-          _this.isgeting();
-        } else {
-          _this.handleSuccess("操作失败：" + res.data.message);
-        }
+        _this.handleSuccess("提交成功");
+        _this.showorhidden();
+        _this.onShow();
+        _this.isgeting();
+      } else {
+        _this.handleSuccess(res.data.message);
       }
     }, function (err) { }, '/WeChat/Applet/finishSelfManaged', {
         session_key: app.apiData.session_key,
@@ -420,6 +418,7 @@ Page({
           console.log(res);
           if (res.data.success) {
             count++;
+            api.$showtoolbar();
             //alert('添加成功！')
             $Toast({
               content: res.data.message,

@@ -144,10 +144,10 @@ Page({
     this.getinformations();
   },
   onLoad(option) {
-    this.setData({
-      mutuid: option.id,
-    })
-    let _this = this;
+    // this.setData({
+    //   mutuid:option.id,
+    // })
+    // let _this = this;
   },
   convertdata() {
     let storeCity = new Array(26);

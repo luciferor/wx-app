@@ -78,7 +78,6 @@ var subs = {
       }
   },
   targetclass:function(_is,_isres){
-    console.log('啊啊啊啊啊啊啊啊啊啊啊啊啊');
     console.log(_is);
     console.log(_isres);
     if (_is == 1){
@@ -112,11 +111,11 @@ var subs = {
   convertimgsrc:function(_str){
     console.log(_str+'这里是接收到的地址');
     if (_str.indexOf("360buyimg") != -1){
-      return _str.replace("https://devqypyp.xiaohuibang.com","");
+      return _str.replace("https://qypyp.xiaohuibang.com","");
     } else if (_str.indexOf('bangxuan.oss-cn-shenzhen.aliyuncs.com')!=-1){
-      return _str.replace("https://devqypyp.xiaohuibang.com", "");
+      return _str.replace("https://qypyp.xiaohuibang.com", "");
     } else if (_str.indexOf('img.alicdn.com') != -1){
-      return _str.replace("https://devqypyp.xiaohuibang.com", "");
+      return _str.replace("https://qypyp.xiaohuibang.com", "");
     }else{
       return _str;
     }

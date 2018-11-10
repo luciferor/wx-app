@@ -11,21 +11,13 @@ Page({
   data: {
     rechar:0,//邦分
     moneyes:0,//金额
-    buff:0
+    buff:0,
+    comname: ''
   },
   calcbuff(e){
-    console.log(e);
-    if (e.detail.value<0){
-      $Toast({
-        content: '邦分不允许填写负数',
-        type: 'warning'
-      });
-      return;
-    }
-    console.log(e.detail.value);
     this.setData({
-      rachar:e.detail.value,
-      moneyes:(e.detail.value)/app.apiData.rate
+      rachar: e.detail.value,
+      moneyes: (e.detail.value) / app.apiData.rate
     })
   },
   rechargeing(){
@@ -79,7 +71,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    
+    this.setData({
+      comname: app.apiData.company_name
+    })
   },
   getbuff(){
     let _this = this;
