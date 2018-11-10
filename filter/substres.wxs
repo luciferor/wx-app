@@ -119,7 +119,22 @@ var subs = {
     }else{
       return _str;
     }
-  }
+  },
+  rankType: function (_str) {
+    switch (_str) {
+      case 1:
+        return '日榜';
+        break;
+      case 2:
+        return '周榜';
+        break;
+      case 3:
+        return '月榜';
+        break;
+      default:
+        break;
+    }
+  },
 }
 
 module.exports={
@@ -132,5 +147,6 @@ module.exports={
   targetclass: subs.targetclass,
   targcolor: subs.targcolor,
   colorsss: subs.colorsss,
-  convertimgsrc: subs.convertimgsrc
+  convertimgsrc: subs.convertimgsrc,
+  rankType:subs.rankType
 }

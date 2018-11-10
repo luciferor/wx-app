@@ -58,7 +58,7 @@
                       <text class='target-name'>{{subs.sub(target.type ==1 ? target.ranktitle:target.scoretitle,12)}}</text>
                       <view style='height:20rpx'></view>
                       <view wx:if="{{target.type ==1}}">
-                    <view class='target-condition'>当前第<span class="{{subs.targcolor(target.type==1?target.rreceive_type:sreceive_type)}}">{{target.myrank}}</span>名/{{subs.targetType(target.gift_type)}}{{subs.targetRank(target.rank)}}</view>
+                    <view class='target-condition'>{{subs.rankType(target.gift_type)}}第<span class="{{subs.targcolor(target.type==1?target.rreceive_type:sreceive_type)}}">{{target.myrank}}</span>名/{{subs.targetType(target.gift_type)}}{{subs.targetRank(target.rank)}}</view>
                     <!-- <view class='target-condition' wx:elif="{{target.gift_type ==2}}">当前第<span class="hight-color">{{target.weekrank}}</span>名/{{subs.targetType(target.gift_type)}}{{subs.targetRank(target.rank)}}</view>
                     <view class='target-condition' wx:else>当前第<span class="hight-color">{{target.monthrank}}</span>名/{{subs.targetType(target.gift_type)}}{{subs.targetRank(target.rank)}}</view> -->
                       </view>
