@@ -347,11 +347,13 @@ Page({
 
     //全部审核
     showAllCheckBox(e) {
+      if (this.data.isAdmin == 1){
         let index = e.currentTarget.id;
         this.data.allNotice[index].check_hidden = !this.data.allNotice[index].check_hidden;
         this.setData({
-            allNotice: this.data.allNotice
+          allNotice: this.data.allNotice
         })
+      }
     },
 
     //审核弹窗
